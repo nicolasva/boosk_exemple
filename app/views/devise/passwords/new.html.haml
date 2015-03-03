@@ -1,0 +1,22 @@
+#reset-password.row-fluid
+  .span12
+    .row-fluid
+      .span8.mark
+        .boost_eshop_title= t(:boost_eshop_title, scope: [:views, :homepage])
+        .boost_eshop_mobile= t(:boost_eshop_mobile, scope: [:views, :homepage]).html_safe
+        .boost_eshop_facebook= t(:boost_eshop_facebook, scope: [:views, :homepage]).html_safe
+        .boost_eshop_picto
+      .span4.mire
+        .row
+          = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+            %fieldset
+              %header  
+                %h2= t(:forgot_password, scope: [:views, :homepage])
+                %p.help-block= t(:reset_password_help_message, scope: :devise)
+              = devise_error_messages!
+              %p
+                = f.label :email
+                = f.email_field :email
+              .actions
+                = f.submit t(:reset_password, scope: :devise), :class => "orange"
+          = render :partial => "common/support"

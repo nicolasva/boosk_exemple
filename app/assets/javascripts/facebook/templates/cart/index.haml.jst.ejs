@@ -1,0 +1,20 @@
+:each item in cart
+  %div{id: "item_"+item.id}
+    %span
+      = "sku : " + item.product.sku
+    %span
+      = "price : " + item.product.price
+    %span
+      = "quantity : " + item.quantity
+    %span
+      = "total : " + item.product.price * item.quantity
+    %span.action
+      %a.increment-item-cart.btn-small.btn-success{ data-id: item.id } +
+    %span.action
+      %a.decrement-item-cart.btn-small.btn-primary{ data-id: item.id } \-
+    %span.action
+      %a.destroy-item-cart.btn-small.btn-danger{ data-id: item.id } x
+
+%h3.total
+  = "Total cart: " + total + "€"
+%a{href:"#/shops/checkouts"} Checkout 

@@ -1,0 +1,12 @@
+#store-settings.container-fluid
+  %h1.row-fluid Store Settings
+  .row-fluid
+    .span9
+      = form_for [@tax_rate.shop, @tax_rate], :class => "chosen_select_shop" do |f|
+        %h1 New tax
+        = render 'form', tax_rate: @tax_rate, zones: @zones, f: f
+        .actions
+          = link_to t(:back), shop_tax_rates_path(@tax_rate.shop_id), :class => "btn back"
+          = f.submit "Create", :class => "btn orange"
+    .span3
+      = render 'shared/store_settings_menu', :shop => @shop, :current_item => :tax_rates

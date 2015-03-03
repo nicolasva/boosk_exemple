@@ -1,0 +1,74 @@
+@import "background_sprite/background_sprite"
+
+body
+  .container-fluid
+    section.menu
+      :position absolute
+      :width 90%
+      :height 100%
+      :background-color #494949
+      #container_choose_panel_mobile
+        :padding 0px
+        :margin 0px
+        div#id_search
+          :background-color #e6e6e6
+          div.form_search_product
+            :padding-top 8px
+            :margin-left 12px
+            :background-color transparent
+            form
+              input.search_product
+                :margin-top 4.5px
+                :float left
+              input.submit_search
+                :border 0px
+                @include background_url_sprite 
+                :background-position -42px 0px
+                :padding 13px 18px 7px
+        div#container_taxon_lists
+          :display inline-block
+          :width 98%
+          :padding 0px
+          :margin 0px
+          :font-weight 600
+          :color white
+          :background-color #373737
+          ul
+            :padding 0px
+            :margin 0px
+            li
+              :margin 0px
+              :list-style-type none
+              .div_taxon_link
+                :border-bottom 2px outset #272727
+                :width 100%
+                :min-height 50px
+                .taxon
+                  :margin-top 17px
+                a
+                  :margin-left 5%
+                  :float left
+                  :display block
+                  :color #7e7e7e
+                  :width 76%
+                .div_taxon_img
+                  :float right
+                  :width 37px
+                  .taxon_img
+                    :float left
+                    @include background_url_sprite
+                    :background-position 0px -110px
+                    :padding 20px 20px 0px 0px
+                    :cursor pointer
+                  .taxon_img.activate
+                    :background-position -23px -110px
+              ul.children-menu
+                :display none
+                :background-color #e6e6e6
+                .children-menu
+                  :background-color white
+                .div_taxon_img
+                  .taxon_img
+                    :background-position -45px -110px
+                  .taxon_img.activate
+                    :background-position -68px -110px

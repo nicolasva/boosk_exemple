@@ -1,0 +1,35 @@
+#store-settings.container-fluid
+  .row-fluid
+    .span9
+      %h2= t :edit_attribute, scope: [:views, :product, :new]
+
+      = form_for [@shop, @option_type[:values].first], url: shop_option_type_path(@shop, @option_type[:type]), method: :put, html: {id: "edit_option_type_form"} do |f|
+        .container-fluid.option-types
+          .row-fluid
+            .span5.key
+              .row-fluid
+                .span4
+                  .row-fluid
+                    .span7
+                      = f.label :name
+                    .span5
+                      %span.need *
+              = f.text_field :name, class: "necessary"
+            .span7.values-area
+              - @option_type[:values].each_with_index do |type, i|
+                .option_type_value_row
+                  - if i == 0
+                    .row-fluid
+                      .span3
+                        .row-fluid
+                          .span8
+                            = label_tag t(:attribute_options, scope: [:views, :product, :new])
+                          .span4
+                            %span.need *
+                  %input.necessary.option_type_id{ name: "option_type[option][][id]", value: type.id, type: "hidden" }
+                  %input.necessary.option_type_value{ name: "option_type[option][][value]", value: type.value }
+                  - if i == @option_type[:values].count - 1
+                    #add_values
+        .actions
+          = f.submit t(:update).capitalize, class: "btn orange"
+          = link_to t(:back), shop_option_types_path(@shop), class: "btn back"

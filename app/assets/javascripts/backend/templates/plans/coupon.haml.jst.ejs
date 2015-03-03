@@ -1,0 +1,11 @@
+.modal-header
+  %button.close{type: "button", data-dismiss: "modal", aria-hidden: "true"}&times;
+  %h1= translate.views.subscription.promo_code
+.modal-body
+  %p= translate.views.subscription.coupon_code
+  %form
+    .field
+      %input{type: "text", name: "coupon", id: "coupon", class: "necessary"}
+    .call-to-action
+      %input.btn.btn-large.orange{type: "submit", value: "> " + translate.next }
+

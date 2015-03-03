@@ -1,0 +1,31 @@
+.sign-in.span12.without-margin
+  = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "form-horizontal" }) do |f| 
+    %fieldset
+      .header
+        %span= t(:already_suscribe, scope: [:views, :homepage])            
+      - if flash[:error]
+        .alert.alert-error= flash[:error]
+      - if flash[:notice]
+        .alert.alert-info= flash[:notice]
+      - if flash[:alert]
+        .alert= flash[:alert]
+      = f.email_field :email, :class => "span4 necessary email", :placeholder => t(:email, scope: [:activerecord, :attributes, :user])
+      = f.password_field :password, :class => "span4 necessary", :placeholder => t(:password, scope: [:activerecord, :attributes, :user])
+
+      .without-margin
+        %span.rememberme
+          - if devise_mapping.rememberable?
+            = f.check_box :remember_me 
+            = f.label :remember_me, :class => "checkbox"
+
+        %span.forgotpass
+          - if devise_mapping.recoverable? && controller_name != 'passwords'
+            = link_to t(:forgot_password, scope: [:views, :homepage]), new_password_path(resource_name)
+
+      .actions
+        = f.submit t(:login, scope: [:views, :homepage]), :class => "orange"
+        = link_to user_omniauth_authorize_path(:facebook), class: "btn btn-primary" do
+          %span.fb-picto          
+          %span.txt          
+            = t(:login_with_facebook, scope: [:views, :homepage])
+          

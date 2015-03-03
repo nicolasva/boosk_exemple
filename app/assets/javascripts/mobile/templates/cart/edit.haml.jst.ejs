@@ -1,0 +1,46 @@
+%h2= translate.views.cart.h3
+.recap_orders
+  %form#form_edit_cart_items
+    %table{cellpadding: '0', cellspacing: '0'}
+      %tr{id: "title_table", class: "color_tab_header_footer"}
+        %th
+
+        %th
+          = translate.activerecord.attributes.product.name
+        %th
+          = translate.activerecord.attributes.product_variant.quantity
+        %th
+          = translate.views.cart.total_product
+        %th
+          = translate.delete
+      :each cartitem in cartitems
+        :if cartitem.product
+          %tr{id: "tr_value_carts_"+cartitem.product.id+"_product_"+cartitem.product.product_id, class: "tr_value_carts"}
+            %td
+
+            %td.border
+              = cartitem.name
+            %td.border
+              %input{type: "hidden", value: cartitem.id, name: "cart_items[id]["+cartitem.id+"]", id: "cart_items_id_"+cartitem.id, class: "cart_items_id"}
+              %select{name: "cart_items[quantity]["+cartitem.id+"]", class: "cart_items_quantity", id: "cart_items_quantity_"+cartitem.id, style: "width: 50px;"}             
+                :each quantity in App.number_quantity_product(cartitem.product.quantity)
+                  :if quantity != cartitem.quantity
+                    %option{value: quantity, id: "option_quantity_"+quantity, class: "option_quantity"}
+                      = quantity
+                  :if quantity == cartitem.quantity
+                    %option{value: quantity, id: "option_quantity_"+quantity, class: "option_quantity", selected: "selected"}
+                      = quantity
+            %td.border.tr_value_order
+              = App.FixedPrice(cartitem.price_ttc * cartitem.quantity)
+            %td
+              %a.cart_remove{href: "#", id: "drop_cart_"+cartitem.product.id+"_"+cartitem.id}
+      %tr{id: "tr_total", class: "color_tab_header_footer"}
+        %td{colspan: "5", class: "total_price"}
+          %span#total
+            = "Total €"
+          %span#value_total
+            = App.FixedPrice(total_cart)
+
+.checkout
+  %a.orange{href:"#/shops/checkouts"}
+    = translate.views.cart.check_out

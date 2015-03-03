@@ -1,0 +1,45 @@
+@import mixins
+
+#menu-options
+  #menu-preview
+    :font-size 1.1em
+    :background-color #ffffff
+    :border-bottom 1px solid #a6aebb
+    :padding 5px 0
+    h1
+      :padding-left 10px
+      :font-size 1em
+      :font-weight 300
+      :color #333
+    #menu-preview-container
+      :background-color #2f2f2f
+      :color #fff
+      :font-size 0.85em
+  .actions
+    :float none
+    :text-align center
+    :margin-top 0px
+    :font-size 1.1em
+    :border-bottom 1px solid #a6aebb
+    :padding 5px 10px
+    .btn
+      :margin 0 5px
+      :color #ffffff
+      :padding .25em 1em
+      :background -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #acb6c8), color-stop(1, #6c7e9e) )
+      :background -moz-linear-gradient( center top, #acb6c8, #6c7e9e 100% )
+      :filter progid:DXImageTransform.Microsoft.gradient(startColorstr='#acb6c8', endColorstr='#6c7e9e')
+      :background-color #acb6c8
+      :border 1px solid #ffffff
+      :color #ffffff
+      :text-decoration none
+      :text-shadow none
+      @include radius(5, 5, 5, 5)
+  #menu-container
+    @include radius(0, 0, 5, 5)
+    :overflow-x auto
+    :padding 10px 20px 20px
+    :font-size 1.1em
+
+#menu-help
+  :margin 20px 20px

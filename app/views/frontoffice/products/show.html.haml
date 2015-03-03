@@ -1,0 +1,11 @@
+!!!
+%html
+  %head{:prefix => "og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# boosket_shop: http://ogp.me/ns/fb/boosket_shop#"}
+    %meta{:property => "fb:app_id", :content => "111803595636562"}
+    %meta{:property => "og:type",   :content => "boosket_shop:product"}
+    %meta{:property => "og:url",    :content => "#{request.url}"}
+    %meta{:property => "og:title",  :content => "#{@product.name}"}
+    %meta{:property => "og:image",  :content => "http://#{request.host}/#{@product.variant_master.pictures.first.picture.url}"}
+  %body
+    :javascript
+      window.location = "https://www.facebook.com/#{@product.shop.fan_page_id}/app_#{BOOSKETSHOPS['facebook']['app_id']}&app_data=products#{u("=")}#{@product.uuid}"

@@ -1,0 +1,288 @@
+@import "background_sprite/background_sprite"
+
+// Avoid selection on all element
+*:not(input, textarea)
+  :-webkit-tap-highlight-color rgba(0,0,0,0)
+  :-webkit-user-select none
+  :-khtml-user-select none
+  :-moz-user-select none
+  :-ms-user-select none
+  :user-select none
+
+body
+  :padding 0px
+  .container-fluid
+    :padding 0px
+    :margin 0px
+    :margin 0px
+    :font-family "Helvetica Neue",Helvetica,Arial,sans-serif !important
+    :background #494949
+    div.form_search_product
+      :padding-top 8px
+      :margin-left 12px
+      :background-color transparent
+      form
+        input.search_product
+          :margin-top 4.5px
+          :float left
+          :width 65%
+        input.submit_search
+          :border 0px
+          @include background_url_sprite 
+          :background-position -42px 0px
+          :padding 13px 18px 7px
+    section.content
+      :position relative
+      :float left
+      :width 100%
+      :display inline
+      section.header
+        :margin 0px
+        :padding 0px
+        #all_header
+          :width 100%
+          :background-attachment fixed
+          #header
+            :margin 0px
+            :padding 0px
+            img 
+              :display block
+              :padding 0px
+              :margin 0px
+              :vertical-align bottom
+          #panel
+            :padding 0px
+            :margin 0px
+            :width 100%
+            :height 53px
+            :background-color #2F2F2F
+            ul
+              :margin-bottom 0px
+              :padding 0px
+              :margin-top 0px
+              :padding-bottom 0px
+              :margin-left 0px
+              li 
+                :padding-top 15px
+                :color white
+                :font-weight 600
+                :list-style-type none
+                :margin-top 4px
+                a
+                  @include background_url_sprite 
+                a.class_panel
+                  :background-position 0px 0px
+                  :padding 15px 20px 7px
+                a.checkout_shop
+                  :background-position -85px 0px
+                  :display block
+                  :height 45px
+                  :width 44px
+                  :text-decoration none
+                  span.basket
+                    :color white
+                    :display block
+                    :font-size 11px
+                    :padding-right 8px
+                    :padding-top 4px
+                    :text-align center
+              li.li_panel
+                :float left
+              li#id_taxon_panel
+                :width 25%
+                :min-width 40px
+              li#id_title_shop
+                a
+                  :background transparent
+                  :color white
+                :width 50%
+                :text-align center
+              li#basket_shop
+                :float right
+                :margin 0px
+                :padding 0px
+                :margin-top 5px
+                div.basket_empty
+                  @include background_url_sprite 
+                  :background-position -85px 0px
+                  :height 45px
+                  :width 44px
+                  :display block
+                  span
+                    :padding-top 4px
+                    :padding-right 8px
+                    :display block
+                    :text-align center
+              li.form_search_product
+                :margin 0px
+                :padding 0px
+                :background-color transparent 
+                :height 53px
+                :width 80%
+                :-webkit-transition all 0.5s ease
+                :-moz-transition all 0.5s ease
+                :-o-transition all 0.5s ease
+                :transition all 0.5s ease
+                input.search_product
+                  :-webkit-transition all 0.5s ease
+                  :-moz-transition all 0.5s ease
+                  :-o-transition all 0.5s ease
+                  :transition all 0.5s ease
+              li.form_search_product.disable_search
+                :width 25%
+                input.search_product
+                  :width 0%
+                  :padding-left 0%
+                  :padding-right 0%
+                  :border 0px
+      section.corps
+        :background-color white
+        :margin 0px
+        :min-height 480px
+        #box
+          :display none 
+          div.delete_cart_items
+            ul
+              :list-style-type none
+              li.left
+                :float left
+              li.right
+                :float right
+          div.accept_law
+            p
+              :margin-bottom 10px
+               
+        #app_mobile
+          :background-color white
+          #show_order
+            :margin-left 2.778%
+            :margin-right 2.778%
+          #address
+            :margin-left 2.778%
+            :margin-right 2.778%
+            ul
+              :margin-left 0.778%
+              :list-style-type none
+          #reglement
+            :margin-left 2.778%
+            :margin-right 2.778%
+          #new_addresses
+            :margin-left 2.778%
+            :margin-right 2.778%
+          div.recap_orders
+            :margin-left 2.778%
+            :margin-right 2.778%
+          .container
+            .class_all_product_variant_pictures.span6
+              ul
+                :list-style-type none
+            .product
+              :padding 1%
+              :width 98%
+              .title_product_add_to_cart
+                .price
+                  :color #f86514
+              .social_action
+                .action
+                  #pint
+                    ol 
+                      li
+                        :float left
+                        :list-style-type none
+                        a
+                          @include background_url_sprite
+                        a.like_it
+                          :background-position 0px -130px
+                          :padding 14px 18px 7px
+                        a.tweet_it
+                          :background-position -40px -130px
+                          :padding 14px 18px 7px
+                        a.want_it
+                          :background-position -80px -130px
+                          :padding 14px 18px 7px
+                        a.have_it
+                          :background-position -110px -130px
+                          :padding 14px 18px 7px
+                        a.pint_it
+                          :background-position -143px -130px
+                          :padding 14px 18px 7px
+              .form_select_option
+                .action_form
+                  #option-types-all
+                    :background-color #dadada
+                  .option-types
+                    :background-color white
+                .styled-select
+                  :-moz-border-radius 5px
+                  :-webkit-border-radius 5px
+                  :border-radius 5px
+                  :margin-bottom 20px
+                  :height 25px
+                  :overflow hidden
+                  :margin-left 0px
+                  :background url("/assets/mobile/fleche.png") no-repeat right #c1cddc
+                  select
+                    :position relative
+                    :background transparent
+                    :margin-left 0px
+                    :width 110%
+                    :font-size 16px
+          div
+            ul
+              li.product_form
+                div.product
+                  div.class_all_product_variant_pictures
+                    div.class_all_pictures_product_variants
+                      ul
+                        :list-style-type none
+                        li
+                          :float left
+                          :margin-left 3px
+                          img
+                          img:hover
+                            :cursor pointer
+                      :margin-top 10px
+                      :height 70px
+          div.action
+            input.valid_address
+              :float right
+          table
+            :-moz-border-radius 8px
+            :-webkit-border-radius 8px
+            :border-radius 8px
+            :border 1px solid #A6AEBB
+            tr.class_title_order
+              :-moz-border-radius 8px
+              :-webkit-border-radius 8px
+              :border-radius 8px
+              :background-color #A6AEBB
+              :color white
+              td
+                :text-align center
+              td.border
+                :border-right 1px solid white 
+            tr.tr_value_order
+              :border-bottom 1px solid #A6AEBB
+              td.value_border
+                :border-right 1px solid #D8D8D8 
+                div.cart_item_update_quantity
+                  span
+                    :background url("/assets/sprite_facebook.png")
+                    :background-attachment scroll
+                    :background-repeat no-repeat
+                div.cart_item_quantity
+                  :float left
+          .product_lists
+            :border 0px
+            ul.ul_product_list
+              :margin 0px
+              :list-style-type none
+              .product_thumb
+                .pictures
+                  img
+                    :border 1px solid #CCC
+                .product_price
+                  color: orange
+      #footer
+        :background-color transparent
+        :clear both

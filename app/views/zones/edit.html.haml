@@ -1,0 +1,7 @@
+#store-settings.container-fluid
+  .row-fluid
+    .span9
+      %h2= t :edit_zone, :scope => [:views, :zone]
+      = render 'form', zone: @zone
+    .span3
+      = render 'shared/store_settings_menu', :shop => @shop, :current_item => :zones

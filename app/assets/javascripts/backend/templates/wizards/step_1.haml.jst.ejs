@@ -1,0 +1,57 @@
+.container-fluid
+  .row-fluid
+    .span1.title-step-1
+      .header-lateral
+    .span10
+      %form#wizard_step_1
+        .shop-name
+          %label{ for: "shop_name" }= translate.activerecord.attributes.shop.name
+          %input.span5.necessary{ id: "shop_name", name: "shop[name]" , value: shop.name }
+          %p.help-block= translate.views.wizard.help_block_shop
+
+        .country
+          %label{ for: "shop_country" }= translate.activerecord.attributes.shop.country
+          %input{ type: "hidden", name: "shop[contact_attributes][addresses_attributes][0][object_type]", value: "shop" }
+          %select#shop_country.necessary{name: "shop[contact_attributes][addresses_attributes][0][country]", style: "width: 90%;", data-placeholder: translate.views.zone.zone_members_placeholder}
+            %option{value: ""}
+
+        .active_payement
+          .row-fluid
+            .span12
+              %label= translate.activerecord.attributes.shop.shop_type
+              .row-fluid
+                :if shop.has_active_payement == "true"
+                  %input.span1{ type: "radio", id: "shop_has_active_payement", name: "shop[has_active_payement]", value: "true", checked: true }
+                  %label.checkbox.inline.span3.sub-label.without-margin{for: "shop_has_active_payement"}= translate.activerecord.attributes.shop.shop_type_sell
+                  %input.span1{ type: "radio", id: "shop_has_not_active_payement", name: "shop[has_active_payement]", value: "false" }
+                  %label.checkbox.inline.span3.sub-label.without-margin{for: "shop_has_not_active_payement"}= translate.activerecord.attributes.shop.shop_type_not_sell
+                :if shop.has_active_payement == "false"
+                  %input.span1{ type: "radio", id: "shop_has_active_payement", name: "shop[has_active_payement]", value: "true" }
+                  %label.checkbox.inline.span3.sub-label.without-margin{for: "shop_has_active_payement"}= translate.activerecord.attributes.shop.shop_type_sell
+                  %input.span1{ type: "radio", id: "shop_has_not_active_payement", name: "shop[has_active_payement]", value: "false", checked: true }
+                  %label.checkbox.inline.span3.sub-label.without-margin{for: "shop_has_not_active_payement"}= translate.activerecord.attributes.shop.shop_type_not_sell
+
+        .devise
+          %label{ for: "shop_devise" }= translate.activerecord.attributes.shop.devise
+          %select.span2{ name: "shop[devise]" }
+            :each devise in devises
+              :if shop.devise == devise.iso
+                %option{ value: devise.iso , selected: "true" }= devise.iso + " " + devise.symbol
+              :if shop.devise != devise.iso
+                %option{ value: devise.iso , "" }= devise.iso + " " + devise.symbol
+          %p.help-block= translate.views.wizard.help_block_device
+
+        .shop-key
+          %label{ for: "shop_key" }= translate.views.wizard.shop_uuid
+          %input.span5{ id: "shop_key", name: "shop_key" , value: (account.shop_key != null ? account.shop_key : "") }
+          %p.help-block= translate.views.wizard.help_block_shop_key
+
+        .action
+          %input.btn.orange{ type: "submit", value: " > " + translate.next }
+
+  //temp for keyade!
+  :if k
+    %img{src: "http://k.keyade.com/kaev/1/?kaPcId=10520&kaEvId=83625&kaEvMcId="+u+"&kaClkId="+k+"&kaEvCt1=1", height: "2", width: "2"}
+
+  // temp for Ligatus!
+  %img{src: "https://ext.ligatus.com/conversion/?c=48154&a=3098"}

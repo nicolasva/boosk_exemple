@@ -1,0 +1,78 @@
+.row-fluid
+  .span9
+    %form#edit-shop-form
+      %section.settings-content
+        %header
+          %h1= translate.views.shop.edit.h2
+        %fieldset
+          .row-fluid
+            .span6
+              .field
+                %label{for: "name"}= translate.activerecord.attributes.shop.name
+                %input.necessary.span4{name: "name", type: "text", value: shop.name}
+                %p.help-block=  translate.views.shop.edit.help_block_shop
+              .field
+                %label{for: "uuid"}= translate.activerecord.attributes.shop.uuid
+                %input.necessary.span4{name: "uuid", readonly: "readonly", type: "text", value: shop.uuid}
+                %p.help-block=  translate.views.shop.edit.help_block_uuid
+              .field
+                %label{for: "url_website"}= translate.activerecord.attributes.shop.url_website
+                %input.url.span4{name: "url_website", type: "text", value: shop.url_website, placeholder: translate.views.shop.edit.placeholder_url_match }
+                %p.help-block=  translate.views.shop.edit.help_block_url
+              .field
+                .row-fluid
+                  .span12
+                    %label= translate.activerecord.attributes.shop.shop_type
+                    .row-fluid
+                      .row-fluid
+                        :if shop.has_active_payement
+                          %input.span1{ type: "radio", id: "shop_has_active_payement", name: "has_active_payement", value: "true", checked: true }
+                          %label.checkbox.inline.span4.sub-label.without-margin{for: "shop_has_active_payement"}= translate.activerecord.attributes.shop.shop_type_sell
+                          %input.span1{ type: "radio", id: "shop_has_not_active_payement", name: "has_active_payement", value: "false" }
+                          %label.checkbox.inline.span4.sub-label.without-margin{for: "shop_has_not_active_payement"}= translate.activerecord.attributes.shop.shop_type_not_sell
+                        :if !shop.has_active_payement
+                          %input.span1{ type: "radio", id: "shop_has_active_payement", name: "has_active_payement", value: "true" }
+                          %label.checkbox.inline.span4.sub-label.without-margin{for: "shop_has_active_payement"}= translate.activerecord.attributes.shop.shop_type_sell
+                          %input.span1{ type: "radio", id: "shop_has_not_active_payement", name: "has_active_payement", value: "false", checked: true }                
+                          %label.checkbox.inline.span4.sub-label.without-margin{for: "shop_has_not_active_payement"}= translate.activerecord.attributes.shop.shop_type_not_sell
+            .span6
+              .field
+                %label{for: "baseline"}= translate.activerecord.attributes.shop.baseline
+                %input.span4{name: "baseline", type: "text", value: shop.baseline}
+                %p.help-block=  translate.views.shop.edit.help_block_baseline
+              .field
+                %label{for: "description"}= translate.activerecord.attributes.shop.description
+                %textarea{name: "description", style: "width:96%;"}= shop.description
+                %p.help-block=  translate.views.shop.edit.help_block_description
+              .field
+                %label{ for: "shop_devise" }= translate.activerecord.attributes.shop.devise
+                %select.span2{ name: "devise" }
+                  :each devise in devises
+                    :if shop.devise == devise.iso
+                      %option{ value: devise.iso , selected: "true" }= devise.iso + " " + devise.symbol
+                    :if shop.devise != devise.iso
+                      %option{ value: devise.iso , "" }= devise.iso + " " + devise.symbol
+
+                %p.help-block= translate.views.wizard.help_block_device
+          .row-fluid
+            .span12
+              .field
+                %label{ for: "data_product_feed_url" }= translate.activerecord.attributes.shop.data_product_feed_url
+                %input.url{ name: "data_product_feed_url", type: "text", value: shop.data_product_feed_url, style: "width: 98%" }
+                %p.help-block= translate.views.shop.edit.help_block_data_product_feed_url
+          .row-fluid
+            .span12
+              .field
+                %label{for: "terms"}= translate.activerecord.attributes.shop.terms
+                %textarea{name: "terms", style: "width:98%;height:200px;"}= (shop.terms != null ? shop.terms : "")
+                %p.help-block= translate.views.shop.edit.help_block_terms
+
+      .wizard-actions
+        :if wizard
+          %input.orange{type: "submit", value: ' > ' + translate.next.capitalize()}
+          %a.btn.orange{ href: "/#/settings/menu" }= ' > ' + translate.skip
+        :if !wizard
+          %input.orange{type: "submit", value: translate.update.capitalize()}
+
+  .span3
+    %nav#store-settings-menu.settings-menu

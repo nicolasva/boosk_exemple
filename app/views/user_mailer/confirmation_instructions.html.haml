@@ -1,0 +1,45 @@
+= render :partial=>"/common/header_mailer"
+%body{:style => "padding:0px;margin:0px;color:#333;font-family:Helvetica;"}
+  #page{:style => "background-color:#E9F0F9;min-height:580px;" }
+    #header{:style => "margin: 0 auto; width:800px;padding:0 !important;overflow:hidden;background-color:#222;height:50px;"}
+      = image_tag attachments['boosket-shop.png'].url, :style => "margin:6px 0 0 5px;"
+    #title{:style => "width:800px; margin: 0 auto;height:30px;padding:0 !important;background-color:#F2F2F2;border-bottom:1px solid #E6E6E6;"}
+      %span{:style => "font-weight:bold;margin-left:20px;float:left;margin-top:7px"}
+        = t("mailer.users.confirmation_instructions.h1")
+    #content{:style => "padding:20px 10px;width:780px;margin:0 auto;background-color:#FFF;"}
+      %p{:style => "line-height: 25px;padding:0px;margin:0px;margin-top:10px;" }
+        %strong
+          = t("mailer.common.content_without_margin", :user_firstname => @user.firstname, :user_lastname => @user.lastname)
+      %p{:style => "line-height: 25px;padding:0px;margin:0px;margin-top:10px;" }
+        %strong 
+          = t("mailer.common.welcome_boosket_shop")
+
+      %p{:style => "line-height: 25px;padding:0px;margin:0px;margin-top:10px;" }
+        = t("mailer.users.confirmation_instructions.p_without_margin_first_step_boosket_shop").html_safe()
+      %h2.without-margin{:style => "color:#ff6600; font-size:16px;margin-top:20px;"}
+        = t("mailer.users.confirmation_instructions.p_without_margin_next_step")
+      %ul.without-margin{:style => "list-style-type:none;margin-bottom:5px;padding:0 20px;"}
+        %li
+          = t("mailer.users.confirmation_instructions.ul.li_select_plan").html_safe()
+        %li
+          = t("mailer.users.confirmation_instructions.ul.li_create_shop").html_safe()
+        %li
+          = t("mailer.users.confirmation_instructions.ul.li_publish_shop_mobile").html_safe()
+      %h2.without-margin{:style => "color:#ff6600; font-size:16px;margin-top:20px;"}
+        = t("mailer.users.confirmation_instructions.h2.create_shop")
+      %p.without-margin
+        = t("mailer.users.confirmation_instructions.p_without_margin_go_personal_space").html_safe()
+      %h2.without-margin{:style => "color:#ff6600; font-size:16px;margin-top:20px;"}
+        = t("mailer.common.h2.without_margin_other_questions")
+      %p.without-margin
+        = t("mailer.common.p_check_our_QA").html_safe()
+
+    #sign{:style => "width:760px; margin:0 auto;background:#FFF;padding: 1px 20px;font-weight:600;padding-bottom:20px;"}
+      %p{:style => "line-height: 16px;padding:0px;margin:0px;margin-top:10px;margin:0px;" }
+        = t("mailer.common.sign.p_we_wish_great_success")
+      %p{:style => "line-height: 16px;padding:0px;margin:0px;margin-top:10px;margin:0px;" }
+        = t("mailer.common.sign.p_without_margin_boosket_team")
+
+  #footer{:style => "background-color:#F2F2F2;border-bottom:1px solid #E6E6E6;text-align:center;padding:5px;margin:0px;"}
+    %p.noreply{:style => "color:#BFBFBF;font-size:10px;"}
+      = t("mailer.common.footer.p_noreply")

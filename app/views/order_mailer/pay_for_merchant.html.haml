@@ -1,0 +1,97 @@
+
+%body{:style => "padding:0px;margin:0px;color:#333;font-family:Helvetica;"}
+  #page{:style => "background-color:#E9F0F9;min-height:580px;" }
+    #header{:style => "margin: 0 auto; width:800px;padding:0 !important;overflow:hidden;background-color:#222;height:50px;"}
+      = image_tag attachments['boosket-shop.png'].url, :style => "margin:6px 0 0 5px;"
+    #title{:style => "width:800px; margin: 0 auto;height:30px;padding:0 !important;background-color:#F2F2F2;border-bottom:1px solid #E6E6E6;"}
+      %span{:style => "font-weight:bold;margin-left:20px;float:left;margin-top:7px;"}
+        = @order.shop.name.capitalize 
+      %span{:style => "font-weight:bold;margin-right:20px;float:right;margin-top:7px;"}
+        = t("mailer.orders.pay_for_customer.h1")
+    #content{:style => "padding:20px 10px;width:780px;margin:0 auto;background-color:#FFF;"}
+      %p{:style => "line-height: 25px;padding:0px;margin:0px;margin-top:10px;" }
+        %strong
+          = t("mailer.common.content_without_margin", :user_firstname => @order.shop.contact.firstname, :user_lastname => @order.shop.contact.lastname)
+      %p{:style => "line-height: 25px;padding:0px;margin:0px;margin-top:10px;" }
+        = t("mailer.orders.pay_for_merchant.p_confirm_orders", :time_now => l(Date.today, :format => "%A, %d %B %Y"), :order_shop_name => @order.shop.name)
+
+      %h2{:style => "margin-bottom:15px;color:#ff6600; font-size:16px;margin-top:20px;"}= t("mailer.orders.pay_for_customer.shipping_address")
+        
+      %ul{:style => "list-style-type:none;margin-bottom:5px;padding:0 20px;"}
+        %li= "#{@order.contact.lastname} #{@order.contact.firstname}"
+        %li= @order.contact.addresses.first.addr
+        %li= @order.contact.addresses.first.city
+        %li= @order.contact.addresses.first.zip_code
+        %li= @order.contact.addresses.first.country
+        %li= @order.contact.phone
+        %li{:style => "padding-top:10px;"}
+          %a{:style => "color:#F60;", :href => "mailto:#{@order.contact.emails.first.email}",:target => "_blank"}= @order.contact.emails.first.email                
+      #recap{:style => "margin-top:10px;"}
+        %h2{:style => "margin-bottom:15px;color:#ff6600; font-size:16px;margin-top:20px;"}= t("mailer.orders.pay_for_customer.products_bought")
+        %table{:style => "min-width:500px; border-collapse:collapse;"}
+          %thead
+            %tr
+              %th{:style => "border:1px solid #DEDEDE;text-align:center;"}= t("mailer.orders.common.table.thead.ref")              
+              %th{:style => "border:1px solid #DEDEDE;text-align:center;"}= t("mailer.orders.common.table.thead.name")
+              %th{:style => "border:1px solid #DEDEDE;text-align:center;"}= t("mailer.orders.common.table.thead.quantity")
+              %th{:style => "border:1px solid #DEDEDE;text-align:center;"}= t("mailer.orders.common.table.thead.pu_ht")
+              %th{:style => "border:1px solid #DEDEDE;text-align:center;"}= t("mailer.orders.common.table.thead.pu_ttc")
+              %th{:style => "border:1px solid #DEDEDE;text-align:center;"}= t("mailer.orders.common.table.thead.pt_ht")
+              %th{:style => "border:1px solid #DEDEDE;text-align:center;"}= t("mailer.orders.common.table.thead.pt_ttc")              
+          %tbody
+            - @order.line_items.each do |line_item|
+              %tr
+                %td{:style => "text-align:center;border:1px solid #DEDEDE; "}= line_item.sku
+                %td{:style => "text-align:center;border:1px solid #DEDEDE;"}= line_item.name
+                %td{:style => "text-align:center;border:1px solid #DEDEDE;"}= line_item.quantity
+                %td{:style => "text-align:center;border:1px solid #DEDEDE;"}= "#{line_item.price_ht} #{@order.shop.devise}"
+                %td{:style => "text-align:center;border:1px solid #DEDEDE;"}= "#{line_item.price_ttc} #{@order.shop.devise}"
+                %td{:style => "text-align:center;border:1px solid #DEDEDE;"}= "#{line_item.price_ht * line_item.quantity} #{@order.shop.devise}"
+                %td{:style => "text-align:center;border:1px solid #DEDEDE;"}= "#{line_item.price_ttc * line_item.quantity} #{@order.shop.devise}"                
+          %tfoot
+            %tr.first
+              %th{:style => "border:none;padding-top:15px;text-align:center;"}
+              %th{:style => "border:none;padding-top:15px;text-align:center;"}                              
+              %th{:style => "border:none;padding-top:15px;text-align:center;"}
+              %th{:style => "border:none;padding-top:15px;text-align:center;"}                
+              %th{:style => "border:none;padding-top:15px;text-align:center;"}
+              %th{:style => "border:none;padding-top:15px;text-align:center;"}= t("mailer.orders.common.table.tfoot.tht")
+              %td{:style => "border:none;padding-top:15px;text-align:center;"}= "#{(@order.line_items.sum {|item| item.price_ht * item.quantity}).round(2)}  #{@order.shop.devise}"              
+            %tr
+              %th{:style => "border:none;text-align:center;"}
+              %th{:style => "border:none;text-align:center;"}
+              %th{:style => "border:none;text-align:center;"}                
+              %th{:style => "border:none;text-align:center;"}                
+              %th{:style => "border:none;text-align:center;"}
+              %th{:style => "border:none;text-align:center;"}= t("mailer.orders.common.table.tfoot.tax")
+              %td{:style => "border:none;text-align:center;"}= "#{(@order.line_items.sum {|item| item.price_ttc * item.quantity} - @order.line_items.sum {|item| item.price_ht * item.quantity}).round(2)} #{@order.shop.devise}"
+            %tr
+              %th{:style => "border:none;text-align:center;"}
+              %th{:style => "border:none;text-align:center;"}              
+              %th{:style => "border:none;text-align:center;"}
+              %th{:style => "border:none;text-align:center;"}                
+              %th{:style => "border:none;text-align:center;"}
+              %th{:style => "border:none;text-align:center;"}= t("mailer.orders.common.table.tfoot.shipping")
+              %td{:style => "border:none;text-align:center;"}= "#{@order.shipment.round(2)} #{@order.shop.devise}"
+            %tr
+              %th{:style => "border:none;text-align:center;"}
+              %th{:style => "border:none;text-align:center;"}              
+              %th{:style => "border:none;text-align:center;"}
+              %th{:style => "border:none;text-align:center;"}                
+              %th{:style => "border:none;text-align:center;"}
+              %th{:style => "border:none;text-align:center;"}= t("mailer.orders.common.table.tfoot.ttc")
+              %td{:style => "border:none;text-align:center;"}= "#{@order.total} #{@order.shop.devise}"
+        
+      %h2{:style => "color:#ff6600; font-size:16px;margin-top:20px;"}
+        = t("mailer.common.h2.without_margin_other_questions")
+      %p{:style => "line-height: 16px;padding:0px;margin:0px;margin-top:10px;margin:0px;" }
+        = t("mailer.common.p_check_our_QA").html_safe()
+    #sign{:style => "width:760px; margin:0 auto;background:#FFF;padding: 1px 20px;font-weight:600;padding-bottom:20px;"}
+      %p{:style => "line-height: 16px;padding:0px;margin:0px;margin-top:10px;margin:0px;" }
+        = t("mailer.common.sign.p_see_you_soon")
+      %p{:style => "line-height: 16px;padding:0px;margin:0px;margin-top:10px;margin:0px;" }
+        = t("mailer.common.sign.p_without_margin_boosket_team")
+
+  #footer{:style => "background-color:#F2F2F2;border-bottom:1px solid #E6E6E6;text-align:center;padding:5px;margin:0px;"}
+    %p{:style => "color:#BFBFBF;font-size:10px;"}
+      = t("mailer.common.footer.p_noreply")

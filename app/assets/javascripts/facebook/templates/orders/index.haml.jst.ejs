@@ -1,0 +1,27 @@
+%table
+  %tr
+    %td
+      = "Produit"
+    %td
+      = "Quantité"
+    %td
+      = "Prix"
+  :each order in orders
+    :each line_item in order.line_items
+      %tr
+        %td
+          = line_item.product_variant.product.name
+        %td
+          = line_item.quantity
+        %td
+          = line_item.price
+  %tr
+    %td
+      Total TTC :
+    %td
+      = total_orders_price
+
+
+
+
+       

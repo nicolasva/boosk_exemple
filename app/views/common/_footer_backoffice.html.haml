@@ -1,0 +1,56 @@
+.row-fluid
+  .span3
+    %h4 Boosket
+    %ul
+      %li
+        =t(:whatisit, scope: [:views, :common, :footer]).html_safe
+      %li
+        =t(:plans, scope: [:views, :common, :footer]).html_safe
+      %li
+        =t(:feature, scope: [:views, :common, :footer]).html_safe
+
+  .span3
+    %h4 
+      =t(:follow, scope: [:views, :common, :footer])
+    %ul.unstyled
+      %li 
+        = image_tag ('facebook.png')
+        = link_to "Facebook", "http://www.facebook.com/Boosket", "target" => "_blank"
+      %li 
+        = image_tag ('twitter.png')
+        = link_to "Twitter", "https://twitter.com/Boosket", "target" => "_blank"
+      %li 
+        = image_tag ('blog.png')
+        = link_to "Blog", "http://blog.boosket.com/", "target" => "_blank"
+  .span3
+    %h4 Hotline
+    %ul#phone-numbers.unstyled
+      %li.tel.fr
+        %strong 33 892 700 577
+        &nbsp;(0,34€/min)
+      %li.tel.en
+        %strong 44 9073080203
+        &nbsp;(0,87£/min)
+      %li.tel.us
+        %strong 1 888 8088556
+        &nbsp;(Toll free)
+      %li.tel.de
+        %strong 49 900 3355700
+        &nbsp;(1,29€/min)
+      %li.tel.es
+        %strong 34 807 307500
+        &nbsp;(1,20€/min)
+  .span3
+    %h4 Contact
+    %ul.unstyled
+      %li 
+        = image_tag ('support.png')
+        = link_to "Support", "http://support.boosket.com/"
+      %li
+        = image_tag ('contact.png')
+        =t(:contact, scope: [:views, :common, :footer]).html_safe
+
+.copyright
+  ©
+  = Time.now.year
+  ·  24h00-Boosket - All rights reserved

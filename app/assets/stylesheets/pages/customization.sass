@@ -1,0 +1,54 @@
+@import compass/utilities/general/min
+
+#store-settings
+  .disabled-customization
+    :width 100%
+    :position absolute
+    :z-index 1002
+    :background #FFF
+    :opacity 0.8
+  .disabled-customization + button
+    :position absolute
+    :z-index 1003
+    :top 10%
+    :left 36%
+    :padding 7px 10px !important
+  #edit_shop_customization
+    :margin-bottom 1em
+    section.settings-content
+      .actions
+        :float none
+        :margin 10px 0
+        :border none
+        label, select, input, button
+          :display inline-block
+          :margin 0 5px
+    header.attachment-container
+      :border none
+      :padding 0
+      :position relative
+    .custo-options
+      :padding-top 20px
+      :padding-bottom 50px
+      .help-block
+        :margin-top 10px
+      #shutter, #teaser
+        :position relative
+        .close
+          :position absolute
+          :right 0
+          :display none
+        .attachment-container
+          :position absolute
+          :top 50%
+          :margin-top -14px
+          :width 100%
+          :text-align center
+          :display none
+        &:hover
+          .close
+            :display block
+          .attachment-container
+            :display block
+        &.loading-picture
+          +min-height(36px)

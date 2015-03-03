@@ -1,0 +1,11 @@
+- case params[:landing].to_i
+- when 1
+  = render :partial => "devise/registrations/landing_1"
+- when 2
+  = render :partial => "devise/registrations/landing_2"
+- when 3
+  = render :partial => "devise/registrations/landing_3"
+- when 4
+  = render :partial => "devise/registrations/landing_4"      
+- else
+  = render :partial => "devise/registrations/landing_1"  

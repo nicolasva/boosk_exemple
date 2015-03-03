@@ -1,0 +1,10 @@
+= form_for [taxon.taxonomy.shop, taxon.taxonomy, taxon] do |f|
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :parent_id
+    = f.select :parent_id, nested_set_options(Taxon, taxon) {|i| "#{'-' * i.level} #{i.name}" }
+  .actions
+    = link_to 'Back', shop_taxonomy_taxons_path(@shop), class: "btn"
+    = f.submit class: "btn btn-primary"

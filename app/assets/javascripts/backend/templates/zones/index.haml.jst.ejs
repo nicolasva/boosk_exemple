@@ -1,0 +1,41 @@
+.row-fluid
+  .span9
+    %section.settings-content
+      %header
+        .row-fluid
+          .span5
+            %h1= translate.views.zone.index.h2
+          .span2.add
+            %button.btn.orange#new_zone= ' + ' + translate.add
+          .span5
+            %select.action{ name: "action" }
+              %option= translate.actions
+                :for key,value in actions
+                  %option{ value: key }= value['display']
+      %table
+        %thead
+          %tr
+            %th
+              %input.select-all{ type: "checkbox" }
+            %th= translate.activerecord.attributes.zone.name.capitalize()
+            %th= translate.activerecord.attributes.zone.zone_members.capitalize()
+        %tbody
+          :each zone in zones
+            %tr{ data-id: zone.id }
+              %td
+                %input.zone-selected{ type: "checkbox" }
+              %td
+                %a.edit-zone= zone.name
+              %td
+                %ul.unstyled.zone-members
+                  :each zone_member in zone.zone_members
+                    %li
+                      :if zone_member.region_type == "country"
+                        %span.value
+                          = zone_member.country
+                      :if zone_member.region_type != "country"
+                        %span.value
+                          = zone_member.country + ", " + zone_member.state
+
+  .span3
+    %nav#store-settings-menu.settings-menu

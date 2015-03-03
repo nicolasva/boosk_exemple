@@ -1,0 +1,24 @@
+.row-fluid
+  .span12
+    .row-fluid
+      .span8.mark
+        %h2= t(:h2, scope: [:views, :homepage]).upcase
+        = image_tag(t(:social_commerce_multicanal))
+      .span4.mire
+        .row
+          .sign-up
+            = form_for(resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :put}) do |f|
+              %fieldset
+                - unless resource.errors.empty?
+                  .alert= resource.errors.full_messages.join
+                = f.text_field :lastname, :class => "span4 necessary", :placeholder => t(:lastname, scope: [:activerecord, :attributes, :user])
+                = f.text_field :firstname, :class => "span4 necessary", :placeholder => t(:firstname, scope: [:activerecord, :attributes, :user])
+                = f.text_field :phone_number, :class => "span4 necessary number", :placeholder => t(:phone_number, scope: [:activerecord, :attributes, :user])
+                = f.email_field :email, :class => "span4 necessary email", :placeholder => t(:email, scope: [:activerecord, :attributes, :user])
+                = f.password_field :password, :class => "span4 necessary", :placeholder => t(:password, scope: [:activerecord, :attributes, :user])
+                = f.hidden_field :invitation_token                 
+                .terms
+                  %span.terms_part1= t(:terms_part1, scope: [:views, :homepage])
+                  %a.terms_part2{:target => "_blank", :href => t(:cgv)}= t(:terms_part2, scope: [:views, :homepage])
+                .actions
+                  = f.submit t(:signup, scope: [:views, :homepage]), :class => "orange"

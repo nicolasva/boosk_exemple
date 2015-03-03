@@ -1,0 +1,49 @@
+@import pages/mixins
+
+.modal-front-show-product
+  :width 700px
+  :overflow-x hidden
+  :height auto
+  :max-height 700px
+  :left 41%
+  @include radius(0, 0, 0, 0)
+  :border 3px solid #000
+  .modal-header
+    :border-bottom none
+    :padding 2px 6px
+    .close
+      :color $orange
+      :font-size 25px !important
+      @include opacity(100)
+      :text-shadow 0 !important
+      :text-transform lowercase
+      :line-height 0.8em
+  .modal-body
+    .product-name
+      :font-size 2em
+      :color $orange
+      :font-weight normal
+      :line-height 30px
+    .price
+      :color #000
+      :font-size 1.9em
+      :font-weight 600
+      :margin-top 15px
+    #pictures
+      .master
+        :min-height 295px
+        :overflow hidden
+      @include Carousel(73,63,63)
+    #option-types
+      :margin-top 20px
+    .quantity
+      :margin-top 10px
+      input[type="text"]
+        :height 20px !important
+      .out_of_stock
+        :color grey
+        :font-weight bold
+    .description
+      :margin-top 10px
+      label
+        :font-weight 600

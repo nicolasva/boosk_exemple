@@ -1,0 +1,17 @@
+%section#edit_product.container-fluid
+  .row-fluid
+    .span9
+      %form#edit_product_form
+        %section.settings-content
+        .actions
+          %a.btn.back{ href: "/#/products" }= ' < ' + translate.back.capitalize()   
+          %input.orange{ type: "submit", value: ' > ' + translate.update.capitalize()  }
+        #content_for_footer
+    .span3
+      %nav.settings-menu
+        %h1= translate.views.product.settings
+        %ul.without-margin
+          %li.general
+            %a#general= translate.views.product.edit.h1_general
+          %li.option_set
+            %a#option_set= translate.views.product.edit.h1_option_sets

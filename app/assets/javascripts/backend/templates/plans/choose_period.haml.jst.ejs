@@ -1,0 +1,16 @@
+.modal-header
+  %button.close{type: "button", data-dismiss: "modal", aria-hidden: "true"}&times;
+  %h1= translate.views.subscription.choose_formula
+.modal-body
+  %form
+    .field
+      %input#period_month{type: "radio", value: "month", name: "period", checked: true}
+      %label.radio{for: "period_month"}= translate.views.subscription.label_month_formula_html.replace(/%{cost}/, plan.monthly_price)
+    .field
+      %input#period_year{type: "radio", value: "year", name: "period"}
+      %label.radio{for: "period_year"}= translate.views.subscription.label_year_formula_html.replace(/%{cost}/, plan.yearly_price).replace(/%{saving}/, (plan.monthly_price*12)-plan.yearly_price)
+    %hr
+    .call-to-action
+      %p= translate.views.subscription.trial_period_without_engagement
+      %p.free_setup= translate.views.subscription.free_setup
+      %input.btn.btn-large.orange{type: "submit", value: "> " + translate.next }

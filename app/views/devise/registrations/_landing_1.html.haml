@@ -1,0 +1,29 @@
+#landing-1.row-fluid
+  .primary.span12
+    .row-fluid
+      .span8.mark
+        .boost_eshop_title= t(:boost_eshop_title, scope: [:views, :homepage])
+        .boost_eshop_mobile= t(:boost_eshop_mobile, scope: [:views, :homepage]).html_safe
+        .boost_eshop_facebook= t(:boost_eshop_facebook, scope: [:views, :homepage]).html_safe
+        .boost_eshop_picto
+      .span4.mire
+        .row-fluid
+          = render :partial => "devise/registrations/sign_up"
+          = render :partial => "devise/registrations/sign_in"
+          / Ligatus
+          %script{:language => "JavaScript", :src => "http://ads-fr.ret01.ligatus.com/trk?rt=1&ti=4200&cs=3206", :type => "text/javascript"}
+          %noscript
+            %img{:alt => "Pix", :border => "0", :height => "1", :src => "http://ads-fr.ret01.ligatus.com/trk?rt=2&ti=4200&cs=3206", :width => "1"}
+
+  .eyesontiger.span12.without-margin
+    .row-fluid
+      .span12
+        .row-fluid
+          .span8.shop-example
+          .span4.compatibility
+            .logo
+              = image_tag('boosket-shop-white.png')
+              
+            .compatible_with= t(:compatibility_with, scope: [:views, :homepage])
+            
+            = render :partial => "devise/registrations/partnership_pictos"

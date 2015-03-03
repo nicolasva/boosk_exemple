@@ -1,0 +1,14 @@
+%p
+  = message
+
+.row-fluid
+  #tpl.span12
+  
+:if mode == 'alert'
+  .actions
+    %a.btn.orange.callback{ data-dismiss: "modal" }= translate.ok 
+
+:if mode == 'confirm'
+  .actions
+    %a.btn.back{ data-dismiss: "modal" }= translate.nop
+    %input.btn.valid.orange.callback{ type: "button", value: translate.yep }

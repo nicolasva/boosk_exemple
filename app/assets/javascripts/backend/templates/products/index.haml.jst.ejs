@@ -1,0 +1,182 @@
+#products
+  .container-fluid
+    .row-fluid
+      .span12.without-margin
+        .frame.settings-content
+          %header
+            .row-fluid
+              .span8
+                .row-fluid
+                  .span4
+                    %h1= translate.views.product.index.h2.toUpperCase()
+                  :if products.length > 0
+                    .span7.add-product
+                      %a.btn.orange{ href: "/#/products/new/step_1" }= ' + ' + translate.views.product.add_product
+                      %a#import.btn.grey= " > " + translate.views.product.index.import_by_csv.capitalize()
+              :if products.length > 0
+                .span4
+                  .row-fluid
+                    .span12
+                      %select.action.span3{ name: "action" }
+                        %option= translate.actions
+                        :for key,value in actions
+                          %option{ value: key }= value['display']
+
+          :if products.length == 0
+            .row-fluid.no-items
+              .span12.msg= translate.views.product.you_have_not_yet_product
+              %a.btn.orange{ href: "#/products/new/step_1"}= "> " + translate.views.product.add_products
+              %a#import.btn.grey= " > " + translate.views.product.index.import_by_csv.capitalize()              
+
+          :if products.length > 0
+            %table
+              %thead
+                %tr
+                  %th
+                    %input.select-all{ type: "checkbox" }
+                  %th
+                    = translate.activerecord.attributes.product.name
+                  %th
+                    = translate.activerecord.attributes.product.status
+                  %th
+                    = translate.activerecord.attributes.product_variant.sku
+                  %th
+                    = translate.activerecord.attributes.product_variant.quantity
+                  %th
+                    = translate.activerecord.attributes.product_variant.price
+                  %th
+                    = translate.views.product.table.variants
+                  %th
+                    = translate.activerecord.attributes.product.position                               
+              %tbody.ui-sortable
+                :each product in products
+                  %tr{ data-id: product.attr.id }
+                    %td
+                      %input.product-selected{ type: "checkbox" }
+                    %td
+                      .span3
+                        .row-fluid
+                          .span3.picture
+                            :each v in product.variant_master.pictures
+                              :if v.picture.url != null
+                                :if v.is_master == true
+                                  %img{ src: v.picture.url }
+                            :if product.variant_master.pictures.length == 0
+                              .empty-picture
+                          .span9.name
+                            %a{ href: "#/products/" + product.attr.uuid + "/edit" } = product.attr.name
+                    %td
+                      :if product.attr.status == "1"
+                        .product-status.product-activated
+                          %span= translate.enabled.toUpperCase()
+                      :if product.attr.status == "0"
+                        .product-status.product-deactivated
+                          %span= translate.suspended.toUpperCase()
+                    %td
+                      = product.variant_master.sku
+                    %td
+                      = product.variant_master.quantity
+                    %td
+                      = product.variant_master.price + " " + App.getCookie('shop_devise')
+                    %td
+                      :if product.attr.product_variants.length > 1
+                        = translate.yep.toUpperCase()
+                      :if product.attr.product_variants.length ==  1
+                        = translate.nop.toUpperCase()
+                    %td.sortable
+                      .pictos-position
+                        :if products.length == 1
+                          %span.down-unactive
+                          %span.up-unactive
+                        :if products.length > 1                            
+                          :if product == products[0]
+                            %span.down-active
+                            %span.up-unactive
+                          :if product != products[products.length - 1] && product != products[0]
+                            %span.down-active
+                            %span.up-active
+                          :if product == products[products.length - 1] && product != products[0]
+                            %span.down-unactive
+                            %span.up-active
+
+      :if paginate.total > 10
+        #paginate.span12
+          .container-fluid.without-padding
+            .row-fluid
+              .span9
+                .row-fluid
+                  .span5
+                    .row-fluid
+                      .span6.per-page-label
+                        %span= translate.views.paginate.view_per_page + " :"
+                      .span4.per-page-select
+                        %select.span1{ name: "view_per_page" }
+                          :each t in view_per_page
+                            :if t == paginate.perPage
+                              %option{ value: t, selected: "selected" }= t
+                            :if t != paginate.perPage
+                              %option{ value: t }= t
+
+                  .span7.nav
+                    .row-fluid
+                      :if paginate.total > 10 && paginate.total > paginate.perPage
+                        .span2
+                          :if paginate.prev
+                            %a.prev= translate.views.paginate.previous
+                          :if !paginate.prev
+                            %span.no-prev= translate.views.paginate.previous
+                        .span7
+                          .row-fluid
+                            :if paginate.range.first == undefined && paginate.range.last != undefined
+                              .span12.range
+                                .row-fluid
+                                  :for item in paginate.range.rest
+                                    %span.sep |
+                                    :if paginate.page == item
+                                      %a.num.selected{ data-num: item, href: "#" }= item
+                                    :if paginate.page != item
+                                      %a.num{ data-num: item, href: "#" }= item
+                                  .next-range  | ... |
+                                  %a.last-num{ data-num: paginate.range.last, href: "#" }= paginate.range.last
+                                  %span.sep |
+                            :if paginate.range.first != undefined && paginate.range.last != undefined
+                              .span12.range
+                                .row-fluid
+                                  %span.sep |
+                                  %a.num{ data-num: "1", href: "#" }= 1
+                                  .next-range  |...|
+                                  :for item in paginate.range.rest
+                                    :if paginate.page == item
+                                      %a.num.selected{ data-num: item, href: "#" }= ' ' + item
+                                    :if paginate.page != item
+                                      %a.num{ data-num: item, href: "#" }= ' ' + item
+                                    %span.sep |
+                                  .next-range   ... |
+                                  %a.last-num{ data-num: paginate.range.last, href: "#" }= ' ' + paginate.range.last
+                            :if paginate.range.first != undefined && paginate.range.last == undefined
+                              .span12.range
+                                .row-fluid
+                                  %span.sep |
+                                  %a.num{ data-num: paginate.range.first, href: "#" }= paginate.range.first
+                                  .next-range  | ...
+                                  :for item in paginate.range.rest
+                                    %span.sep |
+                                    :if paginate.page == item
+                                      %a.num.selected{ data-num: item, href: "#" }= item + ' '
+                                    :if paginate.page != item
+                                      %a.num{ data-num: item, href: "#" }= item + ' '
+                            :if paginate.range.last == undefined && paginate.range.first == undefined
+                              .span12.range
+                                .row-fluid
+                                  :for item in paginate.range.rest
+                                    %span.sep |
+                                    :if paginate.page == item
+                                      %a.num.selected{ data-num: item, href: "#" }= item + ' '
+                                    :if paginate.page != item
+                                      %a.num{ data-num: item, href: "#" }= item + ' '
+
+                        .span2
+                          :if paginate.next
+                            %a.next= translate.views.paginate.next
+                          :if !paginate.next
+                            %span.no-next= translate.views.paginate.next

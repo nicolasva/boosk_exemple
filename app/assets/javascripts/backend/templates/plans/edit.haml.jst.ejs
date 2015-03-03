@@ -1,0 +1,43 @@
+.row-fluid
+  .span9.without-margin
+    .frame
+      .container-fluid.without-padding	
+        %header.row-fluid
+          .span12
+            .container-fluid.without-padding
+              .row-fluid
+                .span8
+                  .row-fluid
+                    .span12
+                      %h1= translate.views.plan.index.h2
+        .content
+          %h4= translate.views.plan.edit.user_suscribtion + " " + user_plan.name.capitalize() 
+          #prices_and_services.container-fluid
+            .row-fluid
+              #plans.span12.without-margin
+                .row-fluid
+                  :each plan in plans
+                    .plan.span3.without-margin{ class: plan.name }
+                      .row-fluid
+                        .header.span12
+                          .row-fluid
+                            :if plan.name == "premium"
+                              .most-popular
+                            %h2.name= plan.name.toUpperCase()
+                            .span12.price-by-month
+                              .row-fluid
+                                :if plan.name != "start"
+                                  %span.price= parseInt(plan.monthly_price) + "€"
+                                  %span.by-month= " /" +  translate.month
+                                :if plan.name == "start"
+                                  %span.price= translate.free
+                            :if plan.name != "start"
+                              .span12.price-by-year
+                                = translate.or + " " + parseInt(plan.yearly_price) + "€ /" + translate.year
+                            :if plan.monthly_price > parseInt(user_plan.monthly_price)
+                              %a.btn.choose{ href: "/plans?id=" + plan.id + "/#/choose" }= translate.upgrade.capitalize()
+
+            %a.plans-details{ href: "/plans/#/choose" }= translate.views.plan.edit.view_details
+            %span.unsuscribe= translate.views.plan.edit.unsuscribe
+  .span3
+    %nav#account-settings-menu.settings-menu

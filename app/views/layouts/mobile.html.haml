@@ -1,0 +1,70 @@
+!!!
+%html
+  %head
+    %meta{:name => "viewport", :content => "user-scalable=no, initial-scale = 1, minimum-scale = 1, maximum-scale = 1, width=device-width"}
+    %title
+      = "#{@shop.name} - #{@shop.description}"
+    = stylesheet_link_tag("mobile/application_common") 
+    - if link_stylesheet_iphone?(request.env["HTTP_USER_AGENT"])
+      = stylesheet_link_tag("mobile/application_ios")
+    - else
+      = stylesheet_link_tag("mobile/application_paysage", :media => "all and (orientation:landscape)")
+      = stylesheet_link_tag("mobile/application", :media => "all and (orientation:portrait)")
+    = javascript_include_tag "mobile/application"
+    = javascript_include_tag "mobile/libs/orientation_display_header_product" 
+    = csrf_meta_tags
+  %body{"data-variant-id" => "mobile"}
+    - if (!@shop.mobile_status || @shop.products.empty?) && @preview.nil?
+      %img{src: "/assets/fallback/coming_soon_en.png"}
+    - if @shop.mobile_status && !@shop.products.empty? || !@preview.nil?
+      %section.title_img
+        #header 
+          = render(:partial=>"/common/header_footer_template/header", :locals => {:shop => @shop})
+      %section.container-fluid
+        %div.row-fluid
+          %section.menu
+            #container_choose_panel_mobile
+              #search
+                %div.form_search_product.row-fluid
+                  %form#search_products
+                    %input.span2.search_product{type: "text", name: "product[name]" }
+                    %input.submit_search{name: 'commit', value: '', type: 'submit'}
+              #container_taxon_lists
+                %ul.taxon_lists
+          %section.content.span10
+            %section.header
+              #all_header
+                #panel
+                  %ul
+                    - if have_taxons_lists?
+                      %li.li_panel#id_taxon_panel
+                        = link_to "", "#/taxonomies", :class => "class_panel", :id => "panel_taxonomies"
+                      %li.li_panel#id_title_shop
+                        = link_to @shop.name, "#/shops/#{cookies[:front_shop_id]}"
+                    - else
+                      %li.li_panel.form_search_product.disable_search
+                      %li.li_panel#id_title_shop
+                        = link_to @shop.name, "#/shops/#{cookies[:front_shop_id]}"
+                    - if @shop.has_active_payement
+                      %li.li_panel#basket_shop
+                        - if @cart.items.length > 0
+                          = link_to content_tag(:span, @cart.items.length, :class => "basket"), "#/cart_items/edit", :class => "checkout_shop"
+                        - else
+                          %div.basket_empty
+                            %span
+                              = "0"
+            %section.corps
+              %h2
+                #title
+              #notice
+              #app_mobile
+                .product_lists
+                  = yield
+                #product_show
+                #checkout
+              %div{class: 'modal', id: "box"}
+                #notice_box
+                #container_box
+            %footer
+              #customization
+                = render(:partial => "/frontoffice/shops/customization_mobile", :locals => {:shop => @shop})

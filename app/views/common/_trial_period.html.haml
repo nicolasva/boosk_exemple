@@ -1,0 +1,12 @@
+- unless current_user.subscription.nil?
+  - days = remaining_days(current_user.subscription.trial_period.to_date)
+  - unless days <= 0
+    %li
+      .trial-period
+        .picto
+        .text
+          .trial-offer
+            = t(:trial_offer, scope: [:views, :subscription])
+          .remaning-days
+            %span.day= days
+            %span= t(:remaining_days, scope: [:views, :subscription])

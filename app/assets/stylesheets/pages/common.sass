@@ -1,0 +1,645 @@
+@import mixins
+@import compass/css3
+
+.container-fluid
+  .content
+    :min-height 40px
+    :margin-top 15px
+
+h2
+  :font-size 1.3em
+  :font-weight normal
+  :color #222
+
+.frame
+  :border 1px solid #a6aebb
+  :background $blue-grey
+  :padding-bottom 0px
+  :margin-left 0
+  +border-radius(5px)
+  header
+    :background #444
+    :border-bottom 1px solid #a6aebb
+    :padding 5px 0px 0px 10px
+    +border-top-radius(4px)
+    h1
+      :display inline
+      :font-weight normal
+      :font-size 1.4em
+      :color #fff
+      :text-transform uppercase
+  .add
+    :margin-top 10px
+    a
+      :cursor pointer
+  h3
+    :font-size 1.4em
+    :font-weight normal
+    :text-shadow -0.9px 0px -0.6px white
+    :margin 10px 0 5px 10px
+    :color #5d6a7d
+  h2
+    :font-size 1.4em
+    :font-weight normal
+    :text-shadow -0.9px 0px -0.6px white
+    :margin 10px 0 5px 0
+    :color #5b6a7d
+  .date
+    :margin-top 10px
+    .btn
+      :margin-left 5px
+    &:hover
+      :cursor pointer
+  .action,.type
+    :background #fff
+    :margin 3px 10px 9px 0
+    :float right
+    :font-weight 600
+      
+.no-items
+  :background #FFF
+  :padding 100px 0
+  @include radius(0,0,5,5)
+  .msg
+    :text-align center
+    :font-weight 600
+    :margin-bottom 15px
+    :font-size 1.3em
+  .btn
+    :margin-left 40%
+  button
+    :display block
+    :margin 0 auto !important
+      
+#notice
+  :overflow hidden
+  .alert
+    :margin-bottom 0 !important
+    :margin-top 5px !important
+
+.wizard-actions
+  :float right
+  :margin-top 10px
+  .orange
+    :float right
+    :margin-left 10px
+    
+.sortable
+  :cursor move
+
+.ui-sortable-placeholder
+  :background #FFF
+  td
+    :border 0 !important
+      
+.line-ondrag
+  :background $blue-grey
+  td
+    :border none
+    :border-right solid 1px #CCC
+    &:last-child
+      :border-right none !important
+.add-by-modal
+  :color $orange
+  :text-align right
+  :cursor pointer
+      
+.container-fluid.without-padding
+  :padding 0 !important
+
+.without-margin
+  :margin 0 !important
+    
+.hidden
+  :display none
+    
+.show
+  :display block
+
+.ui-widget-header
+  :border 1px solid #313131 !important
+  :background #313131 !important
+
+.ui-datepicker-calendar
+  thead
+    tr
+      :background $orange
+
+.add-on
+  :height 17px !important
+  :padding 7px 5px !important
+
+.deactivate-text-select
+  :-webkit-touch-callout none
+  :-webkit-user-select none
+  :-khtml-user-select none
+  :-moz-user-select none
+  :-ms-user-select none
+  :user-select none
+
+    
+.pictos-position
+  span
+    :display inline-block
+    :width 15px
+    :height 15px
+    :background url('/assets/picto_sprite.png') no-repeat
+    :cursor pointer
+  .up-active
+    :background-position -2px -1296px
+  .up-unactive
+    :background-position -2px -1341px
+    :cursor default !important
+  .down-active
+    :background-position -2px -1272px
+  .down-unactive
+    :background-position -2px -1316px
+    :cursor default !important      
+
+
+.top-box
+  @include radius(10, 10, 10, 10)
+  :border 1px solid #a6aebb
+  :margin 0px !important
+  :margin-top 20px !important
+  .header
+    :background #f1f4f9
+    @include radius(10, 10, 0, 0)
+    :border-bottom 1px solid #a6aebb
+    h2
+      :font-size 1.18em
+      :font-weight normal
+      :text-shadow -0.9px 0px -0.6px white
+      :margin 0px 0 0 10px
+      :color #000
+      :line-height 30px
+      :text-transform uppercase
+    .menu
+      :float right
+      :font-size 11px
+      :margin 7px 10px 0 0
+      :text-align right
+      .selected
+        :font-weight 600
+        :text-decoration underline
+      span
+        :color $orange
+        :padding 7px 2px
+        :display inline-block
+        :cursor pointer
+        :border-right 1px solid $grey
+        :padding 0px 4px 0px 4px
+        &:last-child
+          :border-right none
+
+#top-products-by-action, #top-orders
+  :position relative
+  .disabled-top-products
+    @include radius(10, 10, 10, 10)
+    :width 100%
+    :height 240px
+    :position absolute
+    :z-index 1
+    :background #FFF
+    :opacity 0.8
+  .disabled-top-products + button
+    :position absolute
+    :z-index 2
+    :top 45%
+    :left 28%
+    :padding 7px 10px !important    
+  .header
+    h2
+      :text-align left
+    .span5
+      :width 36%
+    .span8
+      :width 60%
+  .no-product,.no-order
+    .msg
+      :font-weight bold
+      :font-size 1.4em
+      :text-align center
+      :padding-top 70px
+    .add
+      :margin 28px 0 0 30%
+  .content
+    :margin-top 0
+    :padding-bottom 10px
+    :min-height 200px
+    .top3
+      :padding-bottom 10px
+      .top:first-child
+        :margin-left 0.7%
+      .top
+        :width 31.5%
+        :padding-top 10px
+        .picture
+          :position relative
+          span[class|='picto']
+            :position absolute
+            :width 38px
+            :height 33px
+            :bottom -18px
+            :left 37px
+          .picto-1
+            :background url('/assets/sprite_top_10.png') no-repeat
+            :background-position 0 0
+          .picto-2
+            :background url('/assets/sprite_top_10.png') no-repeat
+            :background-position -41px 0
+          .picto-3
+            :background url('/assets/sprite_top_10.png') no-repeat
+            :background-position -82px 0
+          img
+            :width 100px
+            :height 100px
+            :display block
+            :margin 0 auto
+            :border 1px solid #A6AEBB
+      .name
+        :margin-top 20px
+        :text-align center
+        :font-weight 600
+        a
+          :color $orange
+      .count
+        :text-align center
+    ul
+      :margin-bottom 0
+      li
+        :width 100%
+        :margin-top 5px
+        .picture
+          :margin-top 6px
+          img
+            :width 50%
+        .date
+          :margin-left 6px
+        .product_count
+          :margin-left 3px
+          :font-weight bold
+        .amount
+          :font-weight bold
+        .name
+          :margin-right 3px
+          a
+            :margin-top 15px
+            :font-weight 600
+            :margin-left 10px
+            :cursor pointer
+            :text-align center
+            :color $orange
+        .count
+          :margin-top 12px
+          :margin-left 10px
+          :color #5B6A7D
+          :text-align center
+
+#top-products-by-action
+  .content
+    :padding-bottom 0 !important
+    :min-height 210px
+    span[class|='picto']
+      :width 25px
+      :height 30px
+      :display block
+      :margin 3px 0 0 5px
+    ul
+      li
+        :border-top 1px dashed #a6aebb
+        .name
+          :text-align left
+          :margin-top 12px
+    .picto-4
+      :background url('/assets/sprite_top_10.png') no-repeat
+      :background-position -123px 0
+      :width 30px !important        
+    .picto-5
+      :background url('/assets/sprite_top_10.png') no-repeat
+      :background-position -153px 0
+      :width 30px !important               
+    .picto-6
+      :background url('/assets/sprite_top_10.png') no-repeat
+      :background-position -184px 0
+      :width 30px !important               
+    .picto-7
+      :background url('/assets/sprite_top_10.png') no-repeat
+      :background-position -215px 0
+      :width 30px !important               
+    .picto-8
+      :background url('/assets/sprite_top_10.png') no-repeat
+      :background-position -246px 0
+      :width 30px !important               
+    .picto-9
+      :background url('/assets/sprite_top_10.png') no-repeat
+      :background-position -277px 0
+      :width 30px !important               
+    .picto-10
+      :background url('/assets/sprite_top_10.png') no-repeat
+      :background-position -307px 0
+      :width 30px !important        
+
+#carousel
+  :overflow hidden
+  :max-height 70px
+  :height 70px
+  :position relative
+  .arrow-left
+    :background url('/assets/btn_carousel.png') no-repeat
+    :background-position 0 0
+    :width 27px
+    :height 36px
+    :position absolute
+    :left 0
+    :top 22px
+    :z-index 100
+    :cursor pointer
+  .arrow-right
+    :background url('/assets/btn_carousel.png') no-repeat
+    :background-position -38px 0
+    :width 27px
+    :height 36px
+    :position absolute
+    :right 0
+    :top 22px
+    :z-index 100
+    :cursor pointer      
+      
+.small-on
+  :background url('/assets/btn_on_off.png') no-repeat
+  :background-position 0px -21px
+  :width 40px
+  :height 22px
+  :display block
+  :cursor pointer
+
+.small-off
+  :background url('/assets/btn_on_off.png') no-repeat
+  :background-position 0px 0px
+  :width 40px
+  :height 22px
+  :display block
+  :cursor pointer
+
+.settings-content
+  h1
+    :color #5d697f
+    :font-size 2em
+    :margin-bottom 10px
+  :border 1px solid #a6aebb
+  :background #f1f4f9
+  +border-radius(5px)
+  header
+    :background #444
+    :border-bottom 1px solid #a6aebb
+    :padding 5px 0px 0px 10px
+    +border-top-radius(4px)
+    h1
+      :display inline
+      :font-weight normal
+      :font-size 1.4em
+      :color #fff
+      :text-transform uppercase
+    h2
+      :display inline
+      :font-weight normal
+      :font-size 1em
+      :color #fff
+      :line-height 18px
+  fieldset
+    :padding 5px 10px
+  .actions
+    :float right
+    :margin-top 10px
+  input, textarea
+    :margin-bottom 0px
+
+body.logged
+  .popover
+    .popover-inner
+      :background #96bf48
+      :width 210px
+      @include radius(4,4,0,0)
+      :padding 2px
+    .popover-title
+      :display none
+    .arrow
+      :border-bottom-color #96bf48 !important
+      
+#shop-preview
+  :width 90%
+  :background #96bf48
+  :color #fff
+  :text-shadow 1px 1px 0px rgba(0,0,0,0.3)
+  :border-color #7ea13d
+      
+.settings-menu
+  :postion relative
+  :text-align right
+  h1
+    :color #222
+    :font-size 1em
+    :margin 0
+    :text-transform uppercase
+    :text-align right
+  ul
+    :list-style-type none
+    li.without-hover
+      :cursor default !important
+      &:hover
+        :background #444
+      a
+        :text-decoration none
+        &:hover
+          :font-weight normal
+    li
+      :background-color #444
+      :margin .4em 0
+      :padding 0
+      :position relative
+      :font-size 1em
+      :cursor pointer
+      &:hover
+        :background $orange
+      a
+        :text-decoration none
+        :color #fff
+        :display block
+        :padding .2em .7em
+        :font-size 0.87em
+        :font-weight 400
+        :text-transform uppercase
+        :text-align right
+    .active
+      :background-color $orange !important
+  ul.mode-wizard
+    li
+      :cursor default
+      a
+        :display inline-block
+      .num
+        :display inline-block
+        :width 30px
+        :height 30px
+        :margin -4px 0 0 -17px
+        span
+          :margin-top 5px
+          :display block
+          :font-weight bold
+          :font-size 1.1em
+        @include radius(30, 30, 30, 30)
+        :background $orange
+        :float left
+        :text-align center
+        :color #FFF
+      &:hover
+        :background-color #444 !important
+    .active
+      :background-color $orange !important          
+      &:hover
+        :background-color $orange !important          
+.modal
+  .modal-header
+    :background-color #F1F4F9
+    h3
+      :line-height 10px
+      :padding-top 5px
+
+
+.modal-backdrop.fade.in
+  :opacity 0.4
+
+.help-block
+  :margin 0 auto 9px
+  :font-size .85em
+
+.loading-picture
+  :position relative
+  z-index: 1
+  &:before
+    :content " "
+    :z-index 2
+    :position absolute
+    :width 100%
+    :height 100%
+    :background rgba(0, 0, 0, 0.25) url(/assets/ajax_loader/ajax-loader-round.gif) no-repeat center center
+
+.box
+  @include radius(5, 5, 5, 5)
+  :border 1px solid $grey
+  :background #fff
+  .header
+    :font-size .9em
+    :padding 5px 9px
+    :background $grey
+    :color #fff
+    :font-weight 600
+    :text-transform uppercase
+  .content
+    :padding 10px
+    :font-size .9em
+    :color #000
+    :margin-top 0
+
+.sourcecode
+  pre
+    display: block
+    padding: 0
+    margin: 0
+    border: 0
+    -webkit-border-radius: 4px
+    -moz-border-radius: 4px
+    border-radius: 4px
+  display: block
+  padding: 8.5px
+  margin: 0 0 9px
+  font-size: 12px
+  line-height: 18px
+  background-color: #f5f5f5
+  border: 1px solid #ccc
+  border: 1px solid rgba(0, 0, 0, 0.15)
+  -webkit-border-radius: 4px
+  -moz-border-radius: 4px
+  border-radius: 4px
+  white-space: pre
+  white-space: pre-wrap
+  word-break: break-all
+  word-wrap: break-word
+
+.orange-box
+  +border-radius(5px)
+  :border 1px solid $orange !important
+  h2
+    :background-color $orange !important
+    :color #fff !important
+    :text-transform uppercase
+    :font-weight 600 !important
+    :font-size 1em !important
+    :line-height 2.5 !important
+    :padding 0 1em
+    :margin 0 !important
+  a
+    :color $orange
+    :text-decoration underline
+
+#support-block
+  :margin 2em 0
+  h2
+    :padding-left 45px
+    :background $orange url(/assets/picto_sprite.png) no-repeat 6px -1360px
+  #contact-wording
+    :border-bottom 1px solid $orange
+    :padding-left 70px 
+    :background #fff url(/assets/sprite_subscription.png) no-repeat -8px -367px
+    :height 100px
+    :text-align right
+    li
+      :margin 1em 0
+      :padding-right 1em
+      &:before
+        :content "> "
+    #support-link
+      :color $orange
+  #phone-numbers
+    .tel
+      :font-size 0.85em
+      :line-height normal
+      :padding-left 35px
+      :background transparent url(/assets/sprite_subscription.png) no-repeat
+      strong
+        :font-size 1.1em
+    .fr
+      :background-position -5px -476px
+    .en
+      :background-position -5px -496px
+    .us
+      :background-position -5px -516px
+    .de
+      :background-position -5px -536px
+    .es
+      :background-position -5px -556px
+
+#loading-box-wrapper
+  :position fixed
+  :z-index 1100
+  :width 100%
+  :height 100%
+  :top 0
+  #loading-box-background
+    :position absolute
+    :width 100%
+    :height 100%
+    :background #000
+    +opacity(0.4)
+  #loading-box
+    :width 30%
+    :background #fff
+    :border 1px solid $orange
+    +border-radius(5px)
+    :text-align center
+    :padding 5% 0
+    :position relative
+    :top 25%
+    :margin 0 auto
+    :color $orange

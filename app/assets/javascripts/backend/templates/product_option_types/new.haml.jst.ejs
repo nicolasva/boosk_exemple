@@ -1,0 +1,30 @@
+%form#new_option_type_form
+  .container-fluid.option-types
+    .row-fluid
+      .span5.key
+        .row-fluid
+          .span4
+            .row-fluid
+              .span7
+                %label{ for: "option_type_name" }= translate.views.product.new.attribute_name
+              .span5
+                %span.need *
+        %input.necessary{ id: "option_type_name", name: "option_type[name]", placeholder: translate.views.option_type.key_example }
+        %p.help-block= translate.views.option_type.help_block_option_type_p1
+        %p.help-block= translate.views.option_type.help_block_option_type_p2
+      .span7.values-area
+        .option_type_value_row
+          .row-fluid
+            .span4
+              .row-fluid
+                .span8
+                  %label{ for: "option_type_value" }= translate.views.product.new.attribute_options
+                .span4
+                  %span.need *
+          .remove_value{ style: "display:none;"}
+          %input.necessary{ id: "option_type_value_0", name: "option_type[value][]", placeholder: translate.views.option_type.values_example }
+          .add_values
+  .actions
+    %a.btn.back{ data-dismiss: "modal" }= translate.close
+    %input.btn.orange{type: "submit"}= translate.create.capitalize()
+    

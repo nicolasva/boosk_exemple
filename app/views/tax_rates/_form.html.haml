@@ -1,0 +1,10 @@
+%fieldset.row-fluid
+  .span-7
+    = f.label :label
+    = f.text_field :label
+  .span-7
+    = f.label :rate
+    = f.text_field :rate
+.row-fluid
+  = f.label :zone_ids
+  = f.select :zone_ids, zones.collect {|z| [ z.name, z.id ] }, {}, {:multiple => true}

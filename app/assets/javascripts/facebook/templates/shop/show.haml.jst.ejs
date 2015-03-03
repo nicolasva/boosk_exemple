@@ -1,0 +1,28 @@
+:each product in products
+  %li.product_thumb.span3{ data-format-js: "backbone_js", data-ref: product.uuid, data-product-id: product.id, data-variant-uniq: (product.product_variants.length <= 1 ? "true" : "false"), data-variant-id: product.product_variants[0].id, class: "grid-" + products_grid}
+    .picture
+      %a.show.grey.tiny.light-opacity.track{href: "#/products/" + product.uuid, id: "product_picture_"+product.uuid, style: "display:none;", data-action: 'view',  data-object: 'product', data-ref: product.uuid }= translate.show
+      .product_picture
+        :each variant in product.product_variants
+          :if variant.is_master == true
+            :each picture in variant.pictures
+              :if picture.is_master == true
+                %img{ src: picture.picture.url, id: "img_product_variant_master"}
+    #pint
+      %ol.row-fluid
+        %li.span2
+          %a.track.ogp.like_it{data-action: 'like',  data-object: 'product', data-ref: product.uuid, id: 'product_like_it_'+product.uuid }
+        %li.span2
+          %a.track.tweet_it{data-action: 'tweet', data-object: 'product', data-ref: product.uuid, id: "product_tweet_it_"+product.uuid, href: "https://twitter.com/intent/tweet?url=" + encodeURIComponent(window.location.origin+ "/facebook/#/products/" + product.uuid ) + "&text="+ encodeURIComponent(product.name.replace(/^\s+|\s+$/g, "")) } 
+        %li.span2
+          %a.track.ogp.want_it{data-action: 'want',  data-object: 'product', data-ref: product.uuid, id: 'product_want_it_'+product.uuid }
+        %li.span2
+          %a.track.ogp.have_it{data-action: 'have',  data-object: 'product', data-ref: product.uuid, id: "product_have_it_"+product.uuid }
+        %li.span2
+          %a.track.pint_it{data-action: 'pin',   data-object: 'product', data-ref: product.uuid, id: "product_pin_it_"+product.uuid }
+    .product_meta
+      %p.product_name
+        %a.track{href: "#/products/" + product.uuid, id: "product_link_"+product.uuid, class: "product_picture", data-action: 'view',  data-object: 'product', data-ref: product.uuid}
+          = product.name
+      %p
+        = product.product_variants[0].price_ttc + " " + App.getCookie('front_shop_devise')

@@ -1,0 +1,18 @@
+%hr
+.row-fluid
+  .span10
+    - unless shop.terms.blank?
+      %p
+        %a.show-cgv{"data-toggle" => "modal", :href => "#cgv", :role => "button"}= "#{shop.name} - #{t(:terms, scope: [:activerecord, :attributes, :shop])}"
+
+  .span2
+    %a{:href => 'http://shops.boosket.com', :target => '_blank'}
+      = image_tag("boosket.png")
+
+
+  #cgv.modal.white-overlay{:tabindex => "-1", :style => "display:none;"}
+    .modal-header
+      %a.close{ "data-dismiss" => "modal" } &times;
+      %h3= t(:terms, scope: [:activerecord, :attributes, :shop])
+    .modal-body
+      %p= simple_format(shop.terms)

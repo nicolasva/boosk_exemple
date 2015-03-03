@@ -1,0 +1,129 @@
+@import compass/css3
+@import mixins
+
+.disabled-analytics
+  :width 96%
+  :height 560px
+  :position absolute
+  :z-index 1
+  :background #FFF
+  :opacity 0.8
+.disabled-analytics + button
+  :position absolute
+  :z-index 2
+  :top 50%
+  :left 30%
+  :padding 7px 10px !important
+
+#graph
+  .legend-product-thumb
+    :width 30px
+    :margin-top -6px
+    :border solid 1px #ccc
+  .legend-product-label
+    :vertical-align top
+    :margin-left 3px
+  .picto
+    :text-decoration none
+    :width 27px
+    :height 32px
+    :display block
+    :background url("/assets/sprite_facebook.png")
+    :background-attachment scroll
+    :background-repeat no-repeat    
+  .like
+    :background-position -168px -58px      
+  .tweet
+    :background-position -202px -58px
+  .want
+    :background-position -237px -58px
+  .have
+    :background-position -273px -58px
+  .pin
+    :background-position -309px -58px
+
+#top_products
+  .top
+    :margin-left 0.7%
+    .name
+      a
+        :cursor pointer
+      
+#products_kpis
+  header
+    .actions
+      :float right
+      #show,#compare
+        :float right
+        button
+          :margin -7px 10px 0 0
+          :display inline-block
+        button[disabled]
+          :background-image $orange
+          :background-color $orange            
+
+#context
+  :margin-top 5px
+  button
+    :margin-right 5px
+            
+#chart-by-range
+  :padding .75em 0
+  :margin .75em 0
+  :border-top 1px solid $orange
+  :border-bottom 1px solid $orange
+  label
+    +inline-block
+    :margin-right 5px
+    :text-transform uppercase
+  #period
+    :vertical-align baseline
+  .datepicker
+    :margin-bottom 0
+    :margin-right 5px
+    :width 70px
+#chart-by-action
+  .action
+    &:checked + label
+      :background-color $orange
+  label
+    :text-transform uppercase
+    :font-weight bold
+    :color #fff
+    :background-color #444
+    :font-size 0.9em
+    :padding 0.1em 1em
+    :cursor pointer
+#chart_type_selector
+  :text-align center
+  .chart_type
+    :display none
+    &:checked + label
+      :color $orange
+    &:first-child + label
+      :border none
+  :padding-top 10px
+  label
+    :padding 0 25px
+    :border-left 1px solid #444
+    :width 25px
+    :height 25px
+    :background url(/assets/picto_sprite.png) no-repeat
+    :text-indent 100%
+    :white-space nowrap
+    :overflow hidden
+    :cursor pointer
+  #type-spline + label
+    :background-position 25px -931px
+  #type-spline:checked + label
+    :background-position 25px -961px
+  #type-pie + label
+    :background-position 25px -1054px
+  #type-pie:checked + label
+    :background-position 25px -1084px
+  #type-column + label
+    :background-position 25px -991px
+  #type-column:checked + label
+    :background-position 25px -1021px
+#products_kpis
+  :margin-top 20px

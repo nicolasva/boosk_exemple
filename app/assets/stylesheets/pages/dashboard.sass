@@ -1,0 +1,168 @@
+@import mixins
+
+.dashboard
+  #sidebar
+    :position relative
+    #shop-preview
+      :margin-bottom 10px
+    h2
+      :color #222
+      :font-weight bold
+      :margin-bottom 5px
+      :font-size 1.2em
+    .sep
+      :border-top 1px solid $orange
+      :width 100%
+      :margin 5px 0
+    .action
+      :margin-top 4px
+    #infos
+      :margin-bottom 6px
+      :margin-top 7px
+      + .sep
+        :margin-bottom 10px
+      .nb
+        :color $orange
+        :font-size 1.5em
+        :font-weight bold
+        :display inline-block
+        :margin 4px 0 0 5px
+      .picto
+        :background url('/assets/picto_sprite.png') no-repeat
+        :width 22px
+        :height 23px
+        :display inline-block
+        :float left
+      .nb-products
+        .picto
+          :background-position 0 -56px
+      .devise-symbol
+        :font-size 1.5em
+        :font-weight bold
+
+    #period
+      .range_action
+        :margin-top 5px
+      input
+        :border 1px solid $grey
+        @include radius(5,5,5,5)
+        &:hover
+          :cursor pointer
+    #shop_functionnality
+      .func
+        :padding-bottom 6px
+        .stripe
+          :color $orange
+          :margin-right 2px
+          :font-weight bold
+          :display inline-block
+          :float left
+          :width 5%
+          :cursor default
+        a
+          :color #000
+          :display inline-block
+          :width 90%
+
+  .box
+    :text-align center
+    :height 70px
+    .header
+      :padding 5px 3px
+      :font-size .8em
+
+  #shop-stats-boxes
+    h2
+      :text-transform uppercase
+    .box.span4
+      :width 30% !important
+    .box.span8
+      :width 64% !important
+
+  #products-stats-boxes
+    h2
+      :text-transform uppercase
+    .box
+      :width 22.7% !important
+
+  #top-orders
+    :margin-left 1%
+    .content
+      li:first-child
+        :border-top none
+
+  #orders-status, #buyers-actions
+    :position relative
+    .content
+      :min-height 165px
+      :margin-top 8px
+      .picto
+        :background url('/assets/picto_sprite.png') no-repeat
+        :width 41px
+        :height 47px
+        :margin-top 5px
+      .have
+        :background-position 0 -632px
+      .like
+        :background-position 0 -534px
+      .pin
+        :background-position 0 -729px
+      .want
+        :background-position 0 -681px
+      .tweet
+        :background-position 0 -584px        
+      .count
+        :font-size 1.5em
+        :font-weight bold
+        :padding-top 8px
+        :padding-left 5px
+      .txt
+        :font-size 0.9em
+        :text-align left
+        :margin-left 5px
+        :line-height 14px
+      .top.bottom
+        :margin-bottom 12px
+      .first
+        :margin-left 2%
+      .labels
+        :display inline-block
+        :float right
+        :margin-top 20px
+        :margin-right 20px
+        ul
+          li
+            :padding 3px 0
+            .color
+              :width 9px
+              :height 9px
+              :display inline-block
+              @include radius(9,9,9,9)
+            .shipped
+              :background #5fb4ff
+            .canceled
+              :background #ff3232
+            .delivered
+              :background #77E075            
+            .in_progress
+              :background $orange
+            .closed
+              :background #bababa
+            .txt
+              :font-weight bold
+      .nb-orders
+        :width 10px
+        :position absolute
+        :bottom 83px
+        :right 188px
+        :font-size 2.5em
+        :font-weight bold
+        :color $orange
+
+  #buyers-actions
+    .content
+      :margin-top 5px
+      :padding-bottom 10px
+        
+  #orders-status
+    :padding-bottom 7px

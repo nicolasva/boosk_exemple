@@ -1,0 +1,4 @@
+%select{ name: "product_variants[option_type_ids][]", title: "Choose " + option_type.type }
+  %option{ disabled: "true" }= "Choose " + option_type.type
+  :each option in option_type.values
+    %option{ value: option.id }= option.value

@@ -1,0 +1,58 @@
+.frame.settings-content
+  %header
+    .row-fluid
+      .span12
+        .row-fluid
+          .span4
+            %h1= translate.views.common.menu.products
+          .actions.span6
+            .row-fluid
+              .span4#compare
+                %button.btn.orange{disabled: true}= ' > ' + translate.compare.capitalize()
+              .span4#show
+                %button.btn.orange{disabled: true}= ' > ' + translate.display.capitalize()            
+  :if products.length == 0 && forbidden != true
+    .row-fluid.no-items
+      .span12.msg= translate.views.product.you_have_not_yet_product
+      %a.btn.orange{ href: "#/products/new/step_1"}= "> " + translate.views.product.add_products
+  :if products.length > 0                
+    %table
+      %thead
+        %tr
+          %th
+          %th
+            = translate.activerecord.attributes.product.name
+          %th
+            = translate.m_like
+          %th
+            = translate.m_tweet
+          %th
+            = translate.m_want
+          %th
+            = translate.m_have
+          %th
+            = translate.m_pin
+          %th
+            = translate.m_sales
+      %tbody
+        :each product_kpi in products_kpis
+          %tr{ data-id: product_kpi.id }
+            %td
+              %input.product-selected{ type: "checkbox" }            
+            %td
+              .span3
+                .row-fluid
+                  .span3.picture
+                    :each v in product_kpi.product.product_variants
+                      :if v.is_master == true
+                        :each p in v.pictures
+                          :if p.is_master == true
+                            %img{ src: p.picture.url }
+                  .span9.name{class: product_kpi.product.name}
+                    %a{ href: "#/products/" + product_kpi.product.uuid + "/edit" } = product_kpi.product.name
+            %td= _.find(product_kpi.kpis, function(k) {return k.action == 'like'}).value
+            %td= _.find(product_kpi.kpis, function(k) {return k.action == 'tweet'}).value
+            %td= _.find(product_kpi.kpis, function(k) {return k.action == 'want'}).value
+            %td= _.find(product_kpi.kpis, function(k) {return k.action == 'have'}).value
+            %td= _.find(product_kpi.kpis, function(k) {return k.action == 'pin'}).value
+            %td= _.find(product_kpi.kpis, function(k) {return k.action == 'order'}).value

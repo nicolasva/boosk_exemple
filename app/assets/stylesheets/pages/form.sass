@@ -1,0 +1,60 @@
+@import mixins
+
+form
+  :margin 0
+  label
+    :font-size 1.04em
+    :color #434343
+    &.sub-label
+      :text-transform none
+      :font-size 1em
+      :padding 5px 0px
+  textarea
+    :height 65px
+  input,.chzn-choices
+    :border 1px solid #E3E3E3
+    :background #FFF
+    :height 23px !important
+    @include radius(5, 5, 5, 5)
+  .chzn-choices
+    :border 1px solid #E3E3E3 !important
+  .checkbox
+    :display inline
+  p.info
+    :margin 5px 0 10px 0
+    :text-align justify
+    :color #c1c3cc
+    :line-height 1em
+    :font-size 0.9em
+
+  .field
+    :margin-bottom 10px
+      
+  .actions
+    :float right
+    :margin-top 10px
+    .back
+      :margin-right 10px
+
+      
+.error-empty
+  :border 1px solid #fe6903
+
+.need
+  :color #fe6903
+    
+.input-append .btn
+  :margin-left -1px
+  @include radius(0,3,3,0)
+
+.plus-icon
+  :display inline-block
+  :height 16px
+  :width 16px
+  :vertical-align middle
+  :background-image url(/assets/picto_sprite.png)
+  :background-repeat no-repeat
+  :background-position 0 -506px
+
+textarea
+  :resize none

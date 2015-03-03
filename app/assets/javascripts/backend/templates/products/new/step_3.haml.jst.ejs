@@ -1,0 +1,67 @@
+.row-fluid
+  .span9
+    %form#new_product_form{ action: "/products/"+ product.id + "/product_variants", method: "POST" }
+      %section.settings-content
+        %header
+          .row-fluid
+            .span7
+              %h1=  translate.views.product.new.h1_step_3 + " : " + product.name
+            .span5
+              %select.action.span3{ name: "action" }
+                %option= translate.actions
+                :for key,value in actions
+                  %option{ value: key }= value['display']
+        %table
+          %thead
+            %tr
+              %th
+                %input.select-all{ type: "checkbox" }
+              %th
+                = translate.views.product.table.variants
+              %th
+                = translate.views.product.table.pictures
+              %th
+                = translate.views.product.table.quantity
+              %th
+                = translate.views.product.table.sku
+              %th
+                = translate.views.product.table.price
+          %tbody.variants
+            :each variant in product_variants
+              %tr{ data-cid: variant.cid }
+                %td
+                  %input.variant-selected{ type: "checkbox" }
+                %td
+                  :each option_type in variant.attr.option_types
+                    :if option_type == variant.attr.option_types[variant.attr.option_types.length - 1]
+                      %span= option_type.name + ": " + option_type.value
+                    :if option_type != variant.attr.option_types[variant.attr.option_types.length - 1]
+                      %span= option_type.name + ": " + option_type.value + "-"
+                %td.nb-pictures
+                  .picture
+                    :if variant.master_picture != undefined
+                      %img{ src: variant.master_picture }
+                    :if variant.master_picture == undefined
+                      %img{ src: App.default_product_picture_url }
+                %td
+                  %input.span1.necessary.pos-num{ name: "product_variant[quantity]", value: "1" }
+                %td
+                  %input.span1.necessary{ name: "product_variant[sku]" }
+                %td
+                  %input.span1.necessary.price{ name: "product_variant[price]", value: variant.attr.price }                      
+
+
+      .actions.step-1
+        %a.btn.back{ href: "/#/products/new/step_2" }= ' < ' +  translate.back
+        %input.orange{ type: "submit", value: ' > ' + translate.create.capitalize() }
+
+  .span3
+    %nav.settings-menu
+      %h1= translate.views.product.new.h1
+      %ul.without-margin
+        %li.without-hover
+          %a= translate.views.product.new.h1_step_1
+        %li.without-hover
+          %a= translate.views.product.new.h1_step_2
+        %li.active.without-hover
+          %a= translate.views.product.new.h1_step_3

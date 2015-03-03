@@ -1,0 +1,97 @@
+#products
+  .container
+    .container-fluid
+      .row-fluid
+        .span9.without-margin
+          .frame
+            .container-fluid.without-padding
+              .row-fluid
+                .span12
+                  .container-fluid.without-padding
+                    .row-fluid
+                      .span8
+                        .row-fluid
+                          .span6
+                            %h3= t(:h2, :scope => [:views, :product, :index]).upcase
+                          .span6.add-product
+                            %a.btn.orange{ href: "/#/products/new/step_1" }= " + #{t(:add_product, :scope =>[:views, :product])}"
+            %table
+              %thead
+                %tr
+                  %th
+                    %input.select-all{ type: "checkbox" }
+                  %th
+                    = Product.human_attribute_name :name
+                  %th
+                    = Product.human_attribute_name :status                
+                  %th
+                    = ProductVariant.human_attribute_name(:sku)
+                  %th
+                    = ShippingCategory.model_name.human.capitalize
+                  %th
+                    = ProductVariant.human_attribute_name :quantity
+                  %th
+                    = ProductVariant.human_attribute_name :price
+                  %th
+                    = t :variants, :scope => [:views, :product, :table]
+              %tbody
+                - @products.each do |product|
+                  %tr{ data: {id: product.id } }
+                    %td
+                      %input.product-selected{ type: "checkbox" }
+                    %td
+                      .span3
+                        .row-fluid
+                          .span3.picture
+                            - product.variant_master.pictures.each do |v|
+                              - if v.picture.url != null
+                                - if v.is_master?
+                                  %img{ src: v.picture.url }
+                            - if product.variant_master.pictures.empty?
+                              .empty-picture
+                          .span9.name= link_to product.name, edit_shop_product_path(product.shop_id, product.id)
+                    %td
+                      -if product.status == 0
+                        %span.label.label-enabled
+                          = t(:enabled).upcase
+                      - if product.status == 1
+                        %span.label.label-suspended
+                          = t(:suspended).upcase
+                    %td
+                      = product.variant_master.sku
+                    %td
+                    /= product.category
+                    %td
+                      = product.variant_master.quantity
+                    %td
+                      = product.variant_master.price
+                    %td
+                      - if product.product_variants.length > 1
+                        = t(:yep).upcase
+                      - if product.product_variants.length == 1
+                        = t(:nop).upcase
+                        
+          - if @item_count >= 10
+            #paginate
+              .container-fluid.without-padding
+                .row-fluid
+                  .span8
+                    .row-fluid
+                      .span6
+                        .row-fluid
+                          .span6.per-page-label
+                            %span View per Page :
+                          .span4.per-page-select
+                            %select.span1{ name: "view_per_page" }
+                              - [10,15,20,30].each do |t|
+                                %option{ value: t, selected: t == @item_per_page }= t
+                                  
+                      .span6.nav
+                        .row-fluid
+                          - if @item_count > 10
+                            .span4
+                              - if @page > 1
+                                %a.prev Précédente
+                              - else
+                                %span.no-prev Précédente
+                      -# TODO : finish pagination

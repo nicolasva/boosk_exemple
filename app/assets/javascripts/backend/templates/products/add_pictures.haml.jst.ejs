@@ -1,0 +1,21 @@
+#new_product_pictures
+              
+  %h3= translate.views.picture.select_pictures
+  %p= translate.views.picture.select_associate_pictures
+  
+  #container
+
+    #pictures
+      %a#pickfiles{href: "#"}
+        .picto-add
+        .txt= translate.views.picture.add_picture
+          
+
+  .row-fluid.info
+    .span12
+      .row-fluid
+        .span3.picto.without-margin
+        .span11.txt= translate.views.picture.master_info
+        
+  .actions
+    %button.btn.orange{ data-dismiss: "modal" }= translate.ok

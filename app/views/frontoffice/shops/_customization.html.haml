@@ -1,0 +1,14 @@
+- if shop.has_customization
+  :css
+    #header-wrapper img{top: #{shop.customization.header.offset}px !important;}
+    #menu{background-color: #{shop.customization.background_color_sidebar} !important;}
+    #menu ul li:hover, #menu ul li ul{background-color: #{shop.customization.background_color_sidebar_item} !important;}
+    .product_lists  {background-color: #{shop.customization.background_color_shop} !important;}
+    #product_list   {background-color: #{shop.customization.background_color_product_list} !important;}
+    .product_thumb  {background-color: #{shop.customization.background_color_product_thumb} !important;}
+    .product_meta, .product_price {color: #{shop.customization.color_text_product} !important;}
+    .product_name a {color: #{shop.customization.color_text_product} !important;}
+    #basket_shop .btn-group a.basket_button.dropdown-toggle {color: #{shop.customization.color_text_menu} !important;}
+    #basket_shop .btn-group .basket_empty {color: #{shop.customization.color_text_menu} !important;}
+    .menu-container .taxonomies_list > li > a {color: #{shop.customization.color_text_menu} !important;}
+    .menu-container .taxonomies_list > li:hover > a {color: #{shop.customization.color_text_menu_hover} !important;}

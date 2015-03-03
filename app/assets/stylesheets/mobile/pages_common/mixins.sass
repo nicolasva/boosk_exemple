@@ -1,0 +1,19 @@
+$grey: #A6AEBB
+$grey-light: #ECECEC
+$orange: #F60
+$blue: #a5b2bd
+$green: #78e477
+
+@mixin radius($top, $right, $bottom, $left)
+  -moz-border-radius: #{$top}px #{$right}px #{$bottom}px #{$left}px
+  -webkit-border-radius: #{$top}px #{$right}px #{$bottom}px #{$left}px
+  border-radius: #{$top}px #{$right}px #{$bottom}px #{$left}px
+
+@mixin rotate($degree_value)
+  -webkit-transform: rotate(#{$degree_value}deg)
+  -moz-transform: rotate(#{$degree_value}deg)
+
+@mixin shadow($top, $right, $bottom, $left, $color)
+  -moz-box-shadow: #{$top}px #{$right}px #{$bottom}px #{$left}px $color
+  -webkit-box-shadow: #{$top}px #{$right}px #{$bottom}px #{$left}px $color
+  box-shadow: #{$top}px #{$right}px #{$bottom}px #{$left}px $color

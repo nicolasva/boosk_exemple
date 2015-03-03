@@ -1,0 +1,31 @@
+development:
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: 25
+  timeout: 5000
+
+test:
+  adapter: sqlite3
+  database: db/test.sqlite3
+  pool: 25
+  timeout: 5000
+
+stage:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: boosket_shops_stage
+  pool: 5
+  username: boosket
+  password: ZsaDbGUVc8fBe4BJ
+  socket: /var/run/mysqld/mysqld.sock
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: boosket_shops_prod
+  pool: 5
+  username: boosket
+  password: ZsaDbGUVc8fBe4BJ
+  socket: /var/run/mysqld/mysqld.sock

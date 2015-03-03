@@ -1,0 +1,48 @@
+.container-fluid
+  .row-fluid
+    .span9
+      .content.frame
+        .container-fluid
+          .row-fluid
+            .span6
+              %h3.step1= Zone.model_name.human
+              .row-fluid
+                .span6
+                  .row-fluid
+                    .span5= f.label :name
+                    .span2
+                      %span.need * 
+              = f.text_field :name, :class => "span3 necessary"
+
+              .row-fluid
+                .span6
+                  .row-fluid
+                    .span5
+                      = f.label :zone_id
+                    .span2
+                      %span.need *
+                    = link_to "+ " + t(:add), new_shop_zone_path(f.object.shop_id), :class => "span5 add-by-modal", :id => "add-zones"
+                                           
+              = f.select :zone_id, f.object.shop.zones.collect {|zone| [ zone.name, zone.id ] }
+                
+            .span6
+              %h3.step1= Calculator.model_name.human
+              .row-fluid
+                .span6
+                  .row-fluid
+                    .span6
+                      = f.label :calculator_type, "Type"
+                    .span2
+                      %span.need * 
+              = f.select :calculator_type, ShippingMethod.calculators.sort_by(&:name).collect {|type| [ type.description, type.name ]}, {}, {disabled: true}
+              #calculator_attributes
+                - f.object.calculator ||= ShippingMethod.calculators.sort_by(&:name).first.new
+                = f.fields_for :calculator do |calculator_form|
+                  = preferences_fields f.object.calculator, calculator_form
+
+      .container-fluid.without-padding
+        .row-fluid
+          .span12
+            .actions.step-1
+              = link_to ' < ' +  t(:back), shop_shipping_methods_path(@shop), :class => "btn back"
+              = f.submit " > #{f.object.new_record? ? t(:create).capitalize : t(:update).capitalize}", :class => "orange"

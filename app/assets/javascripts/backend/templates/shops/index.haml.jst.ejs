@@ -1,0 +1,43 @@
+.row-fluid
+  .span9.without-margin
+    .frame
+      .container-fluid.without-padding	
+        %header.row-fluid
+          .span12
+            .container-fluid.without-padding
+              .row-fluid
+                .span8
+                  .row-fluid
+                    .span12
+                      %h1= translate.views.shop.my_shops
+        .content#account-shops
+          %table.table
+            %thead
+              %tr
+                %th
+                  = translate.views.shop.index.name
+                %th
+                  = translate.created_at
+                %th
+                  = translate.updated_at                  
+                %th
+                  = translate.edit.capitalize() + "/" + translate.delete.capitalize()
+            %tbody
+              :each shop in shops
+                %tr{ data-id: shop.uuid }
+                  %td.change-shop
+                    = shop.name.capitalize()
+                  %td
+                    = shop.created_at
+                  %td
+                    = shop.updated_at
+                  %td
+                    %span.edit
+                      %span.picto
+                      %span.txt= translate.edit.capitalize()
+                    %span.remove
+                      %span.picto
+                      %span.txt= translate.delete.capitalize()                 
+
+  .span3
+    %nav#account-settings-menu.settings-menu                        

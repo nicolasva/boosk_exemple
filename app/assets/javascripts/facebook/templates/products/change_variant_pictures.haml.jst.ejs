@@ -1,0 +1,15 @@
+%input#modal_variant_id{type: "hidden", name: "cart[variant_id]", value: variant.id}
+
+:each picture in variant.pictures
+  :if picture.is_master
+    .master
+      %img{ src: picture.picture.url }
+:if variant.pictures.length > 1
+  #carousel
+    :if variant.pictures.length >= 5
+      .arrow-left{ style: "display:none;" }
+      .arrow-right{ style: "display:none;" }                
+    .row-fluid.overflow
+      :each picture in variant.pictures
+        .pic
+          %img{ src: picture.picture.url }

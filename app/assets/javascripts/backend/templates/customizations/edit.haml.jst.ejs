@@ -1,0 +1,67 @@
+.row-fluid
+  .span9{style: "position:relative;"}
+    :if forbidden == true
+      .disabled-customization
+      %button.btn.orange= translate.views.plan.change_my_plan
+    %form#edit_shop_customization
+      %section.settings-content
+        %header
+          .row-fluid
+            %h1.span4= translate.views.customization.index.h2
+            %h2.span7.without-margin= translate.views.customization.index.h2_info
+        %section.actions
+          .row-fluid
+            .span5
+              %label= translate.views.customization.range_grid
+              %select#nb_products_grid.span2{name: "products_grid"}
+                - for (nb = 4; nb >= 2; nb--) {
+                -   if (nb == customization.products_grid) {
+                -     if (nb == 1) {
+                %option{value: nb, selected: true}= "!{nb} !{translate.activerecord.models.product}"
+                -     } else {
+                 %option{value: nb, selected: true}= "!{nb} !{translate.activerecord.models.product}s"
+                -     }
+                -   } else {
+                -     if (nb == 1) {
+                %option{value: nb }= "!{nb} !{translate.activerecord.models.product}"
+                -     } else {
+                 %option{value: nb }= "!{nb} !{translate.activerecord.models.product}s"
+                -     }
+                -   }
+                - }
+
+        %section#store-preview{style: "background-color : !{customization.background_color_shop}"}
+        .container-fluid.custo-options
+          .row-fluid
+            .span6
+              %label{for: "pickteaser"}= translate.activerecord.attributes.customization.teaser
+              #teaser
+                :if customization.teaser.url
+                  #teaser-container
+                    %a.close.remove-attachment{href: "#"} &times;
+                    %img{src: customization.teaser.url}
+                .attachment-container
+                  %button.btn.orange#pickteaser= ' > ' + translate.views.picture.update_picture
+              %p.help-block= translate.views.customization.teaser_help_block
+            .span6
+              %label{for: "pickshutter"}= translate.activerecord.attributes.customization.shutter
+              #shutter
+                :if customization.shutter.url
+                  #shutter-container
+                    %a.close.remove-attachment{href: "#"} &times;
+                    %img{src: customization.shutter.url}
+                .attachment-container
+                  %button.btn.orange#pickshutter= ' > ' + translate.views.picture.update_picture
+              %p.help-block= translate.views.customization.shutter_help_block
+      .wizard-actions
+        :if wizard
+          %input.back{type: "submit", value: " < " + translate.back.capitalize()}
+          %input.orange{type: "submit", value: " > " + translate.next.capitalize()}
+          :if has_active_payement
+            %a.btn.orange{ href: "/#/settings/payment" }= ' > ' + translate.skip
+          :if !has_active_payement
+            %a.btn.orange{ href: "/#/settings/option_types" }= ' > ' + translate.skip
+        :if !wizard
+          %input.orange{type: "submit", value: translate.update.capitalize()}          
+  .span3
+    %nav#store-settings-menu.settings-menu

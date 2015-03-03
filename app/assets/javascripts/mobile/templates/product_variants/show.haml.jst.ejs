@@ -1,0 +1,7 @@
+#list_product_variant_pictures
+  %ul
+    :each product_variant in product_variants
+      %li
+        :each picture in product_variant.pictures
+          :if picture.is_master
+            %img{src: picture.picture.url, height: "50", width: "50", id: "img_product_variant_"+product_variant.product_id+"_"+product_variant.id, class: "img_product_variant"}

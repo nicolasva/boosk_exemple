@@ -1,0 +1,28 @@
+.row-fluid
+  .span9
+    %section#promotions-container.frame
+      %header
+        .row-fluid
+          .span5
+            %h1= translate.views.promotion.index.title
+          .span2
+            %button.btn.orange.add-promotion{style: "display: none;"}= '+ ' + translate.add
+          .span5
+            %select.action{ name: "action", style: "display: none;"}
+              %option= translate.actions
+                :for key,value in actions
+                  %option{ value: key }= value['display']
+      .row-fluid.no-items
+        .span12.msg= translate.views.promotion.you_have_no_promotion_yet
+        %button.btn.orange.add-promotion= ' + ' + translate.views.promotion.add_promotion
+      .row-fluid
+        %table{style: "display: none;"}
+          %thead
+            %tr
+              %th
+                %input.select-all{ type: "checkbox" }
+              %th= translate.activerecord.attributes.promotion.name
+              -#%th= translate.activerecord.attributes.promotion.coupon_code
+              %th= translate.activerecord.attributes.promotion.starts_at
+              %th= translate.activerecord.attributes.promotion.ends_at
+          %tbody

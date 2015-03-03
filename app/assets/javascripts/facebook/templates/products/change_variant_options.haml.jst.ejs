@@ -1,0 +1,18 @@
+.row-fluid
+  :each option_type in shop_option_types
+    :if _.include(variant_option_types.keys, option_type.type) 
+      %label.span12= translate.views.frontend.products.choose_taxon + " " + option_type.type
+      %select{ name: "option_type[" + option_type.type + "]" }
+        %option= option_type.type
+        :each option in option_type.values
+          :if _.include(variant_option_types.ids, option.id)
+            :if _.include(options_unselectable, option.id)
+              :if _.include(selected, option.id)
+                %option{ value: option.id, selected: true} = option.value
+              :if !_.include(selected, option.id)
+                %option{ value: option.id, disabled: true}= option.value
+            :if !_.include(options_unselectable, option.id)
+              :if _.include(selected, option.id)
+                %option{ value: option.id, selected: true }= option.value
+              :if !_.include(selected, option.id)
+                %option{ value: option.id }= option.value

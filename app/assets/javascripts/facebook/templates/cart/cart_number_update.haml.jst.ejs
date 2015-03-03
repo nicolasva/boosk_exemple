@@ -1,0 +1,15 @@
+%div{id: "cart_item_" + cart.id + "_" + cart.product.product_id, class: "product_variant_picture_url"}
+.title_quantity_delete
+  .title_quantity
+    %h3{class: "title_product", id: "title_product_"+cart.product.product_id} 
+    = "quantity : "
+    %span{class: "add_quantity", id: "add_quantity_" + cart.id + "_" + cart.product.product_id}
+    %span{id: "value_quantity_"+cart.id}
+      = cart.quantity
+    %span{class: "less_quantity", id: "less_quantity_" + cart.id + "_" + cart.product.product_id} 
+  .delete_total_basket
+    .delete_basket
+      %a.link_destroy_basket_shop{href: "#/shop/"+App.current_shop, id: "link_destroy_basket_shop_"+cart.product.product_id+"_"+cart.id} = "Delete"
+    %div{id: "price_product_"+cart.id, class: "price_product"}
+      %div{class: "price_product"}
+        = "€ " + cart.product.price * cart.quantity

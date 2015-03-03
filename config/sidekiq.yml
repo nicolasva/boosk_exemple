@@ -1,0 +1,7 @@
+:verbose: false
+:concurrency: 10
+:queues:
+  - [ImportProducts, 4]
+  - [PostToFacebook, 4]
+  - [OrderCallback, 4]
+  - [default, 4]

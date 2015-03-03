@@ -1,0 +1,10 @@
+%div.delete_cart_items
+  %p
+    = "Do you want to confirm delete this item ?"
+  %ul
+    %li.left
+      %a.confirm_yes_destroy_item.btn.btn-success.dropdown-toggle{href: "#/cart/edit", id: "confirm_yes_"+product_id+"_"+product_variant_id}
+        = "Yes"
+    %li.right
+      %a.confirm_no_destroy_item.btn.btn-inverse{href: "#/cart/edit", id: "Confirm_no_"+product_id+"_"+product_variant_id}
+        = "No"

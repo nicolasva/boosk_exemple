@@ -1,0 +1,27 @@
+development:
+  environment: "sandbox"
+  username: "dev_1347289140_biz_api1.boosket.com"
+  password: "1347289183"
+  signature: "AId-oC7Ze.OQjDwW1GgTjvqGcMmNAYR-ZuA5J1MEbePdtAJh2L2aJc8p"
+  application_id: "APP-80W284485P519543T"
+
+test:
+  environment: "sandbox"
+  username: "dev_1347289140_biz_api1.boosket.com"
+  password: "1347289183"
+  signature: "AId-oC7Ze.OQjDwW1GgTjvqGcMmNAYR-ZuA5J1MEbePdtAJh2L2aJc8p"
+  application_id: "APP-80W284485P519543T"
+
+stage:
+  environment: "sandbox"
+  username: "dev_1347289140_biz_api1.boosket.com"
+  password: "1347289183"
+  signature: "AId-oC7Ze.OQjDwW1GgTjvqGcMmNAYR-ZuA5J1MEbePdtAJh2L2aJc8p"
+  application_id: "APP-80W284485P519543T"
+
+production:
+  environment: "production"
+  username: "lletourneur_api1.24h00.fr"
+  password: "S4JMAE3E8N597VXB"
+  signature: "AwfnUFxc9xU6u75Dt-AaXye7X2gFAjap4CFDvYSPT09wJULftrDnEhzq"
+  application_id: "APP-6VU67076A76856541" 

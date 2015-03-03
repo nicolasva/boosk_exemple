@@ -1,0 +1,69 @@
+%section#store-settings.container-fluid
+  %h1.row-fluid Shop customization
+  .row-fluid
+    = form_for [@shop, @customization], html: {id: "edit_shop_customization"} do |f|
+      %section.actions
+        = f.label :products_per_page, "Type de boutique"
+        = f.select :products_per_page, (3..40).collect{|nb| ["#{nb} produits par page", nb]}
+        = button_tag "Apercu Facebook", class: "btn blue" 
+        = f.submit "Confirmer", class: "btn orange"
+      %section#store-preview{style: "background-color : #{@customization.background_color_shop}"}
+        %header.attachment-container{rel: "header"}
+          %section#header-wrapper.attachment-wrapper
+            - if @customization.header && @customization.header.picture
+              = image_tag @customization.header.picture.normal.url, style: "top: #{@customization.header.offset}px;"
+              %section.move-attachment-instructions
+                %p Faites glisser pour changer la position
+              %section.attachment-border
+          %section#edit-header.edit-attachment-menu
+            %h1 HEADER
+            %ul.nav.nav-list
+              %li
+                %a#pickheader{href: "#"} Télécharger une image
+              %li
+                %a.move-attachment{href: "#"} Modifier une image
+          %section.move-attachment-actions
+            %button.btn.btn-mini.cancel-attachment-move Annuler
+            %button.btn.btn-mini.btn-primary.save-attachment-move Enregistrer les changements
+        %section.menu-container{style: "background-color: #{@customization.background_color_sidebar}"}
+          = render partial: 'taxonomies/menu_preview', locals: {taxonomy: @shop.taxonomies.first}
+        .product_lists
+          %ul#product_list.grid.clearfix{style: "background-color: #{@customization.background_color_product_list}"}
+            - @shop.products.each do |product|
+              %li.product_thumb{style: "background-color: #{@customization.background_color_product_thumb}"}
+                .picture
+                  - if product.product_variants.first.pictures.first 
+                    %a{href: "#/shop/#{@shop.id}", id: "product_picture_"+product.id, class: "product_picture"}
+                      %img.img_product_variant_master{ src: product.product_variants.first.pictures.first.picture.url}
+                #pint
+                  %ol
+                    %li
+                      %a.want_it
+                    %li
+                      %a.have_it
+                    %li
+                      %a.pint_it
+                    %li
+                      %a.share_it
+                %p.product_name{style: "color: #{@customization.color_text_product}"}= product.name
+                %p= product.product_variants.first.price 
+                .add_to_cart
+                  %a{href: "#/shop/#{@shop.id}", class: "action_add_to_cart", id: "product_#{product.id}"} 
+                    %span ADD TO CART
+        %footer.attachment-container{rel: "footer"}
+          %section#footer-wrapper.attachment-wrapper
+            -if @customization.footer && @customization.footer.picture
+              %img{src: @customization.footer.picture.normal.url, style: "top: #{@customization.footer.offset}px;"}
+            %section.move-attachment-instructions
+              %p Faites glisser pour changer la position
+            %section.attachment-border
+          %section#edit-footer.edit-attachment-menu
+            %h1 FOOTER
+            %ul.nav.nav-list
+              %li
+                %a#pickfooter{href: "#"} Télécharger une image
+              %li
+                %a.move-attachment{href: "#"} Modifier une image
+          %section.move-attachment-actions
+            %button.btn.btn-mini.cancel-attachment-move Annuler
+            %button.btn.btn-mini.btn-primary.save-attachment-move Enregistrer les changements

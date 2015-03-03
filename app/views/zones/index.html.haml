@@ -1,0 +1,28 @@
+%section.container-fluid#store-settings
+  .row-fluid
+    .span9
+      %section.settings-content#zones-list
+        %header
+          .row-fluid
+            .span5
+              %h1= t(:h2, :scope => [:views, :zone, :index])
+            .span2.add
+              = link_to ' + ' + t(:add), new_shop_zone_path(@shop), :class => "btn orange", :id => "new_zone"
+            .span3
+              %select.action.span3{ name: "action" }
+                %option= t :actions
+                %option{ value: "destroy" }= t(:delete).capitalize
+
+        %table
+          %thead
+            %tr
+              %th
+                %input.select-all{ type: "checkbox" }                
+              %th
+                Name
+              %th
+                Regions
+          %tbody
+            = render @zones
+    .span3
+      = render 'shared/store_settings_menu', :shop => @shop, :current_item => :zones

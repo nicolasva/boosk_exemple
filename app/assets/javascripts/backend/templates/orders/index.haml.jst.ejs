@@ -1,0 +1,39 @@
+#orders.container-fluid
+  .frame.settings-content
+    %header
+      .row-fluid
+        .span12
+          .row-fluid
+            .span8
+              %h1= translate.views.order.index.h2.all
+            :if orders.length > 0
+              .span4
+                %select.action.span3{ name: "action" }
+                  %option= translate.change_status
+                  :for key,value in actions
+                    %option{ value: value.action }= value['display'].toLowerCase().capitalize()
+    :if orders.length == 0
+      .row-fluid.no-items
+        .span12.msg= translate.views.order.you_have_not_yet_orders
+    :if orders.length > 0
+      %table
+        %thead
+          %tr
+            %th
+              %input.select-all{ type: "checkbox" }
+            %th= translate.number
+            %th= translate.activerecord.attributes.order.created_at
+            %th= translate.activerecord.attributes.order.workflow_state
+            %th= translate.activerecord.attributes.order.total
+        %tbody
+          :each order in orders
+            %tr{ data-id: order.number }
+              %td
+                %input.order-selected{ type: "checkbox" }
+              %td
+                %a{href: "/#/orders/" + order.number}= order.number
+              %td= moment(order.created_at, "YYYY-MM-DDTh:mm:ssZ").fromNow()
+              %td
+                %span.label{ class: "label-" + _.find(translate.views.order.status, function(s) { return s.action == order.workflow_state}).action }
+                  = _.find(translate.views.order.status, function(s) { return s.action == order.workflow_state}).display
+              %td= order.total + " " + App.getCookie('shop_devise')

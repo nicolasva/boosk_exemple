@@ -1,0 +1,28 @@
+#import-products
+  .container-fluid
+    .template-csv
+      .row-fluid
+        .span1
+          %span.icon-file
+        .span11
+          %a{ href: "/assets/template.csv", target: "_blank" }= translate.views.product.example_template_import_csv
+    .row-fluid
+      .span6
+        %label{ for: "file" }= translate.views.product.select_csv_file
+      .span2
+          %span.need *
+          
+    #container
+      %span.file
+      #pickfiles.btn= translate.browse
+
+    .actions
+      %button#upload-file.btn.orange= translate.import.capitalize()
+      
+#success-import{style: "display:none;"}
+  .container-fluid
+    .span12.msg
+      = translate.views.product.upload_import_csv_success
+    .actions
+      %button.btn.orange{ data-dismiss: "modal" }= translate.ok      
+      

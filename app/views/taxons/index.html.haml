@@ -1,0 +1,8 @@
+%h1 Taxons listing
+
+- if @taxons.empty?
+  %p You haven't create any taxon yet !
+- else
+  - render_taxon @taxonomy.root
+
+= link_to 'New Taxon', new_shop_taxonomy_taxon_path(@shop, @taxonomy), class: "btn btn-primary"

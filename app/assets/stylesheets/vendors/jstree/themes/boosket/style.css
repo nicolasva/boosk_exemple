@@ -1,0 +1,89 @@
+/*
+ * jsTree boosket theme 1.0
+ * Supported features: dots/no-dots, icons/no-icons, focused, loading
+ * Supported plugins: ui (hovered, clicked), checkbox, contextmenu, search
+ */
+.jstree-boosket > ul, .jstree-boosket > ul > li > ul { text-align: center;}
+.jstree-boosket > ul > li > ul > li > ul .jstree-last { background: none; }
+.jstree-boosket > ul > li { background: none; }
+.jstree-boosket > ul > li > ul { background: url(data:image/gif;base64,R0lGODdhAQABAIABAAAAAP///ywAAAAAAQABAAACAkQBADs=) no-repeat 50% top; font-size: 0;}
+.jstree-boosket > ul > li > ul > li { text-align: left; background-image: url(data:image/gif;base64,R0lGODdhAQABAIABAAAAAP///ywAAAAAAQABAAACAkQBADs=); background-repeat: repeat-x; background-position: left top; display: inline-block; width: auto; vertical-align: top; padding: 0; margin: 0; position: relative; font-size: 14px;}
+.jstree-boosket > ul > li > ul > .jstree-first { background-repeat: no-repeat; background-size: 50% 1px; background-position: right top; }
+.jstree-boosket > ul > li > ul > .jstree-last { background-repeat: no-repeat; background-size: 50% 1px; background-position: left top;}
+.jstree-boosket > ul > li > ul > .jstree-first.jstree-last { background: none; }
+.jstree-boosket > ul > li > ul > .jstree-leaf > ins { background-position: 100px 100px;}
+.jstree-boosket > ul > li > ul > li > a { background: url(data:image/gif;base64,R0lGODdhAQABAIABAAAAAP///ywAAAAAAQABAAACAkQBADs=) no-repeat 50% top; background-size: 1px 0.8em; padding: 1.2em 2em 0.25em; display: block; margin: 1px auto 0.75em; text-align: center; white-space: normal; letter-spacing: normal;}
+.jstree-boosket > ul > li > ul > li > ins { position: absolute; top: 1.2em; }
+.jstree-boosket > ul > li > ul > li > .jstree-rename-input { margin-top: 1.2em; margin-left: -37px; display: block;}
+.jstree-boosket > ul > li > ins { display: none; }
+.jstree-boosket > ul > li > a { margin-bottom: 0.5em; }
+.jstree-boosket li, 
+.jstree-boosket ins { background-image:url("/assets/vendors/jstree/themes/boosket/d.png"); background-repeat:no-repeat; background-color:transparent; }
+.jstree-boosket li { background-position:-96px 0; background-repeat:repeat-y;  }
+/*.jstree-boosket li.jstree-last { background:transparent; } */
+.jstree-boosket .jstree-open > ins { background-position:-72px 0; }
+.jstree-boosket .jstree-closed > ins { background-position:-54px 0; }
+.jstree-boosket .jstree-leaf > ins { background-position:-36px 0; }
+
+.jstree-boosket .jstree-clicked, .jstree-boosket .jstree-hovered { background-color: #d9e2eb; }
+.jstree-boosket a .jstree-icon { background-position:-56px -19px; }
+.jstree-boosket .jstree-open > a .jstree-icon { background-position:-56px -36px; }
+.jstree-boosket a.jstree-loading .jstree-icon { background:url("/assets/vendors/jstree/themes/boosket/throbber.gif") center center no-repeat !important; }
+
+.jstree-boosket.jstree-focused { background:white; }
+
+.jstree-boosket .jstree-no-dots li, 
+.jstree-boosket .jstree-no-dots .jstree-leaf > ins { background:transparent; }
+.jstree-boosket .jstree-no-dots .jstree-open > ins, .jstree-boosket > ul > li > ul > .jstree-open > ins { background-position:-18px 0; }
+.jstree-boosket .jstree-no-dots .jstree-closed > ins, .jstree-boosket > ul > li > ul > .jstree-closed > ins { background-position:0 0; }
+
+.jstree-boosket .jstree-no-icons a .jstree-icon { display:none; }
+
+.jstree-boosket .jstree-search { font-style:italic; }
+
+.jstree-boosket .jstree-no-icons .jstree-checkbox { display:inline-block; }
+.jstree-boosket .jstree-no-checkboxes .jstree-checkbox { display:none !important; }
+.jstree-boosket .jstree-checked > a > .jstree-checkbox { background-position:-38px -19px; }
+.jstree-boosket .jstree-unchecked > a > .jstree-checkbox { background-position:-2px -19px; }
+.jstree-boosket .jstree-undetermined > a > .jstree-checkbox { background-position:-20px -19px; }
+.jstree-boosket .jstree-checked > a > .jstree-checkbox:hover { background-position:-38px -37px; }
+.jstree-boosket .jstree-unchecked > a > .jstree-checkbox:hover { background-position:-2px -37px; }
+.jstree-boosket .jstree-undetermined > a > .jstree-checkbox:hover { background-position:-20px -37px; }
+
+#vakata-dragged.jstree-boosket ins { background:transparent !important; }
+#vakata-dragged.jstree-boosket .jstree-ok { background:url("/assets/vendors/jstree/themes/boosket/d.png") -2px -53px no-repeat !important; }
+#vakata-dragged.jstree-boosket .jstree-invalid { background:url("/assets/vendors/jstree/themes/boosket/d.png") -18px -53px no-repeat !important; }
+#jstree-marker.jstree-boosket { background:url("/assets/vendors/jstree/themes/boosket/d.png") -41px -57px no-repeat !important; text-indent:-100px; }
+
+.jstree-boosket a.jstree-search { color:aqua; }
+.jstree-boosket .jstree-locked a { color:silver; cursor:default; }
+
+#vakata-contextmenu.jstree-boosket-context, 
+#vakata-contextmenu.jstree-boosket-context li ul { background:#f0f0f0; border:1px solid #979797; -moz-box-shadow: 1px 1px 2px #999; -webkit-box-shadow: 1px 1px 2px #999; box-shadow: 1px 1px 2px #999; }
+#vakata-contextmenu.jstree-boosket-context li { }
+#vakata-contextmenu.jstree-boosket-context a { color:black; }
+#vakata-contextmenu.jstree-boosket-context a:hover, 
+#vakata-contextmenu.jstree-boosket-context .vakata-hover > a { padding:0 5px; background:#e8eff7; border:1px solid #aecff7; color:black; -moz-border-radius:2px; -webkit-border-radius:2px; border-radius:2px; }
+#vakata-contextmenu.jstree-boosket-context li.jstree-contextmenu-disabled a, 
+#vakata-contextmenu.jstree-boosket-context li.jstree-contextmenu-disabled a:hover { color:silver; background:transparent; border:0; padding:1px 4px; }
+#vakata-contextmenu.jstree-boosket-context li.vakata-separator { background:white; border-top:1px solid #e0e0e0; margin:0; }
+#vakata-contextmenu.jstree-boosket-context li ul { margin-left:-4px; }
+
+/* IE6 BEGIN */
+.jstree-boosket li, 
+.jstree-boosket ins,
+#vakata-dragged.jstree-boosket .jstree-invalid, 
+#vakata-dragged.jstree-boosket .jstree-ok, 
+#jstree-marker.jstree-boosket { _background-image:url("/assets/vendors/jstree/themes/boosket/d.gif"); }
+.jstree-boosket .jstree-open ins { _background-position:-72px 0; }
+.jstree-boosket .jstree-closed ins { _background-position:-54px 0; }
+.jstree-boosket .jstree-leaf ins { _background-position:-36px 0; }
+.jstree-boosket .jstree-open a ins.jstree-icon { _background-position:-56px -36px; }
+.jstree-boosket .jstree-closed a ins.jstree-icon { _background-position:-56px -19px; }
+.jstree-boosket .jstree-leaf a ins.jstree-icon { _background-position:-56px -19px; }
+#vakata-contextmenu.jstree-boosket-context ins { _display:none; }
+#vakata-contextmenu.jstree-boosket-context li { _zoom:1; }
+.jstree-boosket .jstree-undetermined a .jstree-checkbox { _background-position:-20px -19px; }
+.jstree-boosket .jstree-checked a .jstree-checkbox { _background-position:-38px -19px; }
+.jstree-boosket .jstree-unchecked a .jstree-checkbox { _background-position:-2px -19px; }
+/* IE6 END */

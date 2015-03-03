@@ -1,0 +1,89 @@
+@import "../background_sprite/background_sprite"
+
+body
+  section.content
+    section.corps
+      div.checkout
+        :margin-top 20px
+        :margin-right 2.778%
+        :text-align right
+        a
+          :text-decoration none
+          :padding-top 3px
+          :padding-bottom 4px
+          :padding-left 10px
+          :padding-right 10px
+          :-moz-border-radius 5px
+          :-webkit-border-radius 5px
+          :border-radius 5px
+      table
+        :font-size 7.5pt
+        tr.color_tab_header_footer
+          :background-color #f4f4f4
+          :font-weight 600
+        tr#title_table
+          th
+            :border 1px solid #b4b4b4
+            :color #666666
+            :text-align center
+        tr.tr_value_carts
+          :color #838383
+          td
+            img 
+              :width 70%
+              :height auto
+            :padding 5px 8px
+            :color #838383
+            :text-align center
+            a
+              @include background_url_sprite 
+              :background-position -144px -50px
+              :padding 20px 21px 9px
+          td.border
+            :border-left 1px solid #B6B6B6
+            :border-right 1px solid #B6B6B6
+        tr#tr_total
+          :border-top 1px solid #B6B6B6 
+        tr
+          td
+            :color #666666
+          td.total_price
+            :padding 8px 10px
+            :font-weight 600
+            :font-size 1em
+            :text-align right
+            #total
+            #value_total
+              :margin-left 5px
+      #reglement
+        :background-color #f8f9fb
+        form#accept_reglement
+          :margin-left 30px
+          :display inline-block
+          :font-weight 600
+          #checkbox_reglement
+            :float left
+          #submit_reglement
+            :margin-left 30px
+            ul
+              :padding-top 15px
+              :list-style-type none
+              li.left
+                :float left
+              li.right
+                :float right
+      #address
+        :margin-right 2.778%
+        :border-bottom 1px solid #B6B6B6 
+        h2
+          :padding-top 10px
+          :padding-left 10px
+          :background-color #2F2F2F
+          :color white
+          :padding-bottom 10px
+          :font-weight 600
+          :margin-left 0px
+        ul
+          :margin-top 10px
+          li
+            :margin-bottom 5px 

@@ -1,0 +1,130 @@
+@import mixins
+
+.wizard
+  :width 575px
+  :margin 0 auto
+  .wizard-step
+    :margin-top 30px
+    h2
+      :text-align center
+      :font-size 1.3em
+      :font-weight normal
+      :text-shadow 0px 2px 0px white
+      :color #222
+    .all-icons-step
+      :margin 15px auto
+      :margin-bottom 0
+      :padding 0 52px
+      .sep
+        :display inline-block
+        :border 1px solid #d1dced
+        :width 150px
+        :margin-bottom 23px
+      .step-1
+        :background url('/assets/pictos_wizard.png') no-repeat
+        :background-position 0px 0px
+        :padding 25px
+        :display inline-block
+      .step-2
+        :background url('/assets/pictos_wizard.png') no-repeat
+        :background-position 0px -122px
+        :padding 25px
+        :display inline-block
+      .step-3
+        :background url('/assets/pictos_wizard.png') no-repeat
+        :background-position 0px -242px
+        :padding 25px
+        :display inline-block
+      .not-completed
+        :background-position 0px -52px !important
+    .all-text-step
+      :margin-left 26px
+      .step-1-text
+        :display inline-block
+        :width 113px
+        :text-align center
+        :color #fe6902
+        :font-size 1.1em
+      .step-2-text
+        :display inline-block
+        :width 113px
+        :text-align center
+        :margin-left 91px
+        :color #b8beca
+        :font-size 0.8em
+      .step-3-text
+        :display inline-block
+        :width 113px
+        :text-align center
+        :margin-left 91px
+        :color #b8beca
+        :font-size 0.8em
+  #app
+    :margin-top 50px
+    :background-color #FFF
+    :width 575px
+    :margin 30px auto
+    :position relative
+    @include shadow(0, -6, 6, -5, #888)
+    @include radius(15, 15, 15, 15)
+    :border 1px solid #d1dced
+    .container-fluid
+      :padding 27px 15px 15px 15px
+      .title-step-1
+        :border-right 1px solid #dbe5f1
+        :padding-right 13px
+        .header-lateral
+          :background url('/assets/wizard_lateral_title_fr.png') no-repeat
+          :background-position 4px 15px
+          :height 240px
+          :margin-top -14px
+      .title-step-2
+        :border-right 1px solid #dbe5f1
+        :padding-right 13px
+        .header-lateral
+          :background url('/assets/wizard_lateral_title_fr.png') no-repeat
+          :background-position -57px 15px
+          :height 240px
+          :margin-top -14px
+      .title-step-3
+        :border-right 1px solid #dbe5f1
+        :padding-right 13px
+        .header-lateral
+          :background url('/assets/wizard_lateral_title_fr.png') no-repeat
+          :background-position -27px 15px
+          :height 263px
+          :margin-top -14px
+          :width 33px
+      .span10
+        :margin-left 20px
+      label
+        :text-transform uppercase
+        &.sub-label
+          :text-transform none
+          :font-size 1em
+          :padding 5px 0px
+      input, select
+        :margin-bottom 0px
+      input[type=submit]
+        :float right
+      button.add-email, button.del-email
+        :background #99a2b3
+        :color #fdfefd
+        :font-weight 600
+        :height 38px
+        :padding 7px 14px
+      .span5
+        :width 386px
+      p.info
+        :color #c1c3cc
+        :margin-top 5px
+    .devise,.active_payement
+      :margin-top 10px
+    #wizard_step_3
+      .action
+        :margin-top 100px
+        a, input
+          :text-transform capitalize
+    #wizard_step_2
+      .field
+        :margin-bottom 5px

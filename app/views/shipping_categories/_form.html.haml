@@ -1,0 +1,7 @@
+= form_for [shipping_category.shop, shipping_category] do |f|
+  .field
+    = f.label :name
+    = f.text_field :name
+  .actions
+    = link_to 'Back', shop_shipping_categories_path(shipping_category.shop), class: "btn"
+    = f.submit class: "btn btn-primary"

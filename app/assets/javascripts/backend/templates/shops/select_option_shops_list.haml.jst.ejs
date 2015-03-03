@@ -1,0 +1,11 @@
+%form#select_shop
+  .all_form_shop
+    .class_select_shop
+      %select{name: "shop_id", id: "shop_selected_id", class: "chzn-select"}
+        :each shop in locals.shops
+          :if shop_id != shop.uuid
+            %option{value: shop.uuid}
+              = shop.name 
+          :if shop_id == shop.uuid
+            %option{value: shop.uuid, selected: "selected"} 
+              = shop.name 

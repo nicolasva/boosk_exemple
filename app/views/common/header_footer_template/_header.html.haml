@@ -1,0 +1,4 @@
+- if shop.has_customization
+  = image_tag(shop.customization.header.picture.url)
+- else
+  = image_tag("/assets/fallback/header_default.jpg")

@@ -1,0 +1,51 @@
+#landing-3.row-fluid
+  .primary.span12
+    .row-fluid
+      .span8.mark
+        .boost_eshop_title= t(:boost_eshop_title, scope: [:views, :homepage])
+        .boost_eshop_mobile= t(:boost_eshop_mobile, scope: [:views, :homepage]).html_safe
+        .boost_eshop_facebook= t(:boost_eshop_facebook, scope: [:views, :homepage]).html_safe
+        .boost_eshop_picto
+      .span4.mire
+        .row-fluid
+          .highlight-shop
+            %h3
+              = t(:free_no_commitment, scope: [:views, :homepage]).html_safe
+            %ul
+              %li= t(:illimited_period, scope: [:views, :homepage])
+              %li= t(:zero_commission, scope: [:views, :homepage])
+              %li= t(:zero_set_up_cost, scope: [:views, :homepage])
+              %li= t(:no_cb_card_needed, scope: [:views, :homepage]).html_safe
+              
+          = render :partial => "devise/registrations/sign_up"
+          
+  .eyesontiger.span12.without-margin
+    .row-fluid
+      .span12
+        .row-fluid
+          .span8.shop-example
+          .span4.compatibility
+            .logo
+              = image_tag('boosket-shop-white.png')
+              
+            .compatible_with= t(:compatibility_with, scope: [:views, :homepage])
+            
+            = render :partial => "devise/registrations/partnership_pictos"
+            
+  .adrienne.span12.without-margin
+    .row-fluid
+      .span12
+        .row-fluid
+          .span8.shop-example
+          .span4
+            .row-fluid
+              .span12.features
+                %h3= t(:pilot_eshop, scope: [:views, :homepage]).html_safe
+                %ul
+                  %li= t(:follow_traffic, scope: [:views, :homepage])
+                  %li= t(:follow_order, scope: [:views, :homepage])
+                  %li= t(:follow_buyer_action, scope: [:views, :homepage])
+                  %li= t(:top_orders, scope: [:views, :homepage])                                    
+                  %li= t(:manage_order, scope: [:views, :homepage])
+                  
+              = render :partial => "devise/registrations/sign_up"

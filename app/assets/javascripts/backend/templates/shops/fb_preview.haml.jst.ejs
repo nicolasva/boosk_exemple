@@ -1,0 +1,11 @@
+.tabbable
+  %ul.nav.nav-tabs
+    %li.active
+      %a#tab_facebook{href:"#tab1", data-toggle:"tab"} Facebook
+    %li
+      %a#tab_mobile{href:"#tab2", data-toggle:"tab"} Mobile
+  .tab-content
+    .tab-pane.active{id:"tab1"}
+      %iframe#iframe_facebook{ src: url, name: "boosketshop-preview" }
+    .tab-pane{id:"tab2"}
+      %iframe#iframe_mobile{ src: url_mobile, name: "boosketshop-preview", width:"320px" }

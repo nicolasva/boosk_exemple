@@ -1,0 +1,23 @@
+.row-fluid
+  #unsuscribe.span11
+    %label.motif= translate.views.plan.edit.unsuscribe_label
+    .row-fluid
+      .span1
+        %input{ type: "radio", name: "reason", value: translate.views.plan.edit.unsuscribe_reason.expensive }
+      .span11
+        %label= translate.views.plan.edit.unsuscribe_reason.expensive
+      .row-fluid      
+        .span1
+          %input{ type: "radio", name: "reason", value: translate.views.plan.edit.unsuscribe_reason.doesnt_work }      
+        .span11
+          %label= translate.views.plan.edit.unsuscribe_reason.doesnt_work
+      .row-fluid
+        .span1
+          %input{ type: "radio", name:"reason", value: translate.views.plan.edit.unsuscribe_reason.complicated }
+        .span11
+          %label= translate.views.plan.edit.unsuscribe_reason.complicated
+      .row-fluid
+        .span1
+          %input{ type: "radio", name:"reason", value: translate.views.plan.edit.unsuscribe_reason.dont_need, checked: "true" }
+        .span11
+          %label= translate.views.plan.edit.unsuscribe_reason.dont_need

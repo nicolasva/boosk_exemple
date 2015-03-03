@@ -1,0 +1,156 @@
+%header
+  %h1.step1= translate.views.product.edit.h1_general + " : " + product.attr.name
+%fieldset
+  .row-fluid
+    .span5
+      #zone-pictures.row-fluid
+        :if _.reject(product.master.pictures, function(pic){ return pic['_destroy'] != undefined; }).length == 0
+          .master.span11
+            #update-master-picture%a.btn.orange{ style: "display:none;" }= ' > ' + translate.views.picture.update_picture
+        :for picture in product.master.pictures
+          :if picture.is_master == true
+            .master.span11
+              :if picture.picture != undefined  && picture._destroy == undefined
+                %img{ src: picture.picture.url }
+              :if picture.picture == undefined && picture._destroy == undefined
+                %img{ src: pictures.getByCid(picture.cached_path).toJSON().url }
+              #update-master-picture%a.btn.orange{ style: "display:none;" }= ' > ' + translate.views.picture.update_picture
+
+        #carousel.span11.without-margin
+          :if product.master.pictures.length > 5
+            #arrow
+              .arrow-left{ style: "display:none;" }
+              .arrow-right{ style: "display:none;" }
+          :if product.master.pictures.length < 5
+            #arrow{style: "display:none;"}
+              .arrow-left{ style: "display:none;" }
+              .arrow-right{ style: "display:none;" }
+          .row-fluid.variants-pictures.span11.overflow
+            :for picture in product.master.pictures
+              :if picture.is_master == false && picture._destroy == undefined
+                .variant.pic
+                  :if picture.picture != undefined
+                    %img{ src: picture.picture.url }
+                  :if picture.picture == undefined
+                    %img{ src: pictures.getByCid(picture.cached_path).toJSON().url }
+      .row-fluid.field-size
+        .span12
+          %label{ for: "sku" }= translate.size
+          .row-fluid
+            - width = product.master.width != null ? product.master.width : ''
+            - height = product.master.height != null ? product.master.height : ''
+            - depth = product.master.depth != null ? product.master.depth : ''
+            - weight = product.master.weight != null ? product.master.weight : ''
+            .input-append
+              %input.span3.pos-num{ id: "width", name: "product_variant[width]", placeholder: translate.activerecord.attributes.product_variant.width, value:  width }
+              %span.add-on= translate.views.product.inch
+            .input-append
+              %input.span3.pos-num{ id: "height", name: "product_variant[height]", placeholder: translate.activerecord.attributes.product_variant.height, value: height }
+              %span.add-on= translate.views.product.inch
+            .input-append
+              %input.span3.pos-num{ id: "depth", name: "product_variant[depth]", placeholder: translate.activerecord.attributes.product_variant.depth, value:  depth }
+              %span.add-on= translate.views.product.inch
+            %p.help-block= translate.views.product.new.help_block_size
+        .span12.weight.without-margin
+          %label{ for: "sku" } = translate.activerecord.attributes.product_variant.weight
+          .input-append
+            %input.span1.pos-num{ id: "weight", name: "product_variant[weight]", value:  weight }
+            %span.add-on= translate.views.product.once
+          %p.help-block= translate.views.product.new.help_block_weight
+
+    .span7
+      .container-fluid.without-padding
+        .row-fluid.field
+          .span8
+            .row-fluid
+              .span12
+                .row-fluid
+                  .span6
+                    %label{ for: "product_name" }= translate.activerecord.attributes.product.name
+                  .span6
+                    %span.need * 
+            - name = product.attr.name != undefined ? product.attr.name : ""
+            %input.span3.necessary{ id: "product_name", name: "product[name]" , value: name }
+          .span4
+            .row-fluid
+              .span12
+                .row-fluid
+                  .span6
+                    %label{ for: "price" }= translate.activerecord.attributes.product_variant.price
+                  .span6
+                    %span.need *
+            - price = product.master.price != undefined ? product.master.price : ""
+            .input-append
+              %input.span1.necessary.number.price{ id: "price", name: "product_variant[price]", value: price }
+              %span.add-on.devise= App.getCookie('shop_devise')
+            %p.help-block= translate.views.product.new.help_block_price
+            
+        .field
+          %label{ for: "product_description" }= translate.activerecord.attributes.product.description
+          %textarea.span4{ id: "product_description", name: "product[description]" }
+            :if product.attr.description != undefined
+              = product.attr.description
+          %p.help-block= translate.views.product.new.help_block_description
+
+        .field
+          .row-fluid
+            .span7
+              .row-fluid
+                .span8
+                  %label{ for: "price" }= translate.activerecord.attributes.product.permalink
+          - permalink = product.attr.permalink != undefined ? product.attr.permalink : ""
+          %input.span4{ id: "product_permalink", name: "product[permalink]" , value: permalink }
+        .field
+          %label{ for: "product_status" }= translate.activerecord.attributes.product.status.capitalize()
+          .row
+            .span2
+              .row
+                :if product.attr.status != undefined
+                  :if product.attr.status == "1"
+                    .span1.sub-label= translate.enabled.capitalize()
+                    .status.small-on.span1
+                      .hidden
+                        %input{ id: "product_status", name: "product[status]", value: "1" }
+
+                  :if product.attr.status == "0"
+                    .span1.sub-label= translate.suspended.capitalize()
+                    .status.small-off.span1
+                      .hidden
+                        %input{ id: "product_status", name: "product[status]", value: "0" }
+          %p.help-block= translate.views.product.new.help_block_status
+          
+        .field
+          .row-fluid
+            .span3
+              .row-fluid
+                .span10
+                  %label{ for: "quantity" }= translate.activerecord.attributes.product_variant.quantity
+                .span2
+                  %span.need *
+          - quantity = product.master.quantity != undefined ? product.master.quantity : ""
+          %input.span1.necessary.pos-num{ id: "quantity", name: "product_variant[quantity]", value: quantity }
+            
+        .field
+          .row-fluid
+            .span12
+              .row-fluid
+                .span3
+                  %label{ for: "sku" }= translate.activerecord.attributes.product_variant.sku
+                .span1
+                  %span.need *
+          - sku = product.master.sku != undefined ? product.master.sku : ""
+          %input.span2.necessary{ id: "sku", name: "product_variant[sku]", value: sku }
+          
+        :if shop.has_active_payement
+          .field
+            %label{ for: "tax_rate_id" }= translate.views.tax_rate.index.h2
+            %select{ name: "product[tax_rate_id]" }
+              :each taxe in taxes
+                :if product.attr.tax_rate_id == taxe.id
+                  %option{ value: taxe.id, selected: "selected" }= taxe.label
+                :if product.attr.tax_rate_id != taxe.id
+                  %option{ value: taxe.id }= taxe.label
+          
+        .field
+          %label{ for: "product_taxon_ids" }= translate.activerecord.attributes.product.taxon_ids
+          %select{ id: "product_taxon_ids", name: "product[taxon_ids][]", multiple: true }

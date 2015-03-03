@@ -1,0 +1,37 @@
+%header
+  .row-fluid
+    .span9
+      %h1=  translate.views.product.new.h1_step_2 + " : " + product.get('name')
+    .span3
+      %button.btn.orange#add-option-types= ' + ' + translate.views.product.new.add_attribute
+
+%form#build_variant_mashup
+  %table.mashup-option-set
+    %thead
+      %tr
+        %th
+          = translate.views.product.table.attributes
+        %th
+          = translate.views.product.table.details
+    %tbody
+      :each option_type in option_types
+        %tr
+          %td.attribute
+            %a.edit{ data-id: option_type.id }= option_type.type
+          %td.values
+            %ul.unstyled.option-types
+              :each option in option_type.values
+                %li
+                  :if product.set_variants
+                    :if variants_option_types.ids.contains(option.id)
+                      %input.without-margin{ type: "checkbox", value: option.id, checked: true }
+                    :if !variants_option_types.ids.contains(option.id)
+                      %input.without-margin{ type: "checkbox", value: option.id }
+                  :if !product.set_variants
+                    %input.without-margin{ type: "checkbox", value: option.id }
+                  %span.value= option.value
+
+.span8
+  .actions-mashup
+    .btn.back= '< ' + translate.back
+    %button.btn.orange{ type: "button"}= ' > ' + translate.generate 

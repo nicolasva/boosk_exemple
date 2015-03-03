@@ -1,0 +1,9 @@
+%td
+  %input.tax-selected{ type: "checkbox" }
+%td
+  %a.edit{data-id: tax_rate.id, href: "#/settings/tax_rate/" + tax_rate.id + "/edit"}= tax_rate.label
+%td= tax_rate.rate
+%td
+  %ul.unstyled
+    :each zone in tax_rate.zones
+      %li= zone.name

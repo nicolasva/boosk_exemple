@@ -1,0 +1,153 @@
+en:
+  activerecord:
+    errors:
+      models:
+        product:
+          attributes:
+            name: "Can't be empty!"
+            url: "Must begin with http://"
+        product_variant:
+          attributes:
+            sku: "Can't be empty!"
+        user:
+          attributes:
+            email:
+              invalid: "is invalid (example@example.com)"
+              taken: "already in use"
+            password:
+              too_short:
+                one: "is too short (minimum is 1 character)"
+                other: "is too short (minimum is %{count} characters)"
+              confirmation: "doesn't match confirmation"
+      messages:
+        blank: "can not be empty"
+        invalid: "is invalid"
+        not_a_number: "should be a number"
+        greater_than_or_equal_to: "should be greater than or equal to %{count}"
+        less_than_or_equal_to: "should be less than or equal to %{count}"
+        expired: "This credit card has expired"
+        invalid_date: "is an invalid date"
+        end_date_cannot_be_before_start_date: "End date cannot be before the start date"
+    models:
+      shop: "shop"
+      address: "Address"
+      product: "product"
+      product_variant: "variant"
+      option_type: "option"
+      order: "order"
+      shipping_category: "category"
+      shipping_method: "shipping method"
+      zone: "Geographical area"
+      calculator: "Calculation method"
+      tax_rate: "Tax"
+      customization: "Customization"
+      calculator/flat_percent_item_total: "Fixed percentage"
+      calculator/flat_rate: "Fixed amount (per order)"
+      calculator/flexi_rate: "Variable amount"
+      calculator/per_item: "Fixed amount (per item)"
+      calculator/price_sack: "Price sack"
+      user: "user"
+
+    attributes:
+      address:
+        city: "City"
+        country: "Country"
+        zip_code: "Zip code"
+        firstname: "Firstname"
+        lastname: "Name"
+        state: "Sate"
+        designation: "Designation"
+        addr: "N° and street"
+        mail: "Email"
+      product:
+        name: "Product name"
+        description: "Product description"
+        permalink: "Product URL"
+        status: "Status"
+        highlight: "Highlighted product"
+        taxon_ids: "Categories"
+        position: "Position"
+      product_variant:
+        price: "Price"
+        quantity: "Quantity"
+        sku: "SKU"
+        weight: "Weight"
+        width: "Width"
+        height: "Height"
+        depth: "Depth"
+      order:
+        total: "Total"
+        item_total: "Product count"
+        email: "E-mail"
+        workflow_state: "State"
+        created_at: "Date"
+      option_type:
+        name: "Attribute"
+        value: "Value"
+      shipping_category:
+        name: "Name"
+      shipping_method:
+        name: "Name"
+      tax_rate:
+        label: "Label"
+        rate: "Rate"
+        zone_ids: "Zones"
+      zone:
+        name: "Name"
+        zone_members: "Regions"
+      shop:
+        name: "Shop name"
+        baseline: "Baseline"
+        uuid: "Shop key"
+        description: "Description"
+        terms: "Terms and Policies"
+        paypal_account: "PayPal Account Email"
+        fan_page_id: "Facebook page"
+        country: "Pays"
+        devise: "Select your currency"
+        url_website: "URL website"
+        shop_type: "Type of store"
+        shop_type_not_sell: "Showcase shop"
+        shop_type_sell: "Sales shop"
+        data_product_feed_url: "Data product feed URL"
+      customization:
+        header: "Header"
+        footer: "Footer"
+        teaser: "Teaser"
+        shutter: "Shutter"
+        fan_access: "Fan restriction"
+        background_color_shop: "Background color shop"
+        background_color_product_list: "Background color product list"
+        background_color_product_thumb: "Background color product thumb"
+        color_text_product: "Color text product"
+        color_text_menu: "Color text menu"
+        color_text_menu_hover: "Color text menu (hover)"
+        background_color_sidebar: "Background color sidebar"
+        background_color_sidebar_item: "Background color sidebar item"
+      user:
+        email: "E-mail address"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+        remember_me: "Remember me"
+        company: "Company"
+        firstname: "First name"
+        lastname: "Last name"
+        phone_number: "Phone"
+        address: "Street"
+        zip_code: "Zip code"
+        city: "City"
+        country: "Country"
+      subscription:
+        cardholder_name: "Cardholder name"
+        card_number: "Card number"
+        month: "Month"
+        year: "Year"
+        verification_code: "Verification code"
+      promotion:
+        name: "Name"
+        coupon_code: "Coupon code"
+        starts_at: "Start date"
+        ends_at: "End date"
+        discount_amount: "Discount amount"
+        description: "Description"
+        picture: "Picture"

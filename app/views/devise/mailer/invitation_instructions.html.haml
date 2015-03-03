@@ -1,0 +1,6 @@
+%p= "Hello #{@resource.email}"
+
+%p
+  Someone has invited you to Booket Shop, you can accept it through the link below.
+%p
+  = link_to 'Accept invitation', accept_invitation_url(@resource, :invitation_token => @resource.invitation_token)

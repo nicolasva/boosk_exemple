@@ -1,0 +1,29 @@
+.sign-up.span12.without-margin
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+    %fieldset
+      - unless resource.errors.empty?
+        .alert= resource.errors.full_messages.join
+      .header
+        %span= t(:discover_offer, scope: [:views, :homepage])
+        %span.free_offer= t(:free, scope: [:views, :homepage])                  
+        %span= t(:signup_header, scope: [:views, :homepage])
+      = f.text_field :lastname, :class => "span4 necessary", :placeholder => t(:lastname, scope: [:activerecord, :attributes, :user])
+      = f.text_field :firstname, :class => "span4 necessary", :placeholder => t(:firstname, scope: [:activerecord, :attributes, :user])
+      = f.text_field :phone_number, :class => "span4 necessary number", :placeholder => t(:phone_number, scope: [:activerecord, :attributes, :user])
+      = f.email_field :email, :class => "span4 necessary email", :placeholder => t(:email, scope: [:activerecord, :attributes, :user])
+      = f.password_field :password, :class => "span4 necessary", :placeholder => t(:password, scope: [:activerecord, :attributes, :user])
+      = f.hidden_field :shop_key
+      = hidden_field_tag :have_coupon
+      = hidden_field_tag :without_cb                
+      .terms
+        %span.terms_part1= t(:terms_part1, scope: [:views, :homepage]).html_safe
+        %a.terms_part2{:target => "_blank", :href => t(:cgv)}
+          %span= t(:terms_part2, scope: [:views, :homepage])
+      .actions
+        = f.submit t(:signup, scope: [:views, :homepage]), :class => "orange"
+        = link_to user_omniauth_authorize_path(:facebook), class: "btn btn-primary", id: "fb-login" do
+          %span.fb-picto          
+          %span.txt
+            = t(:sign_up_with_facebook, scope: [:views, :homepage])
+
+

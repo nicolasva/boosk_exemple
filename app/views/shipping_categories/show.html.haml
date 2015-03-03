@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%h1 Show Shipping Category
+
+%dl
+  %dt Name
+  %dd= @shipping_category.name
+
+= link_to 'Edit shipping category', edit_shop_shipping_category_path(@shipping_category.shop, @shipping_category)

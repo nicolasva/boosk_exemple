@@ -1,0 +1,13 @@
+:if mode == 'simple'
+  .alert{ class: 'alert-' + type }
+    %button.close{ data-dismiss: 'alert' } x
+    .msg= " " + message
+
+:if mode == 'block'
+  .alert.alert-block{ class: 'alert-' + type }
+    %button.close{ data-dismiss: 'alert' } x
+    %h4.alert-heading= type.capitalize() + "!"
+    :for m in message
+      %p
+        = m
+        

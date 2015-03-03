@@ -1,0 +1,9 @@
+%tr
+  %td= option_type[:type]
+  %td
+    %ul.unstyled
+      - option_type[:values].each do |option|
+        %li= option.value
+  %td
+    = link_to "Update", edit_shop_option_type_path(shop, option_type[:type]), class: "btn btn-primary edit"
+    = link_to "Delete", shop_option_type_path(shop, option_type[:type]), method: :delete, data: {id: option_type[:type], confirm: "Are you sure you want to delete this option set ?"}, class: "btn btn-danger destroy"

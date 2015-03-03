@@ -1,0 +1,17 @@
+@import "./../../layout/pages_portrait/products/show_products"
+
+/* Landscape phone to portrait_tablet */
+@media (max-width: 767px)
+  @include portrait_mode_product_show(767px, 767px, 200px, 8%, 44%)
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px)
+  @include portrait_mode_product_show(768px, 979px, 2000px, 8%, 44%)
+
+/* Landscape phones and down */
+@media (max-width: 480px)
+  @include portrait_mode_product_show(480px, 480px, 2000px, 8%, 44%)
+
+/* Large desktop */
+@media (min-width: 1200px)
+  @include portrait_mode_product_show(1200px, 1200px, 200px, 8%, 44%)

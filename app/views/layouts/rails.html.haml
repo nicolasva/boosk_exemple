@@ -1,0 +1,44 @@
+!!!
+%html
+  %head
+    %title Boosket Shop
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "rails/application" if user_signed_in?
+    = csrf_meta_tags
+  %body
+    %header{:class => user_signed_in? ? "login" : "logout"}
+      .container
+        .brand
+          = image_tag("boosket-shop.png")
+        - if user_signed_in?
+          .navbar
+            %ul.nav
+              %li
+                = link_to('Dashboard', '/#/dashboard', :class => "dashboard")
+              %li#current_products
+              %li#current_orders
+              %li
+                = link_to('Analytics', '/#/analytics', :class => "analytics")
+            %ul.nav.pull-right
+              %li#store_settings_link
+                = link_to(t(:store_settings, scope: [:views]), '/#/settings')
+              %li#shop_lists
+                = render(:partial => "/shops/select_option_shops_list")
+          .navbar.account
+            %ul.nav
+              %li
+                = t(:welcome, name: current_user.firstname.blank? ? current_user.email : current_user.firstname,scope: [:views, :common])
+              %li
+                = link_to t(:logout, scope: [:views, :common, :menu]), destroy_user_session_path, :method =>'delete', :class => "logout"
+    %section.container{:class => user_signed_in? ? "" : "login"}
+      - if user_signed_in?
+        = hidden_field_tag "token", form_authenticity_token, :id => "token"
+        = hidden_field_tag "session-key-name", Rails.application.config.session_options[:key], :id => "session-key-name"
+        = hidden_field_tag "session-key-value", u(cookies[Rails.application.config.session_options[:key]]), :id => "session-key-value"
+        #cart
+        = render :partial => '/common/modal'
+      #notice
+        = flash[:notice]
+      #app
+        = yield
+    %footer

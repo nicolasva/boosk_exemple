@@ -1,0 +1,27 @@
+#edit_product
+  .container
+    = form_for [@product.shop, @product], :html => {:id => "edit_product_form"} do |f|
+      .container-fluid
+        .row-fluid
+          .span9
+            .content= render :partial => "edit_master", :locals => {:product => @product}
+            #content_for_footer
+          .span3#step
+            %h1= t :settings, :scope => [:views, :product]
+            .step#general
+              .arrow.selected
+                .value= link_to "General", edit_shop_product_path(@product.shop_id, @product)
+            .step#option_set
+              .arrow
+                .value Option Sets
+            .step#shipping
+              .arrow
+                .value Shipping & Tax
+            .step#promote
+              .arrow
+                .value Promote & Coupons                 
+
+            .row-fluid
+              .actions
+                = link_to " <  #{t(:back).capitalize}", shop_products_path(@product.shop_id), :class => "btn back"
+                = f.submit " >  #{t(:update).capitalize}", :class => "orange"

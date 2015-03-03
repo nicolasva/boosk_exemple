@@ -1,0 +1,33 @@
+.container-fluid
+  .row-fluid
+    .span1.title-step-2
+      .header-lateral
+    .span10
+      %form#wizard_step_2
+        %label{ for: "shop_contact" }= translate.views.wizard.contacts
+        .contact-lastname.field
+          - lastname = account.lastname
+          %input.span5.necessary{ id: "shop_contact_lastname", type: "text", name: "shop[contact_attributes][lastname]", placeholder: translate.activerecord.attributes.address.lastname, value: lastname }
+        .contact-firstname.field
+          - firstname = account.firstname
+          %input.span5.necessary{ id: "shop_contact_firstname", type: "text", name: "shop[contact_attributes][firstname]", placeholder: translate.activerecord.attributes.address.firstname, value: firstname }
+        .contact-email.field
+          - emails_attributes = shop.contact_attributes ? shop.contact_attributes.emails_attributes : null
+          .emails
+            :if emails_attributes != null
+              :each contact_email in emails_attributes
+                :if contact_email.email != undefined
+                  .input-append
+                    %input.span5.necessary.email{ id: "shop_contact_email", type: "text", name: "shop[contact_attributes][emails_attributes][][email]", placeholder: translate.activerecord.attributes.user.email, value: contact_email.email }
+                    %button.btn.add-email{ type: "button" } +
+            :if emails_attributes == null
+              .input-append
+                %input.span5.necessary.email{ id: "shop_contact_email" , type: "email", name: "shop[contact_attributes][emails_attributes][][email]", placeholder: translate.activerecord.attributes.user.email, value: account.email }
+                %button.btn.add-email{ type: "button" } +
+            .input-append
+              %input.span5.email{ id: "shop_contact_email", type: "text", name: "shop[contact_attributes][emails_attributes][][email]", placeholder: translate.views.wizard.another_email }
+              %button.btn.add-email{ type: "button" } +
+          %p.help-block= translate.views.wizard.help_block_email
+        .action
+          %a.btn.orange.back{ href: "#wizard-shop"}= "< " + translate.back
+          %input.btn.orange{ type: "submit", value: " > " + translate.next  }

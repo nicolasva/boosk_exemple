@@ -1,0 +1,45 @@
+.row-fluid
+  .row-fluid.span9
+    %section#menu-options.settings-content
+      %header
+        %hgroup.row-fluid
+          %h1.span3= translate.views.menu.edit.h2
+          %h2.span8.without-margin= translate.views.menu.edit.h2_bis
+      %section#menu-preview
+        %section#menu-preview-container
+      %section.actions
+        %button.btn#add-item{disabled: "disabled"}= translate.add.capitalize()
+        %button.btn#rename-item{disabled: "disabled"}= translate.rename.capitalize()
+        %button.btn#destroy-item{disabled: "disabled"}= translate["delete"].capitalize()
+      %section#menu-container
+        %ul
+          %li#menu-root{rel: "root"}
+            %a{href: "#"}= translate.views.menu.edit.menu_bar
+            %ul.children-menu
+              %li.jstree-first{rel: "home"}
+                %a{href: "#"}= translate.views.menu.home
+                
+    .span12.without-margin
+      .wizard-actions
+        :if wizard
+          %a.btn.back{ href: "/#/settings/wizard=true" }= ' < ' + translate.back
+          :if has_active_payement
+            %a.btn.orange{ href: "/#/settings/tax_rates" }= ' > ' + translate.next
+            %a.btn.orange{ href: "/#/settings/tax_rates" }= ' > ' + translate.skip
+          :if !has_active_payement
+            :if App.account().get('plan').has_customization
+              %a.btn.orange{ href: "/#/settings/customization" }= ' > ' + translate.next
+              %a.btn.orange{ href: "/#/settings/customization" }= ' > ' + translate.skip
+            :if !App.account().get('plan').has_customization
+              %a.btn.orange{ href: "/#/settings/option_types" }= ' > ' + translate.next
+              %a.btn.orange{ href: "/#/settings/option_types" }= ' > ' + translate.skip
+        :if !wizard
+          %input#submit.orange{type: "submit", value: translate.update.capitalize()}
+
+    %section.span9#menu-help
+      #iframe-menu-help
+      
+  .span3
+    %nav#store-settings-menu.settings-menu
+
+

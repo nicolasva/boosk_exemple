@@ -1,0 +1,132 @@
+en:
+  mailer:
+    common: 
+      content_without_margin: "Dear %{user_firstname} %{user_lastname},"
+      welcome_boosket_shop: "Welcome on Boosket-Shop !"
+      h2:
+        without_margin_other_questions: "Lost ? Have any question ?"
+      p_check_our_QA: "Check our <a href='http://support.boosket.com'><strong>Q&A</strong></a> or call us at <strong>0892 700 577</strong> (0,34€ ttc/min)"
+      sign:
+        p_see_you_soon: "See you soon !"
+        p_we_wish_great_success: "We wish you a great success !"
+        p_without_margin_boosket_team: "The Boosket Team"
+      footer:
+        p_noreply: "This is an automatically generated email, thank you not to answer."
+    users:
+      unsuscribe:
+        h1: "Unsuscribe to Boosket Shop"
+        body: "Your unsubscribe request has been registered.</br></br>No financial information concerning you will be recorded and no charge will be made to your account.</br></br>To assure the quality, we would like to know your opinion on the new Boosket Shop,so, for any question or claim do not hesitate to contact our customer service at <strong>44 9073080203</strong>.</br></br>Boosket team wishes you a lot of success."
+      finalize_subscription:
+        h1: "Registration finalization"
+        content_p_subscription_boosket: "Your account is now created, and you can now set up your social commerce multichannel strategy :"
+        content_p_multichannel_strategy: "It's up to you now !"
+        p_strong_mobile: "Mobile"
+        ul:
+          li_all_our_devises: "<span>1/</span> All our advices to <a href='#'>create and customize</a> your shop." 
+          li_import_catalog: "<span>2/</span> <a href='#'>Create or import</a> your product catalog in few minutes."
+          li_publish_store: "<span>3/</span> <a href='#'>Publish</a> your store on your fan page and mobile."
+      confirmation_instructions:
+        h1: "Registration confirmation"
+        p_without_margin_first_step_boosket_shop: "Your account has been created , you can now set up your multichannel social commerce strategy."
+        p_without_margin_next_step: "What are the next steps ?"
+        ul:
+          li_select_plan: "<span>1/</span> I create and personalize my shop <span>(<a href=\"http://support.boosket.com/category/shop/\">?</a>)</span>"
+          li_create_shop: "<span>2/</span> I create or import my products in few minutes <span>(<a href=\"http://support.boosket.com/category/products/\">?</a>)</span>"
+          li_publish_shop_mobile: "<span>3/</span> I publish my shop on my Facebook fan page and on mobile and tablets <span>(<a href=\"http://support.boosket.com\">?</a>)</span>"
+        h2:
+          create_shop: "Already began to create your shop ?"
+        p_without_margin_go_personal_space: "Go on <a href='http://shops.boosket.com'>your personal space</a> to see the work in progress."
+      invit_step_create_account:
+        h1:
+          invit_step_create_account: "Invit step create account"
+        label:
+          user_info: "User info :" 
+        ul:
+          li:
+            first_name: "First name : %{user_firstname}" 
+            last_name: "Last name : %{user_lastname}"
+            email: "Email : %{user_email}"
+            phone_number: "Phone number : %{phone_number}"
+            shop_key: "Shop key : %{shop_key}"
+      invit_step_create_shop:
+        label:
+          shop_info: "Shop informations :"
+          shop_contact_infos: "Shop contact informations :"
+        ul:
+          li:
+            shop_name: "Shop name %{shop_name}"
+            shop_uuid: "Shop uuid : %{shop_uuid}"
+            shop_contact: "shop Contact : %{shop_contact_firstname}"
+            shop_lastname: "Shop : %{shop_contact_lastname}"
+            shop_contact_emails_first_email: "Shop : %{shop_contact_emails_first_email}"
+    orders:
+      common:
+        contact: "Contact"
+        status:
+          shipped: "shipped"
+          delivered: "delivered"
+          canceled: "canceled"
+        subject:
+          status:
+            shipped: "Shipmment"
+            delivered: "Delivery"
+            canceled: "Cancellation"
+        h2:
+          detail_order: "Order Detail :"
+        table:
+          thead:
+            name: "Product name"
+            ref: "Ref"
+            pu_ht: "PU/HT"
+            pt_ht: "PT/HT"
+            quantity: "Quantity"
+            pu_ttc: "PU/TTC"
+            pt_ttc: "PT/TTC"
+          tfoot:
+            tax: "Tax"
+            shipping: "Shipping"
+            tht: "Total HT"
+            ttc: "Total TTC"
+        ul:
+          li:
+            ref_order: "> Orders references : %{order_number}"
+            realised: "> Made on Tuesday, %{time_now}"
+            total_price: "> Total price : %{order_total} %{order_shop_devise}"
+            product_number: "> Products number : %{order_item_total}"
+            shop_name: "Shop name %{order_shop_name}"
+      status_for_customer:
+        subject: "%{shop_name} - Order %{status}"
+        h1: "Order %{status} "
+        success_status: " We are pleased to inform you that your order %{order_ref} has been %{status}."
+        bad_status: "We are sorry to inform you that your order %{order_ref} has been %{status}."
+      pay_for_customer:
+        subject: "%{shop_name} - Order confirmation"
+        h1: "Order confirmation" 
+        p_confirm_orders: "We confirm your order."
+        shipping_address: "Shipping address :" 
+        has_been_received: "Your recent order placed on %{shop_name} has been received."
+        pleased_to_send: "We are pleased to send you this confirmation containing the details of your order made on %{date_now}."
+        products_bought: "Products bought :"
+      pay_for_merchant:
+        subject: "Boosket Shop - Order confirmation"
+        p_confirm_orders: "An order %{time_now} on your shop %{order_shop_name}."
+      shipped_to_customer:
+        h1: "Shipment of your order"
+        confirm_order_expedition: "We will confirm your order has been shipped to date (%{time_now})" 
+        ul:
+          li:
+            address: "Address : %{address_first_addr}" 
+            cp: "Zip code : %{address_first_zip_code}"
+            country: "Country : %{address_first_country}"
+        h2:
+          ask_info_seller: "For any information, contact the seller" 
+    shops:
+      results_import:
+        h1:  "Validation of imports flow"
+        p_import_product: "Your products have been imported in your shop %{shop_name}."
+        p_time_import_product: "The import was made on %{time_now}"
+        warning_today_import_product: "Reminder: you have %{shop_product_count} products imported into the shop"
+      errors: 
+        p_difficult_import_flow: "We encountered problems when importing your feed."
+        p_thanks_data_products: "Thank you verify the product data"
+        p_spec_xml: "Data must conform to XML Specification Boosket Shop."

@@ -1,0 +1,56 @@
+@import "../pages_common/background_sprite/background_sprite"
+
+@mixin paysage_portrait($min_width_ul_product_list, $max_width_ul_product_list, $margin-left_product_list)
+  body
+    .container-fluid
+      :padding 0px
+      section.content
+        :padding 0px
+        :margin 0px
+        section.header
+          :min-width $min_width_ul_product_list
+          :max-width $max_width_ul_product_list
+          div.div_taxon_img
+            :margin-left 90%
+          #all_header
+            #container_choose_panel_mobile
+              :width 85%
+              div#id_search
+                form
+                  input.span4
+                    :width 60%
+        section.corps
+          :padding 0px
+          #box
+            :margin-top 185px
+            :margin-left 0px
+          #app_mobile
+            .product_lists
+              :margin-left 0px
+              :border 0
+              ul.ul_product_list
+                li
+                  :width 40%
+                  :margin $margin-left_product_list $margin-left_product_list 0 $margin-left_product_list  
+                  :float left
+            table
+              tr.tr_value_order
+                td.td_value_border
+                  div.cart_item_update_quantity
+                    span.class_add_quantity
+                      :padding 17.7px 13px 0px
+                      :background-position -356px 0px
+                    span.class_less_quantity
+                      :padding 17.7px 13px 0px
+                      :background-position -356px -48px
+                    span:hover.class_add_quantity
+                      :cursor pointer
+                      :background-position -458px 0px
+                    span:hover.class_less_quantity
+                      :cursor pointer
+                      :padding 17.7px 15px 20px
+                      :background-position -458px -48px
+                  div.cart_item_update_quantity
+                    :margin-left 40px
+                    span.class_add_quantity
+                      :margin-right 20px

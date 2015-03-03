@@ -1,0 +1,12 @@
+#basket_shop
+  .btn-group
+    .dropdown
+        %a.dropdown-toggle.basket_button{data-toggle: "dropdown"}
+          %span (0)
+        %ul.dropdown-menu.span6.row
+          %li= translate.views.cart.empty
+
+#menu
+  %ul.taxonomies_list
+    %li
+      %a{href: "#"}= translate.views.menu.home

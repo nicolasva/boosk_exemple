@@ -1,0 +1,8 @@
+%td.attribute
+   %a.edit{ data-id: option_type.id }= option_type.type
+%td.values{ data-id: option_type.id }
+  %ul.unstyled.option-types
+    :each option in option_type.values
+      %li
+        %input{ type: "checkbox", value: option.id }
+        %span.value= option.value

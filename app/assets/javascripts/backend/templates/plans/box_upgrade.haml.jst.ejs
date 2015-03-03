@@ -1,0 +1,26 @@
+.container-fluid
+  %p.msg= message
+  #prices_and_services
+    .row-fluid
+      #plans.span12.without-margin
+        .row-fluid
+          :each plan in plans
+            .plan.span3.without-margin{ class: plan.name }
+              .row-fluid
+                .header.span12
+                  .row-fluid
+                    :if plan.name == "premium"
+                      .most-popular
+                    %h2.name= plan.name.toUpperCase()
+                    .span12.price-by-month
+                      .row-fluid
+                        :if plan.name != "start"
+                          %span.price= parseInt(plan.monthly_price) + "€"
+                          %span.by-month= " /" +  translate.month
+                        :if plan.name == "start"
+                          %span.price= translate.free
+                    :if plan.name != "start"
+                      .span12.price-by-year
+                        = translate.or + " " + parseInt(plan.yearly_price) + "€ /" + translate.year
+                    :if plan.monthly_price > parseInt(user_plan.monthly_price)
+                      %a.btn.choose{ href: "/plans?id=" + plan.id + "/#/choose" }= translate.upgrade.capitalize()

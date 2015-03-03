@@ -1,0 +1,11 @@
+.row-fluid
+  .span12
+    .row-fluid
+      .span8.mark
+        %h2= t(:h2, scope: [:views, :homepage]).upcase
+        = image_tag(t(:social_commerce_multicanal))
+      .span4.mire
+        .row
+          .sign-up
+            = form_for(resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :put}) do |f|
+              %fieldset

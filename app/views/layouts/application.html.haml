@@ -1,0 +1,89 @@
+!!!
+%html
+  %head
+    %title Boosket Shop
+    = stylesheet_link_tag    "application"
+    - if user_signed_in?
+      = javascript_include_tag "backend/application"
+    - else
+      = javascript_include_tag "login/application"
+    = csrf_meta_tags
+  %body{:class => user_signed_in? ? "logged" : "logout"}
+    - if user_signed_in?
+      #fb-root
+      :javascript
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : "#{BOOSKETSHOPS['facebook']['app_id']}",
+            status     : true,
+            cookie     : true,
+            xfbml      : true
+          });
+          App.facebookAppId = "#{BOOSKETSHOPS['facebook']['app_id']}";
+          App.eventsDispatcher.trigger("fbSdkInit");
+        };
+        (function(d){
+           var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement('script'); js.id = id; js.async = true;
+           js.src = "//connect.facebook.net/fr_FR/all.js";
+           ref.parentNode.insertBefore(js, ref);
+         }(document));
+    %header{:class => user_signed_in? ? "login" : "logout"}
+      .container
+        - if user_signed_in?
+          .brand
+            %a{:href => '/'}=  image_tag("boosket-shop.png")
+        - else
+          = render :partial => 'common/header_logout'
+        - if user_signed_in?
+          .navbar.menu
+            %ul.nav.left
+              %li
+                = link_to(t(:dashboard, scope: [:views, :common, :menu]), '/#/dashboard', :class => "nav_menu dashboard")
+              %li
+                = link_to(t(:products, scope: [:views, :common, :menu]), '/#/products', :class => "nav_menu products")
+              %li
+                = link_to(t(:orders, scope: [:views, :common, :menu]), '/#/orders', :class => "nav_menu orders")
+              %li
+                = link_to(t(:analytics, scope: [:views, :common, :menu]), '/#/analytics', :class => "nav_menu analytics")
+              %li
+                = link_to(t(:store_settings, scope: [:views, :common, :menu]), '/#/settings/wizard=false', :class => "nav_menu settings")
+            %ul.nav.pull-right
+              %li#shop_lists
+              %a#new-shop.btn{ :href => "/wizard", "data-can-add" => (current_user.shops.count >= current_user.plan.number_f_shop ? "false": "true"), "data-msg" => t(:forbidden_plan, scope: [:views, :shop]) }
+                .picto
+                .txt New
+
+          .navbar.account
+            %ul.nav
+              = render :partial => '/common/trial_period'
+              %li
+                = t(:welcome, name: current_user.firstname.blank? ? current_user.email : current_user.firstname,scope: [:views, :common])
+              %li
+                %a.edit-account{href:'/#/accounts'}= t(:my_account, scope: [:views, :common, :menu])
+              %li
+                = link_to t(:logout, scope: [:views, :common, :menu]), destroy_user_session_path, :method =>'delete', :class => "logout"
+    %section.container{:class => user_signed_in? ? "" : "login"}
+      - if user_signed_in?
+        = hidden_field_tag "token", form_authenticity_token, :id => "token"
+        = hidden_field_tag "session-key-name", Rails.application.config.session_options[:key], :id => "session-key-name"
+        = hidden_field_tag "session-key-value", u(cookies[Rails.application.config.session_options[:key]]), :id => "session-key-value"
+        = render :partial => '/common/modal'
+      .container-fluid
+        .row-fluid
+          #notice.span9.without-margin{ :style => "display:none;"}
+      #app
+        = yield
+    %footer
+
+    :javascript
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', '#{BOOSKETSHOPS['google_analytics']}']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();

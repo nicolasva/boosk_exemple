@@ -1,0 +1,30 @@
+@mixin background_url_sprite
+  :background url("/assets/sprite_facebook.png")
+  :background-attachment scroll
+  :background-repeat no-repeat
+
+body.facebook
+  :width 800px
+  :overflow-x hidden
+  :overflow-y auto
+
+  *
+    :font-family 'Open Sans','Lucida Grande','Lucida Sans Unicode', Verdana, sans-serif
+
+  #boxproductvariant
+    :display none
+    :width 800px
+  #picture_cart_validate
+    :width 50px
+    :height 50px
+    :display block
+    :background url("/assets/sprite_facebook.png")
+    :background-attachment scroll
+    :background-repeat no-repeat
+    :background-position -550px 0px
+    :margin-left auto
+    :margin-right auto
+
+  footer
+    .boosket
+      :color #F77D00

@@ -1,0 +1,45 @@
+:if products.length > 0 || forbidden == true
+  .row-fluid
+    .top3.span12
+      .row-fluid
+        :each item in top_products.top3
+          :if item != undefined
+            .top.span4
+              .picture
+                :each variant in item.product.product_variants
+                  :if variant.is_master == true
+                    :each picture in variant.pictures
+                      :if picture.is_master == true
+                        %img{ src: picture.picture.url }
+                %span{ class: 'picto-' +  (_.indexOf(top_products.top3, item) + 1) }
+              .name
+                %a{ href: "#/products/" + item.product.uuid + "/edit" }=item.product.name
+              .count
+                = item.count + " " + action
+:if products.length == 0 && forbidden == false
+  .no-product
+    .msg
+      = translate.views.dashboard.no_products
+    .add
+      %a.btn.orange{ href: "#/products/new/step_1"}= "> " + translate.views.product.add_products
+  
+:if top_products.toprest.length > 0
+  .row-fluid{style:"display:none;"}
+    %ul.unstyled.span12
+      .row-fluid
+        :each item in top_products.toprest
+          :if item != undefined
+            %li.span12.without-margin
+              .row-fluid
+                %span.span2
+                  %span{ class: 'picto-' +  (_.indexOf(top_products.toprest, item) + 4) }
+                %span.picture.span2
+                  :each variant in item.product.product_variants
+                    :if variant.is_master == true
+                      :each picture in variant.pictures
+                        :if picture.is_master == true
+                          %img{ src: picture.picture.url }
+                %span.name.span5
+                  %a{ href: "#/products/" + item.product.uuid + "/edit" }= item.product.name
+                %span.count.span2
+                  = item.count + " times"

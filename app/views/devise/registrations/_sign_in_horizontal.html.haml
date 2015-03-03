@@ -1,0 +1,17 @@
+.row-fluid
+  .span6
+    .brand
+      %a{:href => '/'}= image_tag("boosket-shop-login.png")
+      %span.scm-logo= t(:scm, scope: [:views, :homepage]).upcase.html_safe      
+      
+  .span6
+    #header-login
+      %span.play
+      %a{ :href => "#" }= t(:connect, scope: [:views, :homepage])
+    #header-sign_in{ :style => "display:none;" }
+      = render :partial => "devise/registrations/sign_in"
+      / Ligatus
+      %script{:language => "JavaScript", :src => "http://ads-fr.ret01.ligatus.com/trk?rt=1&ti=4200&cs=3206", :type => "text/javascript"}
+      %noscript
+        %img{:alt => "Pix", :border => "0", :height => "1", :src => "http://ads-fr.ret01.ligatus.com/trk?rt=2&ti=4200&cs=3206", :width => "1"}
+      

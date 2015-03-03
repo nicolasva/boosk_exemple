@@ -1,0 +1,17 @@
+.row-fluid
+  .top3.span12
+    .row-fluid
+      :each item in top_products
+        :if item != undefined
+          .top.span4
+            .picture
+              :each variant in item.product.product_variants
+                :if variant.is_master == true
+                  :each picture in variant.pictures
+                    :if picture.is_master == true
+                      %img{ src: picture.picture.url }
+              %span{ class: 'picto-' +  (_.indexOf(top_products, item) + 1) }
+            .name
+              %a{ data-id: item.product.uuid }=item.product.name
+            .count
+              = _.find(item.kpis,function(a){return a.action == action}).value + " " + action

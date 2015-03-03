@@ -1,0 +1,55 @@
+$(document).ready ->
+  $.get '/calculator_types', (data) ->
+    App.calculator_types = data
+    $("#shipping_method_calculator_type").change () ->
+      calc_type_name = $("#shipping_method_calculator_type").val()
+      for type in App.calculator_types when type.name is calc_type_name
+        update_preferences_fields type
+    $("#shipping_method_calculator_type").removeAttr("disabled")
+  , "json"
+
+  $("#shipping-methods-list .action").change (e) ->
+    e.preventDefault()
+    e.stopPropagation()
+    if $(e.target).val() is "destroy"
+      methods = $('.method-selected:checked').map () ->
+        $(@).parents('tr').attr('data-id')
+      .get()
+      if methods.length == 0
+        alert "Select Method(s) before"
+      else
+        $.ajax
+          type: 'DELETE'
+          dataType: "json"
+          url: "/shops/#{App.current_shop}/shipping_methods/destroy/all"
+          data: {ids: methods}
+          success: ()->
+            for method in methods
+              $("tr[data-id=#{method}]").fadeOut 500, ->
+                $(@).remove()
+      $('.action option:first-child').attr('selected','selected')
+
+  $("#shipping-methods-list .select-all").click (e) ->
+    $('.method-selected').attr 'checked', $(e.target).is(':checked')
+
+update_preferences_fields = (calc_type) ->
+  fragment = document.createDocumentFragment()
+  for preference in calc_type.preferences
+    preference_label_for(preference, fragment)
+    preference_field_for(preference, fragment)
+  $("#calculator_attributes").html fragment
+
+preference_label_for = (preference, fragment) ->
+  label = $("<label>#{preference.description}</label>")
+    .attr("for", "shipping_method_calculator_attributes_preferred_#{preference.name}")
+  fragment.appendChild label[0]
+
+preference_field_for = (preference, fragment) ->
+  switch preference.type
+    when "decimal" then value = "0.0"
+    when "integer" then value = "0"
+    else value = ""
+  input = $("<input type='text' value='#{value}' />")
+    .attr("id", "shipping_method_calculator_attributes_preferred_#{preference.name}")
+    .attr("name", "shipping_method[calculator_attributes][preferred_#{preference.name}]")
+  fragment.appendChild input[0]

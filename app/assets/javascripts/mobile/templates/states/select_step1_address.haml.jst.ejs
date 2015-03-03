@@ -1,0 +1,6 @@
+%label{ for: "state_name"} State
+%br
+%select{ id: "state_name", name: "address[state_id]" }
+  :each state in states
+    %option{ value: state.id, class: "state_value" } 
+      = state.name

@@ -1,0 +1,17 @@
+@import "../layout/pages_paysage/index_paysage"
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px)
+  @include paysage_mode(100%, 100%, 15%, 5%)
+
+
+@media (min-width: 768px) and (max-width: 979px)
+  @include paysage_mode(100%, 100%, 15%, 5%)
+
+/* Landscape phones and down */
+@media (max-width: 480px)
+  @include paysage_mode(100%, 100%, 15%, 5%)
+
+/* Large desktop */
+@media (min-width: 1200px)
+  @include paysage_mode(100%,100%, 15%,5%)

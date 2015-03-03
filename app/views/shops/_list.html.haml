@@ -1,0 +1,40 @@
+%h1 Listing shops
+%table
+  %tr
+    %th Name
+    %th Baseline
+    %th Description
+    %th Terms
+    %th Address
+    %th City
+    / %th State
+    %th Zip
+    / %th Country
+    %th Url website
+    %th Email
+    %th Phone
+    %th Key
+    %th
+    %th
+    %th
+  - @shops.each do |shop|
+    %tr
+      %td= shop.name
+      %td= shop.baseline
+      %td= shop.description
+      %td= shop.terms
+      %td= shop.address
+      %td= shop.city
+      / %td= shop.state
+      %td= shop.zip
+      / %td= shop.country
+      %td= shop.url_website
+      %td= shop.email
+      %td= shop.phone
+      %td= shop.key
+      %td= link_to 'Show', shop
+      %td= link_to 'Edit', edit_shop_path(shop)
+      %td= link_to 'Destroy', shop, confirm: 'Are you sure?', method: :delete
+%br/
+= link_to 'New Shop', new_shop_path
+= link_to 'New Shop', '/#/shops/new'

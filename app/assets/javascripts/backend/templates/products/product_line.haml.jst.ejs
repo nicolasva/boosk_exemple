@@ -1,0 +1,35 @@
+%tr{ data-id: product.get('id'), style: "display:none;" }
+  %td
+    %input.product-selected{ type: "checkbox" }
+  %td
+    .span3
+      .row-fluid
+        .span3.picture
+          :each v in product.getMaster().pictures
+            :if v.picture.url != null
+              :if v.is_master == true
+                %img{ src: v.picture.url }
+        .span9.name
+          %a{ href: "#/products/" + product.get('uuid') + "/edit" } = product.get('name')
+  %td
+    :if product.get('status') == "1"
+      .product-status.product-activated
+        %span= translate.enabled.toUpperCase()
+    :if product.get('status') == "0"
+      .product-status.product-diactivated
+        %span= translate.suspended.toUpperCase()
+  %td
+    = product.getMaster().sku
+  %td
+    = product.getMaster().quantity
+  %td
+    = product.getMaster().price + " " + App.getCookie('shop_devise')
+  %td
+    :if product.get('product_variants').length > 1
+      = translate.yep.toUpperCase()
+    :if product.get('product_variants').length ==  1
+      = translate.nop.toUpperCase()
+  %td.sortable
+    .pictos-position
+      %span.down-unactive
+      %span.up-active

@@ -1,0 +1,52 @@
+.row-fluid
+  .span12
+    %form#add_to_cart
+      .row-fluid
+
+        .span5.without-margin
+          #pictures
+
+        .span7
+          .product-name
+            = product.name
+          .price
+            = variant.price_ttc + " " + App.getCookie('front_shop_devise')
+
+          #option-types
+            .row-fluid
+              :each option_type in shop_option_types
+                :if _.include(variants_option_types.keys, option_type.type)
+                  %label.span12= translate.views.frontend.products.choose_taxon + " " + option_type.type
+                  %select{ name: "option_type[" + option_type.type + "]" }
+                    %option= option_type.type
+                    :each option in option_type.values
+                      :if _.include(variants_option_types.ids, option.id)
+                        %option{value: option.id} = option.value
+          :if shop.has_active_payement
+            .quantity
+              %label= translate.views.frontend.products.select_quantity+ ":"
+              .row-fluid
+                .span2
+                  #quantity
+                    :if parseInt(variant.quantity) > 0
+                      %select#modal_quantity.span1
+                        :each r in _.range(1, parseInt(variant.quantity + 1))
+                          %option{ value: r }= r
+                    :if parseInt(variant.quantity) == 0
+                      %select#modal_quantity.span1{ disabled: "disabled" }
+
+                .span8
+                  :if parseInt(variant.quantity) > 0
+                    %input{type: "submit", class: "orange track", value: "> " + translate.views.frontend.products.add_to_cart, data-action:"cart", data-object:"product", data-ref: product.uuid}
+                  :if parseInt(variant.quantity) <= 0
+                    %input{disabled: 'disabled', type: "submit", class: "orange", value: "> " + translate.views.frontend.products.add_to_cart}                  
+              :if parseInt(variant.quantity) == 0
+                %p.out_of_stock= translate.views.frontend.products.out_of_stock
+          :if (!shop.has_active_payement && product.permalink && product.permalink != "")
+            .permalink
+              %a{href: product.permalink, target: "_blank", class: "orange tiny"}= translate.views.frontend.products.see_on_website
+          :if product.description != "" && product.description != null && product.description.description != undefined
+            .description
+              %label= translate.views.frontend.products.description + ":"
+              %p
+                = App.simple_format(product.description)

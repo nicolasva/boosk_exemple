@@ -1,0 +1,6 @@
+%h1= "Show '#{@taxonomy.name}' taxonomy" 
+- render_taxon @taxonomy.root
+
+%p.actions
+  = link_to 'New Taxon', new_shop_taxonomy_taxon_path(@shop, @taxonomy), class: "btn btn-primary"
+  = link_to 'Edit taxonomy', edit_shop_taxonomy_path(@taxonomy.shop, @taxonomy), class: "btn"

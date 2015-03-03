@@ -1,0 +1,95 @@
+@import mixins
+
+
+#unsuscribe
+  :padding 15px
+  :margin-top 10px
+  .motif
+    :margin-bottom 20px
+    :color #A6AEBB
+  label
+    :color #A6AEBB
+    :text-align left
+
+#administrators
+  .settings-content
+    :min-height 200px
+    .upgrade-plan
+      :margin 60px 0 0 38%
+    
+#account-settings
+  header
+    :border-bottom 1px solid $grey
+  .content
+    :background #FFF
+    :margin-top 0 !important
+    @include radius(0,0,5,5)
+    :padding 15px 0
+    :min-height 350px
+  .actions
+    :margin-right 0 !important
+    input[type="submit"]
+      :float right
+  h4
+    :text-align center
+    :font-size 1.4em
+    :margin-top 10px
+  #prices_and_services
+    :padding-top 50px !important
+    #plans
+      .plan
+        .header
+          :min-height 147px !important
+      .plan.premium
+        .header
+          :min-height 167px !important
+    .plans-details,.unsuscribe
+      :display block
+      :color $orange
+      :text-align center
+      :margin-top 20px
+      :text-decoration underline
+      :font-weight bold
+      :cursor pointer
+  #account-shops
+    :padding-top 0 !important
+    table
+      tr
+        :border none !important
+        :border-top 1px solid #CCC !important
+        td
+          :border none !important
+          :text-align center
+        .change-shop
+          :color $orange
+          :cursor pointer
+        .edit
+          :display inline-block
+          :float left
+          :cursor pointer
+          .picto
+            :background url("/assets/picto_sprite.png") no-repeat
+            :background-position 0 -1120px
+            :width 20px
+            :height 25px
+            :display inline-block
+            :float left
+          .txt
+            :color $orange
+            :float right
+            :display inline-block
+        .remove
+          :display inline-block
+          :float right
+          :cursor pointer            
+          .picto
+            :background url("/assets/picto_sprite.png") no-repeat
+            :background-position 0 -1142px
+            :width 20px
+            :height 25px
+            :display inline-block
+            :float left              
+          .txt
+            :color $orange
+            :display inline-block
+            :float right              

@@ -1,0 +1,79 @@
+.row-fluid
+  .span9.row-fluid
+    %section.settings-content
+      %header
+        .row-fluid
+          .span5
+            %h1= translate.views.option_type.index.h2
+          :if option_types.length > 0            
+            .span2.add
+              %button.btn.orange#new_option_set= ' + ' + translate.add
+            .span5
+              %select.action{ name: "action" }
+                %option= translate.actions
+                  :for key,value in actions
+                    %option{ value: key }= value['display']
+          :if option_types.length == 0            
+            .span2.add{ style: "display:none;"}
+              %button.btn.orange#new_option_set= ' + ' + translate.add
+            .span5.action-zone{ style: "display:none;"}
+              %select.action{ name: "action" }
+                %option= translate.actions
+                  :for key,value in actions
+                    %option{ value: key }= value['display']                        
+                    
+      :if option_types.length == 0
+        .row-fluid.no-items
+          .span12.msg= translate.views.option_type.you_have_not_yet_option_types
+          %button.btn.orange#new_option_set= ' + ' + translate.views.option_type.add_option_type
+        %table{ style: "display:none;"}
+          %thead
+            %th
+              %input.select-all{ type: "checkbox" }
+            %th= translate.views.product.new.attribute_name
+            %th= translate.views.product.new.attribute_options
+          %tbody
+            :each option_type in option_types
+              %tr{ data-id: option_type.type }
+                %td
+                  %input.option_type-selected{ type: "checkbox" }
+                %td
+                  %a.edit{ data-id: option_type.type, href: "#/option_types/" + option_type.type + "/edit" }=option_type.type
+                %td
+                  %ul.unstyled
+                    :each option in option_type.values
+                      %li=option.value          
+          
+      :if option_types.length > 0                                      
+        %table
+          %thead
+            %th
+              %input.select-all{ type: "checkbox" }
+            %th= translate.views.product.new.attribute_name
+            %th= translate.views.product.new.attribute_options
+          %tbody
+            :each option_type in option_types
+              %tr{ data-id: option_type.type }
+                %td
+                  %input.option_type-selected{ type: "checkbox" }
+                %td
+                  %a.edit{ data-id: option_type.type, href: "#/option_types/" + option_type.type + "/edit" }=option_type.type
+                %td
+                  %ul.unstyled
+                    :each option in option_type.values
+                      %li=option.value
+    .span12.without-margin
+      .wizard-actions
+        :if wizard
+          :if has_active_payement
+            %a.btn.back{ href: "/#/settings/payment" }= ' < ' + translate.back
+          :if !has_active_payement
+            :if App.account().get('plan').has_customization
+              %a.btn.back{ href: "/#/settings/customization" }= ' < ' + translate.back
+            :if !App.account().get('plan').has_customization
+              %a.btn.back{ href: "/#/settings/menu" }= ' < ' + translate.back
+          %a.btn.orange.wizard_end{ href: "/#/products" }= ' > ' + translate.next
+          %a.btn.orange.wizard_end{ href: "/#/products" }= ' > ' + translate.skip
+        
+  .span3
+    %nav#store-settings-menu.settings-menu

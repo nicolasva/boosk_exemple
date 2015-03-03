@@ -1,0 +1,87 @@
+.row-fluid
+  .span9
+    %form#new_variants_form
+      %section.settings-content
+        %header
+          .row-fluid
+            .span9
+              %h1=  translate.views.product.new.h1_step_2 + " : " + product.get('name')
+            :if option_types.length > 0
+              .span3
+                %button.btn.orange#add-option-types= ' + ' + translate.views.product.new.add_attribute
+            :if option_types.length == 0
+              .span3
+                %button.btn.orange#add-option-types{ style: "display:none;" }= ' + ' + translate.views.product.new.add_attribute                
+        :if option_types.length == 0
+          .row-fluid.no-items
+            .span12.msg= translate.views.option_type.you_have_not_yet_option_types
+            %button.btn.orange#add-option-types= ' + ' + translate.views.product.new.add_attribute
+          %table.mashup-option-set{ style: "display:none;"}
+            %thead
+              %tr
+                %th
+                  = translate.views.product.table.attributes
+                %th
+                  = translate.views.product.table.details
+            %tbody
+              :each option_type in option_types
+                %tr
+                  %td.attribute
+                    %a.edit{ data-id: option_type.id }= option_type.type
+                  %td.values{ data-id: option_type.id }
+                    %ul.unstyled.option-types
+                      :each option in option_type.values
+                        %li
+                          :if product.set_variants
+                            :if variants_option_types.ids.contains(option.id)
+                              %input.without-margin{ type: "checkbox", value: option.id, checked: true }
+                            :if !variants_option_types.ids.contains(option.id)
+                              %input.without-margin{ type: "checkbox", value: option.id }
+                          :if !product.set_variants
+                            %input.without-margin{ type: "checkbox", value: option.id }
+                           %span.value= option.value
+
+          .actions.step-1
+            %a.btn.back{ href: "/#/products/new/step_1" }= ' < ' + translate.back 
+            %input.orange{ type: "submit", value: ' > ' + translate.views.product.generate_variantes , style: "display:none;"}
+              
+        :if option_types.length > 0
+          %table.mashup-option-set
+            %thead
+              %tr
+                %th
+                  = translate.views.product.table.attributes
+                %th
+                  = translate.views.product.table.details
+            %tbody
+              :each option_type in option_types
+                %tr
+                  %td.attribute
+                    %a.edit{ data-id: option_type.id }= option_type.type
+                  %td.values
+                    %ul.unstyled.option-types
+                      :each option in option_type.values
+                        %li
+                          :if product.set_variants
+                            :if variants_option_types.ids.contains(option.id)
+                              %input.without-margin{ type: "checkbox", value: option.id, checked: true }
+                            :if !variants_option_types.ids.contains(option.id)
+                              %input.without-margin{ type: "checkbox", value: option.id }
+                          :if !product.set_variants
+                            %input.without-margin{ type: "checkbox", value: option.id }
+                           %span.value= option.value
+
+          .actions.step-1
+            %a.btn.back{ href: "/#/products/new/step_1" }= ' < ' + translate.back 
+            %input.orange{ type: "submit", value: ' > ' + translate.views.product.generate_variantes }
+
+  .span3
+    %nav.settings-menu
+      %h1= translate.views.product.new.h1
+      %ul
+        %li.without-hover
+          %a= translate.views.product.new.h1_step_1
+        %li.active.without-hover
+          %a= translate.views.product.new.h1_step_2
+        %li.without-hover
+          %a= translate.views.product.new.h1_step_3

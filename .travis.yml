@@ -1,0 +1,15 @@
+before_install:
+  - gem install bundler
+
+rvm:
+  - 1.9.3
+
+notifications:
+  recipients:
+    - dev@boosket.com
+    - rgaidot@gmail.com
+
+branches:
+  only:
+    - stage
+    - master

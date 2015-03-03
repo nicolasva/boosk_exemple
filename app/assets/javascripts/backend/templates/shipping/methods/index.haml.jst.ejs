@@ -1,0 +1,50 @@
+.row-fluid
+  .span9.row-fluid
+    %section.settings-content
+      %header
+        .row-fluid
+          .span5
+            %h1= translate.views.shipping_method.index.h2
+          :if shipping_methods.length > 0            
+            .span2.add
+              %button.btn.orange#new_method= ' + ' + translate.add
+            .span3
+              %select.action.span3{ name: "action" }
+                %option= translate.actions
+                :for key,value in actions
+                  %option{ value: key }= value['display']
+                  
+      :if shipping_methods.length == 0
+        .row-fluid.no-items
+          .span12.msg= translate.views.shipping_method.you_have_not_yet_shippings_methods
+          %button.btn.orange#new_method= ' + ' + translate.views.shipping_method.add_shipping_method
+      :if shipping_methods.length > 0                  
+        %table
+          %thead
+            %tr
+              %th
+                %input.select-all{ type: "checkbox" }
+              %th
+                = translate.activerecord.attributes.shipping_method.name
+              %th
+                = translate.activerecord.models.zone
+          %tbody
+            :each shipping_method in shipping_methods
+              %tr{ data-id: shipping_method.id }
+                %td{ data-id: shipping_method.id }
+                  %input.method-selected{ type: "checkbox" }
+                %td
+                  %a.edit{href: "#/settings/shipping_methods/" + shipping_method.id + "/edit"}= shipping_method.name
+                %td
+                  = shipping_method.zone.name
+                  
+    .span12.without-margin
+      .wizard-actions
+        :if wizard
+          %a.btn.back{ href: "/#/settings/tax_rates" }= ' < ' + translate.back
+          %a.btn.orange{ href: "/#/settings/customization" }= ' > ' + translate.next
+          %a.btn.orange{ href: "/#/settings/customization" }= ' > ' + translate.skip
+                        
+  .span3
+    %nav#store-settings-menu.settings-menu
+

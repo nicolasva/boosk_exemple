@@ -1,0 +1,239 @@
+.container
+  .dashboard.container-fluid
+    .row-fluid
+      .span9.without-margin
+        .row-fluid
+          .span5.without-margin
+            #shop-stats-boxes
+              %h2= translate.shop
+              .row-fluid
+                .box.span4
+                  .header
+                    %span= translate.m_views
+                  .content
+                    %span= (shop_views != undefined ? shop_views : "0")
+                .box.span4
+                  .header
+                    %span= translate.m_orders
+                  .content
+                    %span= (order_stats != undefined ? order_stats : "0")
+                .box.span4
+                  .header
+                    %span %
+                  .content
+                    :if order_stats != 0 && shop_views != 0
+                      %span= (shop_views != undefined && order_stats != undefined ? (parseFloat((order_stats/shop_views)*100).toFixed(2)) : "0") + "%"
+                    :if order_stats == 0 || shop_views == 0
+                      %span 0%                      
+
+            #top-orders.top-box
+              .header
+                .row-fluid
+                  .span12
+                    %h2= translate.views.dashboard.last_order
+              :if last_orders == null
+                .content.no-order
+                  .msg
+                    = translate.views.dashboard.no_orders
+              :if last_orders != null
+                :if _.isEmpty(last_orders)
+                  .content.no-order
+                    .msg
+                      = translate.views.dashboard.no_orders
+                :if !_.isEmpty(last_orders)
+                  .content
+                    .row-fluid
+                      %ul.unstyled
+                        :each order in last_orders
+                          %li
+                            .row-fluid
+                              .span12
+                                %span.name
+                                  %a{ href: "#/orders/" + order.ref}= "#" + order.ref.substr(0,8)
+                                %span
+                                  :
+                                %span.product_count
+                                  :if order.product_count == 1
+                                    = order.product_count + " " + translate.one_article.toLowerCase() + " - "
+                                  :if order.product_count > 1
+                                    = order.product_count + " " + translate.many_article.toLowerCase() + " - "
+                                %span.amount
+                                  = order.amount + " " + shop.devise
+                              .span12
+                                %span.date
+                                  = translate.at + " " + (new Date(order.created_at).getDate()) + "."  + (new Date(order.created_at).getMonth() + 1) + "." + (new Date(order.created_at).getFullYear()) + " " + translate.at_time + " " + (new Date(order.created_at).getHours()) + ":" + new Date(order.created_at).getMinutes()
+
+            #orders-status.top-box
+              .header
+                .row-fluid
+                  .span12
+                    %h2= translate.views.dashboard.orders_status
+              .content
+                %canvas#orders-stats{ width: "160px", height: "160px"}
+                %span.nb-orders{ style: "display:none;"}
+                .labels
+                  %ul.unstyled
+                    %li
+                      %span.color{ class: translate.views.order.status.in_progress.action.toLowerCase() }
+                      %span.txt= translate.views.order.status.in_progress.display.toLowerCase().capitalize()
+                    %li
+                      %span.color{ class: translate.views.order.status.shipped.action.toLowerCase() }
+                      %span.txt= translate.views.order.status.shipped.display.toLowerCase().capitalize()
+                    %li
+                      %span.color{ class: translate.views.order.status.delivered.action.toLowerCase() }
+                      %span.txt= translate.views.order.status.delivered.display.toLowerCase().capitalize()
+                    %li
+                      %span.color{ class: translate.views.order.status.closed.action.toLowerCase() }
+                      %span.txt= translate.views.order.status.closed.display.toLowerCase().capitalize()                      
+                    %li
+                      %span.color{ class: translate.views.order.status.canceled.action.toLowerCase() }
+                      %span.txt= translate.views.order.status.canceled.display.toLowerCase().capitalize()
+          .span7
+            #products-stats-boxes
+              %h2= translate.product
+              .row-fluid
+                .box.span3
+                  .header
+                    %span= translate.m_views
+                  .content
+                    %span= (general_products_stats['view'] != undefined ? general_products_stats['view'] : "0")
+                .box.span3
+                  .header
+                    %span= translate.m_want
+                  .content
+                    %span= (general_products_stats['want'] != undefined ? general_products_stats['want'] : "0")
+                .box.span3
+                  .header
+                    %span= translate.m_have
+                  .content
+                    %span= (general_products_stats['have'] != undefined ? general_products_stats['have'] : "0")
+                .box.span3
+                  .header
+                    %span= translate.m_sales
+                  .content
+                    %span= (general_products_stats['order'] != undefined ? general_products_stats['order'] : "0")
+
+            #top-products-by-action.top-box
+              :if forbidden == true
+                .disabled-top-products
+                %button.btn.orange= translate.views.plan.change_my_plan
+              .header
+                .row-fluid
+                  .span5
+                    %h2= translate.views.dashboard.top_product
+                  .span8.menu
+                    %span.selected{ data-action: 'like' }=translate.m_like
+                    %span{ data-action: 'tweet' }= translate.m_tweet
+                    %span{ data-action: 'want' }= translate.m_want
+                    %span{ data-action: 'have' }= translate.m_have
+                    %span{ data-action: 'pin' }= translate.m_pin
+                    %span{ data-action: 'order' }= translate.m_sales
+              .content
+
+            #buyers-actions.top-box
+              .header
+                .row-fluid
+                  .span12
+                    %h2= translate.views.dashboard.users_actions
+              .content
+                .row-fluid
+                  .span12
+                    .row-fluid.top
+                      .span6.first
+                        .row-fluid
+                          .span12
+                            .row-fluid
+                              .picto.like.span6
+                              .span9
+                                .count.without-margin= (general_products_stats['like'] != undefined ? general_products_stats['like'] : "0")
+                                .txt= translate.views.dashboard.people_who_like_one_of_your_product                                                          
+                      .span6.without-margin
+                        .row-fluid
+                          .span12
+                            .row-fluid
+                              .picto.tweet.span6
+                              .span9
+                                .count.without-margin= (general_products_stats['tweet'] != undefined ? general_products_stats['tweet'] : "0")
+                                .txt= translate.views.dashboard.people_who_tweet_one_of_your_product                                                                                          
+                  .span12.without-margin
+                    .row-fluid
+                      .span6.first
+                        .row-fluid
+                          .span12
+                            .row-fluid
+                              .picto.pin.span6
+                              .span9
+                                .count.without-margin= (general_products_stats['pin'] != undefined ? general_products_stats['pin'] : "0")
+                                .txt= translate.views.dashboard.people_who_pin_one_of_your_product                                
+                      .span6.without-margin
+                        .row-fluid
+                          .span12
+                            .row-fluid
+                              .picto.want.span6
+                              .span9
+                                .count.without-margin= (general_products_stats['want'] != undefined ? general_products_stats['want'] : "0")
+                                .txt= translate.views.dashboard.people_who_want_one_of_your_product
+                  .span12.without-margin.bottom
+                    .row-fluid
+                      .span6.first
+                        .row-fluid
+                          .span12
+                            .row-fluid
+                              .picto.have.span6
+                              .span9
+                                .count.without-margin= (general_products_stats['have'] != undefined ? general_products_stats['have'] : "0")
+                                .txt= translate.views.dashboard.people_who_have_one_of_your_product
+
+      .span3
+        #sidebar
+          #shop-preview.btn.green{ data-trigger: 'hover', data-content: translate.views.shop_setting.preview_info, data-placement: 'bottom'}= translate.preview
+          #infos
+            .row-fluid
+              .span12
+                .row-fluid
+                  .nb-products.span6
+                    %span.picto
+                    %span.nb= (nb_products != undefined ? nb_products : "0")
+                  .gain.span6
+                    %span.devise-symbol
+                    %span.nb= (shop_earning != undefined ? shop_earning : "0")
+          .sep
+          #period
+            .row-fluid
+              %h2.span4= translate.views.dashboard.choose_period
+              %select.range_action.span8{ name: "range_action" }
+                :for key,value in actions
+                  :if period == value['action']
+                    %option{ value: value['action'], selected: "selected" }= value['display']
+                  :if period != value['action']
+                    %option{ value: value['action'] }= value['display']
+            .row-fluid.date
+              %input.datepicker.from.span4{ placeholder: translate.from.capitalize(), value: (from != null ? from : '') }
+              %input.datepicker.to.span4{ placeholder: translate.to.capitalize(), value: (to != null ? to : '') }
+              #dashboard-by-range.span1.btn.orange= translate.ok 
+          .sep
+          #shop_functionnality.clearfix
+            %h2= translate.you_want + " :"
+            .row-fluid.span12
+              :if shop.has_active_payement
+                :if !shop_functionnality.taxes
+                  .span12.without-margin.func
+                    %span.stripe \>
+                    %a{ href: "/#/settings/tax_rates" }= translate.views.dashboard.setting_taxes
+                :if !shop_functionnality.shipping_methods
+                  .span12.without-margin.func
+                    %span.stripe \>
+                    %a{ href: "/#/settings/shipping_methods" }= translate.views.dashboard.setting_shipping_methods
+              :if !shop_functionnality.taxons
+                .span12.without-margin.func
+                  %span.stripe \>
+                  %a{ href: "/#/settings/menu" }= translate.views.dashboard.setting_taxons
+              :if !shop_functionnality.products
+                .span12.without-margin.func
+                  %span.stripe \>
+                  %a{ href: "/#/products/new/step_1" }= translate.views.dashboard.setting_products
+              :if shop.has_active_payement
+                :if !shop_functionnality.paypal_account
+                  .span12.without-margin.func
+                    %span.stripe \>
+                    %a{ href: "/#/settings/payment" }= translate.views.dashboard.setting_paypal_account

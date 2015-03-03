@@ -1,0 +1,38 @@
+= render :partial=>"/common/header_mailer"
+%body
+  #page
+    #header
+      = image_tag attachments['boosket-shop.png'].url
+    #title
+      %h1 
+        = t("mailer.users.finalize_subscription.h1")
+    #content
+      %p.without-margin
+        %strong
+          = t("mailer.common.content_without_margin", :user_firstname => @user.firstname, :user_lastname => @user.lastname)
+
+      %p
+        = t("mailer.users.finalize_subscription.content_p_subscription_boosket")
+      %p
+        = t("mailer.users.finalize_subscription.content_p_multichannel_strategy")
+      %ul.without-margin
+        %li.without-margin
+          = t("mailer.users.finalize_subscription.ul.li_all_our_devises").html_safe()
+        %li.without-margin
+          = t("mailer.users.finalize_subscription.ul.li_import_catalog").html_safe()
+        %li.without-margin
+          = t("mailer.users.finalize_subscription.ul.li_publish_store").html_safe()
+      %h2.without-margin
+        = t("mailer.common.h2.without_margin_other_questions")
+      %p.without-margin
+        = t("mailer.common.p_check_our_QA").html_safe()
+
+    #sign
+      %p.without-margin
+        = t("mailer.common.sign.p_we_wish_great_success")
+      %p.without-margin
+        = t("mailer.common.sign.p_without_margin_boosket_team")
+
+  #footer
+    %p.noreply
+      = t("mailer.common.footer.p_noreply")

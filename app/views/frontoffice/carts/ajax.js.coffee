@@ -1,0 +1,1 @@
+$('#basket_shop').html("<%= escape_javascript( render(partial: '/frontoffice/carts/index', :locals => {cart: @cart} ) ) %>");

@@ -1,0 +1,59 @@
+@mixin background_url_sprite 
+  :background-color transparent
+  :background url("/assets/sprite_facebook.png")
+  :background-attachment scroll
+  :background-repeat no-repeat
+
+ul.dropdown-menu
+  li
+    :list-style-type none
+    ul
+      li
+        :height 90px
+        div.product_variant_picture_url
+          :float left
+        div.title_quantity_delete
+          :background-color blue
+          :width 250px
+          :margin-left 60px
+          div.title_quantity
+            :float left
+            span.add_quantity
+              :width 10px
+              :height 10px
+              :padding 17.7px 15px 20px
+              @include background_url_sprite
+              :background-position -356px 0px
+            span:hover.add_quantity
+              :cursor pointer
+              :padding 17.7px 15px 20px
+              :background-position -458px 0px
+            span.less_quantity 
+              :width 10px
+              :height 10px
+              :padding 17.7px 15px 20px
+              @include background_url_sprite
+              :background-position -356px -48px
+            span:hover.less_quantity
+              :cursor pointer 
+              :padding 17.7px 15px 20px
+              :background-position -458px -48px
+          div.delete_total_basket
+            :margin-right 30px
+            :float right
+            a.link_destroy_basket_shop
+              :text-decoration none
+            a.link_destroy_basket_shop:hover
+              :text-decoration underline
+            div.price_product
+              div.price_product
+                :padding-left 15px
+    div#delete_all_basket
+      :float left
+      :width 120px
+    div#all_total_basket
+      :background-color yellow
+      :margin-left 130px
+      :width 130px 
+      div#total_basket
+        :float right

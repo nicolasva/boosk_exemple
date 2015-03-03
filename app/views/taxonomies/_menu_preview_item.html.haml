@@ -1,0 +1,5 @@
+%li
+  = link_to item.name, "#"
+  - unless item.leaf?
+    %ul.children-menu
+      = render partial: "taxonomies/menu_preview_item", collection: item.children, as: :item

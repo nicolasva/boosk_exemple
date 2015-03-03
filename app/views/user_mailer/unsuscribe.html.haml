@@ -1,0 +1,18 @@
+= render :partial=>"/common/header_mailer"
+%body
+  #page
+    #header
+      = image_tag attachments['boosket-shop.png'].url
+    #title
+      %h1 
+        = t("mailer.users.unsuscribe.h1")
+    #content
+      %p.without-margin
+        %strong
+          = t("mailer.common.content_without_margin", :user_firstname => @user.firstname, :user_lastname => @user.lastname)
+
+      %p= t("mailer.users.unsuscribe.body").html_safe()
+
+  #footer
+    %p.noreply
+      = t("mailer.common.footer.p_noreply")

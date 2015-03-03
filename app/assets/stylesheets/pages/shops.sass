@@ -1,0 +1,39 @@
+@import mixins
+
+#status_shop
+  background-color: #F1F4F9
+  height: 23px
+  border: solid #A6AEBB 1px
+  padding: 6px
+  @include radius(5,5,5,5)
+  :margin-bottom 10px
+  h4
+    float: left
+    margin-left: 20px
+    margin-top: 3px
+
+  .store-closed
+    background: url("/assets/picto_sprite.png") no-repeat
+    background-position: 0 -357px
+    width: 110px
+    height: 23px    
+    float: right
+    cursor: pointer
+
+  .store-open
+    background: url("/assets/picto_sprite.png") no-repeat
+    background-position: 0 -385px
+    width: 110px
+    height: 23px    
+    float: right
+    cursor: pointer
+
+#cart
+  :float right
+  .item
+    :display block
+    :height 30px
+    :border 1px solid grey
+    .action
+      :float right
+      :cursor pointer

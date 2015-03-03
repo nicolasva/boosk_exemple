@@ -1,0 +1,17 @@
+%p#notice= notice
+
+%h1 Show Shipping Method
+
+%dl
+  %dt Name
+  %dd= @shipping_method.name
+  %dt Zone
+  %dd= @shipping_method.zone.name
+  %dt Shipping category
+  %dd= @shipping_method.shipping_category.name if @shipping_method.shipping_category
+  %dd Products that must match
+  %dd
+    = "None" if shipping_method.match_none?
+    = "All" if shipping_method.match_all?
+    = "One" if shipping_method.match_one?
+= link_to 'Edit shipping method', edit_shop_shipping_method_path(@shipping_method.shop, @shipping_method)

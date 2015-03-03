@@ -1,0 +1,13 @@
+%form
+  %p= translate.views.promotion.select_products_to_be_discounted
+  %table
+    %thead
+      %th
+      %th= translate.activerecord.attributes.product.name
+      %th= translate.activerecord.attributes.product_variant.price
+    %tbody
+  #paginate.row-fluid
+
+  .actions
+    %a.btn.orange.back{href: "#"}= translate.back.capitalize()
+    %input.btn.orange{type: "submit", value: translate.create.capitalize()}

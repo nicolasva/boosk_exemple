@@ -1,0 +1,7 @@
+/*
+ *= require_self
+ *= require_tree ../vendors
+ *= require ../pages/form
+ *= require_tree ./pages_common 
+ *= require_tree ../common
+*/

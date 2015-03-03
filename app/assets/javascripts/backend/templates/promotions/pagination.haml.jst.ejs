@@ -1,0 +1,17 @@
+.span2
+  :if collection.page > 1
+    %a.prev{href: "#"}= translate.views.paginate.previous
+.span8.range
+  - for(p=1;p<=collection.pageInfo().pages;p++){
+  -   if (collection.page == p) {
+  %span.num.selected= p
+  -   } else {
+  %a.num{href:"#"}= p
+  -   }
+  -   if (p != collection.pageInfo().pages) {
+  %span.sep &#124;
+  -   }
+  - }
+.span2
+  :if collection.page < collection.pageInfo().pages
+    %a.next{href: "#"}= translate.views.paginate.next

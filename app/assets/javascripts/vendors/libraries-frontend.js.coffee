@@ -1,0 +1,13 @@
+#= require ./underscore-min
+#= require ./backbone-min
+#= require ./haml
+#= require ./form
+#= require ./bootstrap.min
+#= require ./bootstrap-modal
+#= require ./bootstrap-dropdown
+#= require ./chosen.jquery.min
+#= require ./placeholder
+#= require ./jquery-ui
+#= require ./select2.min
+#= require ./jquery.placeholder.min
+#= require ./latinise_compact

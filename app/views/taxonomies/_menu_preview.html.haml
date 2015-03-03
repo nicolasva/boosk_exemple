@@ -1,0 +1,18 @@
+%section.clearfix
+  #basket_shop
+    .dropdown
+      %a.dropdown-toggle{data: {toggle: "dropdown"}}
+        %span (0)
+      .dropdown-menu
+        %p Votre panier est vide
+
+  #search_form
+    %form
+      %input{type: "text", placeholder: "Search"}
+      %input.orange{type: "submit", value: "OK"}
+
+  #menu
+    %ul.taxonomies_list
+      %li
+        %a{href: "#"} Home
+      = render partial: "taxonomies/menu_preview_item", collection: taxonomy.root.children, as: :item

@@ -1,0 +1,21 @@
+#store-settings.container-fluid
+  .row-fluid
+    .span9
+      %section.settings-content
+        %header
+          %h1 Taxes
+          = link_to "New Tax", new_shop_tax_rate_path(@shop), :class => "btn orange", :id => "new_tax_rate"
+        - if @tax_rates.empty?
+          %p You haven't create any taxe yet !
+        - else
+          %table
+            %thead
+              %tr
+                %th label
+                %th rate
+                %th zones
+                %th Actions
+            %tbody
+              = render @tax_rates
+    .span3
+      = render 'shared/store_settings_menu', :shop => @shop, :current_item => :tax_rates

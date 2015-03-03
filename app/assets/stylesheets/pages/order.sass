@@ -1,0 +1,33 @@
+@import mixins
+
+#order
+  table
+    :margin-bottom 10px
+    tfoot
+      tr
+        &:first-child
+          th,td
+            :padding-top 10px
+      td
+        :text-align center
+  h3
+    small
+      :display block
+  ul
+    list-style-type: none
+    li
+      .mail
+        :color $orange
+      div.title_user_address
+        font-weight: bold
+  #total
+    :margin-top 10px
+    .value
+      :margin 15px 10px 0 0
+      :float right
+      :font-size 1.2em
+  .action
+    .back
+      :margin-top 10px
+      :float right
+        

@@ -1,0 +1,193 @@
+@import "pages/mixins"
+@mixin background_url_sprite 
+  :background url("/assets/sprite_facebook.png")
+  :background-attachment scroll
+  :background-repeat no-repeat
+
+@mixin button_add_less_cart
+  :width 13px
+  :height 12px
+  :display inline-block
+  @include background_url_sprite
+
+$height_menu: 30px
+
+.menu-container, #menu-preview-container
+  :background-color #2f2f2f
+  :font-size 0.9em
+  :height $height_menu
+  #basket_shop
+    :float right
+    .btn-group
+      .dropdown-menu
+        li
+          table
+            :margin 0px
+            :margin-top 8px
+            thead
+              tr
+                :background-color #c1c1c1
+                :color white
+            tbody
+              tr
+                :border-bottom 2px dashed #c1c1c1
+                td.picture_cart_quantity
+                  :padding-left 15px
+                td
+                  :text-align center
+                  vertical-align: text-top
+                  div.picture
+                    :float left
+                  div.cart_title_quantity
+                    :text-align left
+                    div.title
+                      :font-weight bold
+        :color #333
+        :top 30px
+        :left -403px
+        :border-width 2px
+        :border-color #333
+        :-webkit-border-radius 0px
+        :-moz-border-radius 0px
+        :border-radius 0px
+        :margin-top 0
+        :border-top 0
+        :z-index 1000
+        .img_cart
+          :height 65px
+          :width 65px
+          :border 1px solid #CCC
+        .cart_less_disabled
+          @include button_add_less_cart
+          :background-position -369px -70px
+        .cart_add_disabled
+          @include button_add_less_cart
+          :background-position -369px -21px
+        .cart_less_enabled
+          @include button_add_less_cart
+          :cursor pointer
+          :background-position -470px -70px
+        .cart_add_enabled
+          @include button_add_less_cart
+          :cursor pointer
+          :background-position -470px -21px
+        .cart_remove
+          :width 14px
+          :height 17px
+          :display inline-block
+          :cursor pointer
+          @include background_url_sprite
+          :background-position -518px -67px
+        #clean_cart
+          :color #DA7C0C
+          :cursor pointer
+          :margin-left 15px
+        .total_price
+          :float right
+          :font-weight bold
+          :font-size 14pt
+          :margin-right 15px
+        .actions
+          :margin-top 20px
+          :float right
+          ul
+            :background-color black
+            :list-style-type none
+            li
+              :margin-right 20px
+              :float left
+              :height 26px
+              a
+                :color white
+              a.btn.btn-success:hover
+                :background-position 0px
+                :transition none
+      a.basket_button.dropdown-toggle
+        :color white
+        :font-weight 600
+        :display block
+        :width 45px
+        :height 43px
+        :top -3px
+        @include background_url_sprite
+        :background-position 0px -4px
+        :-moz-box-shadow inset 0px 0 0 rgba(255, 255, 255, 0.125)!important
+        :-webkit-box-shadow inset 0px 0 0 rgba(255, 255, 255, 0.125)!important
+        :box-shadow inset 0px 0 0 rgba(255, 255, 255, 0.125)!important
+        :z-index 1001
+        :position relative
+        span
+          :padding-left 29px
+          :line-height $height_menu
+      div.basket_empty
+        :margin-right 15px
+        :color white
+        :font-weight 600
+        :display block
+        :width 45px
+        :height 43px
+        :top -3px
+        @include background_url_sprite
+        :background-position 0px -4px
+        :-moz-box-shadow inset 0px 0 0 rgba(255, 255, 255, 0.125)!important
+        :-webkit-box-shadow inset 0px 0 0 rgba(255, 255, 255, 0.125)!important
+        :box-shadow inset 0px 0 0 rgba(255, 255, 255, 0.125)!important
+        :z-index 1001
+        :position relative
+        span
+          :padding-left 36px
+          :line-height $height_menu
+  #search_form
+    :float right
+    :margin 3px 0
+    input
+      :margin-bottom 0
+      :font-size 1em
+      :height auto !important
+      :line-height 1
+    input[type=text]
+      :width 180px
+      :margin-right 5px
+  #menu
+    :height $height_menu
+    :overflow hidden
+    a
+      :color #fff
+      :text-decoration none
+    ul
+      :list-style-type none
+      :margin 0
+    .taxonomies_list
+      > li
+        :height $height_menu
+        :float left
+        :position relative
+        > a
+          :padding 0.5em 1em
+          :display block
+        > .children-menu
+          :display none
+          :margin 0px
+          :padding 0
+          :width 200px
+          :position absolute
+          :padding 0.25em
+          :background-color #fff
+          :border 1px solid silver
+          :z-index 100
+          ul
+            :padding-left 1em
+          li
+            a
+              :color #333
+              :display block
+            &:hover
+              :background-color #fff
+              > a
+                :color $orange
+        &:hover
+          :background-color #fff
+          > a
+            :color $orange
+          > .children-menu
+            :display block

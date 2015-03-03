@@ -1,0 +1,3 @@
+= form_for :product, :url => {:controller => "shops", :action => "index"} do |f|
+  = f.text_field(:name, :class => "span4", :placeholder=>"Search")
+  = f.submit("OK", :class => "orange")

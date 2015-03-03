@@ -1,0 +1,104 @@
+#order
+  .container
+    .container-fluid
+      .row-fluid
+        .span12
+          .row-fluid
+            .span8
+              .frame
+                .container-fluid.without-padding
+                  .row-fluid
+                    .span7
+                      .row-fluid
+                        .span12
+                          %h3
+                            = translate.views.order.show.h2.details
+                            %small= translate.views.order.show.h2.ref.replace(/%{reference}/, order.number)
+                    .span5
+                      .row-fluid
+                        .span12
+                          .row-fluid
+                            %select.action.span11{ name: "action" }
+                              :for key,value in actions
+                                :if value['action'] == order.workflow_state
+                                  %option{ value: value['action'], selected: "selected" }= value['display'].toLowerCase().capitalize()
+                                :if value['action'] != order.workflow_state
+                                  %option{ value: value['action'] }= value['display'].toLowerCase().capitalize()                                                                    
+                  .order-details
+                    %table
+                      %thead
+                        %tr
+                          %th
+                            = translate.activerecord.attributes.product.name
+                          %th
+                            = translate.activerecord.attributes.product_variant.sku
+                          %th
+                            = translate.activerecord.attributes.product_variant.quantity
+                          %th
+                            = translate.views.order.pu_ht
+                          %th
+                            = translate.views.order.total_ht
+                      %tbody
+                        :each line_item in order.line_items
+                          %tr
+                            %td
+                              %a{href: "/#/products/" + line_item.uuid + "/edit" }= line_item.name
+                            %td
+                              = line_item.sku
+                            %td
+                              = line_item.quantity
+                            %td
+                              = line_item.price_ht + " " + App.getCookie('shop_devise')
+                            %td
+                              = (line_item.price_ht * line_item.quantity) + " " + App.getCookie('shop_devise')
+                      %tfoot
+                        %tr
+                          %td
+                          %td
+                          %td
+                          %th= translate.views.order.total_ht
+                          %td= total_ht.toFixed(2) + " " + App.getCookie('shop_devise')
+                        %tr
+                          %td
+                          %td
+                          %td
+                          %th= translate.activerecord.models.tax_rate
+                          %td= tax.toFixed(2) + " " + App.getCookie('shop_devise')
+                        %tr
+                          %td
+                          %td
+                          %td
+                          %th= translate.views.order.shipping
+                          %td= order.shipment + " " + App.getCookie('shop_devise')
+                        %tr
+                          %td
+                          %td
+                          %td
+                          %th= translate.views.order.total_ttc
+                          %td= order.total + " " + App.getCookie('shop_devise')
+                          
+              .row-fluid
+                .span12
+                  .action
+                    %a.btn.back{ href: "#/orders"}= "< " + translate.back
+                      
+            .span4
+              .frame
+                .container-fluid.without-padding
+                  %h3
+                    = translate.views.order.show.shipping_address
+                  .address_user
+                    %ul
+                      %li= contact.lastname + " " + contact.firstname
+                      %li= address.addr
+                      %li= address.zip_code
+                      %li= address.city
+                      %li= address.country
+                      :if address.state != null
+                        %li= address.state
+                      :if contact.phone != null
+                        %li= contact.phone
+                      %br
+                      %li
+                        %a.mail{href: "mailto:" + email, target: "_blank" }= email
+                      

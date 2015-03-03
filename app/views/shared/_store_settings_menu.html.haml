@@ -1,0 +1,12 @@
+- current_item ||= :general
+%nav#store-settings-menu.settings-menu
+  %h1= t(:store_settings, scope: [:views])
+  %ul
+    %li{:class => current_item == :general ? "active": ""}= link_to "General", edit_shop_path(@shop)
+    %li{:class => current_item == :customization ? "active": ""}= link_to t(:h2, scope: [:views, :customization, :index]), edit_shop_customization_path(@shop)
+    %li{:class => current_item == :menu ? "active": ""}
+      %a{href: "#/settings/menu"} Menu
+    %li{:class => current_item == :option_types ? "active": ""}= link_to t(:h2, scope: [:views, :option_type, :index]), shop_option_types_path(shop)
+    %li{:class => current_item == :shipping ? "active": ""}= link_to t(:h2, scope: [:views, :shipping_method, :index]), shop_shipping_methods_path(shop)
+    %li{:class => current_item == :tax_rates ? "active": ""}= link_to t(:h2, scope: [:views, :tax_rate, :index]), shop_tax_rates_path(shop)
+    %li{:class => current_item == :zones ? "active": ""}= link_to t(:h2, scope: [:views, :zone, :index]), shop_zones_path(shop)

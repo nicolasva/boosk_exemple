@@ -1,0 +1,8 @@
+:if !regions.length == 0
+  .control-group
+    %label{ for: "address_state" }= translate.activerecord.attributes.address.state
+      %span.need *
+    .controls
+      %select.span2.necessary{ id: "address_states", name: "contact[addresses_attributes][][state]" }
+        :each region in regions
+          %option{value: region.code}= region.name

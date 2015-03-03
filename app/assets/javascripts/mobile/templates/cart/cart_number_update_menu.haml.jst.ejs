@@ -1,0 +1,9 @@
+:if product_number > 0
+  %a.checkout_shop{href: '#/carts/edit'}
+    %span.basket
+      = product_number
+
+:if product_number == 0
+  %div.basket_empty
+    %span
+      = 0

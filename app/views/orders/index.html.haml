@@ -1,0 +1,33 @@
+#products
+  .container
+    .container-fluid
+      .row-fluid
+        .span9.without-margin
+          .frame
+            .container-fluid.without-padding
+              .row-fluid
+                .span8
+                  .row-fluid
+                    .span6
+                      %h3 Orders
+              %table
+                %thead
+                  %tr
+                    %th Date
+                    %th Paid
+                    %th Total
+                    %th Name
+                    / %th Country
+                    %th City
+                    %th Show
+                %tbody
+                  - @orders.each do |order| 
+                    %tr
+                      %td= time_ago_in_words(order.created_at, "YYYY-MM-DDTh:mm:ssZ")
+                      %td= order.paid
+                      %td= order.total
+                      - if order.address
+                        %td= order.address.firstname + " " + order.address.lastname
+                        / %td= order.address.country.name
+                        %td= order.address.city
+                        %td= link_to "Show", shop_order_path(order.shop_id, order)

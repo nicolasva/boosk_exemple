@@ -1,0 +1,14 @@
+:if is_master == true
+  .primary
+    %span= translate.views.product.main_image
+    .picture.f{ data-cached-name: cached_path, data-primary: "y" }
+      .remove-master{ style: "display:none;" }
+      .overlay{ style: "display:none;" }
+      %img{ src: url }
+      %input{ type: "hidden", name: "pictures[]", value: cached_path }
+
+:if is_master == false
+  .picture{ data-cached-name: cached_path, data-primary: "n"  }
+    .remove 
+    %img{ src: url }
+    %input{ type: "hidden", name: "pictures[]", value: cached_path }

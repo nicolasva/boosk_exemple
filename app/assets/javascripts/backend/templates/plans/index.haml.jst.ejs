@@ -1,0 +1,152 @@
+#prices_and_services
+  .container
+    .row-fluid
+      .container-fluid
+        .row-fluid
+          #top-box.span8
+            %h1= translate.views.plan.is_free
+            %p= translate.views.plan.start_baseline
+        .row-fluid
+          #options.span4
+            .row-fluid
+              %ul.unstyled
+                %li
+                  %span= translate.views.plan.admins
+                  %span.help{ data-content: translate.views.plan.help.admins}= " [?]"
+                  .sep
+                %li
+                  %span= translate.views.plan.f_shops
+                  %span.help{ data-content: translate.views.plan.help.f_shops}= " [?]"                  
+                  .sep
+                %li
+                  %span= translate.views.plan.m_shops
+                  %span.help{ data-content: translate.views.plan.help.m_shops}= " [?]"                  
+                  .sep
+                %li
+                  %span= translate.views.plan.social_sharing
+                  %span.help{ data-content: translate.views.plan.help.social_sharing}= " [?]"                  
+                  .sep
+                %li
+                  %span= translate.views.plan.feature_product
+                  %span.help{ data-content: translate.views.plan.help.feature_product}= " [?]"                  
+                  .sep
+                %li
+                  %span= translate.views.plan.illimited_products
+                  %span.help{ data-content: translate.views.plan.help.illimited_products}= " [?]"                  
+                  .sep
+                %li
+                  %span= translate.views.plan.google_shopping
+                  %span.help{ data-content: translate.views.plan.help.google_shopping}= " [?]"                  
+                  .sep
+                %li
+                  %span= translate.views.plan.import_product_xml_csv
+                  %span.help{ data-content: translate.views.plan.help.import_product_xml_csv}= " [?]"                  
+                  .sep
+                %li
+                  %span= translate.views.plan.customization_and_templates
+                  %span.help{ data-content: translate.views.plan.help.customization_and_templates}= " [?]"                  
+                  .sep
+                %li
+                  %span= translate.views.plan.social_and_sales_analytics
+                  %span.help{ data-content: translate.views.plan.help.social_and_sales_analytics}= " [?]"                  
+                  .sep
+                %li
+                  %span= translate.views.plan.full_api_customization
+                  %span.help{ data-content: translate.views.plan.help.full_api_customization}= " [?]"                  
+                  .sep
+                %li
+                  %span= translate.views.plan.auto_update_from_xml_and_csv
+                  %span.help{ data-content: translate.views.plan.help.auto_update_from_xml_and_csv}= " [?]"                                    
+                  .sep
+                %li
+                  %span= translate.views.plan.support
+                  %span.help{ data-content: translate.views.plan.help.support}= " [?]"                                                      
+                  .sep
+
+          #plans.span8.without-margin
+            .row-fluid.span12.without-margin
+              :each plan in plans
+                .plan.span3.without-margin{ class: plan.name }
+                  .row-fluid
+                    .header.span12
+                      .row-fluid
+                        :if plan.name == "premium"
+                          .most-popular
+                        %h2.name= plan.name.toUpperCase()
+                        .span12.price-by-month
+                          .row-fluid
+                            :if plan.name != "start"
+                              %span.price= parseInt(plan.monthly_price) + "€"
+                              %span.by-month= "/" +  translate.month
+                            :if plan.name == "start"
+                              %span.price= translate.free
+                        :if plan.name != "start"
+                          .span12.price-by-year
+                            = translate.or + " " + parseInt(plan.yearly_price) + "€/" + translate.year
+                        :if user_plan == undefined
+                          %a.btn.choose{ href: "/subscription/new", data-plan: plan.id }= translate.go
+                        :if user_plan != undefined
+                          :if plan.monthly_price > parseInt(user_plan.monthly_price) 
+                            %a.btn.choose{ href: "/subscription/edit", data-plan: plan.id }= translate.go
+
+                    .options.span12.without-margin
+                      %ul.unstyled
+                        %li
+                          :if plan.name == "gold"
+                            = translate.unlimited
+                          :if plan.name != "gold"
+                            = parseInt(plan.number_admin)
+                        %li{ class: (plan.name != "premium" ? "blue-background" : "orange-background") }
+                          = parseInt(plan.number_f_shop)
+                        %li
+                          = parseInt(plan.number_m_shop)
+                        %li{ class: (plan.name != "premium" ? "blue-background" : "orange-background") }
+                          %span{ class: (plan.has_social == true ? "contain" : 'not-contain') }
+                        %li
+                          %span{ class: (plan.has_deals == true ? "contain" : 'not-contain') }
+                        %li{ class: (plan.name != "premium" ? "blue-background" : "orange-background") }
+                          %span.contain
+                        %li
+                          %span{ class: (plan.has_google_shopping == true ? "contain" : 'not-contain') }
+                        %li{ class: (plan.name != "premium" ? "blue-background" : "orange-background") }
+                          %span{ class: (plan.has_data_import == true ? "contain" : 'not-contain') }
+                        %li
+                          %span{ class: (plan.has_customization == true ? "contain" : 'not-contain') }
+                        %li{ class: (plan.name != "premium" ? "blue-background" : "orange-background") }
+                          %span{ class: (plan.has_analytics == true ? "contain" : 'not-contain') }
+                        %li
+                          %span{ class: (plan.has_api_access == true ? "contain" : 'not-contain') }
+                        %li{ class: (plan.name != "premium" ? "blue-background" : "orange-background") }
+                          :if plan.name == "start"
+                            %span.not-contain
+                          :if plan.name != "start" && plan.has_auto_data_import == 24
+                            = translate.daily
+                          :if plan.name != "start" && plan.has_auto_data_import != 24
+                            = translate.custom
+                        %li
+                          :if plan.name == "start"
+                            Tél. & Mail 48h
+                          :if plan.name == "premium"
+                            Tél. & Mail 48h
+                          :if plan.name == "agency"
+                            Tél. & Mail 24h
+                          :if plan.name == "gold"
+                            Tél. & Mail 12h
+
+                    .footer.span12.without-margin
+                      .row-fluid
+                        :if user_plan == undefined
+                          %a.btn.choose{ href: "/subscription/new", data-plan: plan.id }= translate.go
+                        :if user_plan != undefined
+                          :if plan.monthly_price > parseInt(user_plan.monthly_price) 
+                            %a.btn.choose{ href: "/subscription/edit", data-plan: plan.id }= translate.go
+
+          #info.span12
+            .row-fluid
+              .span6
+                %h3= translate.views.plan.h3_free_trial
+                %p= translate.views.plan.p_free_trial
+              .span6
+                %h3= translate.views.plan.h3_payment_methods
+                %p= translate.views.plan.p_payment_methods
+                %img.default{ src: "/assets/cards.png" }

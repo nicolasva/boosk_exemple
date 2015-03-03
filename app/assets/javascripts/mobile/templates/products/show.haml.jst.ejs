@@ -1,0 +1,64 @@
+%div.container
+  .product.row-fluid.well-small
+    .all_product_variant_pictures
+    .detail_product
+      .row-fluid.well-small
+
+    %form#form_add_to_cart 
+      .title_product_add_to_cart.row-fluid
+        .title_product_price.span6
+          = product.name 
+        .price_all.span6
+          = translate.views.product.table.price 
+          %br
+          %span.price
+            = App.FixedPrice(product_variant_master.price_ttc) + " " + App.getCookie('shop_devise') 
+      .form_select_option.row-fluid
+        .action_form
+          %input{type: "hidden", id: "cart_item_product_id", name: "cart_item[product_id]", value: product_variant_master.product_id}
+          %input{type: "hidden", id: "cart_item_product_variant_id", name: "cart_item[product_variant_id]", value: product_variant_master.id}
+
+          %div#option-types
+            :each option_type in option_types 
+              :if _.include(variant_option_types.keys, option_type.type)
+                %label{ for: "cart_item_option_type" }
+                  = translate.views.frontend.products.choose_taxon + " " + option_type.type
+                %div.styled-select
+                  %select.span12.option_types_select{id: "cart_item_option_type", name: "cart_item[option_type]["+option_type.type+"]" }
+                    %option{ value: option_type.id }
+                      = option_type.type
+                    :each option in option_type.values
+                      :if _.include(variant_option_types.ids, option.id)
+                        %option{ value: option.id }
+                          = option.value
+          %p
+            :if shop.has_active_payement
+              %label{for: "cart_item_quantity"} 
+                = translate.views.frontend.products.select_quantity
+              .styled-select.span12  
+                :if quantity_product[0] == 0
+                  %select.span12{name: "cart_item[quantity]", id: "cart_item_quantity", disabled: "disabled"} 
+                    :each quantity in quantity_product
+                      %option{value: quantity}
+                        = quantity
+                :if quantity_product[0] != 0
+                  %select.span12{name: "cart_item[quantity]", id: "cart_item_quantity"} 
+                    :each quantity in quantity_product
+                      %option{value: quantity}
+                        = quantity
+              %p
+                :if quantity_product[0] == 0
+                  %input.btn.btn-warning.span12{type: "submit", value: translate.views.frontend.products.add_to_cart, disabled: "disabled", id: "submit_cart"}
+                :if quantity_product[0] != 0
+                  :if _.isEmpty(variant_option_types.keys) 
+                    %input.add_to_cart.orange.span12{type: "submit", value: translate.views.frontend.products.add_to_cart, id: "submit_cart"}
+                  :if !_.isEmpty(variant_option_types.keys) 
+                    %input.btn.btn-warning.span12{type: "submit", value: translate.views.frontend.products.add_to_cart, disabled: "disabled", id: "submit_cart"}
+            :if !shop.has_active_payementi && !_.isEmpty(product.permalink) 
+              %a.btn.orange{href: product.permalink}= translate.views.frontend.products.see_on_website
+
+    .description.row-fluid
+      %h2
+        = translate.views.product.new.h1_step_1
+      .div_content
+        = product.description

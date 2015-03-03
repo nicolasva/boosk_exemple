@@ -1,0 +1,144 @@
+.container-fluid.frame
+  %h2.step1= product.name.upcase +  " // " + t(:h2_general, :scope => [:views, :product, :edit])
+  .row-fluid
+    .span5
+
+      #zone-pictures.row-fluid
+        - if product.variant_master.pictures.empty?
+          .master.span11
+            #update-master-picture
+              %a.btn.orange{ style: "display:none;" }= ' > ' + t(:update_picture, :scope => [:views, :picture])
+        - product.variant_master.pictures.each do |picture|
+          - if picture.is_master?
+            .master.span11
+              - if picture.picture
+                = image_tag picture.picture.url
+              #update-master-picture
+                %a.btn.orange{ style: "display:none;" }= ' > ' + t(:update_picture, :scope => [:views, :picture])
+        .row-fluid.variants-pictures.span11
+          - product.variant_master.pictures.each do |picture|                                
+            - unless picture.is_master?
+              .variant.span3
+                - if picture.picture
+                  = image_tag picture.picture.url                      
+      .row-fluid.field-size
+        .span12
+          %label{ for: "sku" }= t :size
+          .row-fluid
+            %input.span3{ id: "width", name: "product_variant[width]", placeholder: ProductVariant.human_attribute_name(:width), value:  product.variant_master.width }
+            %input.span3{ id: "height", name: "product_variant[height]", placeholder: ProductVariant.human_attribute_name(:height), value:  product.variant_master.height }
+            %input.span3{ id: "depth", name: "product_variant[depth]", placeholder: ProductVariant.human_attribute_name(:depth), value:  product.variant_master.depth }
+        .span12.weight
+          %label{ for: "sku" }= ProductVariant.human_attribute_name(:weight)
+          %input.span1{ id: "weight", name: "product_variant[weight]", value: product.variant_master.weight }
+
+    .span7
+      .container-fluid.without-padding
+        .row-fluid
+          .span8
+            .row-fluid
+              .span12
+                .row-fluid
+                  .span6
+                    %label{ for: "product_name" }= Product.human_attribute_name :name
+                  .span6
+                    %span.need * 
+            - name = product.name ? product.name : ""
+            %input.span3.necessary{ id: "product_name", name: "product[name]" , value: name }
+          .span4
+            .row-fluid
+              .span12
+                .row-fluid
+                  .span6
+                    %label{ for: "price" }= ProductVariant.human_attribute_name :price
+                  .span6
+                    %span.need *
+            - price = product.variant_master.price ? product.variant_master.price : ""
+            %input.span1.necessary{ id: "price", name: "product_variant[price]", value: price }
+
+        %label{ for: "product_description" }= Product.human_attribute_name :description
+        %textarea.span4{ id: "product_description", name: "product[description]" }= product.description if product.description
+
+
+        %label{ for: "product_status" }= Product.human_attribute_name(:status).capitalize
+        .row
+          .span2
+            .row
+              - if product.status
+                -if product.status == 0
+                  .span1.sub-label= t(:enabled).capitalize                                  
+                  .status.small-on.span1
+                    .hidden
+                      %input{ id: "product_status", name: "product[status]", value: "0" }
+
+                - if product.status == 1
+                  .span1.sub-label= t(:suspended).capitalize
+                  .status.small-off.span1
+                    .hidden
+                      %input{ id: "product_status", name: "product[status]", value: "1" }
+
+            
+        %label{ for: "product_variants" }= t :variants, :scope => [:views, :product, :table]
+        .row-fluid
+          .span4
+            .row-fluid
+              - if product.has_variants
+                .span4.sub-label= t :yep
+                .has-variants.small-on.span8
+              - else
+                .span4.sub-label= t :nop
+                .has-variants.small-off.span8
+
+        
+                  
+        .row-fluid
+          .span3
+            .row-fluid
+              .span10
+                %label{ for: "quantity" }= ProductVariant.human_attribute_name :quantity
+              .span2
+                %span.need *
+
+        - quantity = product.variant_master.quantity ? product.variant_master.quantity : ""                  
+        %input.span1{ id: "quantity", name: "product_variant[quantity]", value: quantity }
+
+        .row-fluid
+          .span2
+            .row-fluid
+              .span8
+                %label{ for: "sku" }= ProductVariant.human_attribute_name :sku
+              .span4
+                %span.need *
+        - sku = product.variant_master.sku ? product.variant_master.sku : ""
+        %input.span2{ id: "sku", name: "product_variant[sku]", value: sku }
+
+
+        %label{ for: "product_taxon_ids" } Taxons
+        %select{ id: "product_taxon_ids", name: "product[taxon_ids][]", multiple: true }
+
+        %label{ for: "product_highlight" }= Product.human_attribute_name(:highlight).capitalize
+        .row
+          .span2
+            .row
+              - if product.highlight?
+                - if product.is_highlight
+                  .span1.sub-label= t :yep                                  
+                  .highlight.small-on.span1
+                    .hidden
+                      %input{ id: "product_highlight", name: "product[highlight]", value: true }
+
+                - if !product.is_highlight
+                  .span1.sub-label= t :nop                                  
+                  .highlight.small-off.span1
+                    .hidden
+                      %input{ id: "product_highlight", name: "product[highlight]", value: false }
+
+              - else
+                .span1.sub-label= t :nop
+                .highlight.small-off.span1
+                  .hidden
+                    %input{ id: "product_highlight", name: "product[highlight]", value: false }
+
+        %label{ for: "product_shipping_category" } Shipping category
+        %select{ id: "product_shipping_category", name: "product[shipping_category_id]" }
+          %option{value: ""}

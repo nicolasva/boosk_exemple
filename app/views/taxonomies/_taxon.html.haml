@@ -1,0 +1,5 @@
+%li{data: {id: taxon.id}}
+  %a{href: "#"}= taxon.name
+  - unless taxon.leaf?
+    %ul.children-menu
+      = render partial: "taxon", collection: taxon.children

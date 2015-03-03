@@ -1,0 +1,42 @@
+# set boosket_shop_dev 4 all databases beacause mongoid bug :(
+development:
+  sessions:
+    default:
+      database: boosket_shop_dev
+      hosts:
+        - localhost:27017
+      options:
+        consistency: :strong
+  options:
+     raise_not_found_error: false
+
+production:
+  sessions:
+    default:
+      database: boosket_shop_dev
+      hosts:
+        - localhost:27017
+      options:
+        consistency: :strong
+  options:
+     raise_not_found_error: false
+
+stage:
+  sessions:
+    default:
+      database: boosket_shop_dev
+      hosts:
+        - localhost:27017
+      options:
+        consistency: :strong
+  options:
+     raise_not_found_error: false
+
+test:
+  sessions:
+    default:
+      database: boosket_shop_dev
+      hosts:
+        - localhost:27017
+      options:
+        consistency: :strong

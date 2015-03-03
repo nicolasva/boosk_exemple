@@ -1,0 +1,10 @@
+%tr
+  %td= tax_rate.label
+  %td= tax_rate.rate
+  %td
+    %ul
+      - tax_rate.zones.each do |zone|
+        %li= zone.name
+  %td
+    = link_to "Update", edit_shop_tax_rate_path(@shop.id, tax_rate), :class => "btn edit", :data => { :id => tax_rate.id }
+    = link_to "Delete", shop_tax_rate_path(@shop.id, tax_rate), method: :delete, data: {confirm: "Are you sure you want to delete this tax rate ?"}, :class => "btn btn-danger destroy"

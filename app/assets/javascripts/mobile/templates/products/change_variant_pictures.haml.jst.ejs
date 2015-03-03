@@ -1,0 +1,18 @@
+.photo_product
+  %ul{data-position: 0, data-current-img: 1, data-max-img: product_variants.pictures.length}
+    :each picture in product_variants.pictures
+      :if picture.is_master
+        %li
+          %img{src: picture.picture.url, alt: product.name}
+    :each picture in product_variants.pictures
+      :if !picture.is_master
+        %li
+          %img{src: picture.picture.url, alt: product.name}
+.overview_photo_product
+  :if product_variants.pictures.length >= 2
+    %ul
+      :each overview in product_variants.pictures
+        :if overview == product_variants.pictures[0]
+          %li.activate
+        :if overview != product_variants.pictures[0]
+          %li

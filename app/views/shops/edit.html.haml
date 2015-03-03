@@ -1,0 +1,32 @@
+#store-settings.container-fluid
+  .row-fluid
+    .span9
+      = form_for @shop, html: {id: "edit-shop-form" } do |f|
+        %section.settings-content
+          %header
+            %h1 General
+          %fieldset
+            .row-fluid
+              .span6
+                .field
+                  = f.label :name
+                  = f.text_field :name, class: "necessary"
+                  %p.help-block Vultus quaerente nec quos discrepantes indumentorum divitiis puta porrigitur vultus divitiis magnitudo Romana eluxisse virtute maiores nec ad ultimum.
+                .field
+                  = f.label :description
+                  = f.text_area :description
+                  %p.help-block Vultus quaerente nec quos discrepantes indumentorum divitiis puta porrigitur vultus divitiis magnitudo Romana eluxisse virtute maiores nec ad ultimum.
+              .span6
+                .field
+                  = f.label :baseline
+                  = f.text_field :baseline
+                  %p.help-block Vultus quaerente nec quos discrepantes indumentorum divitiis puta porrigitur vultus divitiis magnitudo Romana eluxisse virtute maiores nec ad ultimum.
+                .field
+                  = f.label :terms
+                  = f.text_area :terms
+                  %p.help-block Vultus quaerente nec quos discrepantes indumentorum divitiis puta porrigitur vultus divitiis magnitudo Romana eluxisse virtute maiores nec ad ultimum.
+
+        .actions
+          = f.submit class: "orange"
+    .span3
+      = render 'shared/store_settings_menu', :shop => @shop, :current_item => :general

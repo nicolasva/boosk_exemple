@@ -1,0 +1,28 @@
+%section#store-settings.container-fluid
+  .row-fluid
+    .span9
+      %section#menu-options.settings-content
+        %header
+          %hgroup
+            %h1 Menu options
+            %h2 Create your own custom menu
+        %section#menu-preview
+          %h1 Aperçu
+          %section#menu-preview-container
+            = render "menu_preview", taxonomy: @taxonomy
+        %section.actions
+          Actions :
+          %button.btn#add-item{disabled: "disabled"} Add
+          %button.btn#rename-item{disabled: "disabled"} Rename
+          %button.btn#destroy-item{disabled: "disabled"} Remove
+        %section#menu-container{data: {taxonomy_id: @taxonomy.id }}
+          %ul
+            %li#menu-root{rel: "root", data: {id: @taxonomy.root.id}}
+              %a{href: "#"} Menu bar
+              %ul.children-menu
+                %li.jstree-first{rel: "home"}
+                  %a{href: "#"}Home
+                = render partial: "taxon", collection: @taxonomy.root.children
+
+    .span3
+      = render 'shared/store_settings_menu', :shop => @shop, :current_item => :menu

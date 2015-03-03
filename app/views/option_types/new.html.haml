@@ -1,0 +1,31 @@
+#store-settings.container-fluid
+  .row-fluid
+    .span9
+      %h2= t :new_attribute, scope: [:views, :product, :new]
+
+      = form_for [@shop, @option_type], html: {id: "new_option_type_form"} do |f|
+        .container-fluid.option-types
+          .row-fluid
+            .span5.key
+              .row-fluid
+                .span4
+                  .row-fluid
+                    .span7
+                      = f.label :name
+                    .span5
+                      %span.need *
+              = f.text_field :name, class: "necessary"
+            .span7.values-area
+              .option_type_value_row
+                .row-fluid
+                  .span3
+                    .row-fluid
+                      .span8
+                        = f.label :value
+                      .span4
+                        %span.need *
+                %input.necessary{ id: "option_type_value_0", name: "option_type[value][]" }
+                #add_values
+        .actions
+          = f.submit t(:add), class: "btn orange"
+          = link_to t(:back), shop_option_types_path(@shop), class: "btn back"

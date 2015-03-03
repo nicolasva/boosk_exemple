@@ -1,0 +1,26 @@
+- case params[:landing].to_i
+- when 1
+  .row-fluid
+    .span6
+      .brand
+        %a{:href => '/'}= image_tag("boosket-shop-login.png")
+    .span6
+      %span.scm= t(:scm, scope: [:views, :homepage]).upcase.html_safe
+- when 2
+  .row-fluid
+    .span6
+      .brand
+        %a{:href => '/'}= image_tag("boosket-shop-login.png")
+    .span6
+      %span.scm= t(:scm, scope: [:views, :homepage]).upcase.html_safe      
+- when 3 
+  = render :partial => "/devise/registrations/sign_in_horizontal"
+- when 4
+  = render :partial => "/devise/registrations/sign_in_horizontal"  
+- else
+  .row-fluid
+    .span6
+      .brand
+        %a{:href => '/'}= image_tag("boosket-shop-login.png")
+    .span6
+      %span.scm= t(:scm, scope: [:views, :homepage]).upcase.html_safe

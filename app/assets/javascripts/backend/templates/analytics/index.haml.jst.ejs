@@ -1,0 +1,69 @@
+.container-fluid{style: "position:relative;"}
+  :if forbidden == true
+    .disabled-analytics
+    %button.btn.orange= translate.views.plan.change_my_plan
+  .row-fluid
+    .span9.without-margin
+      .frame.settings-content
+        %header
+          .row-fluid
+            .span3
+              %h1= translate.views.common.menu.analytics
+            .span3#context
+              %button.btn.orange#social Social
+              %button.btn#revenue Revenue
+            .span6
+              %form#chart_type_selector.form-inline
+                %input.chart_type{type: "radio", value: "spline", name: "chart_type", id: "type-spline", checked: "checked"}
+                %label{for: "type-spline"} Spline
+                %input.chart_type{type: "radio", value: "pie", name: "chart_type", id: "type-pie"}
+                %label{for: "type-pie"} Pie
+                %input.chart_type{type: "radio", value: "column", name: "chart_type", id: "type-column"}
+                %label{for: "type-column"} Column
+
+        #graph
+
+      #products_kpis{ style: 'display:none;' }
+      #top_products
+        #top-products-by-action.top-box
+          .header
+            .row-fluid
+              .span5
+                %h2= translate.views.dashboard.top_product
+              .span8.menu
+                %span.selected{ data-action: 'like' }=translate.m_like
+                %span{ data-action: 'tweet' }= translate.m_tweet
+                %span{ data-action: 'want' }= translate.m_want
+                %span{ data-action: 'have' }= translate.m_have
+                %span{ data-action: 'pin' }= translate.m_pin
+                %span{ data-action: 'order' }= translate.m_sales
+          .content
+
+    .span3
+      %form#chart-by-range
+        .row-fluid
+          %h2.span5= translate.views.dashboard.choose_period
+          %select.span7{name: "period", id: "period"}
+            %option{value: "week"}= translate.seven_days_ago
+            %option{value: "month"}= translate.this_month
+            %option{value: "year"}= translate.this_year
+        .row-fluid.date
+          %input.datepicker.from{ type: "text", placeholder: translate.from.capitalize()}
+          %input.datepicker.to{ type: "text", placeholder: translate.to.capitalize()}
+          %input.btn.btn-small.orange{type: "submit", value: "OK"}
+      %nav.settings-menu
+        %ul.without-margin#chart-by-action
+          :for value in actions
+            %li.action{ data-action: value['action'] }
+              %a= value['display']
+
+      #product-menu{ style: "display:none;" }
+        #taxons
+          %ul
+            %li#menu-root{rel: "root"}
+              %a{href: "#"}= translate.views.menu.edit.menu_bar
+              %ul.children-menu
+                %li.jstree-first{rel: "home"}
+                  %a{href: "#"}= translate.views.menu.home
+        
+        

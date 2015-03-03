@@ -1,0 +1,23 @@
+src_dir: 
+
+asset_paths:
+- app/assets/templates
+- lib/assets/javascripts
+- vendor/assets/javascripts
+
+src_files:
+- app/assets/javascripts/mobile/application.js
+#- app/assets/javascripts/facebook/application.js
+#- app/assets/javascripts/backend/application.js
+- spec/javascripts/support/*.js
+
+spec_dir:
+- spec/javascripts/mobile
+#- spec/javascripts/facebook
+#- spec/javascripts/backend
+
+spec_files:
+- "**/*[Ss]pec.*"
+
+helpers:
+- "helpers/**/*"

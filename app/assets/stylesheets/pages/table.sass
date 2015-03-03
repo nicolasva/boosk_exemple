@@ -1,0 +1,32 @@
+@import mixins
+
+table
+  :width 100%
+  thead
+    tr
+      :border 1px solid #CCC
+      :background #a6aebb
+    th
+      :border 1px solid #CCC
+      :text-align center
+      :color #FFF
+  tbody
+    tr
+      :border 1px solid #CCC
+    td
+      :text-align center
+      :border 1px solid #CCC
+      input
+        :text-align center
+        :margin 0
+      .input-append
+        input
+          :float left !important
+      a
+        :color $orange
+        &:hover
+          :color $orange
+          :text-decoration none
+          :cursor pointer
+    .row-disabled
+      :background-color #EEE

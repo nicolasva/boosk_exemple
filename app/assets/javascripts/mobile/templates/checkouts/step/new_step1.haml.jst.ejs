@@ -1,0 +1,54 @@
+%h2= translate.views.frontend.checkout.shipping_info
+%form#new_addresses
+  .row-fluid
+    .span6
+      .control-group
+        %label{ for: "address_firstname" } = translate.activerecord.attributes.address.firstname
+          %span.need *
+        .controls
+          %input.span2.necessary{ type: "text", id: "address_firstname", name: "contact[firstname]" }
+  
+      .control-group 
+        %label{ for: "address_lastname" } = translate.activerecord.attributes.address.lastname
+          %span.need *
+        .controls
+          %input.span2.necessary{ type: "text", id: "address_lastname", name: "contact[lastname]" }
+
+      .control-group
+        %label{ for: "address_mail" } = translate.activerecord.attributes.address.mail
+          %span.need *
+        .controls
+          %input.span2.necessary{ type: "email", id: "address_mail", name: "contact[emails_attributes][][email]" }
+
+      .control-group
+        %label{ for: "address_addr" } = translate.activerecord.attributes.address.addr
+          %span.need *
+        .controls
+          %textarea.span2.necessary{ id: "address_addr", name: "contact[addresses_attributes][0][addr]" }            
+
+      .control-group
+        %label{ for: "address_zip_code" } = translate.activerecord.attributes.address.zip_code
+          %span.need *
+        .controls
+          %input.span2.necessary{ type: "number", id: "address_zip_code", name: "contact[addresses_attributes][0][zip_code]" }
+
+      .control-group
+        %label{ for: "address_city" } = translate.activerecord.attributes.address.city
+          %span.need *
+        .controls
+          %input.span2.necessary{ type: "text", id: "address_city", name: "contact[addresses_attributes][0][city]" }
+
+      .control-group
+        %label{ for: "address_country" } = translate.activerecord.attributes.address.country
+          %span.need *
+        .controls
+          %select{ id: "address_country", name: "contact[addresses_attributes][0][country]" }
+            %option= translate.views.frontend.checkout.select_country 
+            :each country in geographic_regions 
+              %option{value: country.code, class: "country_value"} 
+                = country.name
+
+      #regions
+
+  .actions
+    %input#step-2.valid_address{ type: "submit" , value: " > "+translate.next, class: "orange", disabled: "disabled"  }

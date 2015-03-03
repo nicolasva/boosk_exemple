@@ -1,0 +1,18 @@
+%h1 Shipping categories
+
+:if shipping_categories.length == 0
+  %p You haven't create any shipping category yet !
+:if shipping_categories.length > 0
+  %table.table
+    %thead
+      %tr
+        %th Name
+        %th Actions
+    %tbody
+      :each shipping_category in shipping_categories
+        %tr
+          %td= shipping_category.name
+          %td
+            %a.btn{href: "#/shipping_categories/" + shipping_category.id + "/edit"} Edit
+            %button.btn.btn-danger.destroy{data-id: shipping_category.id, data-confirm: "Are you sure?"} Delete
+%a.btn{href: "#/shipping_categories/new"}New Shipping Category

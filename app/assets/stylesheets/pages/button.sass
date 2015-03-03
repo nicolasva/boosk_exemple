@@ -1,0 +1,157 @@
+@import "compass/css3/images"
+@import mixins
+
+input[type=submit], .back, .cancel, button
+  :padding 4px 10px
+  :height auto !important
+
+.btn.orange
+  :text-shadow none
+
+.orange
+  :color #fff !important
+  :border solid 1px #da7c0c
+  :background $orange
+  @include filter-gradient(#faa51a, $orange)
+  @include background-image(linear-gradient(#faa51a, $orange))
+
+.orange:hover 
+  :color #fff !important
+  :background #f47c20
+  @include filter-gradient(#f88e11, #f06015)
+  @include background-image(linear-gradient(#f88e11, #f06015))  
+
+.btn.orange[disabled]
+  :background-color $orange
+
+.blue
+  :color #fff !important
+  :border solid 1px #a5b2bd
+  :background #4e72ad
+  &:active
+    :background #4e72ad
+
+.grey
+  :border 1px solid #FFF
+  :color #000
+  @include filter-gradient(#fafafa, #c2c2c2)
+  @include background-image(linear-gradient(#fafafa, #c2c2c2))
+
+.grey:hover
+  :color #000
+  :background #fafafa
+  @include filter-gradient(#fafafa, #acacac)
+  @include background-image(linear-gradient(#fafafa, #acacac))  
+
+.tiny, .tiny:hover
+  :padding 2px 14px !important
+  @include radius(3,3,3,3)
+  :text-decoration none
+
+.blue[disabled]
+  :background-color #4e72ad
+  &:hover
+    :background-color #4e72ad
+
+.btn.back, .btn.cancel
+  :color #98a1b2 !important
+  :border solid 1px #98a1b2
+  :background $grey-light
+  :width auto
+  :height auto
+  :text-decoration none
+  :margin-bottom 9px
+  @include radius(3, 3, 3, 3)
+
+.enabled
+  :width 100px
+  :height 19px
+  :margin 0 auto
+  :color #FFF
+  :font-weight 600
+  :background #78e477
+  span
+    :padding-top 1px
+    :display block
+
+.suspended
+  :width 100px
+  :height 19px
+  :margin 0 auto
+  :color #FFF
+  :font-weight 600
+  :background #ff9149
+  span
+    :padding-top 1px
+    :display block
+
+.highlight
+  :width 100px
+  :height 19px
+  :margin 0 auto
+  :color #FFF
+  :font-weight 600
+  :background #9bcbf3
+  span
+    :padding-top 1px
+    :display block
+
+
+.label
+  :padding 4px 15px
+  :font-size 12px
+      
+.label-paid
+  :cursor default
+  :background $orange
+  &:hover
+    :background $orange
+      
+.label-in_progress
+  :cursor default
+  :background $orange
+  &:hover
+    :background $orange
+      
+.label-shipped
+  :cursor default
+  :background $blue-label
+  &:hover
+    :background $blue-label
+
+.label-delivered
+  :cursor default
+  :background $green-label
+  &:hover
+    :background $green-label
+      
+.label-closed
+  :cursor default
+  :background $grey-label
+  &:hover
+    :background $grey-label
+  
+.label-canceled
+  :cursor default
+  :background $red-label
+  &:hover
+    :background $red-label
+      
+.label-enabled
+  :cursor default
+  :background $green
+  &:hover
+    :background #78e477
+
+.label-suspended
+  cursor: default
+  :background #ff9149    
+  &:hover
+    :background #ff9149    
+
+
+.label-highlight
+  :cursor default
+  :background #9bcbf3    
+  &:hover
+    :background #9bcbf3      

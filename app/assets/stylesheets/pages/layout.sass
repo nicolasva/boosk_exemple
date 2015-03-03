@@ -1,0 +1,203 @@
+@import mixins
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans)
+
+html, body
+  :font-family 'Open Sans','Lucida Grande','Lucida Sans Unicode', Verdana, sans-serif
+  :background-color $blue
+
+body *
+  :font-family 'Open Sans','Lucida Grande','Lucida Sans Unicode', Verdana, sans-serif
+
+#app
+  :padding-top 15px
+  :padding-bottom 150px
+header.login
+  .container
+    :position relative
+    .brand
+      :padding-left 10px
+      :padding-top 6px
+    .nav
+      :padding-left 12px
+    .nav.left
+      :margin 0 5px 0 0 !important
+    .navbar
+      .nav.pull-right
+        :margin-left 0
+        :padding-left 0
+    li
+      :padding 4px
+    a
+      :padding 0
+      :padding-left 24px
+      :color #000
+      :background-position 0px 1px
+      &:hover
+        :color #FFF
+    .trial-period
+      :text-align left
+      :margin -15px 5px 0 0
+      :color #FFF
+      .picto
+        :background url('/assets/picto_sprite.png') no-repeat
+        :background-position 0 -1216px
+        :width 35px
+        :height 30px
+        :display inline-block
+        :float left
+      .text
+        :display inline-block
+        :float right
+        :font-weight bold
+        .trial-offer
+          :font-size 1.2em
+        .remaning-days
+          .day
+            :color $orange
+            :font-size 1.1em
+
+    .all_form_shop
+      .class_my_shop
+        :background url('/assets/picto_sprite.png') no-repeat
+        :padding-left 30px
+        :margin 4px
+        :color white
+        :float left
+
+      .class_select_shop
+        :float margin-right
+
+    .dashboard
+      :background url('/assets/picto_sprite.png') no-repeat
+      :background-position 0px -40px
+    .dashboard:hover, .dashboard.activate
+      :background-position 0px -20px
+
+    .products
+      :background url('/assets/picto_sprite.png') no-repeat
+      :background-position 0px -80px
+    .products:hover, .products.activate
+      :background-position 0px -60px
+
+    .orders
+      :background url('/assets/picto_sprite.png') no-repeat
+      :background-position 0px -200px
+    .orders:hover, .orders.activate
+      :background-position 0px -180px
+
+    .analytics
+      :background url('/assets/picto_sprite.png') no-repeat
+      :background-position 0px -118px
+    .analytics:hover, .analytics.activate
+      :background-position 0px -98px
+
+    .settings
+      :background url('/assets/picto_sprite.png') no-repeat
+      :background-position 0 -336px
+    .settings:hover, .settings.activate
+      :background-position 0 -315px
+
+    .account
+      :height 28px
+      :position absolute
+      :text-align right
+      :top 24px
+      :right 0
+      :padding -20px 6px 5px
+      a
+        :color #FFF
+        :text-decoration none
+      li
+        :margin 0
+        :padding 0 9px
+        :border-right solid 1px $orange
+      li:last-child
+        :border-right none
+      ul.nav
+        :margin 0
+      .edit-account
+        :background url('/assets/picto_sprite.png') no-repeat
+        :background-position 0 -423px
+      .logout
+        :background url('/assets/picto_sprite.png') no-repeat
+        :background-position 0 -464px   
+
+  #shop_lists
+    :padding 0px
+    a
+      :color #000 !important
+      :border-right 1px solid #AAA
+    #shop_lists
+      :padding 0px
+      a
+        :color #000 !important
+
+  #new-shop
+    :padding 3px 10px 2px !important
+    :margin-top 0 !important
+    :border 1px solid #FFF
+    :background #222
+    :margin-left 7px
+    .txt
+      :color #FFF
+      :display inline-block
+      :margin-top 1px
+    .picto
+      :display inline-block      
+      :background url('/assets/picto_sprite.png') no-repeat
+      :background-position 0 -506px
+      :padding 9px
+      :float left
+      :margin 3px 4px 0 0
+
+header.login
+  :background-image url('/assets/header_login.png')
+  :height 83px
+  :color $orange
+  :min-width 940px
+
+header.logout
+  :height auto
+
+header.wizard-header
+  :background-image url('/assets/header_logout.png')
+  :height 57px
+
+section.container
+  :background-color #fff
+  :min-height 500px
+
+#notice,#notice-modal
+  :margin 5px 5px
+  .close
+    :padding 0
+    :border 0
+
+.menu.navbar
+  :margin-top 3px
+  .nav
+    li
+      a
+        -webkit-transition: color 0.1s linear
+        -moz-transition: color 0.1s linear
+        -o-transition: color 0.1s linear
+        :color #fff
+        :border-right 1px solid white
+        :padding-right 8px
+      a:hover, a.activate
+        :color #222
+
+footer
+  :font-size .9em
+  :padding 10px
+  :color #fff
+  h4
+    :color #fff
+  .copyright
+    :font-size 0.75em
+  a
+    :color #fff
+    &:hover
+      :color #ddd
+      :text-decoration none

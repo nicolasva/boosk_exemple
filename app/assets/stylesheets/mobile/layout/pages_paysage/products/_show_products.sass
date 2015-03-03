@@ -1,0 +1,88 @@
+@mixin margin_div_content_product
+  :border-bottom 1px solid #ceced0
+  :margin-bottom 10px
+  :padding-bottom 10px
+
+@mixin paysage_mode_product_show($min_width_ul_product_list, $max_width_ul_product_list, $margin_bottom_li_product_form, $margin_left_product, $margin_left_class_detail_product)
+  body
+    section.content
+      section.corps
+        .container
+          :padding-right 2.778%
+          .product
+            :width 97.5%
+            :margin-left 2.778%
+            h1
+              :font-size 10pt
+            .description_product
+              @include margin_div_content_product
+            .social_action
+              @include margin_div_content_product
+            .form_select_option
+              .div_alert_msg
+                :color #fe6903
+            .all_product_variant_pictures
+              @include margin_div_content_product
+              .photo_product
+                :overflow hidden
+                :position relative
+                :height 350px
+                :width 330px
+                ul 
+                  :height 350px
+                  :position absolute
+                  :top 0
+                  :-webkit-transition all .2s ease-out
+                  :-moz-transition all .2s ease-out
+                  :transition all .2s ease-out
+                  :margin 0px
+                  :padding 0px
+                  :width 3000px
+                  :list-style-type none
+                  li
+                    :width 330px
+                    :margin 0px
+                    :padding 0px
+                    :float left
+                    :overflow hidden
+              .overview_photo_product
+                :text-align center
+                :padding 10px 0px
+                ul
+                  :margin 0px
+                  :padding 0px
+                  :list-style-type none
+                  li
+                    :float left
+                    :margin 0 3px
+                    :text-indent -99em
+                    :overflow hidden
+                    :width 20px
+                    :height 20px
+                    :-moz-border-radius 10px
+                    :-webkit-border-radius 10px
+                    :border-radius 10px
+                    :background #ddd
+                    :cursor pointer
+                  li.activate
+                    :background #999
+              .class_all_pictures_product_variants
+                ul
+                  :list-style-type none
+                  li
+                    :float left
+                    :margin-right 3%
+            .social_action
+              .action
+                #pint
+                  :text-align center
+                  ol
+                    :margin 0px
+                    :padding 0px
+                    :margin-top 10px
+                    :float left
+                    li
+                      :float left
+                      :width 17.5%
+                      :text-align center
+

@@ -1,0 +1,25 @@
+.row-fluid
+  .span9
+    %form#edit-shop-form
+      %section.settings-content
+        %header
+          %h1= translate.views.payment.edit.h2_info
+        %fieldset
+          %label{for: "paypal_account"}= translate.activerecord.attributes.shop.paypal_account
+          %input.necessary.email{name: "paypal_account", value: (shop.paypal_account != null ? shop.paypal_account : "")}
+          %p.help-block= translate.views.payment.edit.help_block_paypal
+          .row-fluid
+            .span2
+              %img{src: "/assets/partners/paypal.png"}
+            .span5
+              %img{src: "/assets/cards.png"}
+      .wizard-actions
+        :if wizard
+          %input.back{type: "submit", value: " < " + translate.back.capitalize()}
+          %input.orange{type: "submit", value: " > " + translate.next.capitalize()}
+          %a.btn.orange{ href: "/#/settings/option_types" }= ' > ' + translate.skip
+        :if !wizard
+          %input.orange{type: "submit", value: translate.update.capitalize()}
+          
+  .span3
+    %nav#store-settings-menu.settings-menu

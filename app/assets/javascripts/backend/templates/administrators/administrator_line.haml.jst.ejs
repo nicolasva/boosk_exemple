@@ -1,0 +1,18 @@
+%tr{ data-id: administrator.id }
+  %td
+    %input.administrator-selected{ type: "checkbox" }
+  %td
+    = administrator.email
+  %td
+    = administrator.firstname
+  %td
+    = administrator.lastname
+  %td
+    :if administrator.invitation_accepted_at != null
+      %span.label.label-enabled
+        = translate.enabled.toUpperCase()
+    :if administrator.invitation_accepted_at == null
+      %span.label.label-in_progress
+        = translate.views.order.status.in_progress.display                      
+                        
+

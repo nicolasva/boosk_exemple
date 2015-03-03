@@ -1,0 +1,26 @@
+%form#new_administrator_form
+  .container-fluid
+    .row-fluid
+      .span12
+        .field
+          .row-fluid
+            .span4
+              %label{ for: "administrator_email" }= translate.views.administrator.fill_email
+            .span4.without-margin
+              %span.need *
+          %input.email.necessary{ id: "administrator_email", name: "administrator[email]" }
+        .field
+          .row-fluid
+            .span7
+              %label{ for: "administrator_lastnamel" }= translate.views.administrator.fill_lastname
+          %input{ id: "administrator_lastname", name: "administrator[lastname]" }
+        .field
+          .row-fluid
+            .span7
+              %label{ for: "administrator_firstname" }= translate.views.administrator.fill_firstname
+          %input{ id: "administrator_firstname", name: "administrator[firstname]" }                            
+
+  .actions
+    %a.btn.back{ data-dismiss: "modal" }= translate.close
+    %input.btn.orange{type: "submit"}= translate.create.capitalize()
+    

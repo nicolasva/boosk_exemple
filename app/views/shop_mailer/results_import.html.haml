@@ -1,0 +1,46 @@
+= render :partial=>"/common/header_mailer"
+%body
+  #page
+    #header{:style => "background-color:#000000;padding:5px;margin:0px;"}
+      = image_tag attachments['boosket-shop.png'].url
+    #title{:style => "background-color:#F2F2F2;border-bottom:1px solid #E6E6E6;padding:5px;margin:0px;"}
+      %h1{:style => "color:#333333;padding:5px;text-align:center;font-size:24px;"}
+        = t("mailer.shops.results_import.h1")
+    #content{:style => "padding: 1px 20px;margin-top:20px;margin-bottom:20px;"}
+      %p
+        %strong
+          = t("mailer.common.content_without_margin", :user_firstname => @user.firstname, :user_lastname => @user.lastname)
+
+      %p
+        = t("mailer.shops.results_import.p_import_product", :shop_name => @shop.name)
+      %p
+        = t("mailer.shops.results_import.p_time_import_product", :time_now => Time.now.strftime("%A, %d %B %Y"))
+      %p= "Rappel: vous avez aujourd'hui #{@shop.products.count} importés sur cette boutique."
+      %p
+        = t("mailer.shops.results_import.warning_today_import_product", :shop_product_count => @shop.products.count)
+
+      - if @errors.any?
+        %p.without-margin
+          = t("mailer.shops.errors.p_difficult_import_flow")
+        %p.without-margin 
+          = t("mailer.shops.errors.p_thanks_data_products")
+        %p.without-margin
+          = t("mailer.shops.errors.p_spec_xml")
+        %ul
+          - @errors.each_pair do |key, value|
+            %li= "#{key} : #{value}"
+
+      %h2.without-margin{:style => "color:#ff6600; font-size:16px;margin-top:20px;"}
+        = t("mailer.common.h2.without_margin_other_questions")
+      %p.without-margin
+        = t("mailer.common.p_check_our_QA").html_safe()
+
+    #sign{:style => "padding: 1px 20px;font-weight:600;"}
+      %p.without-margin
+        = t("mailer.common.sign.p_we_wish_great_success")
+      %p.without-margin
+        = t("mailer.common.sign.p_without_margin_boosket_team")
+
+  #footer{:style => "background-color:#F2F2F2;border-bottom:1px solid #E6E6E6;text-align:center;padding:5px;margin:0px;"}
+    %p.noreply{:style => "color:#BFBFBF;font-size:10px;"}
+      = t("mailer.common.footer.p_noreply")

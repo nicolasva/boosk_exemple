@@ -1,0 +1,14 @@
+%h1 Taxonomies listing
+
+- if @taxonomies.empty?
+  %p You haven't create any taxonomy yet !
+- else
+  %table.table
+    %thead
+      %tr
+        %th Name
+        %th Actions
+    %tbody
+      = render @taxonomies
+
+= link_to 'New Taxonomy', new_shop_taxonomy_path(@shop), class: "btn btn-primary"

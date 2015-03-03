@@ -1,0 +1,77 @@
+@import pages/mixins
+
+.modal-front-checkout
+  :overflow-x hidden
+  :height auto
+  :max-height 700px
+  :width auto
+  @include radius(0, 0, 0, 0)
+  :border 3px solid #000
+  :right 8%
+  :left 42%
+  .modal-header
+    :border-bottom none
+    :padding 2px 6px
+    .close
+      :color $orange
+      @include opacity(100)
+      :text-shadow 0 !important
+      :text-transform lowercase
+      :font-size 1.4em
+      :line-height 0.8em
+  .modal-body
+    // override bootstrap
+    .controls
+      :margin-left 130px
+    label
+      :float left
+    .picture_product_variant
+      :height 65px
+      :width 65px
+      :border 1px solid #CCC
+    .actions
+      :height 3em
+      :float right
+      .back
+        :color gray
+        :cursor pointer
+        :margin-right 10px
+    table
+      tr
+        :border none
+        .left
+          text-align: left
+        .right
+          text-align: right
+        td
+          :vertical-align middle
+          :border-bottom 1px #CCD dashed
+          :border-top none
+          :border-left none
+          :border-right none
+      tfoot
+        :background-color #f1f1f1
+        th
+          :padding 5px
+    #s2id_address_country
+      :margin-left 0
+    #confirm
+      :float right
+      :margin-top 10px
+      :font-size 0.8em
+      input[type="checkbox"]
+        :float left
+        :margin 5px 5px 0px 0X
+      label
+        :font-size 1em
+        :cursor pointer
+        :margin 7px 0 0 5px
+      a
+        :margin-top 7px
+        :display inline-block
+
+.modal-front-checkout.modal-front-valid-order
+  :left 42%
+  :width 20em
+  .modal-body
+    :text-align center

@@ -1,0 +1,36 @@
+%a{href: "#menu1", class: "dropdown-toggle basket_button", data-toggle: "dropdown"} 
+  %span
+    = "("+total_cartitems+")"
+  
+%ul{class: 'dropdown-menu'}
+  :each cartitem in cartitems
+    %li
+      %ul
+        %li{id: "cartitem_show_basket_"+cartitem.id}
+          %div{id: "cart_item_" + cartitem.id + "_" + cartitem.product.product_id, class: "product_variant_picture_url"}
+          .title_quantity_delete
+            .title_quantity 
+              %h3{class: "title_product", id: "title_product_"+cartitem.product.product_id} 
+              = "quantity : "
+              %span{class: "add_quantity", id: "add_quantity_" + cartitem.id + "_" + cartitem.product.product_id}
+              %span{id: "value_quantity_"+cartitem.id}
+                = cartitem.quantity
+              %span{class: "less_quantity", id: "less_quantity_" + cartitem.id + "_" + cartitem.product.product_id}
+            .delete_total_basket
+              .delete_basket
+                %a.link_destroy_basket_shop{href: "#/shop/"+App.current_shop, id: "link_destroy_basket_shop_"+cartitem.product.product_id+"_"+cartitem.id} = "Delete"
+              %div{id: "price_product_"+cartitem.id, class: "price_product"}
+                %div{class: "price_product"}
+                  = "€ " + cartitem.product.price * cartitem.quantity
+         
+  %li
+    :if cartitems.length > 0
+      #delete_all_basket
+        %a{href: "#/shop/"+App.current_shop, class: "destroy_all_basket"} = "Vider mon panier"
+      #all_total_basket
+        #total_basket
+    :if cartitems.length == 0
+      = "Votre panier est vide" 
+  %li 
+    %a{href:"#/shops/checkouts"} Checkout
+        

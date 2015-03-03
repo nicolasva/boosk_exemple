@@ -1,0 +1,71 @@
+development:
+  host:                   "shops.boosket-shop-wheezy.dev"
+  frontoffice:            "shops.stage.boosket.com"
+  google_analytics:       "UA-18555547-8"
+  facebook:
+    app_id:               "111803595636562"
+    app_secret:           "16ea6208dcf88d18b42c06cb2b3b8a36"
+  paypal:
+    plan:
+      email:              "dev@boosket.com"
+      returnUrl:          "http://shops.stage.boosket.com/plans/paypal_success_url"
+      cancelUrl:          "http://shops.stage.boosket.com/plans"
+      ipnNotificationUrl: "http://shops.stage.boosket.com/plans/ipn_notification"
+    order:
+      returnUrl:          "http://%{shop_slug}.shops.stage.boosket.com/%{frontoffice}/orders/payment_successfully"
+      cancelUrl:          "http://%{shop_slug}.shops.stage.boosket.com/%{frontoffice}/orders/payment_canceled"
+      ipnNotificationUrl: "http://%{shop_slug}.shops.stage.boosket.com/%{frontoffice}/orders/ipn_notification"
+
+test:
+  host:                   "shops.stage.boosket.com"
+  frontoffice:            "shops.stage.boosket.com"
+  google_analytics:       "UA-18555547-8"
+  facebook:
+    app_id:               "111803595636562"
+    app_secret:           "16ea6208dcf88d18b42c06cb2b3b8a36"
+  paypal:
+    plan:
+      email:              "dev@boosket.com"
+      returnUrl:          "http://shops.stage.boosket.com/plans/paypal_success_url"
+      cancelUrl:          "http://shops.stage.boosket.com/plans"
+      ipnNotificationUrl: "http://shops.stage.boosket.com/plans/ipn_notification"
+    order:
+      returnUrl:          "http://%{shop_slug}.shops.stage.boosket.com/%{frontoffice}/orders/payment_successfully"
+      cancelUrl:          "http://%{shop_slug}.shops.stage.boosket.com/%{frontoffice}/orders/payment_canceled"
+      ipnNotificationUrl: "http://%{shop_slug}.shops.stage.boosket.com/%{frontoffice}/orders/ipn_notification"
+
+stage:
+  host:                   "shops.stage.boosket.com"
+  frontoffice:            "shops.stage.boosket.com"
+  google_analytics:       "UA-18555547-8"
+  facebook:
+    app_id:               "111803595636562"
+    app_secret:           "16ea6208dcf88d18b42c06cb2b3b8a36"
+  paypal:
+    plan:
+      email:              "dev@boosket.com"
+      returnUrl:          "http://shops.stage.boosket.com/plans/paypal_success_url"
+      cancelUrl:          "http://shops.stage.boosket.com/plans"
+      ipnNotificationUrl: "http://shops.stage.boosket.com/plans/ipn_notification"
+    order:
+      returnUrl:          "http://%{shop_slug}.shops.stage.boosket.com/%{frontoffice}/orders/payment_successfully"
+      cancelUrl:          "http://%{shop_slug}.shops.stage.boosket.com/%{frontoffice}/orders/payment_canceled"
+      ipnNotificationUrl: "http://%{shop_slug}.shops.stage.boosket.com/%{frontoffice}/orders/ipn_notification"
+
+production:
+  host:                   "shops.boosket.com"
+  frontoffice:            "boosketshop.com"
+  google_analytics:       "UA-18555547-7"
+  facebook:
+    app_id:               "111803595636562"
+    app_secret:           "16ea6208dcf88d18b42c06cb2b3b8a36"
+  paypal:
+    plan:
+      email:              "dev@boosket.com"
+      returnUrl:          "http://shops.boosket.com/plans/paypal_success_url"
+      cancelUrl:          "http://shops.boosket.com/plans"
+      ipnNotificationUrl: "http://shops.boosket.com/plans/ipn_notification"
+    order:
+      returnUrl:          "http://%{shop_slug}.boosketshop.com/%{frontoffice}/orders/payment_successfully"
+      cancelUrl:          "http://%{shop_slug}.boosketshop.com/%{frontoffice}/orders/payment_canceled"
+      ipnNotificationUrl: "http://%{shop_slug}.boosketshop.com/%{frontoffice}/orders/ipn_notification"

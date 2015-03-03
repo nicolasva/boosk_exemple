@@ -1,0 +1,8 @@
+%td
+  %input.option_type-selected{ type: "checkbox" }
+%td
+  %a.edit{ data-id: option_type.type, href: "#/option_types/" + option_type.type + "/edit" }=option_type.type
+%td
+  %ul.unstyled
+    :each option in option_type.values
+      %li=option.value

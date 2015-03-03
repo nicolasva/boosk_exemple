@@ -1,0 +1,19 @@
+%p#notice= notice
+%p
+  %b Name:
+  = @shop.name
+%p
+  %b Baseline:
+  = @shop.baseline
+%p
+  %b Description:
+  = @shop.description
+%p
+  %b Terms:
+  = @shop.terms
+%p
+  %b Key:
+  = @shop.uuid
+= link_to 'Edit', edit_shop_path(@shop)
+|
+\#{link_to 'Back', shops_path}

@@ -1,0 +1,7 @@
+%td
+  %input.promotion-selected{ type: "checkbox" }
+%td
+  %a.edit{href: "#"}= promotion.get('name')
+-#%td= (promotion.has('coupon_code') ? promotion.get('coupon_code') : "")
+%td= moment(promotion.get('starts_at')).calendar()
+%td= (promotion.has('ends_at') ? moment(promotion.get('ends_at')).calendar() : "")

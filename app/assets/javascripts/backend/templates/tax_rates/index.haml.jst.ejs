@@ -1,0 +1,65 @@
+.row-fluid
+  .span9.row-fluid
+    %section.settings-content
+      %header
+        .row-fluid
+          .span5
+            %h1=translate.views.tax_rate.index.h2
+          :if !has_tax_rates                        
+            .span2.add{ style: "display:none;" }
+              %button.btn.orange#new_tax_rate= ' + ' + translate.add
+            .span5.action-taxe{ style: "display:none;" }
+              %select.action{ name: "action" }
+                %option= translate.actions
+                  :for key,value in actions
+                    %option{ value: key }= value['display']
+          :if has_tax_rates                        
+            .span2.add
+              %button.btn.orange#new_tax_rate= ' + ' + translate.add
+            .span5.action-taxe
+              %select.action{ name: "action" }
+                %option= translate.actions
+                  :for key,value in actions
+                    %option{ value: key }= value['display']                    
+                    
+      :if !has_tax_rates 
+        .row-fluid.no-items
+          .span12.msg= translate.views.tax_rate.you_have_not_yet_tax_rates
+          %button.btn.orange#new_tax_rate= ' + ' + translate.views.tax_rate.add_tax
+        %table{ style: "display:none;"}
+          %thead
+            %tr
+              %th
+                %input.select-all{ type: "checkbox" }
+              %th
+                = translate.activerecord.attributes.tax_rate.label
+              %th
+                = translate.activerecord.attributes.tax_rate.rate
+              %th
+                = translate.activerecord.attributes.tax_rate.zone_ids
+          %tbody          
+      :if has_tax_rates           
+        %table
+          %thead
+            %tr
+              %th
+                %input.select-all{ type: "checkbox" }
+              %th
+                = translate.activerecord.attributes.tax_rate.label
+              %th
+                = translate.activerecord.attributes.tax_rate.rate
+              %th
+                = translate.activerecord.attributes.tax_rate.zone_ids
+          %tbody
+
+    .span12.without-margin
+      .wizard-actions
+        :if wizard
+          %a.btn.back{ href: "/#/settings/menu" }= ' < ' + translate.back
+          %a.btn.orange.next{ href: "/#/settings/shipping_methods" }= ' > ' + translate.next
+          %a.btn.orange.next{ href: "/#/settings/shipping_methods" }= ' > ' + translate.skip
+                  
+            
+  .span3
+    %nav#store-settings-menu.settings-menu
+

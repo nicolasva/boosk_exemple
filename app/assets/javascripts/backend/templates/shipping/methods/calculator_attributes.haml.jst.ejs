@@ -1,0 +1,42 @@
+- function preferences_fields(calc_type) {
+-   calc_type.preferences.forEach(function(preference) {
+      preference_label_for(preference)
+-     preference_field_for(preference)
+-   })
+- }
+
+- function preference_label_for(preference) {
+%label{for: "shipping_method_calculator_attributes_preferred_" + preference.name}= translate.calculator_types.preferences[calc_type.i18n_key][preference.name]
+- }
+
+- function preference_field_for(preference) {
+-   if (preference.type === "decimal") {
+-     var value = "0.0";
+-     var className = "number";
+-   } else if (preference.type == "currency") {
+-     var value = "0";
+-     var className = "number";
+-     var addon = App.getCookie('shop_devise');
+-   } else if (preference.type == "percent") {
+-     var value = "0";
+-     var className = "number";
+-     var addon = "%";
+-   } else if (preference.type == "integer") {
+-     var value = "0";
+-     var className = "number";
+-   } else {
+-     var value = "";
+-     var className = "number"
+-   }
+-   if (addon != undefined) {
+.input-append
+  %input.pos-num{type: "text", id: "shipping_method_calculator_attributes_preferred_" + preference.name, name: "shipping_method[calculator_attributes][preferred_" + preference.name + "]",value: value, class: className}
+  %span.add-on= addon
+-   } else {
+%input.pos-num{type: "text", id: "shipping_method_calculator_attributes_preferred_" + preference.name, name: "shipping_method[calculator_attributes][preferred_" + preference.name + "]",value: value, class: className}
+-   }
+- }
+
+- preferences_fields(calc_type)
+
+%p.help-block= translate.calculator_types.preferences[calc_type.i18n_key]['help_block']

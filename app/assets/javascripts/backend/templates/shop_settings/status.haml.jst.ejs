@@ -1,0 +1,72 @@
+.row-fluid
+  .span9
+    %form
+      %section.settings-content
+        %header
+          %h1= translate.views.status.edit.h2
+        %fieldset
+
+          %h2 
+            .row-fluid
+              .span3
+                Facebook
+              .span2{ style: "padding-top:8px;" }
+                :if shop.facebook_status == "1"
+                  %span.status.small-on
+                    %input{ id: "shop_facebook_status", class: "hidden", name: "facebook_status", value: "1" }
+                :if shop.facebook_status == "0"
+                  %span.status.small-off
+                    %input{ id: "shop_facebook_status", class: "hidden", name: "facebook_status", value: "0" }
+          %p.help-block= translate.views.status.edit.help_block_facebook
+
+          %section#facebook-tab-management
+          %input{type: "hidden", name: "customization_attributes[id]", value: customization.id}
+          %input{type: "hidden", name: "customization_attributes[fan_access]", value: "0"}
+          :if customization.fan_access
+            %input{type: "checkbox", name: "customization_attributes[fan_access]", checked: "checked"}
+          :if !customization.fan_access
+            %input{type: "checkbox", name: "customization_attributes[fan_access]"}
+          %label.checkbox{for: "fan_access"}= "!{translate.activerecord.attributes.customization.fan_access} ?"
+          %p.help-block= translate.views.status.edit.help_block_facebook_fan_only
+
+          %h2 
+            .row-fluid
+              .span3
+                Mobile
+              .span2{ style: "padding-top:8px;" }
+                :if shop.mobile_status == "1"
+                  %span.status.small-on
+                    %input{ id: "shop_mobile_status", class: "hidden", name: "mobile_status", value: "1" }
+                :if shop.mobile_status == "0"
+                  %span.status.small-off
+                    %input{ id: "shop_mobile_status", class: "hidden", name: "mobile_status", value: "0" }
+          %p.help-block= translate.views.status.edit.help_block_mobile
+          .sourcecode
+            %p= "var shop_key = \"" + shop.uuid + "\";"
+            :pre
+              (function() {
+                var boosket_shop = document.createElement('script'); 
+                boosket_shop.type = 'text/javascript'; boosket_shop.async = true;
+                boosket_shop.src = 'http://shops.boosket.com/assets/mobile/redirect.js';
+                var script = document.getElementsByTagName('script')[0]; 
+                script.parentNode.insertBefore(boosket_shop, script);
+              })();
+
+          %h2
+            / REMOVE .status class temp
+            .row-fluid
+              .span3
+                Google Shopping
+              .span2{ style: "padding-top:8px;" }
+                :if shop.google_shopping_status == "1"
+                  %span.small-on
+                    %input{ id: "shop_google_shopping_status", class: "hidden", name: "google_shopping_status", value: "1" }
+                :if shop.google_shopping_status == "0"
+                  %span.small-off
+                    %input{ id: "shop_google_shopping_status", class: "hidden", name: "google_shopping_status", value: "0" }
+          %p.help-block= translate.coming_soon
+
+      .actions
+        %input.orange{type: "submit", value: translate.update.capitalize()}
+  .span3
+    %nav#store-settings-menu.settings-menu

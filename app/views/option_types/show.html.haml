@@ -1,0 +1,7 @@
+%p#notice= notice
+
+%h3= @option_type[:type]
+- @option_type[:values].each do |option|
+  %div= option.value
+
+= link_to 'Back', shop_option_types_path

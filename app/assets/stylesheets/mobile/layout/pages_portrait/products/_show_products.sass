@@ -1,0 +1,80 @@
+@mixin margin_div_content_product
+  :border-bottom 1px solid #ceced0
+  :margin-bottom 10px
+  :padding-bottom 10px
+
+@mixin portrait_mode_product_show($min_width_ul_product_list, $max_width_ul_product_list, $margin_bottom_li_product_form, $margin_left_product, $margin_left_class_detail_product)
+  body
+    :width 100%
+    :margin 0px
+    :padding 0px
+    section.content
+      section.corps
+        .container
+          .product
+            :width 100%
+            h1
+              :font-size 10pt
+            .social_action
+              @include margin_div_content_product
+            .form_select_option
+              .div_alert_msg
+                :color #fe6903
+            .all_product_variant_pictures
+              @include margin_div_content_product
+              .photo_product
+                :overflow hidden
+                :height 150px
+                :width 94%
+                :margin 0 3%
+                ul
+                  :height 100%
+                  :width 10000px
+                  :margin 0
+                  :padding 0 26%
+                  li
+                    :width 150px
+                    :float left
+                    :overflow hidden
+                    :heigth auto
+                    :padding-right 1%
+              .overview_photo_product
+                :padding 10px 0px
+                ul
+                  :margin 0px
+                  :padding 0px
+                  :list-style-type none
+                  :text-align center
+                  li
+                    :display inline-block
+                    :margin 0 3px
+                    :text-indent -99em
+                    :overflow hidden
+                    :width 10px
+                    :height 10px
+                    :-moz-border-radius 10px
+                    :-webkit-border-radius 10px
+                    :border-radius 10px
+                    :background #ddd
+                  li.activate
+                    :background #999
+              .class_all_pictures_product_variants
+                ul
+                  :list-style-type none
+                  li
+                    :float left
+                    :margin-right 3%
+            .social_action
+              .action
+                #pint
+                  :text-align center
+                  ol
+                    :margin 0px
+                    :padding 0px
+                    :margin-top 10px
+                    :float left
+                    li
+                      :float left
+                      :width 17.5%
+                      :text-align center
+

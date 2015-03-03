@@ -1,0 +1,84 @@
+$blue: #E9F0F9
+$grey: #A6AEBB
+$grey-m-light: #b1b1b1
+$grey-light: #ECECEC
+$orange: #ff6600
+$blue-label: #81BDF1
+$green-label: #77E075
+$grey-label:#BABABA
+$red-label:#FF5858
+$green: #78e477
+$blue-grey: #F1F4F9
+
+@mixin rotate($value, $ms_value)
+  :-webkit-transform rotate(#{$value})
+  :-moz-transform rotate(#{$value})
+  :-ms-transform rotate(#{$value})
+  :-o-transform rotate(#{$value})
+  :filter progid:DXImageTransform.Microsoft.BasicImage(rotation=#{$ms_value})
+
+@mixin radius($top, $right, $bottom, $left)
+  -moz-border-radius: #{$top}px #{$right}px #{$bottom}px #{$left}px
+  -webkit-border-radius: #{$top}px #{$right}px #{$bottom}px #{$left}px
+  border-radius: #{$top}px #{$right}px #{$bottom}px #{$left}px
+
+@mixin shadow($top, $right, $bottom, $left, $color)
+  -moz-box-shadow: #{$top}px #{$right}px #{$bottom}px #{$left}px $color
+  -webkit-box-shadow: #{$top}px #{$right}px #{$bottom}px #{$left}px $color
+  box-shadow: #{$top}px #{$right}px #{$bottom}px #{$left}px $color
+
+@mixin opacity($value)
+  :opacity $value
+  -moz-opacity: $value
+  @if $value != "none"
+    :filter alpha(opacity=$value * 100)
+    :filter “alpha(opacity=$value * 100)”
+  @else
+    :filter alpha(opacity=none)
+    :filter “alpha(opacity=none)”
+
+@mixin disable_html5_drag()
+  :-moz-user-select none
+  :-webkit-user-drag none
+      
+@mixin Carousel($container_height, $elements_w, $elements_h)
+  #carousel
+    :overflow hidden
+    :max-height  #{$container_height}px
+    :height #{$container_height}px
+    :position relative
+    .arrow-left
+      :background url('/assets/btn_carousel.png') no-repeat
+      :background-position 0 0
+      :width 27px
+      :height 36px
+      :position absolute
+      :left 0
+      :top 22px
+      :z-index 100
+      :cursor pointer
+    .arrow-right
+      :background url('/assets/btn_carousel.png') no-repeat
+      :background-position -38px 0
+      :width 27px
+      :height 36px
+      :position absolute
+      :right 0
+      :top 22px
+      :z-index 100
+      :cursor pointer      
+
+    .overflow
+      :margin-top 5px
+      :position absolute
+      :width 10000px
+      .pic:first-child
+        :margin 0 !important
+      .pic
+        :display inline-block
+        :float left
+        :width #{$elements_w}px
+        :height #{$elements_h}px
+        :margin-left 3px
+        :border solid 1px $grey
+        :overflow hidden

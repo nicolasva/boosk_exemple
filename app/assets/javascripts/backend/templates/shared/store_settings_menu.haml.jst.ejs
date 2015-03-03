@@ -1,0 +1,79 @@
+- function menu_item_class(item) {
+-   if (active === item) {
+-     return "active";
+-   } else {
+-     return "other";
+-   }
+- }
+
+#shop-preview.btn.green{ data-trigger: 'hover', data-content: translate.views.shop_setting.preview_info, data-placement: 'bottom'}= translate.preview
+
+%h1= translate.views.common.menu.store_settings
+- i = 0
+:if wizard
+  %ul.without-margin.mode-wizard
+    %li{class: menu_item_class("general"), data-range: i++ }
+      :if active == "general"
+        .num
+          %span= i
+      %a= translate.views.shop.edit.h2
+    %li{class: menu_item_class("menu"), data-range: i++}
+      :if active == "menu"
+        .num
+          %span= i
+      %a= translate.views.menu.edit.h2
+    :if has_active_payement == true
+      %li{class: menu_item_class("tax_rates"), data-range: i++}
+        :if active == "tax_rates"
+          .num
+            %span= i
+        %a= translate.views.tax_rate.index.h2
+      %li{class: menu_item_class("shipping"), data-range: i++}
+        :if active == "shipping"
+          .num
+            %span= i
+        %a= translate.views.shipping_method.index.h2
+    :if App.account().get('plan').has_customization
+      %li{class: menu_item_class("customization"), data-range: i++}
+        :if active == "customization"
+          .num
+            %span= i
+        %a= translate.views.customization.index.h2
+    :if has_active_payement == true
+      %li{class: menu_item_class("payment"), data-range: i++}
+        :if active == "payment"
+          .num
+            %span= i
+        %a= translate.views.payment.edit.h2
+    %li{class: menu_item_class("option_types"), data-range: i++}
+      :if active == "option_types"
+        .num
+          %span= i
+      %a= translate.views.option_type.index.h2
+    %li
+      %a= translate.views.product.new.h1
+    %li{class: menu_item_class("status"), data-range: i}
+      %a= translate.views.status.edit.h2
+
+:if !wizard
+  %ul.without-margin
+    %li{class: menu_item_class("general")}
+      %a{href: "#/settings/wizard=false"}= translate.views.shop.edit.h2
+    %li{class: menu_item_class("menu")}
+      %a{href: "#/settings/menu"}= translate.views.menu.edit.h2
+    :if has_active_payement == true
+      %li{class: menu_item_class("zones")}
+        %a{href: "#/settings/zones"}= translate.views.zone.index.h2
+      %li{class: menu_item_class("tax_rates")}
+        %a{href: "#/settings/tax_rates"}= translate.views.tax_rate.index.h2
+      %li{class: menu_item_class("shipping")}
+        %a{href: "#/settings/shipping_methods"}= translate.views.shipping_method.index.h2
+    %li{class: menu_item_class("customization")}
+      %a{href: "#/settings/customization"}= translate.views.customization.index.h2
+    :if has_active_payement == true
+      %li{class: menu_item_class("payment")}
+        %a{href: "#/settings/payment"}= translate.views.payment.edit.h2
+    %li{class: menu_item_class("option_types")}
+      %a{href: "#/settings/option_types"}= translate.views.option_type.index.h2
+    %li{class: menu_item_class("status")}
+      %a{href: "#/settings/status"}= translate.views.status.edit.h2

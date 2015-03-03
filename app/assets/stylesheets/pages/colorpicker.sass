@@ -1,0 +1,28 @@
+.colorpicker
+  :overflow visible
+  :z-index 1001
+  h1
+    :position absolute
+    :top -20px
+    :color #fff
+    :background-color #a6aebb
+    :text-transform uppercase
+    :font-size 12px
+    :line-height 20px
+    :padding 5px 10px
+    :width 336px
+    &:after
+      :right 100%
+      :border solid transparent
+      :content " "
+      :height 0
+      :width 0
+      :position absolute
+      :border-right-color #a6aebb
+      :border-width 15px
+      :top 50%
+      :margin-top -15px
+  input
+    :width auto
+    :height auto
+    :line-height normal

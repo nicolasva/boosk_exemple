@@ -1,0 +1,51 @@
+%form
+  .row-fluid
+    .span6
+      %label{for: "name"}= translate.activerecord.attributes.promotion.name
+      %input.necessary{type: "text", name: "name", id: "name", value: model.get('name')}
+      %label{for: "description"}= translate.activerecord.attributes.promotion.description
+      %textarea{name: "description", id: "description"}= model.escape('description')
+    .span6
+      %label{for: "pickpicture"}= translate.activerecord.attributes.promotion.picture
+      #picture
+        #picture-container{style: "position: relative;text-align: center;"}
+          %img{src: model.get('picture').url}
+        %div{style: "position: absolute; top: 40%; left: 25%; width: 50%"}
+          %button.btn.orange#pickpicture{type: "button"}= translate.views.picture.update_picture
+  :if model.type() == "product_discount"
+    .row-fluid
+      %label{for: "discount_amount"}= translate.activerecord.attributes.promotion.discount_amount
+      %input.necessary.number{type: "text", name: "discount_amount", id: "discount_amount", value: model.get('discount_amount')}
+      %select.input-mini{name: "percent_discount", id: "percent_discount"}
+        %option{value: "1"} %
+        %option{value: "0"}= App.shop().get('devise')
+  -#.row-fluid
+    %label{for: "coupon_code"}= translate.activerecord.attributes.promotion.coupon_code
+    .input-append
+      %input{type: "text", name: "coupon_code", id: "coupon_code", value: model.get('coupon_code')}
+      %button.btn.generate-coupon{type: "button"}= translate.generate.capitalize()
+  .row-fluid
+    .span6
+      %label{for: "starts_at"}= translate.activerecord.attributes.promotion.starts_at
+      %input.necessary.date{type: "text", id: "starts_at_datepicker", value: moment(model.get('starts_at')).format('DD/MM/YYYY HH:mm') }
+      %input{type: "hidden", name: "starts_at", id: "starts_at", value: model.get('starts_at')}
+    .span6
+      :if model.has('ends_at')
+        %input{type: "checkbox", id: "no_end_date", name: "no_end_date"}
+      :if !model.has('ends_at')
+        %input{type: "checkbox", id: "no_end_date", name: "no_end_date", checked: true}
+      %label.checkbox{for: "no_end_date"}= translate.views.promotion.no_end_date
+  .row-fluid
+    :if model.has('ends_at')
+      .ends_at_wrapper
+        %label{for: "ends_at"}= translate.activerecord.attributes.promotion.ends_at
+        %input{type: "text", id: "ends_at_datepicker", value: moment(model.get('ends_at')).format('DD/MM/YYYY HH:mm')}
+        %input{type: "hidden", name: "ends_at", id: "ends_at", value: model.get('ends_at')}
+    :if !model.has('ends_at')
+      .ends_at_wrapper{style: "display: none;"}
+        %label{for: "ends_at"}= translate.activerecord.attributes.promotion.ends_at
+        %input.date{type: "text", name: "ends_at", id: "ends_at", disabled: true}
+
+  .actions
+    %a.btn.orange.back{href: "#"}= translate.back.capitalize()
+    %input.btn.orange{type: "submit", value: translate.next.capitalize()}

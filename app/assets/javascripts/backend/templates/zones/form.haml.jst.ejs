@@ -1,0 +1,34 @@
+.container-fluid
+  .row-fluid
+    .span6
+      .row-fluid
+        .span4
+          .row-fluid
+            .span6
+              %label{for: "zone_name"}= translate.activerecord.attributes.zone.name.capitalize()
+            .span2
+              %span.need *
+      %input{id: "zone_name", name: "zone[name]", placeholder: translate.views.zone.name_example, value: zone.name}
+      %p.help-block= translate.views.zone.help_block_name
+    .span6.zones
+      .row-fluid
+        .span4
+          .row-fluid
+            .span9
+              %label{for: "zones"}= translate.activerecord.attributes.zone.zone_members.capitalize()
+            .span3
+              %span.need *
+      %input{type: "hidden", name: "zone[zone_members_codes][]", value: ""}
+      %select.region-select{ name: "zone[zone_members_codes][]", data-placeholder: translate.views.zone.zone_members_placeholder, multiple: "multiple", style: "width: 100%;" }
+        :each region in regions
+          %optgroup{ label: region.name }
+            %option{ value: region.code }= region.name
+            :if region.code == 'US'
+              :each subregion in region.subregions
+                %option{ value: subregion.code }= subregion.name
+
+  .actions
+    - var submitLabel = isNew ? translate.create : translate.update
+    %a.btn.back{ data-dismiss: "modal" }= translate.close  
+    %input.btn.orange{type: "submit", value: submitLabel.capitalize() }
+

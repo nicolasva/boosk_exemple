@@ -1,0 +1,20 @@
+- function menu_item_class(item) {
+-   if (active === item) {
+-     return "active";
+-   } else {
+-     return "other";
+-   }
+- }
+%h1= translate.views.common.menu.account_settings
+%ul.without-margin
+  %li{class: menu_item_class("general")}
+    %a{href: "#/accounts"}= translate.views.account.menu
+  :if App.account().get('invited_by_id') == null
+    %li{class: menu_item_class("administrators")}
+      %a{href: "#/accounts/administrators"}= translate.views.administrator.h2
+  %li{class: menu_item_class("plans")}
+    %a{href: "#/accounts/plans"}= translate.views.plan.index.h2
+  %li{class: menu_item_class("shops")}
+    %a{href: "#/accounts/shops"}= translate.views.shop.my_shops.capitalize()
+  %li{class: menu_item_class("receipts")}
+    %a{href: "#/accounts/receipts"}= translate.views.receipt.index.h2

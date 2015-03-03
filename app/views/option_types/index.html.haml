@@ -1,0 +1,19 @@
+#store-settings.container-fluid
+  .row-fluid
+    .span9
+      %section.settings-content
+        %header
+          .row-fluid
+            .span10
+              %h1= t(:h2, scope: [:views, :option_type, :index])
+            .span2.add
+              = link_to "+ #{t(:add)}", new_shop_option_type_path(@shop), class: "btn orange", id: "new_option_set"
+        %table
+          %thead
+            %th Name
+            %th Values
+            %th Actions
+          %tbody
+            = render partial: 'option_type', collection: @option_types, as: :option_type, locals: {shop: @shop}
+    .span3
+      = render 'shared/store_settings_menu', shop: @shop, current_item: :option_types

@@ -1,0 +1,56 @@
+!!!
+%html
+  %head
+    %title
+      = "#{@shop.name} - #{@shop.description}"
+    = stylesheet_link_tag "facebook/application"
+    = javascript_include_tag "facebook/application"
+    = javascript_include_tag "//platform.twitter.com/widgets.js"
+    = csrf_meta_tags
+  %body.facebook{"data-variant-id" => "facebook"}
+    - if !@shop.facebook_status || @shop.products.empty? and @preview.nil?
+      %img{src: "/assets/fallback/coming_soon_en.png"}
+    - if @shop.facebook_status && !@shop.products.empty? or @preview == true
+      #fb-root
+      :javascript
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : "#{BOOSKETSHOPS['facebook']['app_id']}",
+            status     : true,
+            cookie     : true,
+            xfbml      : true
+          });
+          FB.Canvas.setSize({ height: 995 });
+          App.facebookAppId = "#{BOOSKETSHOPS['facebook']['app_id']}"
+          App.eventsDispatcher.trigger("fbSdkInit");
+        };
+
+        (function(d){
+           var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement('script'); js.id = id; js.async = true;
+           js.src = "//connect.facebook.net/fr_FR/all.js";
+           ref.parentNode.insertBefore(js, ref);
+         }(document));
+      %header
+        %section#header-wrapper.attachment-wrapper
+          = render(:partial=>"/common/header_footer_template/header", :locals => {:shop => @shop})
+      %section.menu-container
+        %section.clearfix
+          - if @shop.has_active_payement
+            #basket_shop
+              = render(:partial=>"/frontoffice/carts/index", :locals => {cart: @cart_user})
+          - if @customization.search_engine
+            #search_form
+              = render(:partial=>"/common/search/search")
+          #menu
+            = create_menu(@shop.taxonomies.first.taxons).html_safe
+      .product_lists
+        = yield
+      = render :partial => '/common/modal'
+      #notice
+        #notice_box
+      %footer
+        = render(:partial=>"/common/header_footer_template/footer", :locals => {:shop => @shop})
+        #customization
+          = render(:partial => "/frontoffice/shops/customization", :locals => {:shop => @shop})

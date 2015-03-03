@@ -1,0 +1,7 @@
+= form_for [taxonomy.shop, taxonomy] do |f|
+  .field
+    = f.label :name
+    = f.text_field :name
+  .actions
+    = link_to 'Back', shop_taxonomies_path(@shop), class: "btn"
+    = f.submit class: "btn btn-primary"

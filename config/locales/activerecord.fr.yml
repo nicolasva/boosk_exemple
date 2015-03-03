@@ -1,0 +1,156 @@
+fr:
+  activerecord:
+    errors:
+      models:
+        product:
+          attributes:
+            name: "Ne doit pas être vide !"
+            url: "Doit contenir http://"
+        product_variant:
+          attributes:
+            sku: "Ne doit pas être vide !"
+        user:
+          attributes:
+            email:
+              invalid: "n'est pas valide (exemple@exemple.fr)"
+              taken: "déjà utilisé"
+            password:
+              too_short:
+                one: "est trop court (au moins un caractère)"
+                other: "est trop court (au moins %{count} caractères)"
+              confirmation: "ne concorde pas avec la confirmation"
+      messages:
+        blank: "ne peut pas être vide"
+        invalid: "n'est pas valide"
+        not_a_number: "n'est pas un nombre"
+        greater_than_or_equal_to: "doit être supérieur ou égal à %{count}"
+        less_than_or_equal_to: "doit être inférieur ou égal à %{count}"
+        expired: "Cette carte de crédit a expiré"
+        invalid_date: "n'est pas une date valide"
+        end_date_cannot_be_before_start_date: "La date de fin ne peut être avant la date de début"
+    models:
+      shop: "boutique"
+      address: "Adresse"
+      product: "produit"
+      product_variant: "variante"
+      option_type: "option"
+      order: "commande"
+      shipping_category: "catégorie"
+      shipping_method: "mode d'expédition"
+      zone: "Zone géographique"
+      calculator: "Méthode de calcul"
+      tax_rate: "Taxe"
+      customization: "Personnalisation"
+      calculator/flat_percent_item_total: "Pourcentage fixe"
+      calculator/flat_rate: "Montant fixe (par commande)"
+      calculator/flexi_rate: "Montant variable"
+      calculator/per_item: "Montant fixe (par produit)"
+      calculator/price_sack: "Price sack"
+      user: "utilisateur"
+      promotion: "promotion"
+
+    attributes:
+      address:
+        city: "Ville"
+        country: "Pays"
+        zip_code: "Code Postal"
+        firstname: "Prénom"
+        lastname: "Nom"
+        state: "Région"
+        designation: "Désignation"
+        addr: "N° et rue"
+        mail: "Mail"
+      product:
+        name: "Nom du produit"
+        description: "Description du produit"
+        permalink: "URL du Produit"
+        status: "Statut"
+        highlight: "Mettre en avant ce produit"
+        tax_rate_id: "Taxe"
+        shipping_method_id: "Taxe"
+        taxon_ids: "Catégories"
+        position: "Position"
+      product_variant:
+        price: "Prix"
+        quantity: "Quantité"
+        sku: "Référence"
+        weight: "Poids"
+        width: "Longeur"
+        height: "Hauteur"
+        depth: "Profondeur"
+      order:
+        total: "Total"
+        item_total: "Nombre de produits"
+        email: "E-mail"
+        workflow_state: "Etat"
+        created_at: "Date"
+      option_type:
+        name: "Attribut"
+        value: "Valeur"
+      shipping_category:
+        name: "Nom"
+      shipping_method:
+        name: "Nom"
+      tax_rate:
+        label: "Libellé"
+        rate: "Taux"
+        zone_ids: "Zones"
+      zone:
+        name: "nom"
+        zone_members: "régions"
+      shop:
+        name: "Nom de la boutique"
+        baseline: "Slogan"
+        uuid: "Clef de la boutique"
+        description: "Description"
+        terms: "Conditions générales de vente"
+        paypal_account: "Compte e-mail PayPal"
+        fan_page_id: "Page Facebook"
+        country: "Pays"
+        devise: "Choix de la devise"
+        url_website: "URL du site Internet"
+        shop_type: "Type de boutique"
+        shop_type_not_sell: "Site vitrine"
+        shop_type_sell: "Site marchand"
+        data_product_feed_url: "URL du flux produit (facultatif)"
+      customization:
+        header: "En-tête"
+        footer: "Pied de page"
+        teaser: "Image d'annonce"
+        shutter: "Image de maintenance"
+        fan_access: "Restriction aux fans"
+        background_color_shop: "Couleur de fond de la boutique"
+        background_color_product_list: "Couleur de fond des produits"
+        background_color_product_thumb: "Couleur de fond d'un produit"
+        color_text_product: "Couleur du texte des produits"
+        color_text_menu: "Couleur du texte du menu"
+        color_text_menu_hover: "Couleur du texte du menu (survol)"
+        background_color_sidebar: "Couleur de fond du menu"
+        background_color_sidebar_item: "Couleur de fond d'un élément du menu"
+      user:
+        email: "Adresse e-mail"
+        password: "Mot de passe"
+        password_confirmation: "Mot de passe (confirmation)"
+        remember_me: "Se souvenir de moi"
+        company: "Raison sociale"
+        firstname: "Prénom"
+        lastname: "Nom"
+        phone_number: "Téléphone"
+        address: "Rue"
+        zip_code: "Code postal"
+        city: "Ville"
+        country: "Pays"
+      subscription:
+        cardholder_name: "Titulaire de la carte"
+        card_number: "Numéro de carte"
+        month: "Mois"
+        year: "Année"
+        verification_code: "Code de vérification"
+      promotion:
+        name: "Nom"
+        coupon_code: "Code promotionnel"
+        starts_at: "Date de début"
+        ends_at: "Date de fin"
+        discount_amount: "Montant de la remise"
+        description: "Description"
+        picture: "Image"

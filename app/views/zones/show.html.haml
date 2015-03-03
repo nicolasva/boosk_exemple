@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%h1 Show Zone
+
+%dl
+  %dt Name
+  %dd= @zone.name
+
+= link_to 'Edit zone', edit_shop_zone_path(@zone.shop, @zone)

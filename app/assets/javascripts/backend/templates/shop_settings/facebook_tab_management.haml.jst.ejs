@@ -1,0 +1,16 @@
+:if (_.isEmpty(fan_pages))
+  %button.btn.btn-primary#add-to-fan-page= translate.views.shop.edit.add_to_page
+:if (!_.isEmpty(fan_pages))
+  %label{for: "fan_page_id"}= translate.activerecord.attributes.shop.fan_page_id
+  .row-fluid
+    .span6
+      .row-fluid
+        .span6
+          %select{id: "fan_page_id", style: "width:160px"}
+            %option{value: "!{}"}= translate.views.shop.edit.no_fan_page
+            :each page in fan_pages
+              %option{value: page.id, data-token-page: page.access_token }= page.name
+        .span6
+          #fb_preview
+      %p.help-block= translate.views.status.edit.help_block_facebook_select_fan_page
+    %section#custom-tab.span6

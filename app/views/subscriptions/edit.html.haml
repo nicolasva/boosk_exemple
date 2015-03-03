@@ -1,0 +1,120 @@
+%section.subscription.container-fluid
+  .row-fluid
+    .span9.without-margin
+      .big-block.free-month-explanation
+        %h3= t(:title, scope: [:views, :subscription, :free_month_explanation])
+        %ol.unstyled
+          %li.first= t(:first, scope: [:views, :subscription, :free_month_explanation])
+          %li.second= t(:second, scope: [:views, :subscription, :free_month_explanation])
+          %li.third 
+            %strong= t(:third, scope: [:views, :subscription, :free_month_explanation])
+          %li.fourth
+            %strong= t(:fourth, scope: [:views, :subscription, :free_month_explanation])
+            
+      %h2= t(:h2, scope: [:views, :subscription])
+            
+      .big-block.subscription-form-container
+        = form_for @subscription, url: subscription_path, html: {class: "form-horizontal"} do |f|
+          %fieldset
+            - if @subscription.errors.any?
+              #errorExplanation.alert.alert-error.alert-block
+                %h4= t(:header, scope: [:views, :subscription, :errors], count: @subscription.errors.count)
+                %ul
+                  - @subscription.errors.full_messages.each do |msg|
+                    %li= msg
+            %div
+              - if @plan.nil? 
+                .control-group
+                  = f.label  t(:choose_plan, scope: [:views, :subscription]), class: "control-label"
+                  .controls
+                    = f.select :plan_id, Plan.all.collect {|p| [p.name.capitalize, p.id]}
+              - else
+                = f.hidden_field :plan_id, value: @plan.id
+                = f.hidden_field :period, value: @period
+            %div
+              .control-group
+                = f.label :cardholder_name, class: "control-label required"
+                .controls
+                  = f.text_field :cardholder_name, class: "necessary"
+              .control-group
+                = f.label :card_number, class: "control-label required"
+                .controls
+                  = f.text_field :card_number, class: "necessary number"
+              .control-group
+                %label.control-label= t(:payment_methods_accepted, scope: [:views, :subscription])
+                .controls= image_tag "cards.png"              
+              .control-group
+                %label.control-label.required{for: "date[month]"}= t(:expiration_date, scope: [:views, :subscription])
+                .controls
+                  = select_month(Date.today, :add_month_numbers => true)
+                  = select_year(Date.today, :start_year => Date.today.year, :end_year => Date.today.year + 10)
+              .control-group
+                = f.label :verification_code, class: "control-label required"
+                .controls
+                  = f.text_field :verification_code, class: "input-mini"
+                  %a{href: "#", rel: "tooltip", title: t(:cvc_help_block, scope: [:views, :subscription])}= t(:more_information, scope: [:views, :subscription])
+
+              = f.submit value: t(:confirm, scope: [:views, :subscription]), class: "orange"
+              
+              %p.help-block= t(:required_fields_help, scope: [:views, :subscription])
+              %p.help-block= t(:cvc_required_help, scope: [:views, :subscription])
+
+              
+    .span3
+      .box.support
+        .header
+          %span= t(:title, scope: [:views, :subscription, :support])
+        .content
+          %ul.unstyled.how_to
+            %li 
+              %a{:href => "#", "data-content" => "unsuscribe"}= t(:how_to_cancel_trial, scope: [:views, :subscription, :support])
+            %li 
+              %a{:href => "#", "data-content" => "upgrade"}= t(:how_to_change_plan, scope: [:views, :subscription, :support])
+          .more-info
+            %p= t(:more_info_html, scope: [:views, :subscription, :support])
+      .box.call-number
+        %p
+          %strong 0892 700 577
+          (0,34 €/min)
+      - unless @plan.nil?
+        .box
+          .header
+            %span= t(:summary)
+          .content
+            %ul.unstyled
+              %li.pack= t(:you_choose_x_plan, scope: [:views, :subscription], plan: @plan.name.capitalize )
+              - if @period == "month"
+                %li= t(:nb_free_months, scope: [:views, :subscription], count: 1)
+              - else
+                %li= t(:nb_free_months, scope: [:views, :subscription], count: @plan.nb_free_months)
+              %li= t(:amount, scope: [:views, :subscription], cost: @period == "month" ? @plan.monthly_price : @plan.yearly_price, period: t(@period))
+              %li= t(:no_commitment, scope: [:views, :subscription])
+      .facebook-pmd
+        %p= t(:pmd_html, scope: [:views, :subscription])
+        = image_tag("partners/facebook-pmd.jpg")
+
+    .span9.without-margin.footer
+      .row-fluid
+        .payment-partners.span6
+          .row-fluid
+            .span4
+              = link_to image_tag("partners/paypal.png"), "http://www.paypal.com", target: "_blank", class: "paypal"
+              = link_to image_tag("partners/ogone.png"), "http://www.ogone.fr", target: "_blank", class: "ogone"
+            .span8
+              %p= t(:payment_partners, scope: [:views, :subscription])
+
+        .fevad-sncd.span6
+          .row-fluid
+            .span5
+              = image_tag("partners/fevad.png")
+              = image_tag("partners/sncd.jpg")
+            .span7
+              %p= t(:fevad_sncd_html, scope: [:views, :subscription])
+
+#modal.modal.fade.modal-confirm.modal-info-payment
+  .modal-header
+    %a.close{ "data-dismiss" => "modal" } &times;
+    %h3
+  .modal-body
+    %p{style: "display:none;", "data-content" => "unsuscribe" }= t(:unsuscribe, scope: [:views, :subscription, :info])
+    %p{style: "display:none;", "data-content" => "upgrade" }= t(:upgrade, scope: [:views, :subscription, :info])    

@@ -1,0 +1,705 @@
+@import mixins
+
+body.logout
+  :background-color #232323
+  .popover
+    :margin-left -72px
+    .popover-inner
+      :background #fff
+    .arrow
+      :border-bottom-color #fff !important
+      :left 75% !important
+    .popover-title,.header
+      :display none
+    input.span4
+      :width 242px
+      :margin-bottom 10px !important
+    .rememberme
+      input
+        :margin-top -2px
+      label
+        :color #232323
+        :font-size 0.85em
+        :padding-left 0 !important
+    .forgotpass
+      a
+        :color #232323
+        :font-size 0.85em
+        :margin-left 10px
+    .actions
+      input
+        :padding 4px 74px
+        :margin-bottom 5px
+      a
+        :padding 0px 14px
+        :width 85%
+        .fb-picto
+          :background url('/assets/picto_sprite.png') no-repeat 0 -1416px
+          :padding 12px 10px
+          :display inline-block
+          :float left
+          :margin 3px 0
+        .txt
+          :display inline-block
+          :float right
+          :margin 7px 0 0 1px   
+        
+  header.logout
+    .container
+      :width 1024px
+    .brand
+      :padding-top 6px
+      img
+        :width 55%
+    .scm
+      :color #FFF
+      :float right
+      :margin-top 32px
+      strong
+        :font-family Verdana
+    .scm-logo
+      :color #FFF
+      :float left
+      :margin-top 0
+      strong
+        :font-family Verdana
+      
+    #header-login
+      :float right
+      .play
+        :display inline-block
+        :margin-right 3px
+        :background url('/assets/picto_sprite.png')
+        :background-position 4px -1393px
+        :width 3px
+        :height 3px
+        :padding 7px
+      a
+        :margin 50px 20px 0 0
+        :color #FFF
+        :font-size 1.2em
+        :display inline-block
+
+.sign-in
+  :margin-top 10px !important
+  .actions
+    input
+      :padding 5px 92px
+    a
+      :width 75%
+      :padding 0 34px   
+      :margin-top 5px
+      .fb-picto
+        :background url('/assets/picto_sprite.png') no-repeat 0 -1416px
+        :padding 12px 10px
+        :display inline-block
+        :float left
+        :margin 3px 0
+      .txt
+        :display inline-block
+        :float right
+        :margin 7px 0 0 1px   
+  .header
+    :margin-bottom 15px     
+    :font-size 1.6em
+  fieldset
+    :position relative
+    :padding 15px
+    :background-color #FFF
+    input[type=email]
+      :margin-bottom 5px
+      :height 20px
+      :font-size 1.1em
+    input[type=password]
+      :font-size 1.1em
+      :height 20px
+    .rememberme
+      :margin 4px 0 0 0
+      :font-size 0.9em            
+      input
+        :color $grey-m-light
+      label
+        :font-size 1em
+        :padding-left 3px
+        :margin-top 5px
+        :margin-bottom 0
+        :vertical-align middle
+        :display inline-block
+        :color #232323                  
+    .forgotpass
+      :float right
+      :text-align right
+      :margin 4px 0 0 1px
+      :font-size 0.9em
+      a
+        :color #232323
+        :margin-top 2px
+        :display inline-block
+        :font-weight normal
+        &:hover
+          :color #000
+  .facebook-connect
+    :width 170px
+    :margin 8px 0 0 0
+
+          
+.sign-up
+  .actions
+    input
+      :padding 6px 43px
+    a
+      :padding 0px 37px
+      :margin-top 5px
+      :width 73%
+      .fb-picto
+        :background url('/assets/picto_sprite.png') no-repeat -2px -1416px
+        :padding 12px 12px
+        :display inline-block
+        :float left
+        :margin 3px 0 3px 4px
+      .txt
+        :display inline-block
+        :float right
+        :margin 7px 0 0 0px
+  fieldset
+    :position relative
+    :padding 15px
+    .header
+      :margin-bottom 10px
+      .free_offer
+        :font-family Verdana
+      span
+        :font-size 1.7em
+        :font-weight 600
+      span:last-child
+        :font-size 1.4em
+        :font-weight normal
+    :background-color #FFF
+    :border-color #abb5c2
+    input[type=email]
+      :height 20px
+      :font-size 1.1em
+    input[type=password]
+      :font-size 1.1em
+      :height 20px
+    .terms
+      :font-size 12px
+      :font-weight normal
+      .terms_part1
+        :color #424242
+        strong
+          :font-family "Verdana"
+      .terms_part2
+        :cursor pointer
+        :color $orange
+        :display inline-block
+        
+#reset-password
+  :padding-bottom 5px
+  :background-color #ff5503
+  .mark
+    :margin-top 5px
+    :height 655px
+    :background url('/assets/caddy_login.png') no-repeat
+    .boost_eshop_title
+      :margin-top 30px
+      :font-size 3em
+      :color #232323
+      :margin-left 25px
+    .boost_eshop_mobile
+      :margin-top 25px
+      :display inline-block
+      :margin-left 60px
+      :font-size 3em
+      :color #232323
+      strong
+        :font-family "Verdana"
+        :color #232323            
+    .boost_eshop_facebook
+      :font-size 3em
+      :display inline-block
+      :color #232323          
+      strong
+        :font-family "Verdana"
+        :color #232323
+    .boost_eshop_picto
+      :margin 15px auto
+      :background url('/assets/shop-canal-picto.png') no-repeat
+      :width 50%
+      :height 100px
+  .mire
+    :margin-left 2%
+    :margin-top 5px
+    :width 29%
+    #support-block
+      :background #fff
+      :margin-left 9%
+    form
+      :margin-left 5%
+      fieldset
+        :padding 15px
+        @include shadow(0, -6, 6, -5, #888)
+        @include radius(15, 15, 15, 15)
+        :background-color #FFF
+        :border-color #abb5c2
+        .actions
+          :float left
+          input
+            :padding 5px 60px
+            
+        header
+          h2
+            :font-size 1.7em
+        #error_explanation
+          h2
+            :font-size 1em
+            :line-height 1.618            
+        input[type=email]
+          :height 20px
+          :font-size 1.1em
+        p
+          :margin 0.5em 0
+
+section.container.login
+  :width 1024px
+  :color #232323
+  :background-color #232323
+  #app
+    :margin-top 0
+    :padding-top 0
+    input.span4
+      :width 270px
+    input.error-empty
+      :border 1px solid #fe6903 !important
+    input.span4            
+      @include radius(0,0,0,0)
+      :border 1px solid #232323
+    .alert
+      :position absolute
+      @include radius(0,0,0,0)
+      @include opacity(0.9)      
+      :left 0
+      :top 0
+      :text-align center
+      :width 84.5%
+      :padding 10px 24px
+      :text-shadow 0 0 0
+      :background #232323
+      :color #fff
+      :border none
+    #landing-1
+      :margin-top 2px
+      .primary
+        :background-color #ff5503
+        :padding-bottom 6px
+        :margin-bottom 10px
+        .mark
+          :margin-top 5px
+          :height 655px
+          :background url('/assets/caddy_login.png') no-repeat
+          .boost_eshop_title
+            :margin-top 30px
+            :font-size 3em
+            :color #232323
+            :margin-left 25px
+          .boost_eshop_mobile
+            :margin-top 25px
+            :display inline-block
+            :margin-left 60px
+            :font-size 3em
+            :color #232323
+            strong
+              :font-family "Verdana"
+              :color #232323            
+          .boost_eshop_facebook
+            :font-size 3em
+            :display inline-block
+            :color #232323          
+            strong
+              :font-family "Verdana"
+              :color #232323
+          .boost_eshop_picto
+            :margin 15px auto
+            :background url('/assets/shop-canal-picto.png') no-repeat
+            :width 50%
+            :height 100px
+        .actions
+          :margin-right 0
+          input
+            :margin-bottom 0
+        .mire
+          :margin-left 2%
+          :margin-top 5px
+          :width 29%
+
+      .eyesontiger
+        :background-color #3a5eaa
+        :padding-bottom 5px
+        .shop-example
+          :margin-top 5px
+          :height 655px
+          :background url('/assets/foulard.png') no-repeat
+        .compatibility
+          :margin-left 2%
+          :margin-top 30px
+          :width 30.5%
+          .logo
+            :width 230px
+            :height 50px
+          .compatible_with
+            :color #fff
+            :font-size 1.2em
+            :margin-left 15px
+          #partnership-pictos
+            :margin-top 20px
+            a
+              :margin 0 0 15px 9px
+              
+    #landing-2
+      :margin-top 2px      
+      .primary
+        :background-color #3a5eaa
+        :padding-bottom 6px
+        :margin-bottom 10px
+        .mark
+          :margin-top 5px
+          :height 655px
+          :background url('/assets/foulard_2.png') no-repeat
+          .your_eshop
+            :margin-top 30px
+            :font-size 3em
+            :color #232323
+            :margin-left 25px
+          .boost_eshop_mobile
+            :margin-top 25px
+            :display inline-block
+            :margin-left 60px
+            :font-size 3em
+            :color #232323
+            strong
+              :font-family "Verdana"
+              :color #232323            
+          .boost_eshop_facebook
+            :font-size 3em
+            :display inline-block
+            :color #232323          
+            strong
+              :font-family "Verdana"
+              :color #232323
+          .increase_feeling_clients
+            :font-size 1.7em
+            :display inline-block
+            :color #232323
+            :margin-left 60px
+            :margin 15px 0 0 60px
+            strong
+              :font-family "Verdana"
+              :color #232323            
+        .mire
+          :margin-left 2%
+          :margin-top 5px
+          :width 29%
+          .actions
+            :margin-right 0
+            input
+              :margin-bottom 0
+                
+      .eyesontiger
+        :background-color #ff5503          
+        :padding-bottom 5px
+        .shop-example
+          :margin-top 5px
+          :height 655px
+          :background url('/assets/screenshots_app.png') no-repeat
+        .features
+          :margin-top 10px
+          :color #fff
+          h3
+            :color #fff
+            :margin-bottom 10px
+            strong
+              :font-size 2em
+          ul
+            :font-size 1.2em
+            li
+              :padding 3px 0
+        .compatibility
+          :margin-top 10px
+          .logo
+            :width 230px
+            :height 50px
+            :margin-left -16px
+          .compatible_with
+            :color #fff
+            :font-size 1.2em
+            :margin-left 15px
+          #partnership-pictos
+            :margin-top 15px
+            a
+              :margin 0 0 2px 9px
+              
+    #landing-3
+      :margin-top 10px      
+      .primary
+        :background-color #ff5503
+        :padding-bottom 6px
+        :margin-bottom 10px
+        .mark
+          :margin-top 5px
+          :height 655px
+          :background url('/assets/caddy_login.png') no-repeat
+          .boost_eshop_title
+            :margin-top 30px
+            :font-size 3em
+            :color #232323
+            :margin-left 25px
+          .boost_eshop_mobile
+            :margin-top 25px
+            :display inline-block
+            :margin-left 60px
+            :font-size 3em
+            :color #232323
+            strong
+              :font-family "Verdana"
+              :color #232323            
+          .boost_eshop_facebook
+            :font-size 3em
+            :display inline-block
+            :color #232323  
+            strong
+              :font-family "Verdana"
+              :color #232323
+          .boost_eshop_picto
+            :margin 15px auto
+            :background url('/assets/shop-canal-picto.png') no-repeat
+            :width 50%
+            :height 100px
+        .actions
+          :margin-right 0
+          input
+            :margin-bottom 0
+        .mire
+          :margin-left 2%
+          :margin-top 5px
+          :width 29%
+          .highlight-shop
+            :margin-top 10px
+            h3
+              :color #fff
+              :margin-bottom 10px
+              strong
+                :font-size Verdana
+                :font-size 2em
+            ul
+              :color #fff
+              :font-size 1.2em
+              li
+                :padding 5px 0
+      .eyesontiger
+        :background-color #3a5eaa
+        :padding-bottom 5px
+        :margin-bottom 10px !important
+        .shop-example
+          :margin-top 5px
+          :height 655px
+          :background url('/assets/foulard.png') no-repeat
+        .compatibility
+          :margin-left 2%
+          :margin-top 30px
+          :width 30.5%
+          .logo
+            :width 230px
+            :height 50px
+          .compatible_with
+            :color #fff
+            :font-size 1.2em
+            :margin-left 15px
+          #partnership-pictos
+            :margin-top 20px
+            a
+              :margin 0 0 15px 9px
+      .adrienne
+        :background-color #ff5503          
+        :padding-bottom 5px
+        .sign-up
+          :margin-left -5px !important
+          :margin-top 10px !important            
+          :width 91.5%
+          .actions
+            :margin-right 0
+            input
+              :margin-bottom 0
+        .shop-example
+          :margin-top 5px
+          :height 655px
+          :background url('/assets/screenshots_app.png') no-repeat
+        .features
+          :margin-top 10px
+          :color #fff
+          h3
+            :color #fff
+            :margin-bottom 10px
+            strong
+              :font-size 2em
+          ul
+            :font-size 1.2em
+            li
+              :padding 5px 0
+              
+    #landing-4
+      :margin-top 10px            
+      .primary
+        :background-color #3a5eaa          
+        :padding-bottom 6px
+        :margin-bottom 10px
+        .mark
+          :margin-top 5px
+          :height 655px
+          :background url('/assets/foulard_3.png') no-repeat
+          .boost_eshop_title
+            :margin-top 30px
+            :font-size 3em
+            :color #232323
+            :margin-left 25px
+          .boost_eshop_mobile
+            :margin-top 25px
+            :display inline-block
+            :margin-left 60px
+            :font-size 3em
+            :color #232323
+            strong
+              :font-family "Verdana"
+              :color #232323            
+          .boost_eshop_facebook
+            :font-size 3em
+            :display inline-block
+            :color #232323          
+            strong
+              :font-family "Verdana"
+              :color #232323
+          .boost_eshop_picto
+            :margin 15px auto
+            :background url('/assets/shop-canal-picto.png') no-repeat
+            :width 50%
+            :height 100px
+        .actions
+          :margin-right 0
+          input
+            :margin-bottom 0
+        .mire
+          :margin-left 2%
+          :margin-top 5px
+          :width 29%
+          .highlight-shop
+            :margin-top 10px
+            h3
+              :color #fff
+              :margin-bottom 10px
+              strong
+                :font-size Verdana
+                :font-size 2em
+            ul
+              :color #fff
+              :font-size 1.2em
+              li
+                :padding 5px 0
+      .eyesontiger
+        :background-color #232323
+        :padding-bottom 5px
+        :margin-bottom 10px !important
+        .shop-example
+          :margin-top 5px
+          :height 655px
+          :background url('/assets/caddy_login.png') no-repeat            
+        .compatibility
+          :margin-left 2%
+          :margin-top 30px
+          :width 30.5%
+          .logo
+            :width 230px
+            :height 50px
+          .compatible_with
+            :color #fff
+            :font-size 1.2em
+            :margin-left 15px
+          #partnership-pictos
+            :margin-top 20px
+            a
+              :margin 0 0 35px 14px
+      .adrienne
+        :background-color #ff5503          
+        :padding-bottom 5px
+        .sign-up
+          :margin-left -5px !important
+          :margin-top 10px !important
+          :width 91.5%
+          .actions
+            :margin-right 0
+            input
+              :margin-bottom 0
+        .shop-example
+          :margin-top 5px
+          :height 655px
+          :background url('/assets/screenshots_app.png') no-repeat
+        .features
+          :margin-top 10px
+          :color #fff
+          h3
+            :color #fff
+            :margin-bottom 10px
+            strong
+              :font-size 2em
+          ul
+            :font-size 1.2em
+            li
+              :padding 5px 0
+
+#partnership-pictos
+  a
+    :background url('/assets/compatibility_logos.png') no-repeat
+    :display inline-block
+    :width 140px
+    :height 55px
+  .presta-shop
+    :background-position 0 0
+  .magento
+    :background-position -159px 0
+  .shopify
+    :background-position 0 -73px
+  .paypal
+    :background-position -159px -73px
+  .beez-up
+    :background-position 0 -146px
+  .shopping-flux
+    :background-position -159px -146px
+  .lengow
+    :background-position 0 -218px
+  .iziflux
+    :background-position -159px -218px
+  .facebook
+    :background-position 0 -291px                
+  .android
+    :background-position -159px -291px
+  .windows-phone
+    :background-position 0 -364px
+  .ios
+    :background-position -159px -364px                
+
+#phone-numbers
+  .tel
+    :font-size 0.85em
+    :line-height normal
+    :padding-left 35px
+    :background transparent url(/assets/sprite_subscription.png) no-repeat
+    strong
+      :font-size 1.1em
+  .fr
+    :background-position -5px -476px
+  .en
+    :background-position -5px -496px
+  .us
+    :background-position -5px -516px
+  .de
+    :background-position -5px -536px
+  .es
+    :background-position -5px -556px

@@ -1,0 +1,35 @@
+.container-fluid
+  .row-fluid
+    .span6
+      .row-fluid
+        .span3
+          %label{for: "tax_rate_label"}= translate.activerecord.attributes.tax_rate.label
+        .span2
+          %span.need *
+      :if tax_rate.label != undefined
+        %input.necessary{type: "text", id: "tax_rate_label", label: "tax_rate[label]", value: tax_rate.label, name: "tax_rate[label]", placeholder: translate.views.tax_rate.label_example }
+          
+      :if tax_rate.label == undefined
+        %input.necessary{text: "text", id: "tax_rate_label", label: "tax_rate[label]", name: "tax_rate[label]",  placeholder: translate.views.tax_rate.label_example }
+          
+      %p.help-block= translate.views.tax_rate.help_block_label
+          
+    .span6
+      .row-fluid
+        .span2
+          %label{for: "tax_rate_rate"}= translate.activerecord.attributes.tax_rate.rate
+        .span2
+          %span.need *
+      .input-append
+        :if tax_rate.rate != undefined
+          %input.number.necessary#tax_rate_rate{type: "text", label: "tax_rate[rate]", value: tax_rate.rate, name: "tax_rate[rate]",  placeholder: translate.views.tax_rate.tax_example}
+        :if tax_rate.rate == undefined
+          %input.number.necessary#tax_rate_rate{type: "text", label: "tax_rate[rate]", name: "tax_rate[rate]", placeholder: translate.views.tax_rate.tax_example}
+        %span.add-on
+          = "%"
+      %p.help-block= translate.views.tax_rate.help_block_tax
+      
+.actions
+  %a.btn.back{data-dismiss: "modal", href: "#/settings/tax_rates"}= translate.close
+  - var submitLabel = isNew ? translate.create : translate.update
+  %input.btn.orange{type: "submit", value: submitLabel.capitalize()}

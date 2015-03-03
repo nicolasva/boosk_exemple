@@ -1,0 +1,20 @@
+development:
+  PSPID: "BoosketShop"
+  userID: "BoosketShopApp"
+  password: "myuserID$77"
+  gateway_url: "https://secure.ogone.com/ncol/test/orderdirect.asp"
+stage:
+  PSPID: "BoosketShop"
+  userID: "BoosketShopApp"
+  password: "myuserID$77"
+  gateway_url: "https://secure.ogone.com/ncol/test/orderdirect.asp"
+test:
+  PSPID: "BoosketShop"
+  userID: "BoosketShopApp"
+  password: "myuserID$77"
+  gateway_url: "https://secure.ogone.com/ncol/test/orderdirect.asp"
+production:
+  PSPID: "BoosketShop"
+  userID: "BoosketShopApp"
+  password: "?=0OW7amCx"
+  gateway_url: "https://secure.ogone.com/ncol/prod/orderdirect.asp"

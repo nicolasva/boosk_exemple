@@ -1,0 +1,64 @@
+!!!
+%html
+  %head
+    %title= "Boosket Shop - #{t(:h2, scope: [:views, :wizard])}"
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "backend/wizard" if user_signed_in?
+    = csrf_meta_tags
+  %body
+    %header.login.wizard-header
+      .container
+        .brand
+          %a{:href => '/'}
+            = image_tag("boosket-shop.png")
+        - if user_signed_in?
+          .navbar.account
+            %ul.nav
+              = render :partial => '/common/trial_period'              
+              %li
+                = t(:welcome, name: current_user.firstname.blank? ? current_user.email : current_user.firstname,scope: [:views, :common])
+              %li
+                = link_to t(:logout, scope: [:views, :common, :menu]), destroy_user_session_path, :method =>'delete', :class => "logout"
+    %section.wizard
+      #notice
+        = flash[:notice]
+      - if user_signed_in?
+        = hidden_field_tag "token", form_authenticity_token, :id => "token"
+        = hidden_field_tag "session-key-name", Rails.application.config.session_options[:key], :id => "session-key-name"
+        = hidden_field_tag "session-key-value", u(cookies[Rails.application.config.session_options[:key]]), :id => "session-key-value"
+        - unless current_user.plan.nil?
+          .wizard-step
+            %h2= t(:h2, scope: [:views, :wizard])
+            .all-icons-step
+              .step-1
+              .sep
+              .step-2
+              .sep
+              .step-3
+            .all-text-step
+              .step-1-text
+                = t(:step1, scope: [:views, :wizard])
+                %br
+                = t(:step1_label, scope: [:views, :wizard])
+              .step-2-text
+                = t(:step2, scope: [:views, :wizard])
+                %br
+                = t(:step2_label, scope: [:views, :wizard])
+              .step-3-text
+                = t(:step3, scope: [:views, :wizard])
+                %br
+                = t(:step3_label, scope: [:views, :wizard])
+        #app.container
+          = yield
+    %footer
+
+    :javascript
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', '#{BOOSKETSHOPS['google_analytics']}']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();

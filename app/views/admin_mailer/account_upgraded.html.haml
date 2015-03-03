@@ -1,0 +1,17 @@
+= render :partial=>"/common/header_mailer"
+%body{:style => "padding:0px;margin:0px;color:#333;font-family:Helvetica;"}
+  #page{:style => "background-color:#E9F0F9;min-height:580px;" }
+    #header{:style => "margin: 0 auto; width:800px;padding:0 !important;overflow:hidden;background-color:#222;height:50px;"}
+      = image_tag("boosket-shop.png")
+    #title{:style => "width:800px; margin: 0 auto;height:30px;padding:0 !important;background-color:#F2F2F2;border-bottom:1px solid #E6E6E6;"}
+      %h1 Un compte a été upgradé
+    #content{:style => "padding:20px 10px;width:780px;margin:0 auto;background-color:#FFF;"}
+      %p
+        Le compte 
+        %strong= @account.email
+        a été mis à jour. Cet utlisateur vient de souscrire a un plan 
+        %strong= @account.plan.name
+        .
+      %p Pensez à supprimer l'ancien abonnement Ogone !
+  #footer{:style => "background-color:#F2F2F2;border-bottom:1px solid #E6E6E6;text-align:center;padding:5px;margin:0px;"}
+    %p.noreply Ceci est un mail généré automatiquement, merci de ne pas y répondre.

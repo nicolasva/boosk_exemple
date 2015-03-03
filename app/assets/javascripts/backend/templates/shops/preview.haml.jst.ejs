@@ -1,0 +1,43 @@
+%header.attachment-container{rel: "header"}
+  %section#header-wrapper.attachment-wrapper
+    :if customization.header && customization.header.picture
+      %img{src: customization.header.picture.normal.url}
+      %section.move-attachment-instructions
+        %p= translate.views.customization.move_attachment_instructions
+      %section.attachment-border
+  %section.edit-attachment-wrapper
+    %a.btn.orange#toggle-menu{type: "button"}= ' > ' + translate.views.picture.update_picture
+    %section#edit-header.edit-attachment-menu
+      %ul.nav.nav-list
+        %li
+          %a#pickheader{href: "#"}= translate.views.customization.upload_picture
+        %li
+          %a.move-attachment{href: "#"}= translate.views.customization.update_picture
+  %section.move-attachment-actions
+    %button.btn.btn-mini.cancel-attachment-move= translate.cancel.capitalize()
+    %button.btn.btn-mini.btn-primary.save-attachment-move= translate.views.customization.save_changes
+%section.menu-container{style: "background-color: !{customization.background_color_sidebar}"}
+.product_lists
+  %ul#product_list.grid.row-fluid{style: "background-color: !{customization.background_color_product_list}"}
+    :each product in products
+      %li.product_thumb.span3{style: "background-color: !{customization.background_color_product_thumb}", class: "grid-" + customization.products_grid }
+        .picture
+          :if product.product_variants[0].pictures[0]
+            %a.show.grey.tiny.light-opacity.track{style: "display:none;", class: "product_picture"}= translate.show
+            .product_picture
+              %img.img_product_variant_master{ src: product.product_variants[0].pictures[0].picture.url}
+        #pint
+          %ol.row-fluid
+            %li.span2
+              %a.like_it{href: "#/shop/"+App.current_shop}
+            %li.span2
+              %a.tweet_it{href: "#/shop/"+App.current_shop}
+            %li.span2
+              %a.want_it{href: "#/shop/"+App.current_shop}
+            %li.span2
+              %a.have_it{href: "#/shop/"+App.current_shop}
+            %li.span2
+              %a.pint_it{href: "#/shop/"+App.current_shop}
+        .product_meta{style: "color: !{customization.color_text_product}"}
+          %p.product_name{style: "color: !{customization.color_text_product}"}= product.name
+          %p.product_name{style: "color: !{customization.color_text_product}"}= "!{product.product_variants[0].price} !{App.getCookie('shop_devise')}"

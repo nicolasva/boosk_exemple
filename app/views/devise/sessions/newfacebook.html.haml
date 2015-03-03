@@ -1,0 +1,24 @@
+= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+  %p 
+    = f.label(:email)
+    %br
+    = f.email_field :email
+  %p
+    = f.label(:password)
+    %br
+    = f.password_field(:password)
+
+  - if devise_mapping.rememberable?
+    %p
+      = f.check_box(:remember_me)
+      = f.label(:remember_me)
+
+  = f.fields_for(:addresse, User.new.addresses.new) do |f_addresse|
+    %p
+      = f_addresse.label(:firstname)
+      %br
+      = f_addresse.text_field :firstname
+
+- if devise_mapping.recoverable? && controller_name != 'passwords'
+  = link_to "Forgot password ?", new_password_path(resource_name)
+       

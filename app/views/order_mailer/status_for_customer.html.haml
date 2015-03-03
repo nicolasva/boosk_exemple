@@ -1,0 +1,50 @@
+%body{:style => "padding:0px;margin:0px;color:#333;font-family:Helvetica;"}
+  #page{:style => "background-color:#E9F0F9;min-height:580px;" }
+    #header{:style => "margin: 0 auto; width:800px;height:200px;padding:0 !important;overflow:hidden;background:#FFF;position:relative;padding-bottom:13.13% !important;height:0 !important;"}
+      = image_tag attachments['merchant-shop.png'].url, :style => "margin:0 auto;display:block;position:relative;top:#{@order.shop.customization.header.offset}px !important;"
+      
+    #title{:style => "width:800px; margin: 0 auto;height:30px;padding:0 !important;background-color:#F2F2F2;border-bottom:1px solid #E6E6E6;"}
+      %span.shop{:style => "font-weight:bold;margin-left:20px;float:left;margin-top:7px;"}= @order.shop.name.capitalize
+      %span.validate{:style => "font-weight:bold;margin-right:20px;float:right;margin-top:7px;"}= t("mailer.orders.status_for_customer.h1", :status => t("mailer.orders.common.subject.status.#{@status}"))
+        
+    #content{:style => "padding:20px 10px;width:780px;margin:0 auto;background-color:#FFF;"}
+      - unless @status == "canceled"
+        %p{:style => "line-height: 25px;padding:0px;margin:0px;margin-top:10px;" }= t("mailer.orders.status_for_customer.success_status", :status => t("mailer.orders.common.status.#{@status}"), :order_ref => @order.number)
+      - else
+        %p{:style => "line-height: 25px;padding:0px;margin:0px;margin-top:10px;" }= t("mailer.orders.status_for_customer.bad_status", :status => t("mailer.orders.common.status.#{@status}"), :order_ref => @order.number)
+        
+        
+      %h2{:style => "margin-bottom:15px;color:#ff6600; font-size:16px;margin-top:20px;"}= t("mailer.orders.pay_for_customer.shipping_address")
+        
+      %ul{:style => "list-style-type:none;margin-bottom:5px;padding:0 20px;"}
+        %li= "#{@order.contact.lastname} #{@order.contact.firstname}"
+        %li= @order.contact.addresses.first.addr
+        %li= @order.contact.addresses.first.city
+        %li= @order.contact.addresses.first.zip_code
+        %li= @order.contact.addresses.first.country
+        %li= @order.contact.phone
+        %li{:style => "padding-top:10px;"}= @order.contact.emails.first.email        
+        
+      #recap{:style => "margin-top:10px;"}
+        %h2{:style => "margin-bottom:15px;color:#ff6600; font-size:16px;margin-top:20px;"}= t("mailer.orders.pay_for_customer.products_bought")
+        %table{:style => "min-width:500px; border-collapse:collapse;"}
+          %thead
+            %tr
+              %th{:style => "border:1px solid #DEDEDE;text-align:center;"}= t("mailer.orders.common.table.thead.name")
+              %th{:style => "border:1px solid #DEDEDE;text-align:center;"}= t("mailer.orders.common.table.thead.quantity")
+
+          %tbody
+            - @order.line_items.each do |line_item|
+              %tr
+                %td{:style => "text-align:center;border:1px solid #DEDEDE; "}= line_item.name
+                %td{:style => "text-align:center;border:1px solid #DEDEDE;"}= line_item.quantity
+                
+    #sign{:style => "width:760px; margin:0 auto;background:#FFF;padding: 1px 20px;font-weight:600;padding-bottom:20px;"}
+      %p{:style => "line-height: 16px;padding:0px;margin:0px;margin-top:10px;margin:0px;" }
+        = t("mailer.common.sign.p_see_you_soon")
+      %p{:style => "line-height: 16px;padding:0px;margin:0px;margin-top:10px;margin:0px;" }
+        = @order.shop.name
+
+  #footer{:style => "background-color:#F2F2F2;border-bottom:1px solid #E6E6E6;text-align:center;padding:5px;margin:0px;"}
+    %p{:style => "color:#BFBFBF;font-size:10px;"}
+      = t("mailer.common.footer.p_noreply")

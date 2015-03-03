@@ -1,0 +1,6 @@
+%tr
+  %td= taxonomy.name
+  %td
+    = link_to 'Show', shop_taxonomy_path(taxonomy.shop, taxonomy), class: "btn" 
+    = link_to 'Edit', edit_shop_taxonomy_path(taxonomy.shop, taxonomy), class: "btn"
+    = link_to 'Destroy', shop_taxonomy_path(taxonomy.shop, taxonomy), confirm: 'Are you sure?', method: :delete, class: "btn btn-danger"

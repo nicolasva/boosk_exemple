@@ -1,0 +1,12 @@
+#need-for-open-shop
+  %ul.unstyled
+    :if !object.shipping_methods
+      %li
+        %a{href: "/#/settings/shipping_methods"}= translate.views.shipping_method.add_shipping_method
+    :if !object.taxes
+      %li
+        %a{href: "/#/settings/tax_rates"}= translate.views.tax_rate.add_tax
+    :if !object.paypal_account
+      %li
+        %a{href: "/#/settings/payment"}= translate.views.payment.add_paypal_address
+

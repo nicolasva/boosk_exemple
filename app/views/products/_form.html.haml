@@ -1,0 +1,13 @@
+= form_for [@shop, @product] do |f|
+  .field
+    = f.label :name
+    %br
+    = f.text_field :name
+  .field
+    = f.label :description
+    %br
+    = f.text_area :description
+  = f.fields_for :product_variants do |product_variant|
+    = render "variant_form", :f => product_variant 
+  .actions
+    = f.submit

@@ -1,0 +1,14 @@
+.container-fluid
+  .row-fluid
+    .span1.title-step-3
+      .header-lateral
+    .span10
+      %form#wizard_step_3
+        %h3= translate.views.wizard.congratulations
+        .text= translate.views.wizard.p_congratulation
+        %br
+        :if !_.isEmpty(account.shop_key)
+          .text= translate.views.wizard.user_with_shop_key_notice
+        .action
+          %a.btn.orange.back{ href: "#/w_step2"}= "< " + translate.back
+          %input.btn.orange{ type: "submit", value: " > " + translate.confirm }

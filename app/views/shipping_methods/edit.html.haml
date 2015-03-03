@@ -1,0 +1,4 @@
+.container#store-settings
+  %h2.span12= t :h2, :scope => [:views, :shipping_method, :edit]
+  = form_for [@shop, @shipping_method], :id => "edit_shipping_method_form" do |f|
+    = render 'form', shipping_method: @shipping_method, f: f

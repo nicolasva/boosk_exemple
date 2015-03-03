@@ -1,0 +1,8 @@
+%h1 Edit shipping category
+
+%form#edit_shipping_category_form
+  %label{for: "shipping_category_name"} Name
+  %input{id: "shipping_category_name", name: "shipping_category[name]", value: shipping_category.name}
+  .actions
+    %a.btn{href: "#/shipping_categories"} Back
+    %input.btn.btn-primary{type: "submit", value: "Update"}

@@ -1,0 +1,95 @@
+#administrators.row-fluid{style: "position:relative;"}
+  .span9
+    %section.settings-content
+      %header
+        .row-fluid
+          .span5
+            %h1= translate.views.administrator.h2
+          :if plan != "start"
+            :if administrators.length > 0            
+              .span2.add
+                %button.btn.orange#new_administrator= ' + ' + translate.add
+              .span5
+                %select.action{ name: "action" }
+                  %option= translate.actions
+                    :for key,value in actions
+                      %option{ value: key }= value['display']
+            :if administrators.length == 0
+              .span2.add.menu-items{ style: "display:none;" }
+                %button.btn.orange#new_administrator= ' + ' + translate.add
+              .span5.menu-items{ style: "display:none;" }
+                %select.action{ name: "action" }
+                  %option= translate.actions
+                    :for key,value in actions
+                      %option{ value: key }= value['display']              
+      :if plan == "start"
+        %button.btn.orange.upgrade-plan= translate.views.plan.change_my_plan
+        
+      :if plan != "start"
+        :if administrators.length == 0 
+          .row-fluid.no-items
+            .span12.msg= translate.views.administrator.you_have_not_yet_administrators
+            %button.btn.orange#new_administrator= ' + ' + translate.views.administrator.add
+          %table{ style: "display:none;" }
+            %thead
+              %th
+                %input.select-all{ type: "checkbox" }
+              %th= translate.activerecord.attributes.user.email
+              %th= translate.activerecord.attributes.user.lastname
+              %th= translate.activerecord.attributes.user.firstname
+              %th= translate.status
+            %tbody
+              :each administrator in administrators
+                %tr{ data-id: administrator.id }
+                  %td
+                    %input.administrator-selected{ type: "checkbox" }
+                  %td
+                    = administrator.email
+                  %td
+                    = administrator.firstname
+                  %td
+                    = administrator.lastname
+                  %td
+                    :if administrator.invitation_accepted_at != null
+                      %span.label.label-enabled
+                        = translate.enabled.toUpperCase()
+                    :if administrator.invitation_accepted_at == null
+                      %span.label.label-in_progress
+                        = translate.waiting.toUpperCase() 
+
+        :if administrators.length > 0
+          %table
+            %thead
+              %th
+                %input.select-all{ type: "checkbox" }
+              %th= translate.activerecord.attributes.user.email
+              %th= translate.activerecord.attributes.user.lastname
+              %th= translate.activerecord.attributes.user.firstname
+              %th= translate.status
+            %tbody
+              :each administrator in administrators
+                %tr{ data-id: administrator.id }
+                  %td
+                    %input.administrator-selected{ type: "checkbox" }
+                  %td
+                    = administrator.email
+                  %td
+                    = administrator.firstname
+                  %td
+                    = administrator.lastname
+                  %td
+                    :if administrator.invitation_accepted_at != null
+                      %span.label.label-enabled
+                        = translate.enabled.toUpperCase()
+                    :if administrator.invitation_accepted_at == null
+                      %span.label.label-in_progress
+                        = translate.waiting.toUpperCase() 
+
+
+                    
+                    
+
+                  
+  .span3
+    %nav#account-settings-menu.settings-menu
+

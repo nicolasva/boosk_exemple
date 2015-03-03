@@ -1,0 +1,55 @@
+.btn-group
+  - if cart.items.length > 0
+    = link_to "<span>(#{cart.items.nil? ? '0' : cart.items.length})</span>".html_safe, "#", :class => "dropdown-toggle basket_button", "data-toggle" => "dropdown"
+    .row-fluid
+      .span6
+        %ul.dropdown-menu
+          - if cart.items.nil? || cart.items.length == 0
+            %li= t(:empty, scope: [:views, :cart])
+          - else
+            %li
+              %h3= t(:h3, scope: [:views, :cart]).upcase
+              %table.span6
+                %thead
+                  %tr
+                    %th= t(:name, scope: [:activerecord, :attributes, :product])
+                    %th= t(:unit_price, scope: [:views, :cart])
+                    %th= t(:total_product, scope: [:views, :cart])
+                    %th
+                %tbody
+                  - cart.items.each do |cart_item|
+                    %tr.cart_item{"data-variant-id" => cart_item.product.id, "data-quantity" => cart_item.quantity, "data-product-id" => cart_item.product.product.id}
+                      %td.picture_cart_quantity
+                        %div.picture
+                          - pictures = cart_item.product.pictures
+                          - pictures.each do |picture|
+                            -if picture.is_master == true
+                              %img.img_cart{ src: picture.picture.url}
+                        %div.cart_title_quantity
+                          %div.title= cart_item.title
+                          %div
+                            %span= t(:quantity, scope: [:activerecord, :attributes, :product_variant]) + ":"
+                            %span{class: "#{(cart_item.quantity.to_i > 1 && cart_item.quantity.to_i <= cart_item.product.quantity.to_i) ? 'cart_less_enabled' : 'cart_less_disabled'}", id: "item_"+cart_item.id.to_s}
+                            %span= cart_item.quantity
+                            %span{class: "#{cart_item.quantity.to_i < cart_item.product.quantity.to_i ? 'cart_add_enabled' : 'cart_add_disabled'}", id: "item_"+cart_item.id.to_s}
+                      %td
+                        %span= "#{format("%.2f", cart_item.product.price_ttc)} #{cookies[:front_shop_devise]}"
+                      %td
+                        %span= format("%.2f", total_product([cart_item])) +" "+ cookies[:front_shop_devise]
+                      %td
+                        %span.cart_remove{id: "item_#{cart_item.id}"}
+            %li
+              %div
+                %span#clean_cart= t(:clean, scope: [:views, :cart])
+                %span.total_price= t(:total, scope: [:activerecord, :attributes, :order]).upcase + " : #{format("%.2f", cart.total)} #{cookies[:front_shop_devise]}"
+              %div.row.actions
+                %ul
+                  %li
+                    %span{ :class => "btn btn-inverse dropdown-toggle", "data-toggle" => "dropdown" }
+                      = "> #{t(:go_shopping, scope: [:views, :cart])}"
+                  %li
+                    = link_to "> "+ t(:check_out, scope: [:views, :cart]) , "#/shops/checkouts", class: "btn btn-success"
+  - else
+    %div.basket_empty
+      %span
+        = "(0)"

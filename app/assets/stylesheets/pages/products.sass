@@ -1,0 +1,193 @@
+@import mixins
+
+.product-status
+  :width 112px
+  :height 28px
+  :padding-top 2px
+  :cursor pointer
+  :margin auto
+  span
+    :color white
+    :font-size 10px
+    :font-weight bold
+
+.product-activated
+  :background url("/assets/picto_activated.png") no-repeat
+
+.product-deactivated
+  :background url("/assets/picto_deactivated.png") no-repeat
+
+#products,#products_kpis,#edit_product,#new_product
+  .no-items
+    #import
+      :margin-top 10px
+      :margin-left 42%
+  table
+    :position relative
+    tbody
+      td
+        .picture
+          img
+            :width 30px
+            :height 30px
+            :padding 1px
+            :border solid 1px #CCC
+            :display block  
+        .pictos-position
+          :padding 5px 0 0 2px
+    
+#products,#products_kpis
+  .frame
+    .add-product
+      :margin-top 4px
+      :margin-left 0
+      a
+        :margin-right 10px
+    table
+      tbody
+        td
+          :padding 6px
+          .name
+            :margin-top 8px
+            :text-align left
+            :cursor pointer
+            a
+              :color $orange
+            
+#edit_product
+  div[class|="step"]
+    .arrow,.value
+      :cursor pointer !important
+  .actions
+    :float right
+    :margin-top 10px
+    input
+      :margin-left 5px
+  .actions-mashup
+    :float right
+    :margin-top 10px
+    .back
+      :margin 0 10px 0 0
+    button
+      :margin-right -25px
+  .span9
+    .frame
+      .field-size
+        :margin-top 15px
+        .weight
+          :margin-left 0
+  table
+    tbody
+      td
+        .picture
+          img
+            :margin 0 auto
+            :cursor pointer
+    #add-option-types
+      :margin 10px 0 0 0
+      :padding-top 6px
+      :cursor pointer
+      :color #fe6903
+      .picto
+        :background url('/assets/picto_sprite.png') no-repeat
+        :background-position -28px -503px                      
+        :width 24px
+        :height 24px
+      .txt
+        :margin 3px 0 0 0
+        :font-weight 600
+        :font-size 0.85em
+    .actions
+      :float right
+      :margin-top 10px
+      .back
+        :margin-right 10px
+
+table.mashup-option-set
+  tbody
+    input
+      :margin-bottom 0
+    td.attribute
+      :vertical-align top
+      :text-align left
+      :padding 3px 0 0 5px
+    td.values
+      :text-align left
+      .value
+        :margin-left 4px
+
+#new_product
+  #zone-pictures
+    :margin 5px 0 10px 0
+    .pic
+      :margin-left 2px !important
+  table
+    tbody
+      td
+        .picture
+          img
+            :margin 0 auto
+            :cursor pointer        
+  form
+    textarea
+      :margin-bottom 0
+    label[for="product_description"]
+      :margin-top 10px
+    .actions
+      :float right
+      :margin-right 7px
+      :margin-top 10px
+      .back
+        :margin-right 10px
+    .actions.step-1
+      :margin-top 10px
+      :margin-right 0
+      input[type="submit"]
+        :margin-bottom 9px !important
+    .only-master
+      :margin-top 15px
+      :background #f1f4f9
+      :padding-bottom 15px
+      @include radius(0, 0, 5, 5)
+      input
+        :display block
+
+    .status.span1, .has-variants.span1
+      :margin 0
+    .sub-label
+      :font-weight 600
+
+#new_product, #edit_product
+  #zone-pictures
+    .master
+      :height 233px
+      :background #fff
+      :border 1px solid #ccc
+      :position relative
+      #update-master-picture
+        :position absolute
+        :top 100px
+        :left 55px
+      img
+        :margin 17px auto
+        :display block
+        :width 200px
+        :height 200px
+    @include Carousel(73,53,53)
+    .variants-pictures
+      :margin 10px 0 0 1px
+      .variant:first-child
+        :margin-left 0
+      .variant
+        :background #fff
+        :border 1px solid #ccc
+        :margin-left 1.25%
+        img
+          :width 50px
+          :height 50px
+          :display block
+          :margin 3px auto
+#new_product_form
+  .actions
+    a, input
+      :text-transform capitalize

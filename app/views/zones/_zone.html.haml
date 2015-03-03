@@ -1,0 +1,12 @@
+%tr{ data: { id: zone.id } }
+  %td
+    %input.zone-selected{ type: "checkbox" }   
+  %td= link_to zone.name, edit_shop_zone_path(zone.shop_id, zone)
+  %td
+    %ul.unstyled.zone-members
+      - zone.zone_members.each do |zone_member|
+        %li
+          - if zone_member.region_type == "country"
+            = zone_member.country
+          - if zone_member.region_type != "country"
+            = zone_member.country + ", " + zone_member.state

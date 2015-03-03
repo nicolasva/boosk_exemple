@@ -1,0 +1,71 @@
+@import mixins
+@import "compass/css3"
+
+@mixin background_url_sprite 
+  :background url("/assets/sprite_facebook.png")
+  :background-attachment scroll
+  :background-repeat no-repeat
+
+#store-preview
+  .picture
+    a
+      :cursor default
+  .attachment-container
+    :position relative
+    .attachment-border
+      :position absolute
+      :top 0
+      :left 0
+      :bottom 0
+      :right 0
+    .move-attachment-instructions
+      :position absolute
+      :line-height 26px
+      :top 112px
+      :width 100%
+      :text-align center
+      :display none
+      p
+        :display inline
+        :background-color #a6aebb
+        :background-color rgba(166, 174, 187, 0.5)
+        :color #ffffff
+        :font-weight 600
+        :padding 5px 20px
+        @include border-radius(2px)
+    .edit-attachment-wrapper
+      :position absolute
+      :width 100%
+      :top 50%
+      :margin-top -14px
+      :text-align center
+    .edit-attachment-menu
+      :background-color #fff
+      :margin-left 271px
+      :width 180px
+      :display none
+      :z-index 1001
+      @include box-shadow(#aaa 0 0 5px)
+      h1
+        :color #fff
+        :background-color #a6aebb
+        :font-size 14px
+        :line-height 27px
+        :padding-left 1em
+        :margin 0
+        :display block
+      .nav
+        li
+          :height auto
+    .move-attachment-actions
+      :display none
+      :text-align right
+      :position absolute
+      :width 100%
+      :top 180px
+      .btn
+        :margin-left 0.5em
+  .edit-attachment-mode
+    :cursor pointer
+    .move-attachment-instructions, .move-attachment-actions
+      :display block

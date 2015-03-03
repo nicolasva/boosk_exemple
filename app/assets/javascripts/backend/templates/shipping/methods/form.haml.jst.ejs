@@ -1,0 +1,38 @@
+.container-fluid
+  .row-fluid
+    .span6
+      .row-fluid
+        .span2
+          %label{ for: "shipping_method_name" }= translate.activerecord.attributes.shipping_method.name
+        .span4
+          %span.need * 
+      %input.span3.necessary{id: "shipping_method_name", name: "shipping_method[name]", value: shipping_method.name, placeholder: translate.views.shipping_method.name_example}
+      %p.help-block= translate.views.shipping_method.help_block_name
+      .row-fluid
+        .span12
+          %label{ for: "shipping_method_zone_id" }= translate.activerecord.models.zone
+      %select{id: "shipping_method_zone_id", name: "shipping_method[zone_id]"}
+      %p.help-block= translate.views.shipping_method.help_block_zone
+    .span6
+      %h3= translate.activerecord.models.calculator
+      .row-fluid
+        .span6
+          .row-fluid
+            .span4
+              %label{ for: "shipping_method_calculator_type" } Type
+            .span2
+              %span.need * 
+      %select{id: "shipping_method_calculator_type", name: "shipping_method[calculator_type]"}
+      %p.help-block= translate.views.shipping_method.help_block_type
+      #calculator_attributes
+  .row-fluid
+    .span6
+      %button.btn#add_zone{type: "button"}
+        %i.plus-icon
+        = " !{translate.views.zone.add_zone}"
+      %p.help-block= translate.views.zone.help_block_add_zone
+
+.actions
+  - var submitLabel = isNew ? translate.create : translate.update
+  %a.btn.back{ data-dismiss: "modal" }= translate.close
+  %input.btn.orange{type: "submit", value: submitLabel.capitalize() }

@@ -1,0 +1,14 @@
+%h1 Shipping categories
+
+- if @shipping_categories.empty?
+  %p You haven't create any shipping category yet !
+- else
+  %table.table
+    %thead
+      %tr
+        %th Name
+        %th Actions
+    %tbody
+      = render @shipping_categories
+
+= link_to 'New Shipping Category', new_shop_shipping_category_path(@shop), class: "btn btn-primary"

@@ -1,0 +1,33 @@
+%h1 
+  = t("mailer.users.invit_step_create_account.h1.invit_step_create_account")
+%label
+  = t("mailer.users.invit_step_create_account.label.user_info")
+%ul
+  %li
+    = t("mailer.users.invit_step_create_account.ul.li.first_name", :user_firstname => @user.firstname)
+  %li
+    = t("mailer.users.invit_step_create_account.ul.li.last_name", :user_lastname => @user.lastname)
+  %li
+    = t("mailer.users.invit_step_create_account.ul.li.email", :user_email => @user.email)
+  %li
+    = t("mailer.users.invit_step_create_account.ul.li.phone_number", :phone_number => @user.phone_number)
+  %li
+    = t("mailer.users.invit_step_create_account.ul.li.shop_key", :shop_key => @user.shop_key)
+
+%label
+  = t("mailer.users.invit_step_create_shop.label.shop_info")
+%ul
+  %li
+    = t("mailer.users.invit_step_create_shop.ul.li.shop_name", :shop_name => @shop.name)
+  %li
+    = t("mailer.users.invit_step_create_shop.ul.li.shop_uuid", :shop_uuid => @shop.uuid)
+
+%label
+  = t("mailer.users.invit_step_create_shop.label.shop_contact_infos")
+%ul
+  %li
+    = t("mailer.users.invit_step_create_shop.ul.li.shop_contact", :shop_contact_firstname => @shop.contact.firstname)
+  %li
+    = t("mailer.users.invit_step_create_shop.ul.li.shop_lastname", :shop_contact_lastname => @shop.contact.lastname)
+  %li
+    = t("mailer.users.invit_step_create_shop.ul.li.shop_contact_emails_first_email", :shop_contact_emails_first_email => @shop.contact.emails.first.email)

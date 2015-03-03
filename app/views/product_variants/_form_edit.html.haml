@@ -1,0 +1,34 @@
+= form_for [@product.shop, @product, @product_variant] do |f|
+
+  - variant_option_ids = @product_variant.option_types.collect {|o| o.id}
+
+  = f.hidden_field :product_id
+
+  %select.chzn-select{"data-placeholder" => "Choose options", :multiple => true, :name => "product_variant[option_type_ids][]"}
+    - @option_types.each do |option_type|
+      %optgroup{:label => option_type[:type]}
+        - option_type[:values].each do |option|
+          %option{:value => option.id , :selected => variant_option_ids.include?(option.id)  ? true : false }= "#{option.name}: #{option.value}"
+          
+  .field
+    = f.label :price
+    %br
+    = f.text_field :price
+  .field
+    = f.label :weight
+    %br
+    = f.text_field :weight
+  .field
+    = f.label :height
+    %br
+    = f.text_field :height
+  .field
+    = f.label :width
+    %br
+    = f.text_field :width
+  .field
+    = f.label :height
+    %br
+    = f.text_field :height
+  .actions
+    = f.submit

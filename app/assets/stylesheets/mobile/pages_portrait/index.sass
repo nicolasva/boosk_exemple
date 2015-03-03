@@ -1,0 +1,20 @@
+@import "../layout/pages_portrait/index_portrait"
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px)
+  @include paysage_portrait(100%, 100%, 5%)
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px)
+  @include paysage_portrait(100%, 100%, 5%)
+
+/* Landscape phones and down */
+@media (max-width: 480px)
+  @include paysage_portrait(100%, 100%, 5%)
+
+/* Large desktop */
+@media (min-width: 1200px)
+  @include paysage_portrait(100%, 100%, 5%)
+
+
+

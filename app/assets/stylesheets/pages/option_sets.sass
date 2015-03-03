@@ -1,0 +1,50 @@
+table
+  tbody
+    td
+      :padding 6px
+      .name
+        :margin-top 8px
+        :text-align left
+        :cursor pointer
+        a
+          :color #fe6903
+
+    td.value
+      :cursor pointer
+      :color #fe6903
+      
+        :width 68%
+        :margin 0 auto
+      .picto
+        :background url('/assets/picto_delete.png') no-repeat
+        :width 16px
+        :height 16px
+        :cursor pointer                
+
+#new_option_type_form, #edit_option_type_form
+  .add_values
+    :background url('/assets/picto_sprite.png') no-repeat
+    :background-position -28px -503px
+    :width 24px
+    :height 24px
+    :display inline-block
+    :cursor pointer
+    :margin-left 11px
+    :vertical-align top
+    :margin-top 6px
+  .remove_value
+    :background url('/assets/picto_sprite.png') no-repeat
+    :background-position -62px -503px      
+    :width 24px
+    :height 24px
+    :display inline-block
+    :cursor pointer
+    :margin-left 11px
+    :vertical-align top
+    :margin-top 6px      
+  .actions
+    :margin-top 20px
+    :float right
+    input[type=submit]
+      :float right
+      :margin-left 8px

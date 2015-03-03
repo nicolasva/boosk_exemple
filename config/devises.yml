@@ -1,0 +1,71 @@
+- euro:
+  symbol: "€"
+  iso: "EUR"
+
+- dollar:
+  symbol: "$"
+  iso: "USD"
+
+- new_zealand_dollar:
+  symbol: "$"
+  iso: "NZD"
+
+- australian_dollar:
+  symbol: "$"
+  iso: "AUD"
+
+- hong_kong_dollar:
+  symbol: "$"
+  iso: "HKD"
+
+- canadian_dollar:
+  symbol: "$"
+  iso: "CAD"
+
+- singapore_dollar:
+  symbol: "$"
+  iso: "SGD"
+
+- czech_koruna:
+  symbol: "Kč"
+  iso: "CZK"
+
+- danske_kroner:
+  symbol: "kr"
+  iso: "DKK"
+
+- israeli_new_shekel:
+  symbol: "₪"
+  iso: "ILS"
+
+- hungarian_forint:
+  symbol: "Ft"
+  iso: "HUF"
+
+- japan_yen:
+  symbol: "¥"
+  iso: "JPY"
+
+- swedish_krona:
+  symbol: "kr"
+  iso: "SEK"
+
+- pound_sterling:
+  symbol: "£"
+  iso: "GBP"
+
+- zloty:
+  symbol: "zł"
+  iso: "PLN"
+
+- mexican_peso:
+  symbol: "$"
+  iso: "MXN"
+
+- franc_suisse:
+  symbol: "F"
+  iso: "CHF"
+
+- indian_roupie:
+  symbol: "₹"
+  iso: "INR"

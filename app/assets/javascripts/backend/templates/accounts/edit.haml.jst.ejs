@@ -1,0 +1,65 @@
+%form#edit_account_form
+  .row-fluid
+    .span9.without-margin
+      .frame
+        .container-fluid.without-padding	
+          %header.row-fluid
+            .span12
+              .container-fluid.without-padding
+                .row-fluid
+                  .span8
+                    .row-fluid
+                      .span12
+                        %h1= translate.views.account.edit_account
+          .content              
+            .container-fluid
+              .row-fluid
+                .span6
+                  %label{for: "user[firstname]"}= translate.activerecord.attributes.user.firstname
+                  %input.necessary{type: "text", value: account.firstname, name: "user[firstname]"}
+                .span6
+                  %label{for: "user[lastname]"}= translate.activerecord.attributes.user.lastname
+                  %input.necessary{type: "text", value: account.lastname, name: "user[lastname]"}
+              .row-fluid
+                .span6
+                  %label{for: "user[email]"}= translate.activerecord.attributes.user.email
+                  %input.necessary.email{type: "text", value: account.email, name: "user[email]"}
+                .span6
+                  %label{for: "user[phone_number]"}= translate.activerecord.attributes.user.phone_number
+                  %input.number{type: "text", value: account.phone_number, name: "user[phone_number]"}
+              .row-fluid
+                .span6
+                  %label{for: "user[password]"}= translate.activerecord.attributes.user.password
+                  %input{type: "password", name: "user[password]"}
+                .span6
+                  %label{for: "user[password_confirmation]"}= translate.activerecord.attributes.user.password_confirmation
+                  %input{type: "password", name: "user[password_confirmation]"}
+              .row-fluid
+                .span6
+                  %label{for: "user[company]"}= translate.activerecord.attributes.user.company
+                  %input{type: "text", value: account.company, name: "user[company]"}
+
+                  - addr = account.address != undefined ? account.address.addr : ""
+
+                  %label{for: "user[address_attributes][addr]"}= translate.activerecord.attributes.user.address
+                  %textarea.necessary{name: "user[address_attributes][addr]"}= addr
+                .span6
+                  - city = account.address != undefined ? account.address.city : ""
+                  - zip_code = account.address != undefined ? account.address.zip_code : ""
+
+                  %label{for: "user[city]"}= translate.activerecord.attributes.user.city
+                  %input.necessary{type: "text", value: city, name: "user[address_attributes][city]"}
+                  %label{for: "user[zip_code]"}= translate.activerecord.attributes.user.zip_code
+                  %input.necessary{type: "text", value: zip_code, name: "user[address_attributes][zip_code]"}
+                  %label{for: "user[country]"}= translate.activerecord.attributes.user.country
+                  %select#user_country{name: "user[address_attributes][country]", style: "width: 90%;", data-placeholder: translate.views.zone.zone_members_placeholder}
+                    :each region in regions
+                      :if account_code == region.code
+                        %option{value: region.code, selected: "selected" }= region.name
+                      :if account_code != region.code
+                        %option{value: region.code }= region.name
+
+      .actions
+        %input.btn.orange{type: "submit", value: translate.update.capitalize()}
+    .span3
+      %nav#account-settings-menu.settings-menu

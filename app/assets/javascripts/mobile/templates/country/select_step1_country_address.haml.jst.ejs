@@ -1,0 +1,6 @@
+%label{ for: "address_country" } Country
+%br
+%select{ id: "address_country", name: "address[country_id]" } 
+  :each countrie in country 
+    %option{value: countrie.id, class: "country_value"} 
+      = countrie.name

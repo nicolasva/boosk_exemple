@@ -1,0 +1,90 @@
+.row-fluid
+  .span12
+    %form#new_addresses{ class: "form-horizontal"}
+      .row-fluid
+        .span6
+          .control-group
+            %label{ for: "address_firstname" }= translate.activerecord.attributes.address.firstname
+              %span.need *
+            .controls
+              %input.span2.necessary{ id: "address_firstname", name: "contact[firstname]", value: address.firstname }  
+          .control-group
+            %label{ for: "address_lastname" }= translate.activerecord.attributes.address.lastname
+              %span.need *
+            .controls
+              %input.span2.necessary{ id: "address_lastname", name: "contact[lastname]", value: address.lastname }
+          .control-group
+            %label{ for: "address_mail" }= translate.activerecord.attributes.address.mail
+              %span.need *
+            .controls
+              %input.span2.necessary{type: "email", id: "address_mail", name: "contact[emails_attributes][0][email]", value: address.mail }
+          .control-group{ style: "display:none;" }
+            %label{ for: "address_designation" }= translate.activerecord.attributes.address.designation
+            .controls
+              %input.span2{ id: "address_designation", name: "contact[addresses_attributes][0][designation]", value: address.designation }
+          .control-group
+            %label{ for: "address_addr" }= translate.activerecord.attributes.address.addr
+              %span.need *
+            .controls
+              %input.span2.necessary{ id: "address_addr", name: "contact[addresses_attributes][0][addr]", value: address.addr }
+          .control-group
+            %label{ for: "address_zip_code" }= translate.activerecord.attributes.address.zip_code
+              %span.need *
+            .controls
+              %input.span2.necessary{ id: "address_zip_code", name: "contact[addresses_attributes][0][zip_code]", value: address.zip_code }
+          .control-group
+            %label{ for: "address_city" }= translate.activerecord.attributes.address.city
+              %span.need *
+            .controls
+              %input.span2.necessary{ id: "address_city", name: "contact[addresses_attributes][0][city]", value: address.city }
+          .control-group
+            %label{ for: "address_country" }= translate.activerecord.attributes.address.country
+              %span.need *
+            .controls
+              %select.span2{ id: "address_country", name: "contact[addresses_attributes][0][country]" }
+                %option= translate.views.frontend.checkout.select_country
+                :each country in geographic_regions
+                  %option{value: country.code}= country.name
+          #regions
+          
+        .span6
+          #notice{style: "display:none;"}
+            .alert
+              .msg= 
+                          
+          #shop_details_orders
+            %h4= translate.views.frontend.checkout.check_order
+            %hr
+            .row-fluid
+              %table.span12
+                %thead
+                  %tr
+                    %th= translate.product
+                    %th
+                    %th= translate.price_ttc
+                %tbody
+                  :each cart in carts
+                    %tr
+                      %td
+                        %img.picture_product_variant{src: cart.picture.picture.url}
+                      %td.left
+                        = cart.quantity + "x " + cart.name
+                      %td.right                        
+                        = (cart.price_ttc * cart.quantity) + " " + App.getCookie('front_shop_devise')
+                %tfoot
+                  %tr
+                    %th.left= (translate.delivery).toUpperCase()
+                    %th                      
+                    %th#shipping.right \--
+                  %tr
+                    %th.left= (translate.activerecord.attributes.order.total).toUpperCase()
+                    %th                      
+                    %th#total.right= total.toFixed(2) + " " + App.getCookie('front_shop_devise')
+                        
+          #confirm
+            %input{ type: "checkbox", id: "valid", required: true}
+            %label{ for:"valid"}= translate.views.frontend.checkout.read_conditions + "&nbsp"
+            %a{href: "shops/"+ App.current_shop +"/terms_of_services", target: "_blank"}=  translate.activerecord.attributes.shop.terms
+          .actions
+            %a.btn.back{data-dismiss: "modal"}= translate.cancel
+            %input#pay.btn.btn-warning{type: "submit", value: "> " + translate.views.frontend.checkout.valid_order, disabled: "disabled" }

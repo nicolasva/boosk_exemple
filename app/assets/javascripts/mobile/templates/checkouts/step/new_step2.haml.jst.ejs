@@ -1,0 +1,60 @@
+%h2= translate.views.frontend.checkout.check_order
+#show_order
+  %table{width: "100%", cellpadding: '0' border: '1' cellspacing: '0'}
+    %thead
+      %tr{id: "title_table", class: "color_tab_header_footer"}
+        %th
+          = translate.activerecord.attributes.product.name
+        %th
+          = translate.activerecord.attributes.product_variant.quantity
+        %th
+          = translate.views.cart.total_product
+    %tbody
+      :each cart in carts 
+        :if cart.product 
+          %tr{id: "tr_value_carts_"+cart.product.id, class: "tr_value_carts"}
+            %td
+              = cart.name
+            %td.border
+              = cart.quantity
+            %td
+              = App.FixedPrice(cart.price_ttc * cart.quantity) + " " + App.devise(App.getCookie('shop_devise'))
+      %tr{id: "tr_total", class: "color_tab_header_footer"}                
+        %td{colspan: "4", class: "total_price"}
+          %span
+            = (translate.delivery).toUpperCase() + " " + App.devise(App.getCookie('shop_devise')) 
+          %span
+            = App.FixedPrice(shipping)          
+      %tr{id: "tr_total", class: "color_tab_header_footer"}
+        %td{colspan: "4", class: "total_price"}
+          %span#total 
+            = translate.activerecord.attributes.order.total + " " + App.devise(App.getCookie('shop_devise')) 
+          %span#value_total 
+            = App.FixedPrice(total)
+
+#address
+  %ul
+    %li
+      = contact.firstname
+      = " " + contact.lastname
+    %li
+      = address.addr
+    %li
+      = address.zip_code
+    %li 
+      = address.city
+    %li
+      = address.country
+   
+%div#reglement
+  %form#accept_reglement
+    #checkbox_reglement
+      %input{ type: "checkbox", id: "accepts", name: "law[accept_law]"} 
+      %span.roles
+        = translate.views.frontend.checkout.read_conditions + " " + translate.activerecord.attributes.shop.terms.toLowerCase()
+    #submit_reglement
+      %ul
+        %li.left
+          %input{ type: "submit", id: "submit", value: translate.views.frontend.checkout.valid_order, name: "law[submit_law]", disabled: "disabled", class: "btn btn-warning"}
+        %li.right
+          %input{type: "button", id: "cancel", value: translate.cancel, name: "law[cancel_law]", class: "black"}

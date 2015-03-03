@@ -1,0 +1,115 @@
+@import mixins
+
+input[type=submit], .back, .cancel, button
+  :padding 4px 10px
+  :height auto !important
+
+.orange
+  :color #fff !important
+  :border solid 1px #da7c0c
+  :background $orange
+  :background -webkit-gradient(linear, left top, left bottom, from(#fe5400), to($orange))
+  :background -moz-linear-gradient(top, #faa51a, $orange)
+  :filter progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='$f60')
+
+.orange:hover 
+  :color #fff !important
+  :background #f47c20
+  :background -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015))
+  :background -moz-linear-gradient(top, #f88e11, #f06015)
+  :filter progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015')
+
+.blue
+  :color #fff !important
+  :border solid 1px #a5b2bd
+  :background #4e72ad
+  :background -webkit-gradient(linear, left top, left bottom, from(#4e72ad), to(#4e72ad))
+  :background -moz-linear-gradient(top, #4e72ad, #4e72ad)
+  :filter progid:DXImageTransform.Microsoft.gradient(startColorstr='#4e72ad', endColorstr='#4e72ad')
+  &:active
+    :background #4e72ad
+    :background -webkit-gradient(linear, left top, left bottom, from(#4e72ad), to(#4e72ad))
+    :background -moz-linear-gradient(top, #4e72ad, #4e72ad)
+    :filter progid:DXImageTransform.Microsoft.gradient(startColorstr='#4e72ad', endColorstr='#4e72ad')
+
+.blue[disabled]
+  :background-color #4e72ad
+  &:hover
+    :background-color #4e72ad
+
+.black
+  :color #fff !important
+  :border solid 1px #757575
+  :background #747474
+  :background -webkit-gradient(linear, left top, left bottom, from(#747474), to(#747474))
+  :background -moz-linear-gradient(top, #747474, #747474)
+  :filter progid:DXImageTransform.Microsoft.gradient(startColorstr='#747474', endColorstr='#747474')
+
+.black:hover   
+  :color #fff !important
+  :border solid 1px #757575
+  :background #747474
+  :background -webkit-gradient(linear, left top, left bottom, from(#747474), to(#747474))
+  :background -moz-linear-gradient(top, #747474, #747474)
+  :filter progid:DXImageTransform.Microsoft.gradient(startColorstr='#747474', endColorstr='#747474')
+
+.btn.back, .btn.cancel
+  :color #98a1b2 !important
+  :border solid 1px #98a1b2
+  :background $grey-light
+  :width auto
+  :height auto
+  :text-decoration none
+  :margin-bottom 9px
+  @include radius(3, 3, 3, 3)
+
+.enabled
+  :width 100px
+  :height 19px
+  :margin 0 auto
+  :color #FFF
+  :font-weight 600
+  :background #78e477
+  span
+    :padding-top 1px
+    :display block
+
+.suspended
+  :width 100px
+  :height 19px
+  :margin 0 auto
+  :color #FFF
+  :font-weight 600
+  :background #ff9149
+  span
+    :padding-top 1px
+    :display block
+
+.highlight
+  :width 100px
+  :height 19px
+  :margin 0 auto
+  :color #FFF
+  :font-weight 600
+  :background #9bcbf3
+  span
+    :padding-top 1px
+    :display block
+
+.label-enabled
+  cursor: default
+  :background $green
+  &:hover
+    :background #78e477
+
+.label-suspended
+  cursor: default
+  :background #ff9149    
+  &:hover
+    :background #ff9149    
+
+.label-highlight
+  cursor: default
+  :background #9bcbf3    
+  &:hover
+    :background #9bcbf3      

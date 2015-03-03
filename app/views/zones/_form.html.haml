@@ -1,0 +1,26 @@
+= form_for [zone.shop, zone] do |f|
+  .container-fluid
+    .row-fluid
+      .span6
+        .row-fluid
+          .span4
+            .row-fluid
+              .span7
+                = f.label :name
+              .span5
+                %span.need *
+        = f.text_field :name
+
+      .span6.zones
+        .row-fluid
+          .span4
+            .row-fluid
+              .span7
+                %label{for: "zones"} Zones
+              .span5
+                %span.need *
+        = f.select :zone_members_codes, grouped_options_for_regions(f.object), {}, {:multiple => true, :class => "chzn-select"}
+        
+  .actions
+    = link_to t(:back), shop_zones_path(zone.shop_id), :class => "btn back"
+    = f.submit class: "btn orange"

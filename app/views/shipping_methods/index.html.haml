@@ -1,0 +1,29 @@
+%section.container-fluid#store-settings
+  .row-fluid
+    .span9
+      %section.settings-content#shipping-methods-list
+        %header
+          .row-fluid
+            .span5
+              %h1= t(:h2, :scope => [:views, :shipping_method, :index]).mb_chars
+            .span2.add
+              = link_to "+ #{t(:add)}", new_shop_shipping_method_path(@shop), :class => "btn orange"
+            .span3
+              %select.action.span3{ name: "action" }
+                %option= t :actions
+                %option{ value: "destroy" }= t(:delete).capitalize                              
+
+        %table
+          %thead
+            %tr
+              %th
+                %input.select-all{ type: "checkbox" }
+              %th
+                = ShippingMethod.human_attribute_name :name
+              %th
+                = Zone.model_name.human
+          %tbody
+            = render @shipping_methods
+
+    .span3
+      = render 'shared/store_settings_menu', :shop => @shop, :current_item => :shipping

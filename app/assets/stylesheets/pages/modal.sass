@@ -1,0 +1,365 @@
+@import mixins
+@import compass/css3
+
+.without-overlay
+  @include opacity(0)
+
+.white-overlay
+  :background-color #FFF
+    
+.modal-import-products
+  #import-products
+    .template-csv
+      :margin-bottom 15px
+      a
+        :color $orange
+  #success-import
+    .msg
+      :font-size 1.3em
+      :margin-bottom 20px
+  label
+    :margin-bottom 10px
+  .file
+    :margin-right 10px
+  .actions
+    button
+      :float right
+    
+.modal-fb-preview
+  :top 270px !important
+  :overflow hidden !important
+  :max-height none
+  .modal-body
+    :padding-right 0 !important
+    iframe
+      :border none
+      :width 100%
+  &.mobile
+    :width 335px
+    :margin-left -200px
+    :-webkit-transition all 0.5s ease
+    :-moz-transition all 0.5s ease
+    :-o-transition all 0.5s ease
+    :transition all 0.5s ease
+  &.facebook
+    :width 828px
+    :margin-left -415px
+    :-webkit-transition all 0.5s ease
+    :-moz-transition all 0.5s ease
+    :-o-transition all 0.5s ease
+    :transition all 0.5s ease
+    
+.modal-info-payment,.modal-upgrade-plan
+  :border 2px solid $orange !important
+  :min-height 190px !important
+  .modal-header
+    @include radius(6,6,6,6)
+    :padding 4px 14px
+    :border none !important
+    :background #FFF !important
+    .close
+      :color $orange
+      :font-size 25px
+      :opacity 1
+  .modal-body
+    :margin-top 39px !important
+    p
+      :color #222 !important
+      :line-height 21px
+      :text-align justify
+
+
+.modal-upgrade-plan
+  :width 680px  
+  :left 47%
+  :z-index 1000000000000
+  .modal-body
+    :margin-top 10px !important
+    :margin-bottom 30px
+    p
+      :text-align left
+      :font-weight bold
+      :font-size 1.1em
+      :margin-bottom 50px
+
+        
+.modal-confirm
+  :min-height 200px
+  :border 3px solid $grey
+  .modal-body
+    :text-align center
+    :margin-top 70px
+    p
+      :font-size 1.3em
+      :color $grey
+    .actions
+      :margin-top 20px
+      :right 10px
+      :bottom 6px
+      :position absolute
+      input[type=button]
+        :float right
+        :margin-left 8px
+
+#cgv
+  :overflow none !important
+  @include radius(0, 0, 0, 0)
+  :border 3px solid #000    
+  .modal-header
+    .close
+      :color $orange
+      :font-size 25px
+      :opacity 1
+  .modal-body
+    :max-height 400px
+    :overflow auto
+      
+#modal
+  .modal-body
+    .actions
+      :padding-top 10px
+      :padding-bottom 10px
+      .btn
+        :margin-top 0
+        :margin-bottom 0
+.modal-variants-pictures
+  :overflow hidden
+  :width 602px
+  :margin-left -301px
+  .modal-body
+    :height 350px
+    :overflow-y auto
+  #new_product_pictures
+    :min-height 200px
+    .actions
+      :margin-top 20px
+      :float right
+      button
+        :float right
+        :margin-left 8px
+    .variants
+      :margin-bottom 10px
+      .variant
+        :display inline-block
+        .option-types
+          :margin 0 2px 0 2px
+          span
+            :margin-right 2px
+        *
+          :display inline-block
+          :color #a6aebb
+    p
+      :color #a6aebb
+    .picture
+      :border 2px solid #a6aebb
+      :height 100px
+      :width 100px
+      :position relative
+      .overlay
+        :height 100%
+        :width 100%
+        :position absolute
+        :background #FFF
+        :opacity 0.5
+      .remove
+        :background url('/assets/del_picture.png') no-repeat
+        :width 27px
+        :height 27px
+        :position absolute
+        :top -18px
+        :right -11px
+        :cursor pointer
+        :z-index 100000
+      .remove-master
+        :background url('/assets/del_picture.png') no-repeat
+        :width 27px
+        :height 27px
+        :position absolute
+        :top 36px
+        :right 36px
+        :cursor pointer
+        :z-index 10
+      @include radius(5, 5, 5, 5)
+      img
+        :width 100%
+        :height 100%
+        @include disable_html5_drag()
+    #container
+      :min-height 142px
+      #pictures
+        :display inline-block
+        :float left
+        .picture
+          :cursor move
+          :display inline-block
+          :margin 0 auto
+          :margin-right 7px
+          :float left
+          :margin-top 30px
+          :position relative
+        .primary
+          :float left
+          :display inline-block
+          :border none
+          :margin-right 7px
+          :background #ff6600
+          @include radius(8, 8, 6, 6)
+          :padding 10px 3px 3px 3px
+          span
+            :font-size 0.9em
+            :color #fff
+            :text-align center
+            :display block
+            :margin-bottom 2px
+            :font-weight 600
+          .picture
+            :position relative
+            :margin 0 auto
+            :margin-right auto
+            :border none
+            :cursor default
+            :float none
+            :display block
+      #pickfiles
+        :float left
+        :display block
+        :margin-top 30px
+        :cursor pointer
+        :border 2px dashed #a6aebb
+        :height 100px
+        :width 100px
+        @include radius(5, 5, 5, 5)
+        .picto-add
+          :margin 20px auto
+          :margin-bottom 10px
+          :background url('/assets/picto_sprite.png') no-repeat
+          :background-position -28px -503px            
+          :width 27px
+          :height 27px
+        .txt
+          :text-align center
+          :color #a6aebb
+          :line-height 13px
+        .loading-picture
+          :color #FFF
+          &:before
+            :background url('/assets/spinner_boosket.gif') no-repeat !important
+            :background-color #FFF !important
+            :width 70px !important
+            :height 40px !important
+            :margin-left 10px !important
+        &:hover
+          :text-decoration none
+    .info
+      :margin-top 20px
+      .picto
+        :background url('/assets/picto_info.png') no-repeat
+        :width 16px
+        :height 24px
+      .txt
+        :font-size 0.85em
+        :color #a6aebb
+        :margin-left 5px
+        :line-height 21px
+        :font-weight inherit
+
+.modal-option-types
+  :overflow auto
+  :width 630px
+  :margin-left -315px
+  .modal-body
+    :overflow-y auto
+
+.modal-tax-rates
+  :overflow hidden
+  :width 630px
+  :margin-left -315px
+  .modal-body
+    :max-height 250px
+    :overflow-y auto
+    #new_zone_form
+      :display none
+    .actions
+      :margin-top 20px
+      :float right
+      input[type=submit]
+        :float right
+        :margin-left 8px
+
+.modal-zones
+  :width 630px
+  :margin-left -315px
+  :min-height 350px
+  .actions
+    :margin-top 20px
+    :right 10px
+    :bottom 6px
+    input[type=submit]
+      :float right
+      :margin-left 8px
+
+.modal-shipping_methods
+  :overflow hidden
+  :width 630px
+  :margin-left -315px
+  :max-height none
+  #new_zone_form
+    :display none
+  .actions
+    :margin-top 20px
+    :float right
+    input[type=submit]
+      :float right
+      :margin-left 8px
+
+.modal-account
+  :max-height 510px
+  :margin-top -255px
+
+.modal-subscription-formula
+  :border 2px solid $orange
+  .modal-header
+    :background-color #fff
+    +border-top-radius(6px)
+    :border-bottom none
+    .close
+      :color #fff
+      :opacity 1
+      :background-color $orange
+      :border none
+      :font-weight normal
+      :padding 2px 5px
+      +border-radius(50%)
+    h1
+      :text-align center
+      :text-transform uppercase
+      :font-size 1.5em
+      :margin-top 1em
+  .modal-body
+    label
+      +inline-block
+    hr
+      :border-top 1px solid #aaa
+      :margin 1em 14em
+    .cost
+      :color $orange
+      :font-weight 600
+    .saving
+      :color $orange
+    .call-to-action
+      :text-align center
+      p
+        :font-size 1.5em
+        :line-height normal
+      .thirty_days
+        :color $orange
+  .modal-footer
+    :text-align right
+    :background-color #fff
+    :border-top none
+    p
+      :font-size 0.75em
+      :margin 0
+
+.modal-promotions
+  :max-height 535px

@@ -1,0 +1,121 @@
+@import compass/css3
+@import mixins
+
+section.subscription
+  h2
+    :text-align center
+    :font-size 1.7em
+    :font-weight normal
+    :color #222
+    :text-transform uppercase
+    :margin-bottom 20px
+    :font-weight bold
+  .span3
+    > div
+      margin-bottom: 20px
+    .box
+      .header
+        margin-bottom: 5px
+    .box.support
+      .content
+        color: $orange
+        :padding-bottom 0
+        :padding-left 0
+        p
+          font-size: 12px
+          a
+            :color $orange
+            :text-decoration underline
+        ul
+          :padding-left 20px
+          li:before
+            content: ">"
+            :color $orange
+        .more-info
+          :padding-left 95px
+          :padding-bottom 10px
+          :background #fff url('/assets/sprite_subscription.png') no-repeat
+          :background-position -8px -358px
+          +border-bottom-radius(5px)
+    .box.call-number
+      :border-color $orange
+      :padding-left 42px
+      :background #fff url('/assets/sprite_subscription.png') no-repeat
+      :background-position -9px -296px
+      :height 35px
+      p
+        :margin-top 9px
+        :font-size 0.8em
+  .pack
+    :text-transform uppercase
+    :font-weight 600
+  .big-block
+    :background-color #FFF
+    +border-radius(15px)
+    :border 1px solid $orange
+    :padding 15px 10px
+    :margin-bottom 20px
+    h3
+      :color $orange
+      :font-size 14px
+      :margin-bottom 10px
+      :letter-spacing -0.075em
+  .free-month-explanation
+    h3
+      :padding-left 25px
+      :margin-left 9px
+      :background #fff url('/assets/sprite_subscription.png') no-repeat
+      :background-position -8px -8px
+      :line-height 30px
+    li
+      :padding-left 40px
+      :background #fff url('/assets/sprite_subscription.png') no-repeat
+      :background-position 0 -71px
+      :margin-bottom 1em
+      :line-height 20px  
+    li.second
+      :background-position 0 -129px      
+    li.third
+      :background-position 0 -187px
+    li.fourth
+      :background-position 0 -246px
+
+  .subscription-form-container
+    :margin-bottom 10px !important
+    h3
+      :text-align center
+    form
+      fieldset
+        #errorExplanation
+          h4
+            :color #B94A48
+          li
+            :margin-bottom 0
+        li
+          :margin-bottom 1em
+        .processed-ogone
+          :width 75px
+        .control-label
+          :width 190px
+        .required:after
+          :content "*"
+          :vertical-align super
+          :color $orange
+        .controls
+          :margin-left 210px
+          .field_with_errors
+            :display inline-block
+        input[type=submit]
+          :float right
+          :padding 7px 10px !important
+        .help-block
+          :margin 0 !important
+    #date_month
+      :width 150px
+    #date_year
+      :width 75px
+.footer
+  .payment-partners
+    .ogone
+      img
+        :margin-top 5px !important

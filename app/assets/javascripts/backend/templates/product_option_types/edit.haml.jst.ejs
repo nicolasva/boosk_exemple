@@ -1,0 +1,36 @@
+%form#edit_option_type_form
+
+  .container-fluid.option-types
+    .row-fluid
+      .span5.key
+        .row-fluid
+          .span4
+            .row-fluid
+              .span7
+                %label{ for: "option_type_name" }= translate.views.product.new.attribute_name
+              .span5
+                %span.need *
+        %input.necessary{ id: "option_type_name", name: "option_type[name]", value: option_type.type }
+      .span7.values-area
+        - i = 0
+        :each type in option_type.values
+          .option_type_value_row
+            :if i == 0
+              .row-fluid
+                .span4
+                  .row-fluid
+                    .span8
+                      %label{ for: "option_type_value" }= translate.views.product.new.attribute_options
+                    .span4
+                      %span.need *
+            %input.necessary.option_type_id{ name: "option_type[option][" + i +"][id]" , value: type.id , type: "hidden" }
+            .remove_value{ style: "display:none;"}
+            %input.necessary.option_type_value{ name: "option_type[option]["+ i++ +"][value]" , value: type.value }
+            :if i == (option_type.values.length)
+              .add_values
+            :if i != (option_type.values.length)
+              .add_values{ style: "display:none;"}
+  .actions
+    %input.btn.orange{type: "submit"}= translate.update.capitalize()
+    %a.btn.back{ data-dismiss: "modal" }= translate.close
+

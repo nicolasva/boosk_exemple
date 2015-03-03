@@ -1,0 +1,3 @@
+= form_for(:shop, :class => "chosen_select_shop") do |f|
+  %p
+    = f.select(:id, Shop.all.collect {|shop| [ shop.name, shop.id ]}, {:prompt => "Select shop"} ,{:onchange => "this.form.submit();"}) 

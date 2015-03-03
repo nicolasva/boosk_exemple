@@ -1,0 +1,5 @@
+%tr{ data: { id: shipping_method.id } }
+  %td{ data: { id: shipping_method.id } }
+    %input.method-selected{ type: "checkbox" }
+  %td= link_to shipping_method.name, edit_shop_shipping_method_path(shipping_method.shop_id, shipping_method)
+  %td= shipping_method.zone.name
